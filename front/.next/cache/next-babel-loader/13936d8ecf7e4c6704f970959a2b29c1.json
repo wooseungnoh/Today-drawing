@@ -1,0 +1,1 @@
+{"ast":null,"code":"import React from 'react';\n\nconst Root = () => {};","map":{"version":3,"sources":["D:/todayDraw/front/pages/_app.js"],"names":["React","Root"],"mappings":"AAAA,OAAOA,KAAP,MAAkB,OAAlB;;AAEA,MAAMC,IAAI,GAAG,MAAM,CAIlB,CAJD","sourcesContent":["import React from 'react';\r\n\r\nconst Root = () => {\r\n\r\n\r\n    \r\n}"]},"metadata":{},"sourceType":"module"}

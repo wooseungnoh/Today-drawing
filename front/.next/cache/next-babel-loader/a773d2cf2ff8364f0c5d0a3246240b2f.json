@@ -1,0 +1,1 @@
+{"ast":null,"code":"const Home = () => {\n  return;\n};","map":{"version":3,"sources":["D:/todayDraw/front/pages/index.js"],"names":["Home"],"mappings":"AAAA,MAAMA,IAAI,GAAG,MAAM;AAEf;AACH,CAHD","sourcesContent":["const Home = () => {\r\n\r\n    return\r\n}"]},"metadata":{},"sourceType":"script"}
