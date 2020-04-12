@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import AppLayout from '../components/Layout';
 
 const Root = ({ Component }) => {
   return (
@@ -11,7 +12,9 @@ const Root = ({ Component }) => {
           rel='stylesheet'
         ></link>
       </Head>
-      <Component />
+      <AppLayout>
+        <Component />
+      </AppLayout>
       <style jsx global>
         {`
           * {
@@ -22,6 +25,8 @@ const Root = ({ Component }) => {
           body {
             width: 100%;
             height: 100%;
+            margin:0;
+            padding:0;
             display: flex;
             justify-content: center;
             align-items: center;

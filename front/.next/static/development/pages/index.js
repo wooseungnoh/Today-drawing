@@ -1520,10 +1520,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cindex.js!./":
-/*!********************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cindex.js ***!
-  \********************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cindex.js!./":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cindex.js ***!
+  \******************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7484,7 +7484,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/container */ "./components/container.js");
 /* harmony import */ var _components_text__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/text */ "./components/text.js");
 var _this = undefined,
-    _jsxFileName = "D:\\todayDraw\\front\\pages\\index.js";
+    _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -7492,9 +7492,6 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 var dummyPhoto = [{
-  creater: 'wooseung',
-  Img: 'https://lh3.googleusercontent.com/proxy/3xD_WNEL6XNE0KqDncEN1Brdul2GsqcOt2ryNcVFP4_FB77PpMMTD0To-hUyHXhPxYEQxAE3yxRVhfRGBp9UruLLw1l7JDoJVMlw5bT1UxlK9wga3bgg8MCTjCEDfcdEMwDGOD3Y-RNINCHRgiRHLf4yIM040YEx6nSQGJC9QHSE4YQInXSevJwTsO3lai4rmvIWWPAAf45oobE-3DwyA4ZGAzOHYvJd7z66oiEMVU-SdpRpV0AeoakLnO_tLwe2Rh-xKORra3jjUNH8nA9rtQd1f-iNsC2sstbbY0SWS1Rv2MKDmqcYKuYiZ0bAz-fZi1hGfKfYPiFJpMpbZA9AgpdR9jgLQfw8'
-}, {
   creater: 'suna',
   Img: 'https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000&gif=true'
 }, {
@@ -7508,7 +7505,7 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 21,
       columnNumber: 5
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -7516,14 +7513,17 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 22,
       columnNumber: 7
     }
   }, "\uD558\uB8E8\uADF8\uB9BC"), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    style: {
+      marginBottom: "30px"
+    },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 23,
       columnNumber: 7
     }
   }, "\uB2F9\uC2E0\uC758 \uADF8\uB9BC\uC2B5\uAD00"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
@@ -7531,14 +7531,14 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 24,
       columnNumber: 7
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 25,
       columnNumber: 9
     }
   }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -7546,30 +7546,27 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 26,
       columnNumber: 11
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    style: {
-      marginTop: '100px'
-    },
     fontSize: "massive",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 27,
       columnNumber: 13
     }
   }, "\" \uC2A4\uCF00\uCE58\uBD81 \""), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
     style: {
-      marginBottom: '100px'
+      marginBottom: "30px"
     },
     bold: true,
     fontSize: "big",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 30,
       columnNumber: 13
     }
   }, "\uB0B4 \uADF8\uB9BC \uC62C\uB9AC\uAE30")))), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -7580,14 +7577,14 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 37,
       columnNumber: 7
     }
   }, "\uC624\uB298\uC758 \uADF8\uB9BC\uB4E4"), __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 40,
       columnNumber: 7
     }
   }, dummyPhoto.map(function (item) {
@@ -7595,14 +7592,14 @@ var Home = function Home() {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47,
+        lineNumber: 42,
         columnNumber: 11
       }
     }, __jsx("div", {
       style: {
         margin: '10px',
-        width: '400px',
-        height: '250px',
+        width: '250px',
+        height: '150px',
         background: "url(\"".concat(item.Img, "\") no-repeat"),
         backgroundSize: 'cover',
         borderRadius: '10px',
@@ -7611,7 +7608,7 @@ var Home = function Home() {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48,
+        lineNumber: 43,
         columnNumber: 13
       }
     }), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -7619,7 +7616,7 @@ var Home = function Home() {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59,
+        lineNumber: 54,
         columnNumber: 13
       }
     }, item.creater));
@@ -7631,13 +7628,13 @@ var Home = function Home() {
 /***/ }),
 
 /***/ 1:
-/*!************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cindex.js ***!
-  \************************************************************************************************************/
+/*!**********************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cindex.js ***!
+  \**********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cindex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cindex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cindex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cindex.js!./");
 
 
 /***/ }),

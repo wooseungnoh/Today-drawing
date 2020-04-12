@@ -1,13 +1,16 @@
 import React from 'react';
 import Container from './container';
 import Text from '../components/text';
+import Navigation from './navigation';
 
 const AppLayout = ({ children }) => {
   return (
-    <Container>
-      <Text>레이아웃 입니다.</Text>
-      {children}
-    </Container>
+    <>
+      <Navigation />
+      <Container>
+        {children}
+      </Container>
+    </>
   );
 };
 
