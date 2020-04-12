@@ -16,30 +16,30 @@ const dummyPhoto = [
   },
 ];
 
-const Home = () => {
-  return (
-    <Container flex_direction="column">
-      <Text fontSize="mainTitle">하루그림</Text>
-      <Text style={{ marginBottom: "30px" }}>당신의 그림습관</Text>
-      <Link href="/upload">
-        <a>
-          <Container flex_direction="column">
-            <Text fontSize="massive">
-              " 스케치북 "
-            </Text>
-            <Text style={{ marginBottom: "30px" }} bold fontSize="big">
-              내 그림 올리기
-            </Text>
-          </Container>
-        </a>
-      </Link>
+const Home = () => (
+  <Container flex_direction="column">
+    <Text fontSize="mainTitle" style={{ marginTop: '30px' }}>
+      하루 그림
+    </Text>
+    <Text style={{ marginBottom: '80px' }}>당신의 그림습관</Text>
+    <Link href="/upload" style={{ dispaly: 'inline-block' }}>
+      <a>
+        <Container flex_direction="column">
+          <Text fontSize="massive">" 스케치북 "</Text>
+          <Text style={{ marginBottom: '80px' }} bold fontSize="big">
+            내 그림 올리기
+          </Text>
+        </Container>
+      </a>
+    </Link>
 
-      <Text style={{ margin: '30px' }} bold>
-        오늘의 그림들
-      </Text>
-      <Container>
-        {dummyPhoto.map((item) => (
-          <div>
+    <Text style={{ margin: '30px' }} bold>
+      오늘의 그림들
+    </Text>
+    <Container>
+      {dummyPhoto.map((item) => (
+        <Link href="/imgDetail">
+          <a>
             <div
               style={{
                 margin: '10px',
@@ -52,11 +52,11 @@ const Home = () => {
               }}
             />
             <Text bold>{item.creater}</Text>
-          </div>
-        ))}
-      </Container>
+          </a>
+        </Link>
+      ))}
     </Container>
-  );
-};
+  </Container>
+);
 
 export default Home;
