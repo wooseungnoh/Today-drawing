@@ -26,6 +26,7 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 0,
     'react/no-unescaped-entities': 0,
     'implicit-arrow-linebreak': 0,
-    'operator-linebreak':0
+    'operator-linebreak': 0,
+    'jsx-curly-brace-presence': 0,
   },
 };

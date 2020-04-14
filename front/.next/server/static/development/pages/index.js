@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -105,21 +105,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
 
-const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-direction: ${({
+const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "container__Container",
+  componentId: "sc-1pv9ren-0"
+})(["display:flex;justify-content:center;align-items:center;flex-direction:", ";text-align:center;width:", ";height:", ";"], ({
   flex_direction
-}) => flex_direction || 'row'};
-  text-align: center;
-  width: ${({
+}) => flex_direction || 'row', ({
   wsize
-}) => wsize || '1024px'};
-  height: ${({
+}) => wsize || '1024px', ({
   hsize
-}) => hsize || '100%'};
-`;
+}) => hsize || '100%');
 /* harmony default export */ __webpack_exports__["default"] = (Container);
 
 /***/ }),
@@ -150,18 +145,14 @@ const SIZES = {
 const COLOR = {
   normal: '#707070'
 };
-const Text = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.span`
-  color: ${COLOR.normal};
-  font-size: ${({
+const Text = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.span.withConfig({
+  displayName: "text__Text",
+  componentId: "g13gku-0"
+})(["color:", ";font-size:", ";", ""], COLOR.normal, ({
   fontSize
-}) => SIZES[fontSize] || `${SIZES.medium}`};
-
-  ${({
+}) => SIZES[fontSize] || `${SIZES.medium}`, ({
   bold
-}) => bold && styled_components__WEBPACK_IMPORTED_MODULE_0__["css"]`
-      font-weight: bold;
-    `}
-`;
+}) => bold && Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["font-weight:bold;"]));
 /* harmony default export */ __webpack_exports__["default"] = (Text);
 
 /***/ }),
@@ -2008,7 +1999,7 @@ const Home = () => __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["def
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

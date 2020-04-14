@@ -88,10 +88,36 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./components/container.js":
+/*!*********************************!*\
+  !*** ./components/container.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
+
+const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "container__Container",
+  componentId: "sc-1pv9ren-0"
+})(["display:flex;justify-content:center;align-items:center;flex-direction:", ";text-align:center;width:", ";height:", ";"], ({
+  flex_direction
+}) => flex_direction || 'row', ({
+  wsize
+}) => wsize || '1024px', ({
+  hsize
+}) => hsize || '100%');
+/* harmony default export */ __webpack_exports__["default"] = (Container);
+
+/***/ }),
 
 /***/ "./pages/upload.js":
 /*!*************************!*\
@@ -104,29 +130,208 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/container */ "./components/container.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "D:\\todayDraw\\front\\pages\\upload.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+const Ul = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.ul.withConfig({
+  displayName: "upload__Ul",
+  componentId: "sc-19rfv45-0"
+})(["position:absolute;display:flex;flex-direction:row;bottom:45px;"]);
+const Li = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.li.withConfig({
+  displayName: "upload__Li",
+  componentId: "sc-19rfv45-1"
+})(["width:30px;height:30px;border-radius:50%;margin:5px;list-style:none;cursor:pointer;"]);
+const Canvas = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.canvas.withConfig({
+  displayName: "upload__Canvas",
+  componentId: "sc-19rfv45-2"
+})(["width:700px;height:700px;border-radius:15px;background:#ffffff;box-shadow:18px 18px 25px #00000057,-18px -18px 25px #ffffff;"]);
+const RangeInput = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.input.withConfig({
+  displayName: "upload__RangeInput",
+  componentId: "sc-19rfv45-3"
+})(["transform:rotate(-90deg);position:absolute;right:0;"]);
 
 const Upload = () => {
+  const {
+    0: lineSize,
+    1: setLineSize
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(2.5);
+  const {
+    0: canvasState,
+    1: setCanvasState
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    painter: false,
+    strokeStyle: '#000',
+    lineWidth: 2.5
+  });
+  const canvas = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+
+  const startPainting = () => {
+    setCanvasState(_objectSpread({}, canvasState, {
+      painter: true
+    }));
+  };
+
+  const stopPainting = () => {
+    setCanvasState(_objectSpread({}, canvasState, {
+      painter: false
+    }));
+  };
+
+  const onMouseMove = e => {
+    const {
+      offsetY: y,
+      offsetX: x
+    } = e.nativeEvent;
+    const ctx = canvas.current.getContext('2d');
+
+    if (!canvasState.painter) {
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+    } else {
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+  };
+
+  const colorChange = e => {
+    const ctx = canvas.current.getContext('2d');
+    ctx.strokeStyle = e.nativeEvent.target.style.backgroundColor;
+  };
+
+  const lineWidthChange = e => {
+    const ctx = canvas.current.getContext('2d');
+    const size = e.nativeEvent.target.value;
+    ctx.lineWidth = size;
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    console.log('업로드화면 입니다.');
+    canvas.current.width = 700;
+    canvas.current.height = 700;
+    const ctx = canvas.current.getContext('2d');
+    ctx.strokeStyle = canvasState.strokeStyle;
+    ctx.lineWidth = canvasState.lineWidth;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
   }, []);
-  return __jsx("div", {
+  return __jsx(_components_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    style: {
+      padding: '50px',
+      position: 'relative',
+      width: '700px'
+    },
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 10
+      lineNumber: 91,
+      columnNumber: 5
     }
-  }, "\uC5C5\uB85C\uB4DC");
+  }, __jsx(Canvas, {
+    ref: canvas,
+    onMouseMove: onMouseMove,
+    onMouseDown: startPainting,
+    onMouseUp: stopPainting,
+    onMouseLeave: stopPainting,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 93,
+      columnNumber: 7
+    }
+  }), __jsx(Ul, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 100,
+      columnNumber: 7
+    }
+  }, __jsx(Li, {
+    style: {
+      backgroundColor: '#00a8ff'
+    },
+    onClick: colorChange,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 101,
+      columnNumber: 9
+    }
+  }), __jsx(Li, {
+    style: {
+      backgroundColor: '#9c88ff'
+    },
+    onClick: colorChange,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 102,
+      columnNumber: 9
+    }
+  }), __jsx(Li, {
+    style: {
+      backgroundColor: '#fbc531'
+    },
+    onClick: colorChange,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 103,
+      columnNumber: 9
+    }
+  }), __jsx(Li, {
+    style: {
+      backgroundColor: '#e84118'
+    },
+    onClick: colorChange,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 104,
+      columnNumber: 9
+    }
+  }), __jsx(Li, {
+    style: {
+      backgroundColor: '#ffffff',
+      border: '1px solid black'
+    },
+    onClick: colorChange,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 105,
+      columnNumber: 9
+    }
+  })), __jsx(RangeInput, {
+    type: "range",
+    min: "0.1",
+    max: "100",
+    defaultValue: lineSize,
+    onMouseUp: lineWidthChange,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 110,
+      columnNumber: 7
+    }
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Upload);
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*******************************!*\
   !*** multi ./pages/upload.js ***!
   \*******************************/
@@ -146,6 +351,17 @@ module.exports = __webpack_require__(/*! D:\todayDraw\front\pages\upload.js */".
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "styled-components":
+/*!************************************!*\
+  !*** external "styled-components" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("styled-components");
 
 /***/ })
 

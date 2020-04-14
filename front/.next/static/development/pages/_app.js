@@ -25,10 +25,10 @@ var AppLayout = function AppLayout(_ref) {
   var children = _ref.children;
   return __jsx("div", {
     style: {
-      overflow: "hidden",
-      position: "relative",
-      minHeight: "700px",
-      minWidth: "1024px"
+      overflow: 'hidden',
+      position: 'relative',
+      minHeight: '700px',
+      minWidth: '1024px'
     },
     __self: _this,
     __source: {
@@ -40,14 +40,14 @@ var AppLayout = function AppLayout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 13,
       columnNumber: 5
     }
   }), __jsx(_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 14,
       columnNumber: 5
     }
   }, children));
@@ -66,22 +66,12 @@ var AppLayout = function AppLayout(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
-
-function _templateObject() {
-  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  display: flex;\n  justify-content: center;\n  align-content: center;\n  flex-direction: ", ";\n  text-align: center;\n  width: ", ";\n  height: ", ";\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-
-var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject(), function (_ref) {
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+  displayName: "container__Container",
+  componentId: "sc-1pv9ren-0"
+})(["display:flex;justify-content:center;align-items:center;flex-direction:", ";text-align:center;width:", ";height:", ";"], function (_ref) {
   var flex_direction = _ref.flex_direction;
   return flex_direction || 'row';
 }, function (_ref2) {
@@ -104,37 +94,26 @@ var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_t
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_5__);
-
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
 var _this = undefined,
     _jsxFileName = "D:\\todayDraw\\front\\components\\navigation.js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
-
-function _templateObject() {
-  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  position: absolute;\n  width: 300px;\n  height: 500px;\n  background: #aaa;\n  border-radius: 10px;\n  transition: 0.5s;\n  opacity: ", ";\n  display: ", ";\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
 
-
-var PopupMenu = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject(), function (_ref) {
+var PopupMenu = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "navigation__PopupMenu",
+  componentId: "sc-1rj3h6s-0"
+})(["position:absolute;z-index:9;width:300px;height:500px;background:#aaa;border-radius:10px;transition:0.5s;opacity:", ";display:", ";"], function (_ref) {
   var opacity = _ref.opacity;
   return opacity;
 }, function (_ref2) {
@@ -143,31 +122,29 @@ var PopupMenu = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_t
 });
 
 var Navigation = function Navigation() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(true),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       menuOpen = _useState[0],
       setMenuOpen = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     opacity: '0',
     display: 'none'
   }),
       popUpState = _useState2[0],
       setPopUpState = _useState2[1];
 
-  var handelMenuState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function () {
+  var handelMenuState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(function () {
     setMenuOpen(function (prev) {
       return !prev;
     });
 
     if (menuOpen) {
       setTimeout(function () {
-        console.log('디스플레이 온');
         setPopUpState({
           opacity: '0',
           display: 'block'
         });
         setTimeout(function () {
-          console.log('오퍼시티 1');
           setPopUpState({
             display: 'block',
             opacity: '0.7'
@@ -176,13 +153,11 @@ var Navigation = function Navigation() {
       }, 0);
     } else {
       setTimeout(function () {
-        console.log('디스플레이 오프');
         setPopUpState({
           display: 'block',
           opacity: '0'
         });
         setTimeout(function () {
-          console.log('디스플레이 논');
           setPopUpState({
             opacity: '0',
             display: 'none'
@@ -193,27 +168,27 @@ var Navigation = function Navigation() {
   });
   return __jsx("div", {
     style: {
-      display: "inline-block",
-      position: "absolute"
+      display: 'inline-block',
+      position: 'absolute'
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 58,
       columnNumber: 5
     }
-  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faEllipsisV"],
+  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faEllipsisV"],
     size: '2x',
     style: {
       cursor: 'pointer',
-      padding: "10px 20px"
+      padding: '10px 20px'
     },
     onClick: handelMenuState,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62,
+      lineNumber: 59,
       columnNumber: 7
     }
   }), __jsx(PopupMenu, {
@@ -222,86 +197,86 @@ var Navigation = function Navigation() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 65,
       columnNumber: 7
     }
   }, __jsx("ul", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 66,
       columnNumber: 9
     }
   }, __jsx("li", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 67,
       columnNumber: 11
     }
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
     href: "/",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 15
+      lineNumber: 68,
+      columnNumber: 13
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 30
+      lineNumber: 69,
+      columnNumber: 15
     }
   }, "\uD648"))), __jsx("li", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 11
-    }
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
-    href: "/upload",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 15
-    }
-  }, __jsx("a", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 36
-    }
-  }, "\uC5C5\uB85C\uB4DC"))), __jsx("li", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 72,
       columnNumber: 11
     }
-  }, "\uB9C8\uC774\uD398\uC774\uC9C0"), __jsx("li", {
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    href: "/upload",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 73,
-      columnNumber: 11
+      columnNumber: 13
     }
-  }, "\uB9C8\uC774\uD398\uC774\uC9C0"), __jsx("li", {
+  }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 74,
+      columnNumber: 15
+    }
+  }, "\uC5C5\uB85C\uB4DC"))), __jsx("li", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77,
       columnNumber: 11
     }
   }, "\uB9C8\uC774\uD398\uC774\uC9C0"), __jsx("li", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75,
+      lineNumber: 78,
+      columnNumber: 11
+    }
+  }, "\uB9C8\uC774\uD398\uC774\uC9C0"), __jsx("li", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 79,
+      columnNumber: 11
+    }
+  }, "\uB9C8\uC774\uD398\uC774\uC9C0"), __jsx("li", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80,
       columnNumber: 11
     }
   }, "\uB9C8\uC774\uD398\uC774\uC9C0"))));
@@ -450,30 +425,6 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 module.exports = _createClass;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js ***!
-  \**************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _taggedTemplateLiteral; });
-function _taggedTemplateLiteral(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-
-  return Object.freeze(Object.defineProperties(strings, {
-    raw: {
-      value: Object.freeze(raw)
-    }
-  }));
-}
 
 /***/ }),
 

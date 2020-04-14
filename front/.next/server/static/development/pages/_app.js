@@ -116,10 +116,10 @@ const AppLayout = ({
   children
 }) => __jsx("div", {
   style: {
-    overflow: "hidden",
-    position: "relative",
-    minHeight: "700px",
-    minWidth: "1024px"
+    overflow: 'hidden',
+    position: 'relative',
+    minHeight: '700px',
+    minWidth: '1024px'
   },
   __self: undefined,
   __source: {
@@ -131,14 +131,14 @@ const AppLayout = ({
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 7,
+    lineNumber: 13,
     columnNumber: 5
   }
 }), __jsx(_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 8,
+    lineNumber: 14,
     columnNumber: 5
   }
 }, children));
@@ -159,21 +159,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
 
-const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-direction: ${({
+const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "container__Container",
+  componentId: "sc-1pv9ren-0"
+})(["display:flex;justify-content:center;align-items:center;flex-direction:", ";text-align:center;width:", ";height:", ";"], ({
   flex_direction
-}) => flex_direction || 'row'};
-  text-align: center;
-  width: ${({
+}) => flex_direction || 'row', ({
   wsize
-}) => wsize || '1024px'};
-  height: ${({
+}) => wsize || '1024px', ({
   hsize
-}) => hsize || '100%'};
-`;
+}) => hsize || '100%');
 /* harmony default export */ __webpack_exports__["default"] = (Container);
 
 /***/ }),
@@ -204,20 +199,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-const PopupMenu = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div`
-  position: absolute;
-  width: 300px;
-  height: 500px;
-  background: #aaa;
-  border-radius: 10px;
-  transition: 0.5s;
-  opacity: ${({
+const PopupMenu = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "navigation__PopupMenu",
+  componentId: "sc-1rj3h6s-0"
+})(["position:absolute;z-index:9;width:300px;height:500px;background:#aaa;border-radius:10px;transition:0.5s;opacity:", ";display:", ";"], ({
   opacity
-}) => opacity};
-  display: ${({
+}) => opacity, ({
   display
-}) => display};
-`;
+}) => display);
 
 const Navigation = () => {
   const {
@@ -236,13 +225,11 @@ const Navigation = () => {
 
     if (menuOpen) {
       setTimeout(() => {
-        console.log('디스플레이 온');
         setPopUpState({
           opacity: '0',
           display: 'block'
         });
         setTimeout(() => {
-          console.log('오퍼시티 1');
           setPopUpState({
             display: 'block',
             opacity: '0.7'
@@ -251,13 +238,11 @@ const Navigation = () => {
       }, 0);
     } else {
       setTimeout(() => {
-        console.log('디스플레이 오프');
         setPopUpState({
           display: 'block',
           opacity: '0'
         });
         setTimeout(() => {
-          console.log('디스플레이 논');
           setPopUpState({
             opacity: '0',
             display: 'none'
@@ -268,13 +253,13 @@ const Navigation = () => {
   });
   return __jsx("div", {
     style: {
-      display: "inline-block",
-      position: "absolute"
+      display: 'inline-block',
+      position: 'absolute'
     },
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 58,
       columnNumber: 5
     }
   }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
@@ -282,13 +267,13 @@ const Navigation = () => {
     size: '2x',
     style: {
       cursor: 'pointer',
-      padding: "10px 20px"
+      padding: '10px 20px'
     },
     onClick: handelMenuState,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62,
+      lineNumber: 59,
       columnNumber: 7
     }
   }), __jsx(PopupMenu, {
@@ -297,21 +282,21 @@ const Navigation = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 65,
       columnNumber: 7
     }
   }, __jsx("ul", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 66,
       columnNumber: 9
     }
   }, __jsx("li", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 67,
       columnNumber: 11
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -319,21 +304,21 @@ const Navigation = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 15
+      lineNumber: 68,
+      columnNumber: 13
     }
   }, __jsx("a", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 30
+      lineNumber: 69,
+      columnNumber: 15
     }
   }, "\uD648"))), __jsx("li", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 72,
       columnNumber: 11
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -341,42 +326,42 @@ const Navigation = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 15
+      lineNumber: 73,
+      columnNumber: 13
     }
   }, __jsx("a", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
-      columnNumber: 36
+      lineNumber: 74,
+      columnNumber: 15
     }
   }, "\uC5C5\uB85C\uB4DC"))), __jsx("li", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 77,
       columnNumber: 11
     }
   }, "\uB9C8\uC774\uD398\uC774\uC9C0"), __jsx("li", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 78,
       columnNumber: 11
     }
   }, "\uB9C8\uC774\uD398\uC774\uC9C0"), __jsx("li", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74,
+      lineNumber: 79,
       columnNumber: 11
     }
   }, "\uB9C8\uC774\uD398\uC774\uC9C0"), __jsx("li", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75,
+      lineNumber: 80,
       columnNumber: 11
     }
   }, "\uB9C8\uC774\uD398\uC774\uC9C0"))));
