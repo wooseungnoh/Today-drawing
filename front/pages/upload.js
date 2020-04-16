@@ -24,10 +24,26 @@ const Canvas = styled.canvas`
   box-shadow: 18px 18px 25px #00000057, -18px -18px 25px #ffffff;
 `;
 
-const RangeInput = styled.input`
+const RangeInput = styled.input``;
+
+const InputContainer = styled.div`
+  height: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
   transform: rotate(-90deg);
   position: absolute;
-  right: 0;
+  right: 30px;
+`;
+
+const PainterSize = styled.div`
+  position: absolute;
+  width: ${({ size }) => size || '2.5'}px;
+  height: ${({ size }) => size || '2.5'}px;
+  background: ${({color}) => color || "#000000"};
+  border-radius: 50%;
+  transform: translateX(120px);
 `;
 
 const Upload = () => {
@@ -67,12 +83,21 @@ const Upload = () => {
   const colorChange = (e) => {
     const ctx = canvas.current.getContext('2d');
     ctx.strokeStyle = e.nativeEvent.target.style.backgroundColor;
+    setCanvasState({
+      ...canvasState,
+      strokeStyle: e.nativeEvent.target.style.backgroundColor,
+    })
   };
 
   const lineWidthChange = (e) => {
     const ctx = canvas.current.getContext('2d');
     const size = e.nativeEvent.target.value;
     ctx.lineWidth = size;
+  };
+
+  const lineChange = (e) => {
+    const size = e.nativeEvent.target.value;
+    setLineSize(size);
   };
 
   useEffect(() => {
@@ -98,6 +123,7 @@ const Upload = () => {
         onMouseLeave={stopPainting}
       />
       <Ul>
+        <Li style={{ backgroundColor: '#000000' }} onClick={colorChange} />
         <Li style={{ backgroundColor: '#00a8ff' }} onClick={colorChange} />
         <Li style={{ backgroundColor: '#9c88ff' }} onClick={colorChange} />
         <Li style={{ backgroundColor: '#fbc531' }} onClick={colorChange} />
@@ -107,13 +133,17 @@ const Upload = () => {
           onClick={colorChange}
         />
       </Ul>
-      <RangeInput
-        type="range"
-        min="0.1"
-        max="100"
-        defaultValue={lineSize}
-        onMouseUp={lineWidthChange}
-      />
+      <InputContainer>
+        <PainterSize size={lineSize} color={canvasState.strokeStyle}/>
+        <RangeInput
+          type="range"
+          min="0.1"
+          max="100"
+          defaultValue={lineSize}
+          onChange={lineChange}
+          onMouseUp={lineWidthChange}
+        />
+      </InputContainer>
     </Container>
   );
 };

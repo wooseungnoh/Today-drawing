@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -160,7 +160,21 @@ const Canvas = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.canvas.w
 const RangeInput = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.input.withConfig({
   displayName: "upload__RangeInput",
   componentId: "sc-19rfv45-3"
-})(["transform:rotate(-90deg);position:absolute;right:0;"]);
+})([""]);
+const InputContainer = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+  displayName: "upload__InputContainer",
+  componentId: "sc-19rfv45-4"
+})(["height:10px;display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;transform:rotate(-90deg);position:absolute;right:30px;"]);
+const PainterSize = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+  displayName: "upload__PainterSize",
+  componentId: "sc-19rfv45-5"
+})(["position:absolute;width:", "px;height:", "px;background:", ";border-radius:50%;transform:translateX(120px);"], ({
+  size
+}) => size || '2.5', ({
+  size
+}) => size || '2.5', ({
+  color
+}) => color || "#000000");
 
 const Upload = () => {
   const {
@@ -208,12 +222,20 @@ const Upload = () => {
   const colorChange = e => {
     const ctx = canvas.current.getContext('2d');
     ctx.strokeStyle = e.nativeEvent.target.style.backgroundColor;
+    setCanvasState(_objectSpread({}, canvasState, {
+      strokeStyle: e.nativeEvent.target.style.backgroundColor
+    }));
   };
 
   const lineWidthChange = e => {
     const ctx = canvas.current.getContext('2d');
     const size = e.nativeEvent.target.value;
     ctx.lineWidth = size;
+  };
+
+  const lineChange = e => {
+    const size = e.nativeEvent.target.value;
+    setLineSize(size);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
@@ -234,7 +256,7 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91,
+      lineNumber: 116,
       columnNumber: 5
     }
   }, __jsx(Canvas, {
@@ -246,17 +268,28 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93,
+      lineNumber: 118,
       columnNumber: 7
     }
   }), __jsx(Ul, {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 125,
       columnNumber: 7
     }
   }, __jsx(Li, {
+    style: {
+      backgroundColor: '#000000'
+    },
+    onClick: colorChange,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 126,
+      columnNumber: 9
+    }
+  }), __jsx(Li, {
     style: {
       backgroundColor: '#00a8ff'
     },
@@ -264,7 +297,7 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101,
+      lineNumber: 127,
       columnNumber: 9
     }
   }), __jsx(Li, {
@@ -275,7 +308,7 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102,
+      lineNumber: 128,
       columnNumber: 9
     }
   }), __jsx(Li, {
@@ -286,7 +319,7 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103,
+      lineNumber: 129,
       columnNumber: 9
     }
   }), __jsx(Li, {
@@ -297,7 +330,7 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 104,
+      lineNumber: 130,
       columnNumber: 9
     }
   }), __jsx(Li, {
@@ -309,29 +342,46 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105,
+      lineNumber: 131,
       columnNumber: 9
     }
-  })), __jsx(RangeInput, {
+  })), __jsx(InputContainer, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 136,
+      columnNumber: 7
+    }
+  }, __jsx(PainterSize, {
+    size: lineSize,
+    color: canvasState.strokeStyle,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 137,
+      columnNumber: 9
+    }
+  }), __jsx(RangeInput, {
     type: "range",
     min: "0.1",
     max: "100",
     defaultValue: lineSize,
+    onChange: lineChange,
     onMouseUp: lineWidthChange,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110,
-      columnNumber: 7
+      lineNumber: 138,
+      columnNumber: 9
     }
-  }));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Upload);
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!*******************************!*\
   !*** multi ./pages/upload.js ***!
   \*******************************/

@@ -3456,7 +3456,24 @@ var Canvas = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].canvas.wi
 var RangeInput = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].input.withConfig({
   displayName: "upload__RangeInput",
   componentId: "sc-19rfv45-3"
-})(["transform:rotate(-90deg);position:absolute;right:0;"]);
+})([""]);
+var InputContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
+  displayName: "upload__InputContainer",
+  componentId: "sc-19rfv45-4"
+})(["height:10px;display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;transform:rotate(-90deg);position:absolute;right:30px;"]);
+var PainterSize = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
+  displayName: "upload__PainterSize",
+  componentId: "sc-19rfv45-5"
+})(["position:absolute;width:", "px;height:", "px;background:", ";border-radius:50%;transform:translateX(120px);"], function (_ref) {
+  var size = _ref.size;
+  return size || '2.5';
+}, function (_ref2) {
+  var size = _ref2.size;
+  return size || '2.5';
+}, function (_ref3) {
+  var color = _ref3.color;
+  return color || "#000000";
+});
 
 var Upload = function Upload() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(2.5),
@@ -3503,12 +3520,20 @@ var Upload = function Upload() {
   var colorChange = function colorChange(e) {
     var ctx = canvas.current.getContext('2d');
     ctx.strokeStyle = e.nativeEvent.target.style.backgroundColor;
+    setCanvasState(_objectSpread({}, canvasState, {
+      strokeStyle: e.nativeEvent.target.style.backgroundColor
+    }));
   };
 
   var lineWidthChange = function lineWidthChange(e) {
     var ctx = canvas.current.getContext('2d');
     var size = e.nativeEvent.target.value;
     ctx.lineWidth = size;
+  };
+
+  var lineChange = function lineChange(e) {
+    var size = e.nativeEvent.target.value;
+    setLineSize(size);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
@@ -3529,7 +3554,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91,
+      lineNumber: 116,
       columnNumber: 5
     }
   }, __jsx(Canvas, {
@@ -3541,17 +3566,28 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93,
+      lineNumber: 118,
       columnNumber: 7
     }
   }), __jsx(Ul, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 125,
       columnNumber: 7
     }
   }, __jsx(Li, {
+    style: {
+      backgroundColor: '#000000'
+    },
+    onClick: colorChange,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 126,
+      columnNumber: 9
+    }
+  }), __jsx(Li, {
     style: {
       backgroundColor: '#00a8ff'
     },
@@ -3559,7 +3595,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101,
+      lineNumber: 127,
       columnNumber: 9
     }
   }), __jsx(Li, {
@@ -3570,7 +3606,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102,
+      lineNumber: 128,
       columnNumber: 9
     }
   }), __jsx(Li, {
@@ -3581,7 +3617,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103,
+      lineNumber: 129,
       columnNumber: 9
     }
   }), __jsx(Li, {
@@ -3592,7 +3628,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 104,
+      lineNumber: 130,
       columnNumber: 9
     }
   }), __jsx(Li, {
@@ -3604,29 +3640,46 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105,
+      lineNumber: 131,
       columnNumber: 9
     }
-  })), __jsx(RangeInput, {
+  })), __jsx(InputContainer, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 136,
+      columnNumber: 7
+    }
+  }, __jsx(PainterSize, {
+    size: lineSize,
+    color: canvasState.strokeStyle,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 137,
+      columnNumber: 9
+    }
+  }), __jsx(RangeInput, {
     type: "range",
     min: "0.1",
     max: "100",
     defaultValue: lineSize,
+    onChange: lineChange,
     onMouseUp: lineWidthChange,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110,
-      columnNumber: 7
+      lineNumber: 138,
+      columnNumber: 9
     }
-  }));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Upload);
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!*******************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js ***!
   \*******************************************************************************************************************/
@@ -3649,5 +3702,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=upload.js.map
