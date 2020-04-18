@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const PopupMenu = styled.div`
   position: absolute;
-  z-index:9;
+  z-index: 9;
   width: 300px;
   height: 500px;
   background: #aaa;
@@ -55,7 +55,13 @@ const Navigation = () => {
   });
 
   return (
-    <div style={{ display: 'inline-block', position: 'absolute', alignSelf:"flex-start"}}>
+    <div
+      style={{
+        display: 'inline-block',
+        position: 'absolute',
+        alignSelf: 'flex-start',
+      }}
+    >
       <FontAwesomeIcon
         icon={faEllipsisV}
         size={'2x'}
@@ -74,7 +80,11 @@ const Navigation = () => {
               <a>업로드</a>
             </Link>
           </li>
-          <li>마이페이지</li>
+          <li>
+            <Link href="/gallery">
+              <a>갤러리</a>
+            </Link>
+          </li>
           <li>마이페이지</li>
           <li>마이페이지</li>
           <li>마이페이지</li>

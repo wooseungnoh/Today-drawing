@@ -2,36 +2,13 @@ import Link from 'next/link';
 import React from 'react';
 import Container from '../components/container';
 import Text from '../components/text';
+import { useSelector } from 'react-redux';
 
-const dummyPhoto = [
-  {
-    creater: 'suna',
-    Img:
-      'https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000&gif=true',
-  },
-  {
-    creater: 'ffff',
-    Img:
-      'https://cdn.crowdpic.net/list-thumb/thumb_l_EAA2072F8D20A092FD567A0C46661012.jpeg',
-  },
-  {
-    creater: 'ffff',
-    Img:
-      'https://cdn.crowdpic.net/list-thumb/thumb_l_EAA2072F8D20A092FD567A0C46661012.jpeg',
-  },
-  {
-    creater: 'ffff',
-    Img:
-      'https://cdn.crowdpic.net/list-thumb/thumb_l_EAA2072F8D20A092FD567A0C46661012.jpeg',
-  },
-  {
-    creater: 'ffff',
-    Img:
-      'https://cdn.crowdpic.net/list-thumb/thumb_l_EAA2072F8D20A092FD567A0C46661012.jpeg',
-  },
-];
+
 
 const Gallery = () => {
+  const { photo } = useSelector((state) => state.drawing);
+
   return (
     <Container flex_direction="column">
       <Text>오늘의 그림들</Text>
@@ -42,8 +19,8 @@ const Gallery = () => {
           gridTemplateColumns: 'repeat(2, 300px)',
         }}
       >
-        {dummyPhoto.map((item) => (
-          <Link href="/imgDetail">
+        {photo.map((item) => (
+          <Link href="/p/[imgDetail]" as={`/p/${item.id}`}>
             <a>
               <div
                 style={{

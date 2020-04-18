@@ -1,17 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Img } from '../components/input';
 import Text from '../components/text';
 import Container from '../components/container';
 
 const imgDetail = () => {
+  const { photo } = useSelector((state) => state.drawing);
+
   return (
     <Container flex_direction="column">
-      <Img
-        src={'https://www.codingfactory.net/wp-content/uploads/abc.jpg'}
-        width="500px"
-      />
-      <Text>작품 제목 : 꽃</Text>
-      <Text>어디엔가 피어있는 꽃을 그려보았습니다.</Text>
+      <Img src={photo[0].Img} width="500px" />
+      <Text>작품 제목 : {photo[0].title}</Text>
+      <Text>{photo[0].description}</Text>
     </Container>
   );
 };

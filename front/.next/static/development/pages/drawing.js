@@ -7784,7 +7784,7 @@ var Upload = function Upload() {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*********************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fdrawing&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cdrawing.js ***!
   \*********************************************************************************************************************/
@@ -7807,5 +7807,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]);
+},[[5,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=drawing.js.map

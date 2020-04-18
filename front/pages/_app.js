@@ -1,9 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
+import withRedux from 'next-redux-wrapper';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import AppLayout from '../components/Layout';
 
-const Root = ({ Component }) => (
-  <div>
+import reducer from '../reducers';
+
+const Root = ({ Component, store }) => (
+  <Provider store={store}>
     <Head>
       <title>하루 그림</title>
       <meta
@@ -53,7 +58,12 @@ const Root = ({ Component }) => (
         }
       `}
     </style>
-  </div>
+  </Provider>
 );
 
-export default Root;
+const configureStore = (initialState) => {
+  const store = createStore(reducer, initialState);
+  return store;
+};
+
+export default withRedux(configureStore)(Root);
