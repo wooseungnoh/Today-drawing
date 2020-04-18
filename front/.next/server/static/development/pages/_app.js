@@ -116,6 +116,8 @@ const AppLayout = ({
   children
 }) => __jsx("div", {
   style: {
+    display: "flex",
+    alignItems: "center",
     overflow: 'hidden',
     position: 'relative',
     minHeight: '700px',
@@ -128,17 +130,20 @@ const AppLayout = ({
     columnNumber: 3
   }
 }, __jsx(_navigation__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  style: {
+    alignSelf: "flex-start"
+  },
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 13,
+    lineNumber: 15,
     columnNumber: 5
   }
 }), __jsx(_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 14,
+    lineNumber: 16,
     columnNumber: 5
   }
 }, children));
@@ -254,7 +259,8 @@ const Navigation = () => {
   return __jsx("div", {
     style: {
       display: 'inline-block',
-      position: 'absolute'
+      position: 'absolute',
+      alignSelf: "flex-start"
     },
     __self: undefined,
     __source: {
@@ -322,7 +328,7 @@ const Navigation = () => {
       columnNumber: 11
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    href: "/upload",
+    href: "/drawing",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,

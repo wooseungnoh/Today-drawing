@@ -7,7 +7,7 @@ const SIZES = {
   medium: '15px',
   large: '16px',
   big: '19px',
-  huge: '20px',
+  huge: '25px',
   massive: '50px',
   mainTitle: '35px',
 };

@@ -55,7 +55,7 @@ const Navigation = () => {
   });
 
   return (
-    <div style={{ display: 'inline-block', position: 'absolute' }}>
+    <div style={{ display: 'inline-block', position: 'absolute', alignSelf:"flex-start"}}>
       <FontAwesomeIcon
         icon={faEllipsisV}
         size={'2x'}
@@ -70,7 +70,7 @@ const Navigation = () => {
             </Link>
           </li>
           <li>
-            <Link href="/upload">
+            <Link href="/drawing">
               <a>업로드</a>
             </Link>
           </li>
