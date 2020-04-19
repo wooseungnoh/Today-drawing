@@ -1,16 +1,14 @@
 import Link from 'next/link';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Container from '../components/container';
 import Text from '../components/text';
-import { useSelector } from 'react-redux';
-
-
 
 const Gallery = () => {
   const { photo } = useSelector((state) => state.drawing);
 
   return (
-    <Container flex_direction="column">
+    <Container flexDirection="column">
       <Text>오늘의 그림들</Text>
       <Container
         style={{

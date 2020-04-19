@@ -15,8 +15,8 @@ var Container = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.wi
   displayName: "container__Container",
   componentId: "sc-1pv9ren-0"
 })(["display:flex;justify-content:center;align-items:center;flex-direction:", ";text-align:center;width:", ";height:", ";"], function (_ref) {
-  var flex_direction = _ref.flex_direction;
-  return flex_direction || 'row';
+  var flexDirection = _ref.flexDirection;
+  return flexDirection || 'row';
 }, function (_ref2) {
   var wsize = _ref2.wsize;
   return wsize || '1024px';
@@ -7440,7 +7440,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var Home = function Home() {
   return __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    flex_direction: "column",
+    flexDirection: "column",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -7449,9 +7449,6 @@ var Home = function Home() {
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
     fontSize: "mainTitle",
-    style: {
-      marginTop: '30px'
-    },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -7487,7 +7484,7 @@ var Home = function Home() {
       columnNumber: 7
     }
   }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    flex_direction: "column",
+    flexDirection: "column",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -7548,7 +7545,7 @@ var Home = function Home() {
 
 /***/ }),
 
-/***/ 6:
+/***/ 2:
 /*!************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cindex.js ***!
   \************************************************************************************************************/
@@ -7571,5 +7568,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[6,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

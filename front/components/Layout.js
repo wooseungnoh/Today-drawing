@@ -3,18 +3,17 @@ import Container from './container';
 import Navigation from './navigation';
 
 const AppLayout = ({ children }) => (
-  <div
+  <Container
     style={{
-      display:"flex",
-      alignItems:"center",
       overflow: 'hidden',
-      position: 'relative',
       minHeight: '700px',
       minWidth: '1024px',
-    }}>
-    <Navigation style={{alignSelf:"flex-start"}}/>
-    <Container>{children}</Container>
-  </div>
+    }}
+    flexDirection="column"
+  >
+    <Navigation style={{ alignSelf: 'flex-start' }} />
+    <Container style={{paddingTop:"60px"}}>{children}</Container>
+  </Container>
 );
 
 export default AppLayout;

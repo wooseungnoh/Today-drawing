@@ -39,22 +39,36 @@ export const initialState = {
     {
       id: 5,
       creater: 'www',
-      Img:
-        'https://pbs.twimg.com/media/DZwbCQRU8AAgYyp.jpg',
+      Img: 'https://pbs.twimg.com/media/DZwbCQRU8AAgYyp.jpg',
       description: '이 그림은 그냥 그려본 그림입니다.',
       title: '먐미',
       createAt: '2020.10.03',
     },
   ],
+  modalState: false,
 };
 
 export const LOAD_GALLERY_POST = 'LOAD_GALLERY_POST';
+export const MODAL_ON = 'MODAL_ON';
+export const MODAL_OFF = 'MODAL_OFF';
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOAD_GALLERY_POST: {
       return {
         ...state,
+      };
+    }
+    case MODAL_ON: {
+      return {
+        ...state,
+        modalState: true,
+      };
+    }
+    case MODAL_OFF: {
+      return {
+        ...state,
+        modalState: false,
       };
     }
     default: {

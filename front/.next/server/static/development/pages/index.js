@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -109,8 +109,8 @@ const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.w
   displayName: "container__Container",
   componentId: "sc-1pv9ren-0"
 })(["display:flex;justify-content:center;align-items:center;flex-direction:", ";text-align:center;width:", ";height:", ";"], ({
-  flex_direction
-}) => flex_direction || 'row', ({
+  flexDirection
+}) => flexDirection || 'row', ({
   wsize
 }) => wsize || '1024px', ({
   hsize
@@ -1855,7 +1855,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const Home = () => __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-  flex_direction: "column",
+  flexDirection: "column",
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
@@ -1864,9 +1864,6 @@ const Home = () => __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["def
   }
 }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
   fontSize: "mainTitle",
-  style: {
-    marginTop: '30px'
-  },
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
@@ -1902,7 +1899,7 @@ const Home = () => __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["def
     columnNumber: 7
   }
 }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-  flex_direction: "column",
+  flexDirection: "column",
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
@@ -1962,7 +1959,7 @@ const Home = () => __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["def
 
 /***/ }),
 
-/***/ 8:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

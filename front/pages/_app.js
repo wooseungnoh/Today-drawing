@@ -1,11 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
 import withRedux from 'next-redux-wrapper';
-import { createStore } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import AppLayout from '../components/Layout';
+import createSagaMiddleware from 'redux-saga';
 
+import AppLayout from '../components/Layout';
 import reducer from '../reducers';
+import rootSaga from '../sagas';
 
 const Root = ({ Component, store }) => (
   <Provider store={store}>
@@ -56,13 +58,29 @@ const Root = ({ Component, store }) => (
           text-decoration: none;
           display: inline-block;
         }
+        a {
+          color: #333;
+        }
       `}
     </style>
   </Provider>
 );
 
-const configureStore = (initialState) => {
-  const store = createStore(reducer, initialState);
+const configureStore = (initialState, options) => {
+  const sagaMiddleware = createSagaMiddleware();
+  const middlewares = [sagaMiddleware];
+  const enhancer =
+    process.env.NODE_ENV === 'production'
+      ? compose(applyMiddleware(...middlewares))
+      : compose(
+          applyMiddleware(...middlewares),
+          !options.isServer &&
+            typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined'
+            ? window.__REDUX_DEVTOOLS_EXTENSION__()
+            : (f) => f,
+        );
+  const store = createStore(reducer, initialState, enhancer);
+  sagaMiddleware.run(rootSaga);
   return store;
 };
 
