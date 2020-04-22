@@ -117,8 +117,7 @@ const AppLayout = ({
 }) => __jsx(_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
   style: {
     overflow: 'hidden',
-    minHeight: '700px',
-    minWidth: '1024px'
+    minHeight: '700px'
   },
   flexDirection: "column",
   __self: undefined,
@@ -134,7 +133,7 @@ const AppLayout = ({
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 14,
+    lineNumber: 13,
     columnNumber: 5
   }
 }), __jsx(_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -144,7 +143,7 @@ const AppLayout = ({
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 15,
+    lineNumber: 14,
     columnNumber: 5
   }
 }, children));
@@ -172,7 +171,7 @@ const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.w
   flexDirection
 }) => flexDirection || 'row', ({
   wsize
-}) => wsize || '1024px', ({
+}) => wsize || '100%', ({
   hsize
 }) => hsize || '100%');
 /* harmony default export */ __webpack_exports__["default"] = (Container);
@@ -269,7 +268,7 @@ const Navigation = () => {
       columnNumber: 7
     }
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/gallery",
+    href: "/upload",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
@@ -413,7 +412,7 @@ const Text = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.span.withC
 /*!***********************************!*\
   !*** ./components/uiComponent.js ***!
   \***********************************/
-/*! exports provided: Button, NavUl, NavLi, Input, Form, InputContainer, Img */
+/*! exports provided: Button, NavUl, NavLi, Input, Textarea, Form, InputContainer, Img */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -422,6 +421,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavUl", function() { return NavUl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavLi", function() { return NavLi; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Input", function() { return Input; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Textarea", function() { return Textarea; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Form", function() { return Form; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputContainer", function() { return InputContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Img", function() { return Img; });
@@ -444,17 +444,21 @@ const Input = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.input.wit
   displayName: "uiComponent__Input",
   componentId: "sc-4dqk1x-3"
 })(["width:300px;height:35px;border-radius:5px;outline:none;border:1px solid #ccc;margin:10px;text-align:center;"]);
+const Textarea = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.textarea.withConfig({
+  displayName: "uiComponent__Textarea",
+  componentId: "sc-4dqk1x-4"
+})(["width:300px;min-height:200px;border-radius:5px;border:1px solid #ccc;margin:10px;text-align:center;padding:10px;"]);
 const Form = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.form.withConfig({
   displayName: "uiComponent__Form",
-  componentId: "sc-4dqk1x-4"
+  componentId: "sc-4dqk1x-5"
 })(["display:flex;justify-content:center;align-items:center;flex-direction:column;"]);
 const InputContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "uiComponent__InputContainer",
-  componentId: "sc-4dqk1x-5"
-})(["height:10px;display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;transform:rotate(-90deg);position:absolute;right:100px;"]);
+  componentId: "sc-4dqk1x-6"
+})(["height:10px;display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;transform:rotate(-90deg);position:absolute;right:10px;"]);
 const Img = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.img.withConfig({
   displayName: "uiComponent__Img",
-  componentId: "sc-4dqk1x-6"
+  componentId: "sc-4dqk1x-7"
 })([""]);
 
 /***/ }),

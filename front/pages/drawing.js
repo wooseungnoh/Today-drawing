@@ -1,12 +1,11 @@
-import Link from 'next/link';
+import { useSelector, useDispatch } from 'react-redux';
+import styled from 'styled-components';
 import React, { useEffect, useRef, useState } from 'react';
 import AskUploadModal from '../components/askUploadModal';
 import Container from '../components/container';
 import { Button, InputContainer } from '../components/uiComponent';
 import { Canvas, PainterSize, Ul, Li } from '../components/canvas';
-import { useSelector, useDispatch } from 'react-redux';
 import { MODAL_ON } from '../reducers/drawing';
-import styled from 'styled-components'
 
 const Input = styled.input``;
 
@@ -106,7 +105,7 @@ const Upload = () => {
       <Container flexDirection="column">
         <h2 style={{ margin: 0 }}>그림 그리기</h2>
         <Container
-          style={{ padding: '30px', position: 'relative', width: '700px' }}
+          style={{ padding: '30px 0', width: '580px', position: 'relative' }}
         >
           <Canvas
             ref={canvas}

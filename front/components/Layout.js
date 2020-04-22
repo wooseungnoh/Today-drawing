@@ -7,7 +7,6 @@ const AppLayout = ({ children }) => (
     style={{
       overflow: 'hidden',
       minHeight: '700px',
-      minWidth: '1024px',
     }}
     flexDirection="column"
   >

@@ -6,7 +6,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: ${({ flexDirection }) => flexDirection || 'row'};
   text-align: center;
-  width: ${({ wsize }) => wsize || '1024px'};
+  width: ${({ wsize }) => wsize || '100%'};
   height: ${({ hsize }) => hsize || '100%'};
 `;
 

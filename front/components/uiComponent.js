@@ -49,11 +49,21 @@ export const Input = styled.input`
   text-align: center;
 `;
 
+export const Textarea = styled.textarea`
+  width: 300px;
+  min-height: 200px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  text-align: center;
+  padding: 10px;
+`;
+
 export const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction:column;
+  flex-direction: column;
 `;
 
 export const InputContainer = styled.div`
@@ -64,7 +74,7 @@ export const InputContainer = styled.div`
   align-items: center;
   transform: rotate(-90deg);
   position: absolute;
-  right: 100px;
+  right: 10px;
 `;
 
 export const Img = styled.img``;

@@ -22,7 +22,7 @@ const Navigation = () => {
         </Link>
       </NavLi>
       <NavLi>
-        <Link href="/gallery">
+        <Link href="/upload">
           <a>업로드</a>
         </Link>
       </NavLi>

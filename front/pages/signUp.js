@@ -39,6 +39,7 @@ const SignUp = () => {
       <Form>
         <label>회원가입</label>
         <Input
+          id="name"
           type="text"
           placeholder="이름"
           value={userName}
