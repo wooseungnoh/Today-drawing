@@ -2270,7 +2270,7 @@ const configureStore = (initialState, options) => {
 /*!*****************************!*\
   !*** ./reducers/drawing.js ***!
   \*****************************/
-/*! exports provided: initialState, LOAD_GALLERY_POST, MODAL_ON, MODAL_OFF, default */
+/*! exports provided: initialState, LOAD_GALLERY_POST, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2279,6 +2279,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_POST", function() { return LOAD_GALLERY_POST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_ON", function() { return MODAL_ON; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_OFF", function() { return MODAL_OFF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADDING_PHOTO_OFF", function() { return ADDING_PHOTO_OFF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_REQUEST", function() { return UPPLOAD_CANVAS_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_SUCCESS", function() { return UPPLOAD_CANVAS_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_FAILURE", function() { return UPPLOAD_CANVAS_FAILURE; });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2300,33 +2304,25 @@ const initialState = {
     description: '이 그림은 그냥 그려본 그림입니다.',
     title: '고먐미',
     createAt: '2020.10.03'
-  }, {
-    id: 3,
-    creater: 'suna',
-    Img: 'https://cdn.pixabay.com/photo/2020/04/13/12/18/flower-5038110__340.jpg',
-    description: '이 그림은 그냥 그려본 그림입니다.',
-    title: '먐미',
-    createAt: '2020.10.03'
-  }, {
-    id: 4,
-    creater: 'woo',
-    Img: 'https://helpx.adobe.com/content/dam/help/ko/photoshop/how-to/compositing/_jcr_content/main-pars/image/compositing_1408x792.jpg',
-    description: '이 그림은 그냥 그려본 그림입니다.',
-    title: '먐미',
-    createAt: '2020.10.03'
-  }, {
-    id: 5,
-    creater: 'www',
-    Img: 'https://pbs.twimg.com/media/DZwbCQRU8AAgYyp.jpg',
-    description: '이 그림은 그냥 그려본 그림입니다.',
-    title: '먐미',
-    createAt: '2020.10.03'
   }],
-  modalState: false
+  modalState: false,
+  addingPhoto: false
+};
+const dummyPhoto = {
+  id: 2,
+  creater: '더미',
+  Img: 'https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000&gif=true',
+  description: '더미 그림',
+  title: '더미더미',
+  createAt: '2020.10.03'
 };
 const LOAD_GALLERY_POST = 'LOAD_GALLERY_POST';
 const MODAL_ON = 'MODAL_ON';
 const MODAL_OFF = 'MODAL_OFF';
+const ADDING_PHOTO_OFF = 'ADDING_PHOTO_OFF';
+const UPPLOAD_CANVAS_REQUEST = 'UPPLOAD_CANVAS_REQUEST';
+const UPPLOAD_CANVAS_SUCCESS = 'UPPLOAD_CANVAS_SUCCESS';
+const UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
 /* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
   switch (action.type) {
     case LOAD_GALLERY_POST:
@@ -2345,6 +2341,33 @@ const MODAL_OFF = 'MODAL_OFF';
       {
         return _objectSpread({}, state, {
           modalState: false
+        });
+      }
+
+    case UPPLOAD_CANVAS_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case UPPLOAD_CANVAS_SUCCESS:
+      {
+        return {
+          addingPhoto: true,
+          photo: [dummyPhoto, ...state.photo]
+        };
+      }
+
+    case UPPLOAD_CANVAS_FAILURE:
+      {
+        return _objectSpread({}, state, {
+          addingPhoto: false
+        });
+      }
+
+    case ADDING_PHOTO_OFF:
+      {
+        return _objectSpread({}, state, {
+          addingPhoto: false
         });
       }
 
@@ -2488,6 +2511,48 @@ const LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
 
 /***/ }),
 
+/***/ "./sagas/drawing.js":
+/*!**************************!*\
+  !*** ./sagas/drawing.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return drawingSaga; });
+/* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-saga/effects */ "redux-saga/effects");
+/* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/drawing */ "./reducers/drawing.js");
+
+
+
+function addPhotoApi() {}
+
+function* addPhoto() {
+  try {
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["delay"])(2000);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_1__["UPPLOAD_CANVAS_SUCCESS"]
+    });
+  } catch (e) {
+    console.log(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_1__["UPPLOAD_CANVAS_FAILURE"]
+    });
+  }
+}
+
+function* watchAddPhoto() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_1__["UPPLOAD_CANVAS_REQUEST"], addPhoto);
+}
+
+function* drawingSaga() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPhoto)]);
+}
+
+/***/ }),
+
 /***/ "./sagas/index.js":
 /*!************************!*\
   !*** ./sagas/index.js ***!
@@ -2501,10 +2566,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-saga/effects */ "redux-saga/effects");
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user */ "./sagas/user.js");
+/* harmony import */ var _drawing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./drawing */ "./sagas/drawing.js");
+
 
 
 function* rootSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(_user__WEBPACK_IMPORTED_MODULE_1__["default"])]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(_user__WEBPACK_IMPORTED_MODULE_1__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(_drawing__WEBPACK_IMPORTED_MODULE_2__["default"])]);
 }
 
 /***/ }),

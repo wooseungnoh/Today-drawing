@@ -18,39 +18,30 @@ export const initialState = {
       title: '고먐미',
       createAt: '2020.10.03',
     },
-    {
-      id: 3,
-      creater: 'suna',
-      Img:
-        'https://cdn.pixabay.com/photo/2020/04/13/12/18/flower-5038110__340.jpg',
-      description: '이 그림은 그냥 그려본 그림입니다.',
-      title: '먐미',
-      createAt: '2020.10.03',
-    },
-    {
-      id: 4,
-      creater: 'woo',
-      Img:
-        'https://helpx.adobe.com/content/dam/help/ko/photoshop/how-to/compositing/_jcr_content/main-pars/image/compositing_1408x792.jpg',
-      description: '이 그림은 그냥 그려본 그림입니다.',
-      title: '먐미',
-      createAt: '2020.10.03',
-    },
-    {
-      id: 5,
-      creater: 'www',
-      Img: 'https://pbs.twimg.com/media/DZwbCQRU8AAgYyp.jpg',
-      description: '이 그림은 그냥 그려본 그림입니다.',
-      title: '먐미',
-      createAt: '2020.10.03',
-    },
   ],
   modalState: false,
+  addingPhoto: false,
+};
+
+const dummyPhoto = {
+  id: 2,
+  creater: '더미',
+  Img:
+    'https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000&gif=true',
+  description: '더미 그림',
+  title: '더미더미',
+  createAt: '2020.10.03',
 };
 
 export const LOAD_GALLERY_POST = 'LOAD_GALLERY_POST';
 export const MODAL_ON = 'MODAL_ON';
 export const MODAL_OFF = 'MODAL_OFF';
+
+export const ADDING_PHOTO_OFF = 'ADDING_PHOTO_OFF';
+
+export const UPPLOAD_CANVAS_REQUEST = 'UPPLOAD_CANVAS_REQUEST';
+export const UPPLOAD_CANVAS_SUCCESS = 'UPPLOAD_CANVAS_SUCCESS';
+export const UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -69,6 +60,29 @@ export default (state = initialState, action) => {
       return {
         ...state,
         modalState: false,
+      };
+    }
+    case UPPLOAD_CANVAS_REQUEST: {
+      return {
+        ...state,
+      };
+    }
+    case UPPLOAD_CANVAS_SUCCESS: {
+      return {
+        addingPhoto: true,
+        photo: [dummyPhoto, ...state.photo],
+      };
+    }
+    case UPPLOAD_CANVAS_FAILURE: {
+      return {
+        ...state,
+        addingPhoto: false,
+      };
+    }
+    case ADDING_PHOTO_OFF: {
+      return {
+        ...state,
+        addingPhoto: false,
       };
     }
     default: {
