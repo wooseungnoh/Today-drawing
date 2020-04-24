@@ -3,35 +3,35 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Container from '../components/container';
 import Text from '../components/text';
+import PhotoView from '../components/photoView';
 
 const Gallery = () => {
   const { photo } = useSelector((state) => state.drawing);
 
   return (
-    <Container flexDirection="column">
+    <Container
+      flexDirection="column"
+      style={{
+        minHeight: '700px',
+        justifyContent: 'flex-start',
+        marginTop: '100px',
+      }}
+    >
       <Text>오늘의 그림들</Text>
       <Container
         style={{
+          marginTop: '30px',
           display: 'grid',
-          gridTemplateRows: 'repeat(3, 230px)',
+          gridTemplateRows: 'repeat(3, 200px)',
           gridTemplateColumns: 'repeat(2, 300px)',
+          gridGap: '10px',
+          marginBottom:'30px'
         }}
       >
         {photo.map((item) => (
           <Link href="/p/[imgDetail]" as={`/p/${item.id}`}>
             <a>
-              <div
-                style={{
-                  margin: '10px',
-                  width: '250px',
-                  height: '150px',
-                  background: `url("${item.Img}") no-repeat`,
-                  backgroundSize: 'cover',
-                  borderRadius: '10px',
-                  boxShadow: '5px 5px 15px #999',
-                }}
-              />
-              <Text bold>{item.creater}</Text>
+              <PhotoView creater={item.creater} url={item.Img} />
             </a>
           </Link>
         ))}

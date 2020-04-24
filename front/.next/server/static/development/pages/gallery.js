@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -116,6 +116,60 @@ const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.w
   hsize
 }) => hsize || '100%');
 /* harmony default export */ __webpack_exports__["default"] = (Container);
+
+/***/ }),
+
+/***/ "./components/photoView.js":
+/*!*********************************!*\
+  !*** ./components/photoView.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\todayDraw\\front\\components\\photoView.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+const Text = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.span.withConfig({
+  displayName: "photoView__Text",
+  componentId: "sc-1d1eruo-0"
+})(["transition:0.3s;position:relative;background:#00000059;color:#fff;line-height:35px;width:100%;height:35px;font-weight:bold;font-size:15px;top:35px;"]);
+const ViewContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "photoView__ViewContainer",
+  componentId: "sc-1d1eruo-1"
+})(["overflow:hidden;display:flex;justify-content:center;align-items:flex-end;width:300px;height:200px;background:", ";background-size:cover;&:hover ", "{top:0;}"], ({
+  url
+}) => `url(${url}) no-repeat`, Text);
+
+const PhotoView = ({
+  creater,
+  url
+}) => {
+  return __jsx(ViewContainer, {
+    url: url,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33,
+      columnNumber: 5
+    }
+  }, __jsx(Text, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 7
+    }
+  }, creater));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PhotoView);
 
 /***/ }),
 
@@ -1849,8 +1903,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/container */ "./components/container.js");
 /* harmony import */ var _components_text__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/text */ "./components/text.js");
+/* harmony import */ var _components_photoView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/photoView */ "./components/photoView.js");
 var _jsxFileName = "D:\\todayDraw\\front\\pages\\gallery.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 
@@ -1863,29 +1919,37 @@ const Gallery = () => {
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.drawing);
   return __jsx(_components_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
     flexDirection: "column",
+    style: {
+      minHeight: '700px',
+      justifyContent: 'flex-start',
+      marginTop: '100px'
+    },
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
+      lineNumber: 12,
       columnNumber: 5
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 20,
       columnNumber: 7
     }
   }, "\uC624\uB298\uC758 \uADF8\uB9BC\uB4E4"), __jsx(_components_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
     style: {
+      marginTop: '30px',
       display: 'grid',
-      gridTemplateRows: 'repeat(3, 230px)',
-      gridTemplateColumns: 'repeat(2, 300px)'
+      gridTemplateRows: 'repeat(3, 200px)',
+      gridTemplateColumns: 'repeat(2, 300px)',
+      gridGap: '10px',
+      marginBottom: '30px'
     },
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 21,
       columnNumber: 7
     }
   }, photo.map(item => __jsx(next_link__WEBPACK_IMPORTED_MODULE_0___default.a, {
@@ -1894,48 +1958,33 @@ const Gallery = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 32,
       columnNumber: 11
     }
   }, __jsx("a", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 33,
       columnNumber: 13
     }
-  }, __jsx("div", {
-    style: {
-      margin: '10px',
-      width: '250px',
-      height: '150px',
-      background: `url("${item.Img}") no-repeat`,
-      backgroundSize: 'cover',
-      borderRadius: '10px',
-      boxShadow: '5px 5px 15px #999'
-    },
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 15
-    }
-  }), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    bold: true,
+  }, __jsx(_components_photoView__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    creater: item.creater,
+    url: item.Img,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 34,
       columnNumber: 15
     }
-  }, item.creater))))));
+  }))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Gallery);
 
 /***/ }),
 
-/***/ 6:
+/***/ 7:
 /*!********************************!*\
   !*** multi ./pages/gallery.js ***!
   \********************************/

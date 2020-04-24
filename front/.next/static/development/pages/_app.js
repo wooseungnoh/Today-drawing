@@ -25,7 +25,9 @@ var AppLayout = function AppLayout(_ref) {
   var children = _ref.children;
   return __jsx(_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
     style: {
-      overflow: 'hidden',
+      position: 'absolute',
+      top: 0,
+      left: 0,
       minHeight: '700px'
     },
     flexDirection: "column",
@@ -42,17 +44,17 @@ var AppLayout = function AppLayout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 15,
       columnNumber: 5
     }
   }), __jsx(_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
     style: {
-      paddingTop: "60px"
+      paddingTop: '60px'
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 16,
       columnNumber: 5
     }
   }, children));
