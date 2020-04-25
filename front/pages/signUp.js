@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import Router from 'next/Router';
+import { useSelector, useDispatch } from 'react-redux';
 import Container from '../components/container';
 import EditProfile from '../components/editProfile';
 import { Button, Input, Form } from '../components/uiComponent';
@@ -8,12 +9,19 @@ import { SIGN_UP_REQUEST } from '../reducers/user';
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector((state) => state.user);
   const [checkPasswordError, setPasswordCheckError] = useState(false);
   const [userPasswordCheck, setUserPasswordCheck] = useState('');
 
   const [userName, setUserName] = useInput('');
   const [userEmail, setUserEmail] = useInput('');
   const [userPassword, setUserPassword] = useInput('');
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      Router.push('/');
+    }
+  }, [isLoggedIn]);
 
   const signUp = (e) => {
     e.preventDefault();
@@ -37,7 +45,7 @@ const SignUp = () => {
 
   return (
     <>
-      <EditProfile />
+      <EditProfile signUp/>
       <Container>
         <Form onSubmit={signUp}>
           <label>회원가입</label>

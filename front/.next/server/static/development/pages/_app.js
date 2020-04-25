@@ -165,7 +165,8 @@ const AppLayout = ({
       background: '#33333348',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      zIndex: '99999'
     },
     __self: undefined,
     __source: {
@@ -177,7 +178,7 @@ const AppLayout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 36,
       columnNumber: 11
     }
   })) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null));
@@ -2551,7 +2552,7 @@ const rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 /*!**************************!*\
   !*** ./reducers/user.js ***!
   \**************************/
-/*! exports provided: initialState, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_OUT_REQUEST, default */
+/*! exports provided: initialState, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_OUT_REQUEST, EDITING_PROFILE_REQUEST, EDITING_PROFILE_SUCCESS, EDITING_PROFILE_FAILURE, EDITING_PROFILE_OFF, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2564,6 +2565,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_SUCCESS", function() { return SIGN_UP_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_FAILURE", function() { return SIGN_UP_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_REQUEST", function() { return LOG_OUT_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_REQUEST", function() { return EDITING_PROFILE_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_SUCCESS", function() { return EDITING_PROFILE_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_FAILURE", function() { return EDITING_PROFILE_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_OFF", function() { return EDITING_PROFILE_OFF; });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2597,6 +2602,10 @@ const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
 const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 const LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
+const EDITING_PROFILE_REQUEST = 'EDITING_PROFILE_REQUEST';
+const EDITING_PROFILE_SUCCESS = 'EDITING_PROFILE_SUCCESS';
+const EDITING_PROFILE_FAILURE = 'EDITING_PROFILE_FAILURE';
+const EDITING_PROFILE_OFF = 'EDITING_PROFILE_OFF';
 /* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
   switch (action.type) {
     case LOG_IN_REQUEST:
@@ -2648,7 +2657,38 @@ const LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
     case SIGN_UP_SUCCESS:
       {
         return _objectSpread({}, state, {
+          isUserLoadding: false,
+          editing: true
+        });
+      }
+
+    case EDITING_PROFILE_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          editing: true,
+          isUserLoadding: true
+        });
+      }
+
+    case EDITING_PROFILE_SUCCESS:
+      {
+        return _objectSpread({}, state, {
           isLoggedIn: true,
+          editing: false,
+          isUserLoadding: false,
+          me: dummyUser
+        });
+      }
+
+    case EDITING_PROFILE_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case EDITING_PROFILE_OFF:
+      {
+        return _objectSpread({}, state, {
+          editing: false,
           isUserLoadding: false
         });
       }
@@ -2783,8 +2823,28 @@ function* watchSignUp() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_user__WEBPACK_IMPORTED_MODULE_1__["SIGN_UP_REQUEST"], signUp);
 }
 
+function editingAPI() {}
+
+function* editing() {
+  try {
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["delay"])(2000);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_1__["EDITING_PROFILE_SUCCESS"]
+    });
+  } catch (e) {
+    console.log(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_1__["EDITING_PROFILE_FAILURE"]
+    });
+  }
+}
+
+function* watchEditing() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_user__WEBPACK_IMPORTED_MODULE_1__["EDITING_PROFILE_REQUEST"], editing);
+}
+
 function* userSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchSignUp)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchSignUp), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchEditing)]);
 }
 
 /***/ }),

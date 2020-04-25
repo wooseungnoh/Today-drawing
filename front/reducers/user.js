@@ -6,7 +6,7 @@ export const initialState = {
   signUpErrorReason: '', // 회원가입 실패 사유
   me: null, // 내 정보
   isUserLoadding: false,
-  editing:false,
+  editing: false,
 };
 
 const dummyUser = {
@@ -25,6 +25,12 @@ export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 
 export const LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
+
+export const EDITING_PROFILE_REQUEST = 'EDITING_PROFILE_REQUEST';
+export const EDITING_PROFILE_SUCCESS = 'EDITING_PROFILE_SUCCESS';
+export const EDITING_PROFILE_FAILURE = 'EDITING_PROFILE_FAILURE';
+
+export const EDITING_PROFILE_OFF = 'EDITING_PROFILE_OFF';
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -71,7 +77,35 @@ export default (state = initialState, action) => {
     case SIGN_UP_SUCCESS: {
       return {
         ...state,
+        isUserLoadding: false,
+        editing: true,
+      };
+    }
+    case EDITING_PROFILE_REQUEST: {
+      return {
+        ...state,
+        editing: true,
+        isUserLoadding: true,
+      };
+    }
+    case EDITING_PROFILE_SUCCESS: {
+      return {
+        ...state,
         isLoggedIn: true,
+        editing: false,
+        isUserLoadding: false,
+        me: dummyUser,
+      };
+    }
+    case EDITING_PROFILE_FAILURE: {
+      return {
+        ...state,
+      };
+    }
+    case EDITING_PROFILE_OFF: {
+      return {
+        ...state,
+        editing: false,
         isUserLoadding: false,
       };
     }

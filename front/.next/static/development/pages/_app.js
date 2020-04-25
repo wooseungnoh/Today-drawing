@@ -77,7 +77,8 @@ var AppLayout = function AppLayout(_ref) {
       background: '#33333348',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      zIndex: '99999'
     },
     __self: _this,
     __source: {
@@ -89,7 +90,7 @@ var AppLayout = function AppLayout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 36,
       columnNumber: 11
     }
   })) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null));
@@ -15402,7 +15403,7 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 /*!**************************!*\
   !*** ./reducers/user.js ***!
   \**************************/
-/*! exports provided: initialState, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_OUT_REQUEST, default */
+/*! exports provided: initialState, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_OUT_REQUEST, EDITING_PROFILE_REQUEST, EDITING_PROFILE_SUCCESS, EDITING_PROFILE_FAILURE, EDITING_PROFILE_OFF, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15415,6 +15416,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_SUCCESS", function() { return SIGN_UP_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_FAILURE", function() { return SIGN_UP_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_REQUEST", function() { return LOG_OUT_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_REQUEST", function() { return EDITING_PROFILE_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_SUCCESS", function() { return EDITING_PROFILE_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_FAILURE", function() { return EDITING_PROFILE_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_OFF", function() { return EDITING_PROFILE_OFF; });
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 
 
@@ -15449,6 +15454,10 @@ var SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
 var SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 var SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 var LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
+var EDITING_PROFILE_REQUEST = 'EDITING_PROFILE_REQUEST';
+var EDITING_PROFILE_SUCCESS = 'EDITING_PROFILE_SUCCESS';
+var EDITING_PROFILE_FAILURE = 'EDITING_PROFILE_FAILURE';
+var EDITING_PROFILE_OFF = 'EDITING_PROFILE_OFF';
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -15503,7 +15512,38 @@ var LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
     case SIGN_UP_SUCCESS:
       {
         return _objectSpread({}, state, {
+          isUserLoadding: false,
+          editing: true
+        });
+      }
+
+    case EDITING_PROFILE_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          editing: true,
+          isUserLoadding: true
+        });
+      }
+
+    case EDITING_PROFILE_SUCCESS:
+      {
+        return _objectSpread({}, state, {
           isLoggedIn: true,
+          editing: false,
+          isUserLoadding: false,
+          me: dummyUser
+        });
+      }
+
+    case EDITING_PROFILE_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case EDITING_PROFILE_OFF:
+      {
+        return _objectSpread({}, state, {
+          editing: false,
           isUserLoadding: false
         });
       }
@@ -15672,7 +15712,9 @@ var _marked = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0
     _marked2 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(watchLogin),
     _marked3 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(signUp),
     _marked4 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(watchSignUp),
-    _marked5 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(userSaga);
+    _marked5 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(editing),
+    _marked6 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(watchEditing),
+    _marked7 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(userSaga);
 
 
 
@@ -15785,20 +15827,74 @@ function watchSignUp() {
   }, _marked4);
 }
 
-function userSaga() {
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function userSaga$(_context5) {
+function editingAPI() {}
+
+function editing() {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function editing$(_context5) {
     while (1) {
       switch (_context5.prev = _context5.next) {
         case 0:
-          _context5.next = 2;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchSignUp)]);
+          _context5.prev = 0;
+          _context5.next = 3;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["delay"])(2000);
 
-        case 2:
+        case 3:
+          _context5.next = 5;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
+            type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["EDITING_PROFILE_SUCCESS"]
+          });
+
+        case 5:
+          _context5.next = 12;
+          break;
+
+        case 7:
+          _context5.prev = 7;
+          _context5.t0 = _context5["catch"](0);
+          console.log(_context5.t0);
+          _context5.next = 12;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
+            type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["EDITING_PROFILE_FAILURE"]
+          });
+
+        case 12:
         case "end":
           return _context5.stop();
       }
     }
-  }, _marked5);
+  }, _marked5, null, [[0, 7]]);
+}
+
+function watchEditing() {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function watchEditing$(_context6) {
+    while (1) {
+      switch (_context6.prev = _context6.next) {
+        case 0:
+          _context6.next = 2;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeEvery"])(_reducers_user__WEBPACK_IMPORTED_MODULE_2__["EDITING_PROFILE_REQUEST"], editing);
+
+        case 2:
+        case "end":
+          return _context6.stop();
+      }
+    }
+  }, _marked6);
+}
+
+function userSaga() {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function userSaga$(_context7) {
+    while (1) {
+      switch (_context7.prev = _context7.next) {
+        case 0:
+          _context7.next = 2;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchSignUp), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchEditing)]);
+
+        case 2:
+        case "end":
+          return _context7.stop();
+      }
+    }
+  }, _marked7);
 }
 
 /***/ }),

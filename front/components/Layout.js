@@ -30,6 +30,7 @@ const AppLayout = ({ children }) => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            zIndex: '99999',
           }}
         >
           <Loading />
