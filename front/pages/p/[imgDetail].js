@@ -14,10 +14,35 @@ const imgDetail = () => {
   );
   return (
     <Container flexDirection="column">
-      <Img src={photo[indexNumber].Img} width="500px" />
-      <Text>{`작가 : ${photo[indexNumber].creater}`}</Text>
-      <Text>{`작품 제목 :${photo[indexNumber].title}`}</Text>
-      <Text>{photo[indexNumber].description}</Text>
+      <div>
+        <Img src={photo[indexNumber].Img} width="500px" />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            textAlign: 'left',
+            margin: '10px 0 ',
+          }}
+        >
+          <Text
+            bold
+            fontSize="big"
+            style={{ padding: '15px 0' }}
+          >{`${photo[indexNumber].creater}`}</Text>
+          <Text
+            fontSize="medium"
+            style={{ paddingBottom: '30px' }}
+          >{`${photo[indexNumber].createAt}`}</Text>
+          <Text
+            bold
+            fontSize="huge"
+            style={{ paddingBottom: '15px' }}
+          >{`${photo[indexNumber].title}`}</Text>
+          <div style={{ width: '500px' }}>
+            <Text>{photo[indexNumber].description}</Text>
+          </div>
+        </div>
+      </div>
     </Container>
   );
 };

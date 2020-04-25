@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Router from 'next/Router';
 import Container from '../components/container';
 import { Button, Input, Form } from '../components/uiComponent';
-import { useSelector, useDispatch } from 'react-redux';
 import { LOG_IN_REQUEST } from '../reducers/user';
-import Router from 'next/Router';
 
 export const useInput = (initValue = null) => {
   const [value, setter] = useState(initValue);

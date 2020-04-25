@@ -28,12 +28,9 @@ const ViewContainer = styled.div`
   }
 `;
 
-const PhotoView = ({ creater, url }) => {
-  return (
-    <ViewContainer url={url}>
-      <Text>{creater}</Text>
-    </ViewContainer>
-  );
-};
-
+const PhotoView = ({ creater, url }) => (
+  <ViewContainer url={url}>
+    <Text>{creater}</Text>
+  </ViewContainer>
+);
 export default PhotoView;

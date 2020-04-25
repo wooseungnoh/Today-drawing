@@ -7462,25 +7462,25 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
+      lineNumber: 9,
       columnNumber: 5
     }
   }, "\uB2F9\uC2E0\uC758 \uADF8\uB9BC\uC2B5\uAD00"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/drawing",
+    href: "/upload",
     style: {
       dispaly: 'inline-block'
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 10,
       columnNumber: 5
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 11,
       columnNumber: 7
     }
   }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -7488,7 +7488,7 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 12,
       columnNumber: 9
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -7496,7 +7496,7 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 13,
       columnNumber: 11
     }
   }, "\" \uC2A4\uCF00\uCE58\uBD81 \""), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -7508,22 +7508,22 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 14,
       columnNumber: 11
     }
-  }, "\uB0B4 \uADF8\uB9BC \uC62C\uB9AC\uAE30")))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  }, "\uC5C5\uB85C\uB4DC")))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/gallery",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 20,
       columnNumber: 5
     }
   }, __jsx("a", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 21,
       columnNumber: 7
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -7535,7 +7535,7 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 22,
       columnNumber: 9
     }
   }, "\uC624\uB298\uC758 \uADF8\uB9BC\uB4E4"))));

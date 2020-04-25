@@ -14,13 +14,15 @@ export const initialState = {
       creater: 'wooseung',
       Img:
         'https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000&gif=true',
-      description: '이 그림은 그냥 그려본 그림입니다.',
+      description:
+        '이 그림은 그냥 그려본 그림입니다이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다..',
       title: '고먐미',
       createAt: '2020.10.03',
     },
   ],
   modalState: false,
   addingPhoto: false,
+  isLoadding: false,
 };
 
 const dummyPhoto = {
@@ -65,11 +67,13 @@ export default (state = initialState, action) => {
     case UPPLOAD_CANVAS_REQUEST: {
       return {
         ...state,
+        isLoadding: true,
       };
     }
     case UPPLOAD_CANVAS_SUCCESS: {
       return {
         addingPhoto: true,
+        isLoadding: false,
         photo: [dummyPhoto, ...state.photo],
       };
     }

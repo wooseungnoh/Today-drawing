@@ -29,7 +29,7 @@ export const NavUl = styled.ul`
   justify-content: center;
   align-items: center;
   margin: 0;
-  padding: 10px 0;
+  padding: 25px 0;
 `;
 export const NavLi = styled.li`
   font-weight: bold;

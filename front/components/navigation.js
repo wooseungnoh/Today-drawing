@@ -5,9 +5,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import Text from '../components/text';
 import { NavUl, NavLi } from './uiComponent';
+import { LOG_OUT_REQUEST } from '../reducers/user';
 
 const Navigation = () => {
   const { isLoggedIn } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch({
+      type: LOG_OUT_REQUEST,
+    });
+  };
 
   return (
     <NavUl>
@@ -33,9 +41,25 @@ const Navigation = () => {
       </NavLi>
       <NavLi>
         {isLoggedIn ? (
-          <Link href="/login">
-            <a>마이페이지</a>
-          </Link>
+          <>
+            <Link href="/mypage">
+              <a>마이페이지</a>
+            </Link>
+            <Text> / </Text>
+            <button
+              onClick={handleLogout}
+              style={{
+                border: 'none',
+                background: 'transparent',
+                color: 'black',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                color: '#333333',
+              }}
+            >
+              로그아웃
+            </button>
+          </>
         ) : (
           <>
             <Link href="/login">

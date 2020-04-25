@@ -28,5 +28,7 @@ module.exports = {
     'implicit-arrow-linebreak': 0,
     'operator-linebreak': 0,
     'jsx-curly-brace-presence': 0,
+    'import/no-unresolved': 0,
+    'jsx-a11y/label-has-associated-control': 0,
   },
 };

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Router from 'next/Router';
 import Container from '../components/container';
 import { Input, Form, Textarea } from '../components/uiComponent';
-import { useSelector, useDispatch } from 'react-redux';
 import { UPPLOAD_CANVAS_REQUEST, ADDING_PHOTO_OFF } from '../reducers/drawing';
 import { useInput } from './login';
-import Router from 'next/Router';
 
 const Upload = () => {
   const { addingPhoto } = useSelector((state) => state.drawing);

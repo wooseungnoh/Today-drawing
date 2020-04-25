@@ -25,7 +25,7 @@ const Gallery = () => {
           gridTemplateRows: 'repeat(3, 200px)',
           gridTemplateColumns: 'repeat(2, 300px)',
           gridGap: '10px',
-          marginBottom:'30px'
+          marginBottom: '30px',
         }}
       >
         {photo.map((item) => (
