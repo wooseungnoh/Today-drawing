@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { CompactPicker } from 'react-color';
 import React, { useEffect, useRef, useState } from 'react';
 import AskUploadModal from '../components/askUploadModal';
 import Container from '../components/container';
@@ -10,6 +11,8 @@ import { MODAL_ON } from '../reducers/drawing';
 const Input = styled.input``;
 
 const Upload = () => {
+  const [colorPicker, setColorPicker] = useState(false);
+  const [background, setBackground] = useState('#000');
   const { modalState } = useSelector((state) => state.drawing);
   const dispatch = useDispatch();
   const [lineSize, setLineSize] = useState(2.5);
@@ -80,6 +83,19 @@ const Upload = () => {
     }, 2500);
   };
 
+  const handleChangeColor = (color) => {
+    const ctx = canvas.current.getContext('2d');
+    ctx.strokeStyle = color.hex;
+    setCanvasState({
+      ...canvasState,
+      strokeStyle: `${color.hex}`,
+    });
+  };
+
+  const togleState = () => {
+    setColorPicker((prev) => !prev);
+  };
+
   useEffect(() => {
     canvas.current.width = canvasState.defaultCanvasSize;
     canvas.current.height = canvasState.defaultCanvasSize;
@@ -105,7 +121,12 @@ const Upload = () => {
       <Container flexDirection="column">
         <h2 style={{ margin: 0 }}>그림 그리기</h2>
         <Container
-          style={{ padding: '30px 0', width: '580px', position: 'relative' }}
+          style={{
+            padding: '30px 0',
+            width: '580px',
+            position: 'relative',
+            height: '600px',
+          }}
         >
           <Canvas
             ref={canvas}
@@ -114,17 +135,6 @@ const Upload = () => {
             onMouseUp={stopPainting}
             onMouseLeave={stopPainting}
           />
-          <Ul>
-            <Li style={{ backgroundColor: '#000000' }} onClick={colorChange} />
-            <Li style={{ backgroundColor: '#00a8ff' }} onClick={colorChange} />
-            <Li style={{ backgroundColor: '#9c88ff' }} onClick={colorChange} />
-            <Li style={{ backgroundColor: '#fbc531' }} onClick={colorChange} />
-            <Li style={{ backgroundColor: '#e84118' }} onClick={colorChange} />
-            <Li
-              style={{ backgroundColor: '#ffffff', border: '1px solid black' }}
-              onClick={colorChange}
-            />
-          </Ul>
           <InputContainer>
             <PainterSize size={lineSize} color={canvasState.strokeStyle} />
             <Input
@@ -136,8 +146,62 @@ const Upload = () => {
               onMouseUp={lineWidthChange}
             />
           </InputContainer>
+          <Ul>
+            <Li
+              scale
+              style={{ backgroundColor: '#000000' }}
+              onClick={colorChange}
+            />
+            <Li
+              scale
+              style={{ backgroundColor: '#00a8ff' }}
+              onClick={colorChange}
+            />
+            <Li
+              scale
+              style={{ backgroundColor: '#9c88ff' }}
+              onClick={colorChange}
+            />
+            <Li
+              scale
+              style={{ backgroundColor: '#fbc531' }}
+              onClick={colorChange}
+            />
+            <Li
+              scale
+              style={{ backgroundColor: '#e84118' }}
+              onClick={colorChange}
+            />
+            <Li
+              scale
+              style={{ backgroundColor: '#ffffff', border: '1px solid black' }}
+              onClick={colorChange}
+            />
+            <Li>
+              <div
+                onClick={togleState}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  background: 'url("/static/color_circle.png")',
+                  borderRadius: '50%',
+                  backgroundSize: 'cover',
+                }}
+              ></div>
+              {colorPicker ? (
+                <div style={{ position: 'relative', left: '-200px', top:'10px' }}>
+                  <CompactPicker
+                    color={canvasState.strokeStyle}
+                    onChangeComplete={handleChangeColor}
+                  />
+                </div>
+              ) : (
+                <></>
+              )}
+            </Li>
+          </Ul>
         </Container>
-        <Button onClick={handleSave}>SAVE</Button>
+        <Button style={{marginTop:'25px'}} onClick={handleSave}>SAVE</Button>
       </Container>
     </>
   );

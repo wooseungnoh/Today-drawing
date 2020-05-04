@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Canvas = styled.canvas`
   width: 500px;
@@ -21,7 +21,8 @@ export const Ul = styled.ul`
   position: absolute;
   display: flex;
   flex-direction: row;
-  bottom: 45px;
+  bottom: -15px;
+  padding:0;
 `;
 export const Li = styled.li`
   width: 30px;
@@ -30,4 +31,11 @@ export const Li = styled.li`
   margin: 5px;
   list-style: none;
   cursor: pointer;
+  ${({ scale }) =>
+    scale &&
+    css`
+      &:hover {
+        transform: scale(1.1);
+      }
+    `}
 `;
