@@ -2665,7 +2665,6 @@ const EDITING_PROFILE_OFF = 'EDITING_PROFILE_OFF';
     case EDITING_PROFILE_REQUEST:
       {
         return _objectSpread({}, state, {
-          editing: true,
           isUserLoadding: true
         });
       }

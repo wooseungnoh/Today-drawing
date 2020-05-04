@@ -84,7 +84,6 @@ export default (state = initialState, action) => {
     case EDITING_PROFILE_REQUEST: {
       return {
         ...state,
-        editing: true,
         isUserLoadding: true,
       };
     }

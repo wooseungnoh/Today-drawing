@@ -9786,7 +9786,7 @@ var Mypage = function Mypage() {
   var editProfile = function editProfile(e) {
     e.preventDefault();
     dispatch({
-      type: _reducers_user__WEBPACK_IMPORTED_MODULE_5__["EDITING_PROFILE_REQUEST"]
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_5__["SIGN_UP_SUCCESS"]
     });
   };
 
@@ -10012,7 +10012,6 @@ var EDITING_PROFILE_OFF = 'EDITING_PROFILE_OFF';
     case EDITING_PROFILE_REQUEST:
       {
         return _objectSpread({}, state, {
-          editing: true,
           isUserLoadding: true
         });
       }
@@ -10049,7 +10048,7 @@ var EDITING_PROFILE_OFF = 'EDITING_PROFILE_OFF';
 
 /***/ }),
 
-/***/ 3:
+/***/ 6:
 /*!*******************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fmypage&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cmypage.js ***!
   \*******************************************************************************************************************/
@@ -10072,5 +10071,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[6,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=mypage.js.map

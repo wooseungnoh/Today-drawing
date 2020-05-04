@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -397,7 +397,7 @@ const Mypage = () => {
   const editProfile = e => {
     e.preventDefault();
     dispatch({
-      type: _reducers_user__WEBPACK_IMPORTED_MODULE_5__["EDITING_PROFILE_REQUEST"]
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_5__["SIGN_UP_SUCCESS"]
     });
   };
 
@@ -619,7 +619,6 @@ const EDITING_PROFILE_OFF = 'EDITING_PROFILE_OFF';
     case EDITING_PROFILE_REQUEST:
       {
         return _objectSpread({}, state, {
-          editing: true,
           isUserLoadding: true
         });
       }
@@ -656,7 +655,7 @@ const EDITING_PROFILE_OFF = 'EDITING_PROFILE_OFF';
 
 /***/ }),
 
-/***/ 5:
+/***/ 8:
 /*!*******************************!*\
   !*** multi ./pages/mypage.js ***!
   \*******************************/
