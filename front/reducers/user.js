@@ -31,6 +31,7 @@ export const EDITING_PROFILE_SUCCESS = 'EDITING_PROFILE_SUCCESS';
 export const EDITING_PROFILE_FAILURE = 'EDITING_PROFILE_FAILURE';
 
 export const EDITING_PROFILE_OFF = 'EDITING_PROFILE_OFF';
+export const EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -46,7 +47,7 @@ export default (state = initialState, action) => {
         ...state,
         isLoggedIn: true,
         isUserLoadding: false,
-        me: dummyUser,
+        me: action.data,
       };
     }
     case LOG_IN_FAILURE: {
@@ -78,6 +79,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isUserLoadding: false,
+        me: action.data,
         editing: true,
       };
     }
@@ -93,7 +95,7 @@ export default (state = initialState, action) => {
         isLoggedIn: true,
         editing: false,
         isUserLoadding: false,
-        me: dummyUser,
+        me: action.data,
       };
     }
     case EDITING_PROFILE_FAILURE: {
@@ -106,6 +108,12 @@ export default (state = initialState, action) => {
         ...state,
         editing: false,
         isUserLoadding: false,
+      };
+    }
+    case EDITING_PROFILE_ON: {
+      return {
+        ...state,
+        editing: true,
       };
     }
     default: {

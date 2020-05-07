@@ -1,11 +1,12 @@
 import express from 'express';
-import { login, logout, signup } from '../controller/userController';
+import { login, logout, signup, editing } from '../controller/userController';
 import routes from '../routes';
 
 const globalRouter = express();
 
-globalRouter.get(routes.login, login);
-globalRouter.get(routes.logout, logout);
-globalRouter.get(routes.signup, signup);
+globalRouter.post(routes.login, login);
+globalRouter.post(routes.logout, logout);
+globalRouter.post(routes.signup, signup, login);
+globalRouter.post(routes.editing, editing);
 
 export default globalRouter;

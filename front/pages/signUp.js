@@ -31,9 +31,9 @@ const SignUp = () => {
     return dispatch({
       type: SIGN_UP_REQUEST,
       data: {
-        userEmail,
-        userPassword,
-        userName,
+        email: userEmail,
+        password: userPassword,
+        name: userName,
       },
     });
   };
@@ -45,14 +45,14 @@ const SignUp = () => {
 
   return (
     <>
-      <EditProfile signUp/>
+      <EditProfile signUp />
       <Container>
         <Form onSubmit={signUp}>
           <label>회원가입</label>
           <Input
             id="name"
             type="text"
-            placeholder="작가명"
+            placeholder="이름"
             value={userName}
             onChange={setUserName}
             required

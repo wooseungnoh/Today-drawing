@@ -1,6 +1,6 @@
-import { all, delay, fork, put, takeEvery } from 'redux-saga/effects';
-
-import {
+import { all, delay, fork, put, takeEvery, call } from 'redux-saga/effects';
+import axios from 'axios';
+import user, {
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
   LOG_IN_FAILURE,
@@ -12,33 +12,18 @@ import {
   EDITING_PROFILE_FAILURE,
 } from '../reducers/user';
 
-function loginAPI() {}
-
-function* login() {
-  try {
-    yield delay(2000);
-    yield put({
-      type: LOG_IN_SUCCESS,
-    });
-  } catch (e) {
-    console.log(e);
-    yield put({
-      type: LOG_IN_FAILURE,
-    });
-  }
+function signUpAPI(signUpData) {
+  return axios.post('http://localhost:5000/signup', signUpData, {
+    withCredentials: true,
+  });
 }
 
-function* watchLogin() {
-  yield takeEvery(LOG_IN_REQUEST, login);
-}
-
-function signUpAPI() {}
-
-function* signUp() {
+function* signUp(action) {
   try {
-    yield delay(2000);
+    const result = yield call(signUpAPI, action.data);
     yield put({
       type: SIGN_UP_SUCCESS,
+      data: result.data,
     });
   } catch (e) {
     console.log(e);
@@ -52,13 +37,46 @@ function* watchSignUp() {
   yield takeEvery(SIGN_UP_REQUEST, signUp);
 }
 
-function editingAPI() {}
+function loginAPI(loginData) {
+  return axios.post('http://localhost:5000/login', loginData, {
+    withCredentials: true,
+  });
+}
 
-function* editing() {
+function* login(action) {
+  console.log(action.data);
   try {
-    yield delay(2000);
+    const result = yield call(loginAPI, action.data);
+    yield put({
+      type: LOG_IN_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: LOG_IN_FAILURE,
+    });
+  }
+}
+
+function* watchLogin() {
+  yield takeEvery(LOG_IN_REQUEST, login);
+}
+
+function editingAPI(userID) {
+  return axios.post('http://localhost:5000/editing', userID, {
+    withCredentials: true,
+  });
+}
+
+function* editing(action) {
+  try {
+    const result = yield call(editingAPI, action.data);
+    const userData = JSON.parse(result.config.data);
+    const { me, writerData } = userData;
     yield put({
       type: EDITING_PROFILE_SUCCESS,
+      data: { ...me, ...writerData },
     });
   } catch (e) {
     console.log(e);

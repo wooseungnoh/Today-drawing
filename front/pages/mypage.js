@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Container from '../components/container';
 import Text from '../components/text';
 import { Button } from '../components/uiComponent';
-import { EDITING_PROFILE_REQUEST, SIGN_UP_SUCCESS } from '../reducers/user';
+import { EDITING_PROFILE_ON, SIGN_UP_SUCCESS } from '../reducers/user';
 import EditProfile from '../components/editProfile';
 
 const Mypage = () => {
@@ -13,7 +13,7 @@ const Mypage = () => {
   const editProfile = (e) => {
     e.preventDefault();
     dispatch({
-      type: SIGN_UP_SUCCESS,
+      type: EDITING_PROFILE_ON,
     });
   };
 
@@ -36,14 +36,14 @@ const Mypage = () => {
             작가
           </Text>
           <Text fontSize="big" bold>
-            {me.nickName}
+            {me ? me.writer : ''}
           </Text>
           <br />
           <Text fontSize="medium" style={{ marginBottom: '8px' }}>
             작가 소개
           </Text>
           <Text fontSize="big" bold>
-            {me.userInfo}
+            {me ? me.userInfo : ''}
           </Text>
         </div>
       </Container>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Router from 'next/Router';
 import { useSelector, useDispatch } from 'react-redux';
 import Container from './container';
@@ -6,19 +6,42 @@ import { EDITING_PROFILE_REQUEST, EDITING_PROFILE_OFF } from '../reducers/user';
 import { Button, Input, Textarea } from './uiComponent';
 
 const EditProfile = ({ signUp }) => {
-  const { editing } = useSelector((state) => state.user);
+  const { editing, me } = useSelector((state) => state.user);
+  const [info, setInfo] = useState({
+    userInfo: '',
+    name: '',
+  });
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const writerData = {
+      userInfo: info.userInfo,
+      writer: info.name,
+    };
     dispatch({
       type: EDITING_PROFILE_REQUEST,
+      data: { me, writerData },
     });
   };
 
   const modalOff = () => {
     dispatch({
       type: EDITING_PROFILE_OFF,
+    });
+  };
+
+  const handleChangeInfo = (e) => {
+    setInfo({
+      ...info,
+      userInfo: e.target.value,
+    });
+  };
+  const handleChangename = (e) => {
+    setInfo({
+      ...info,
+      name: e.target.value,
     });
   };
 
@@ -31,7 +54,7 @@ const EditProfile = ({ signUp }) => {
         background: '#4e4e4e6b',
         zIndex: 99999,
         top: '0',
-        display: `${editing ? '' : 'none'}`,
+        display: `${editing && me ? '' : 'none'}`,
       }}
     >
       <Container
@@ -48,8 +71,17 @@ const EditProfile = ({ signUp }) => {
             flexDirection: 'column',
           }}
         >
-          <Input type="text" defaultValue="작가명" />
-          <Textarea>작가소개</Textarea>
+          <Input
+            type="text"
+            value={info.name}
+            onChange={handleChangename}
+            placeholder="작가명"
+          />
+          <Textarea
+            value={info.userInfo}
+            onChange={handleChangeInfo}
+            placeholder="작가소개"
+          />
           <Container
             style={{ margin: '0', justifyContent: 'space-between' }}
             wsize="150px"

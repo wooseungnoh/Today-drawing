@@ -20,10 +20,10 @@ const Login = () => {
   const dispatch = useDispatch();
   const handleLogin = (e) => {
     e.preventDefault();
+
     dispatch({
       type: LOG_IN_REQUEST,
-      data: userId,
-      userPassword,
+      data: { email: userId, password: userPassword },
     });
   };
 
