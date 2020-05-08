@@ -24,7 +24,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/mypage": [
+    "/upload": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

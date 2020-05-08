@@ -10,6 +10,11 @@ import user, {
   EDITING_PROFILE_SUCCESS,
   EDITING_PROFILE_REQUEST,
   EDITING_PROFILE_FAILURE,
+  LOAD_USER_REQUEST,
+  LOAD_USER_SUCCESS,
+  LOG_OUT_REQUEST,
+  LOG_OUT_SUCCESS,
+  LOG_OUT_FAILURE,
 } from '../reducers/user';
 
 function signUpAPI(signUpData) {
@@ -44,7 +49,6 @@ function loginAPI(loginData) {
 }
 
 function* login(action) {
-  console.log(action.data);
   try {
     const result = yield call(loginAPI, action.data);
     yield put({
@@ -90,6 +94,58 @@ function* watchEditing() {
   yield takeEvery(EDITING_PROFILE_REQUEST, editing);
 }
 
+//유저 로딩
+function loadUserAPI() {
+  return axios.get('http://localhost:5000/load', {
+    withCredentials: true,
+  });
+}
+function* loadUser() {
+  try {
+    const result = yield call(loadUserAPI);
+    yield put({
+      type: LOAD_USER_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {}
+}
+function* watchloadUser() {
+  yield takeEvery(LOAD_USER_REQUEST, loadUser);
+}
+
+// 로그아웃
+function logOutAPI() {
+  return axios.post(
+    'http://localhost:5000/logout',
+    {},
+    {
+      withCredentials: true,
+    },
+  );
+}
+function* logOut() {
+  try {
+    yield call(logOutAPI);
+    yield put({
+      type: LOG_OUT_SUCCESS,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: LOG_OUT_FAILURE,
+    });
+  }
+}
+function* watchLogOut() {
+  yield takeEvery(LOG_OUT_REQUEST, logOut);
+}
+
 export default function* userSaga() {
-  yield all([fork(watchLogin), fork(watchSignUp), fork(watchEditing)]);
+  yield all([
+    fork(watchLogin),
+    fork(watchSignUp),
+    fork(watchEditing),
+    fork(watchloadUser),
+    fork(watchLogOut),
+  ]);
 }

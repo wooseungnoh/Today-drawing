@@ -109,8 +109,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loading */ "./components/loading.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
 var _jsxFileName = "D:\\todayDraw\\front\\components\\Layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -126,6 +128,12 @@ const AppLayout = ({
   const {
     isLoadding
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useSelector"])(state => state.drawing);
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    dispatch({
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_5__["LOAD_USER_REQUEST"]
+    });
+  }, []);
   return __jsx(_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
     style: {
       position: 'absolute',
@@ -137,14 +145,14 @@ const AppLayout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 20,
       columnNumber: 5
     }
   }, __jsx(_navigation__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 29,
       columnNumber: 7
     }
   }), __jsx(_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -154,7 +162,7 @@ const AppLayout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 30,
       columnNumber: 7
     }
   }, children), isUserLoadding || isLoadding ? __jsx("div", {
@@ -171,14 +179,14 @@ const AppLayout = ({
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 32,
       columnNumber: 9
     }
   }, __jsx(_loading__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 44,
       columnNumber: 11
     }
   })) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null));
@@ -2447,7 +2455,8 @@ const initialState = {
   }],
   modalState: false,
   addingPhoto: false,
-  isLoadding: false
+  isLoadding: false,
+  imagePaths: []
 };
 const dummyPhoto = {
   id: 2,
@@ -2497,7 +2506,7 @@ const UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
         return {
           addingPhoto: true,
           isLoadding: false,
-          photo: [dummyPhoto, ...state.photo]
+          imagePaths: [...state.imagePaths, action.data]
         };
       }
 
@@ -2552,7 +2561,7 @@ const rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 /*!**************************!*\
   !*** ./reducers/user.js ***!
   \**************************/
-/*! exports provided: initialState, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_OUT_REQUEST, EDITING_PROFILE_REQUEST, EDITING_PROFILE_SUCCESS, EDITING_PROFILE_FAILURE, EDITING_PROFILE_OFF, EDITING_PROFILE_ON, default */
+/*! exports provided: initialState, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOAD_USER_FAILURE, LOG_OUT_REQUEST, LOG_OUT_SUCCESS, LOG_OUT_FAILURE, EDITING_PROFILE_REQUEST, EDITING_PROFILE_SUCCESS, EDITING_PROFILE_FAILURE, EDITING_PROFILE_OFF, EDITING_PROFILE_ON, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2564,7 +2573,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_REQUEST", function() { return SIGN_UP_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_SUCCESS", function() { return SIGN_UP_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_FAILURE", function() { return SIGN_UP_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_REQUEST", function() { return LOAD_USER_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_SUCCESS", function() { return LOAD_USER_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_FAILURE", function() { return LOAD_USER_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_REQUEST", function() { return LOG_OUT_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_SUCCESS", function() { return LOG_OUT_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_FAILURE", function() { return LOG_OUT_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_REQUEST", function() { return EDITING_PROFILE_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_SUCCESS", function() { return EDITING_PROFILE_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_FAILURE", function() { return EDITING_PROFILE_FAILURE; });
@@ -2602,7 +2616,12 @@ const LOG_IN_FAILURE = 'LOG_IN_FAILURE';
 const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
 const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
+const LOAD_USER_REQUEST = 'LOAD_USER_REQUEST';
+const LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
+const LOAD_USER_FAILURE = 'LOAD_USER_FAILURE';
 const LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
+const LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS';
+const LOG_OUT_FAILURE = 'LOG_OUT_REQUEST';
 const EDITING_PROFILE_REQUEST = 'EDITING_PROFILE_REQUEST';
 const EDITING_PROFILE_SUCCESS = 'EDITING_PROFILE_SUCCESS';
 const EDITING_PROFILE_FAILURE = 'EDITING_PROFILE_FAILURE';
@@ -2610,6 +2629,24 @@ const EDITING_PROFILE_OFF = 'EDITING_PROFILE_OFF';
 const EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 /* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
   switch (action.type) {
+    case LOAD_USER_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case LOAD_USER_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          isLoggedIn: true,
+          me: action.data
+        });
+      }
+
+    case LOAD_USER_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
     case LOG_IN_REQUEST:
       {
         return _objectSpread({}, state, {
@@ -2636,9 +2673,20 @@ const EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 
     case LOG_OUT_REQUEST:
       {
+        return _objectSpread({}, state);
+      }
+
+    case LOG_OUT_SUCCESS:
+      {
         return _objectSpread({}, state, {
+          me: null,
           isLoggedIn: false
         });
+      }
+
+    case LOG_OUT_FAILURE:
+      {
+        return _objectSpread({}, state);
       }
 
     case SIGN_UP_REQUEST:
@@ -2723,28 +2771,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return drawingSaga; });
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-saga/effects */ "redux-saga/effects");
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/drawing */ "./reducers/drawing.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/drawing */ "./reducers/drawing.js");
 
 
 
-function addPhotoApi() {}
 
-function* addPhoto() {
+function addPhotoApi(photoData) {
+  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:5000/upload/uploadphoto', photoData, {
+    withCredentials: true
+  });
+}
+
+function* addPhoto(action) {
   try {
-    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["delay"])(2000);
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(addPhotoApi, action.data);
+    console.log(result);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_1__["UPPLOAD_CANVAS_SUCCESS"]
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["UPPLOAD_CANVAS_SUCCESS"]
     });
   } catch (e) {
     console.log(e);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_1__["UPPLOAD_CANVAS_FAILURE"]
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["UPPLOAD_CANVAS_FAILURE"]
     });
   }
 }
 
 function* watchAddPhoto() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_1__["UPPLOAD_CANVAS_REQUEST"], addPhoto);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["UPPLOAD_CANVAS_REQUEST"], addPhoto);
 }
 
 function* drawingSaga() {
@@ -2833,8 +2889,6 @@ function loginAPI(loginData) {
 }
 
 function* login(action) {
-  console.log(action.data);
-
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loginAPI, action.data);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
@@ -2881,10 +2935,56 @@ function* editing(action) {
 
 function* watchEditing() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_user__WEBPACK_IMPORTED_MODULE_2__["EDITING_PROFILE_REQUEST"], editing);
+} //유저 로딩
+
+
+function loadUserAPI() {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:5000/load', {
+    withCredentials: true
+  });
+}
+
+function* loadUser() {
+  try {
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadUserAPI);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOAD_USER_SUCCESS"],
+      data: result.data
+    });
+  } catch (e) {}
+}
+
+function* watchloadUser() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOAD_USER_REQUEST"], loadUser);
+} // 로그아웃
+
+
+function logOutAPI() {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:5000/logout', {}, {
+    withCredentials: true
+  });
+}
+
+function* logOut() {
+  try {
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(logOutAPI);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_OUT_SUCCESS"]
+    });
+  } catch (e) {
+    console.log(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_OUT_FAILURE"]
+    });
+  }
+}
+
+function* watchLogOut() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_OUT_REQUEST"], logOut);
 }
 
 function* userSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchSignUp), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchEditing)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchSignUp), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchEditing), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadUser), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLogOut)]);
 }
 
 /***/ }),

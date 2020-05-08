@@ -24,7 +24,13 @@ export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 
+export const LOAD_USER_REQUEST = 'LOAD_USER_REQUEST';
+export const LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
+export const LOAD_USER_FAILURE = 'LOAD_USER_FAILURE';
+
 export const LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
+export const LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS';
+export const LOG_OUT_FAILURE = 'LOG_OUT_REQUEST';
 
 export const EDITING_PROFILE_REQUEST = 'EDITING_PROFILE_REQUEST';
 export const EDITING_PROFILE_SUCCESS = 'EDITING_PROFILE_SUCCESS';
@@ -35,6 +41,23 @@ export const EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOAD_USER_REQUEST: {
+      return {
+        ...state,
+      };
+    }
+    case LOAD_USER_SUCCESS: {
+      return {
+        ...state,
+        isLoggedIn: true,
+        me: action.data,
+      };
+    }
+    case LOAD_USER_FAILURE: {
+      return {
+        ...state,
+      };
+    }
     case LOG_IN_REQUEST: {
       return {
         ...state,
@@ -59,7 +82,18 @@ export default (state = initialState, action) => {
     case LOG_OUT_REQUEST: {
       return {
         ...state,
+      };
+    }
+    case LOG_OUT_SUCCESS: {
+      return {
+        ...state,
+        me: null,
         isLoggedIn: false,
+      };
+    }
+    case LOG_OUT_FAILURE: {
+      return {
+        ...state,
       };
     }
     case SIGN_UP_REQUEST: {

@@ -28,8 +28,8 @@ const Gallery = () => {
           marginBottom: '30px',
         }}
       >
-        {photo.map((item) => (
-          <Link href="/p/[imgDetail]" as={`/p/${item.id}`}>
+        {photo.map((item, id) => (
+          <Link key={id} href="/p/[imgDetail]" as={`/p/${item.id}`}>
             <a>
               <PhotoView creater={item.creater} url={item.Img} />
             </a>

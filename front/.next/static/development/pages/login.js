@@ -9792,7 +9792,7 @@ var Login = function Login() {
 /*!**************************!*\
   !*** ./reducers/user.js ***!
   \**************************/
-/*! exports provided: initialState, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_OUT_REQUEST, EDITING_PROFILE_REQUEST, EDITING_PROFILE_SUCCESS, EDITING_PROFILE_FAILURE, EDITING_PROFILE_OFF, EDITING_PROFILE_ON, default */
+/*! exports provided: initialState, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOAD_USER_FAILURE, LOG_OUT_REQUEST, LOG_OUT_SUCCESS, LOG_OUT_FAILURE, EDITING_PROFILE_REQUEST, EDITING_PROFILE_SUCCESS, EDITING_PROFILE_FAILURE, EDITING_PROFILE_OFF, EDITING_PROFILE_ON, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9804,7 +9804,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_REQUEST", function() { return SIGN_UP_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_SUCCESS", function() { return SIGN_UP_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_FAILURE", function() { return SIGN_UP_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_REQUEST", function() { return LOAD_USER_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_SUCCESS", function() { return LOAD_USER_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_FAILURE", function() { return LOAD_USER_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_REQUEST", function() { return LOG_OUT_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_SUCCESS", function() { return LOG_OUT_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_FAILURE", function() { return LOG_OUT_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_REQUEST", function() { return EDITING_PROFILE_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_SUCCESS", function() { return EDITING_PROFILE_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_FAILURE", function() { return EDITING_PROFILE_FAILURE; });
@@ -9843,7 +9848,12 @@ var LOG_IN_FAILURE = 'LOG_IN_FAILURE';
 var SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
 var SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 var SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
+var LOAD_USER_REQUEST = 'LOAD_USER_REQUEST';
+var LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
+var LOAD_USER_FAILURE = 'LOAD_USER_FAILURE';
 var LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
+var LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS';
+var LOG_OUT_FAILURE = 'LOG_OUT_REQUEST';
 var EDITING_PROFILE_REQUEST = 'EDITING_PROFILE_REQUEST';
 var EDITING_PROFILE_SUCCESS = 'EDITING_PROFILE_SUCCESS';
 var EDITING_PROFILE_FAILURE = 'EDITING_PROFILE_FAILURE';
@@ -9854,6 +9864,24 @@ var EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case LOAD_USER_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case LOAD_USER_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          isLoggedIn: true,
+          me: action.data
+        });
+      }
+
+    case LOAD_USER_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
     case LOG_IN_REQUEST:
       {
         return _objectSpread({}, state, {
@@ -9880,9 +9908,20 @@ var EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 
     case LOG_OUT_REQUEST:
       {
+        return _objectSpread({}, state);
+      }
+
+    case LOG_OUT_SUCCESS:
+      {
         return _objectSpread({}, state, {
+          me: null,
           isLoggedIn: false
         });
+      }
+
+    case LOG_OUT_FAILURE:
+      {
+        return _objectSpread({}, state);
       }
 
     case SIGN_UP_REQUEST:
@@ -9955,7 +9994,7 @@ var EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 
 /***/ }),
 
-/***/ 4:
+/***/ 2:
 /*!*****************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Flogin&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Clogin.js ***!
   \*****************************************************************************************************************/
@@ -9978,5 +10017,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=login.js.map

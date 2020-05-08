@@ -2,6 +2,7 @@ import User from '../model/User';
 import passport from 'passport';
 import mongoose from 'mongoose';
 
+//로그인
 export const login = (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) {
@@ -21,9 +22,25 @@ export const login = (req, res, next) => {
     });
   })(req, res, next);
 };
-export const logout = (req, res) => {
-  res.send('로그아웃');
+
+//유저 정보 불러오기
+export const loadUser = (req, res) => {
+  if (!req.user) {
+    return res.status(401).send('로그인 되어있지 않음.');
+  }
+  return res.json(req.user);
 };
+
+//로그아웃
+export const logout = (req, res) => {
+  req.logout();
+  req.session.destroy(() => {
+    res.clearCookie('connect.sid');
+    res.send('로그아웃 성공');
+  });
+};
+
+//회원가입
 export const signup = async (req, res, next) => {
   const { email, name, password } = req.body;
   try {
@@ -42,6 +59,7 @@ export const signup = async (req, res, next) => {
   }
 };
 
+//프로필 정보 수정
 export const editing = async (req, res) => {
   const {
     me: { _id, email, name },

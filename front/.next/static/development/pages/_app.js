@@ -15,10 +15,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navigation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navigation */ "./components/navigation.js");
 /* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loading */ "./components/loading.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
 var _this = undefined,
     _jsxFileName = "D:\\todayDraw\\front\\components\\Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -38,6 +40,12 @@ var AppLayout = function AppLayout(_ref) {
   }),
       isLoadding = _useSelector2.isLoadding;
 
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    dispatch({
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_5__["LOAD_USER_REQUEST"]
+    });
+  }, []);
   return __jsx(_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
     style: {
       position: 'absolute',
@@ -49,14 +57,14 @@ var AppLayout = function AppLayout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 20,
       columnNumber: 5
     }
   }, __jsx(_navigation__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 29,
       columnNumber: 7
     }
   }), __jsx(_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -66,7 +74,7 @@ var AppLayout = function AppLayout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 30,
       columnNumber: 7
     }
   }, children), isUserLoadding || isLoadding ? __jsx("div", {
@@ -83,14 +91,14 @@ var AppLayout = function AppLayout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 32,
       columnNumber: 9
     }
   }, __jsx(_loading__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 44,
       columnNumber: 11
     }
   })) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null));
@@ -17109,7 +17117,8 @@ var initialState = {
   }],
   modalState: false,
   addingPhoto: false,
-  isLoadding: false
+  isLoadding: false,
+  imagePaths: []
 };
 var dummyPhoto = {
   id: 2,
@@ -17162,7 +17171,7 @@ var UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
         return {
           addingPhoto: true,
           isLoadding: false,
-          photo: [dummyPhoto].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.photo))
+          imagePaths: [].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.imagePaths), [action.data])
         };
       }
 
@@ -17216,7 +17225,7 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 /*!**************************!*\
   !*** ./reducers/user.js ***!
   \**************************/
-/*! exports provided: initialState, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOG_OUT_REQUEST, EDITING_PROFILE_REQUEST, EDITING_PROFILE_SUCCESS, EDITING_PROFILE_FAILURE, EDITING_PROFILE_OFF, EDITING_PROFILE_ON, default */
+/*! exports provided: initialState, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_FAILURE, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOAD_USER_FAILURE, LOG_OUT_REQUEST, LOG_OUT_SUCCESS, LOG_OUT_FAILURE, EDITING_PROFILE_REQUEST, EDITING_PROFILE_SUCCESS, EDITING_PROFILE_FAILURE, EDITING_PROFILE_OFF, EDITING_PROFILE_ON, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17228,7 +17237,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_REQUEST", function() { return SIGN_UP_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_SUCCESS", function() { return SIGN_UP_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_FAILURE", function() { return SIGN_UP_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_REQUEST", function() { return LOAD_USER_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_SUCCESS", function() { return LOAD_USER_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_FAILURE", function() { return LOAD_USER_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_REQUEST", function() { return LOG_OUT_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_SUCCESS", function() { return LOG_OUT_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT_FAILURE", function() { return LOG_OUT_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_REQUEST", function() { return EDITING_PROFILE_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_SUCCESS", function() { return EDITING_PROFILE_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_PROFILE_FAILURE", function() { return EDITING_PROFILE_FAILURE; });
@@ -17267,7 +17281,12 @@ var LOG_IN_FAILURE = 'LOG_IN_FAILURE';
 var SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
 var SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 var SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
+var LOAD_USER_REQUEST = 'LOAD_USER_REQUEST';
+var LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
+var LOAD_USER_FAILURE = 'LOAD_USER_FAILURE';
 var LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
+var LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS';
+var LOG_OUT_FAILURE = 'LOG_OUT_REQUEST';
 var EDITING_PROFILE_REQUEST = 'EDITING_PROFILE_REQUEST';
 var EDITING_PROFILE_SUCCESS = 'EDITING_PROFILE_SUCCESS';
 var EDITING_PROFILE_FAILURE = 'EDITING_PROFILE_FAILURE';
@@ -17278,6 +17297,24 @@ var EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case LOAD_USER_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case LOAD_USER_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          isLoggedIn: true,
+          me: action.data
+        });
+      }
+
+    case LOAD_USER_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
     case LOG_IN_REQUEST:
       {
         return _objectSpread({}, state, {
@@ -17304,9 +17341,20 @@ var EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 
     case LOG_OUT_REQUEST:
       {
+        return _objectSpread({}, state);
+      }
+
+    case LOG_OUT_SUCCESS:
+      {
         return _objectSpread({}, state, {
+          me: null,
           isLoggedIn: false
         });
+      }
+
+    case LOG_OUT_FAILURE:
+      {
+        return _objectSpread({}, state);
       }
 
     case SIGN_UP_REQUEST:
@@ -17392,7 +17440,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-saga/effects */ "./node_modules/redux-saga/dist/redux-saga-effects-npm-proxy.esm.js");
-/* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/drawing */ "./reducers/drawing.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../reducers/drawing */ "./reducers/drawing.js");
 
 
 var _marked = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(addPhoto),
@@ -17402,42 +17452,50 @@ var _marked = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0
 
 
 
-function addPhotoApi() {}
 
-function addPhoto() {
+function addPhotoApi(photoData) {
+  axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://localhost:5000/upload/uploadphoto', photoData, {
+    withCredentials: true
+  });
+}
+
+function addPhoto(action) {
+  var result;
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function addPhoto$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
           _context.next = 3;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["delay"])(2000);
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["call"])(addPhotoApi, action.data);
 
         case 3:
-          _context.next = 5;
+          result = _context.sent;
+          console.log(result);
+          _context.next = 7;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
-            type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["UPPLOAD_CANVAS_SUCCESS"]
+            type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_3__["UPPLOAD_CANVAS_SUCCESS"]
           });
-
-        case 5:
-          _context.next = 12;
-          break;
 
         case 7:
-          _context.prev = 7;
+          _context.next = 14;
+          break;
+
+        case 9:
+          _context.prev = 9;
           _context.t0 = _context["catch"](0);
           console.log(_context.t0);
-          _context.next = 12;
+          _context.next = 14;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
-            type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["UPPLOAD_CANVAS_FAILURE"]
+            type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_3__["UPPLOAD_CANVAS_FAILURE"]
           });
 
-        case 12:
+        case 14:
         case "end":
           return _context.stop();
       }
     }
-  }, _marked, null, [[0, 7]]);
+  }, _marked, null, [[0, 9]]);
 }
 
 function watchAddPhoto() {
@@ -17446,7 +17504,7 @@ function watchAddPhoto() {
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["UPPLOAD_CANVAS_REQUEST"], addPhoto);
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_3__["UPPLOAD_CANVAS_REQUEST"], addPhoto);
 
         case 2:
         case "end":
@@ -17544,7 +17602,11 @@ var _marked = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1
     _marked4 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(watchLogin),
     _marked5 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(editing),
     _marked6 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(watchEditing),
-    _marked7 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(userSaga);
+    _marked7 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(loadUser),
+    _marked8 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(watchloadUser),
+    _marked9 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(logOut),
+    _marked10 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(watchLogOut),
+    _marked11 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(userSaga);
 
 
 
@@ -17623,38 +17685,37 @@ function login(action) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          console.log(action.data);
-          _context3.prev = 1;
-          _context3.next = 4;
+          _context3.prev = 0;
+          _context3.next = 3;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["call"])(loginAPI, action.data);
 
-        case 4:
+        case 3:
           result = _context3.sent;
-          _context3.next = 7;
+          _context3.next = 6;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["put"])({
             type: _reducers_user__WEBPACK_IMPORTED_MODULE_4__["LOG_IN_SUCCESS"],
             data: result.data
           });
 
-        case 7:
-          _context3.next = 14;
+        case 6:
+          _context3.next = 13;
           break;
 
-        case 9:
-          _context3.prev = 9;
-          _context3.t0 = _context3["catch"](1);
+        case 8:
+          _context3.prev = 8;
+          _context3.t0 = _context3["catch"](0);
           console.log(_context3.t0);
-          _context3.next = 14;
+          _context3.next = 13;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["put"])({
             type: _reducers_user__WEBPACK_IMPORTED_MODULE_4__["LOG_IN_FAILURE"]
           });
 
-        case 14:
+        case 13:
         case "end":
           return _context3.stop();
       }
     }
-  }, _marked3, null, [[1, 9]]);
+  }, _marked3, null, [[0, 8]]);
 }
 
 function watchLogin() {
@@ -17734,22 +17795,138 @@ function watchEditing() {
       }
     }
   }, _marked6);
+} //유저 로딩
+
+
+function loadUserAPI() {
+  return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('http://localhost:5000/load', {
+    withCredentials: true
+  });
 }
 
-function userSaga() {
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function userSaga$(_context7) {
+function loadUser() {
+  var result;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function loadUser$(_context7) {
     while (1) {
       switch (_context7.prev = _context7.next) {
         case 0:
-          _context7.next = 2;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["fork"])(watchSignUp), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["fork"])(watchEditing)]);
+          _context7.prev = 0;
+          _context7.next = 3;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["call"])(loadUserAPI);
 
-        case 2:
+        case 3:
+          result = _context7.sent;
+          _context7.next = 6;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["put"])({
+            type: _reducers_user__WEBPACK_IMPORTED_MODULE_4__["LOAD_USER_SUCCESS"],
+            data: result.data
+          });
+
+        case 6:
+          _context7.next = 10;
+          break;
+
+        case 8:
+          _context7.prev = 8;
+          _context7.t0 = _context7["catch"](0);
+
+        case 10:
         case "end":
           return _context7.stop();
       }
     }
-  }, _marked7);
+  }, _marked7, null, [[0, 8]]);
+}
+
+function watchloadUser() {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function watchloadUser$(_context8) {
+    while (1) {
+      switch (_context8.prev = _context8.next) {
+        case 0:
+          _context8.next = 2;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["takeEvery"])(_reducers_user__WEBPACK_IMPORTED_MODULE_4__["LOAD_USER_REQUEST"], loadUser);
+
+        case 2:
+        case "end":
+          return _context8.stop();
+      }
+    }
+  }, _marked8);
+} // 로그아웃
+
+
+function logOutAPI() {
+  return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('http://localhost:5000/logout', {}, {
+    withCredentials: true
+  });
+}
+
+function logOut() {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function logOut$(_context9) {
+    while (1) {
+      switch (_context9.prev = _context9.next) {
+        case 0:
+          _context9.prev = 0;
+          _context9.next = 3;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["call"])(logOutAPI);
+
+        case 3:
+          _context9.next = 5;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["put"])({
+            type: _reducers_user__WEBPACK_IMPORTED_MODULE_4__["LOG_OUT_SUCCESS"]
+          });
+
+        case 5:
+          _context9.next = 12;
+          break;
+
+        case 7:
+          _context9.prev = 7;
+          _context9.t0 = _context9["catch"](0);
+          console.log(_context9.t0);
+          _context9.next = 12;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["put"])({
+            type: _reducers_user__WEBPACK_IMPORTED_MODULE_4__["LOG_OUT_FAILURE"]
+          });
+
+        case 12:
+        case "end":
+          return _context9.stop();
+      }
+    }
+  }, _marked9, null, [[0, 7]]);
+}
+
+function watchLogOut() {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function watchLogOut$(_context10) {
+    while (1) {
+      switch (_context10.prev = _context10.next) {
+        case 0:
+          _context10.next = 2;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["takeEvery"])(_reducers_user__WEBPACK_IMPORTED_MODULE_4__["LOG_OUT_REQUEST"], logOut);
+
+        case 2:
+        case "end":
+          return _context10.stop();
+      }
+    }
+  }, _marked10);
+}
+
+function userSaga() {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function userSaga$(_context11) {
+    while (1) {
+      switch (_context11.prev = _context11.next) {
+        case 0:
+          _context11.next = 2;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["fork"])(watchLogin), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["fork"])(watchSignUp), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["fork"])(watchEditing), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["fork"])(watchloadUser), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_2__["fork"])(watchLogOut)]);
+
+        case 2:
+        case "end":
+          return _context11.stop();
+      }
+    }
+  }, _marked11);
 }
 
 /***/ }),

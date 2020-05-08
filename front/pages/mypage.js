@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Container from '../components/container';
 import Text from '../components/text';
 import { Button } from '../components/uiComponent';
-import { EDITING_PROFILE_ON, SIGN_UP_SUCCESS } from '../reducers/user';
+import { EDITING_PROFILE_ON } from '../reducers/user';
 import EditProfile from '../components/editProfile';
 
 const Mypage = () => {

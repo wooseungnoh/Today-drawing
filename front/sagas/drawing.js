@@ -1,4 +1,5 @@
-import { all, delay, fork, put, takeEvery } from 'redux-saga/effects';
+import { all, delay, fork, put, takeEvery, call } from 'redux-saga/effects';
+import axios from 'axios';
 
 import {
   UPPLOAD_CANVAS_REQUEST,
@@ -6,11 +7,16 @@ import {
   UPPLOAD_CANVAS_FAILURE,
 } from '../reducers/drawing';
 
-function addPhotoApi() {}
+function addPhotoApi(photoData) {
+  axios.post('http://localhost:5000/upload/uploadphoto', photoData, {
+    withCredentials: true,
+  });
+}
 
-function* addPhoto() {
+function* addPhoto(action) {
   try {
-    yield delay(2000);
+    const result = yield call(addPhotoApi, action.data);
+    console.log(result);
     yield put({
       type: UPPLOAD_CANVAS_SUCCESS,
     });

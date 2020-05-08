@@ -11,32 +11,35 @@ const Upload = () => {
   const [title, setTitle] = useInput('');
   const [desciption, setDesciption] = useInput('');
   const dispatch = useDispatch();
+
   const addPhoto = (e) => {
     e.preventDefault();
-    dispatch({
-      type: UPPLOAD_CANVAS_REQUEST,
-      data: title,
-      desciption,
-    });
   };
 
-  useEffect(() => {
-    if (addingPhoto) {
-      Router.push('/gallery');
-      dispatch({
-        type: ADDING_PHOTO_OFF,
-      });
-    }
-  }, [addingPhoto]);
+  const handlePhotoFile = (e) => {
+    const imageFormData = new FormData();
+    [].forEach.call(e.target.files, (f) => {
+      imageFormData.append('photo', f);
+    });
+    dispatch({
+      type: UPPLOAD_CANVAS_REQUEST,
+      data: imageFormData,
+    });
+  };
 
   return (
     <Container flexDirection="column">
       <Container wsize="300px" hsize="300px">
         미리보기 이미지
       </Container>
-      <Form onSubmit={addPhoto}>
+      <Form onSubmit={addPhoto} encType="multipart/form-data">
         <label htmlFor="file">파일 선택</label>
-        <Input type="file" />
+        <Input
+          type="file"
+          name="photo"
+          onChange={handlePhotoFile}
+          accept="image/*"
+        />
 
         <label>그림 제목</label>
         <Input value={title} onChange={setTitle} type="text" />

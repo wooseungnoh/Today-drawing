@@ -23,6 +23,7 @@ export const initialState = {
   modalState: false,
   addingPhoto: false,
   isLoadding: false,
+  imagePaths: [],
 };
 
 const dummyPhoto = {
@@ -74,7 +75,7 @@ export default (state = initialState, action) => {
       return {
         addingPhoto: true,
         isLoadding: false,
-        photo: [dummyPhoto, ...state.photo],
+        imagePaths: [...state.imagePaths, action.data],
       };
     }
     case UPPLOAD_CANVAS_FAILURE: {
