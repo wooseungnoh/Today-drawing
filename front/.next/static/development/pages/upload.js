@@ -1551,10 +1551,10 @@ module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js!./":
-/*!***************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js ***!
-  \***************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cupload.js!./":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cupload.js ***!
+  \*************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9750,7 +9750,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _this = undefined,
-    _jsxFileName = "D:\\todayDraw\\front\\pages\\login.js";
+    _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\login.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -9886,7 +9886,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _this = undefined,
-    _jsxFileName = "D:\\todayDraw\\front\\pages\\upload.js";
+    _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\upload.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -9901,7 +9901,12 @@ var Upload = function Upload() {
   var _useSelector = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (state) {
     return state.drawing;
   }),
-      addingPhoto = _useSelector.addingPhoto;
+      imagePaths = _useSelector.imagePaths;
+
+  var _useSelector2 = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (state) {
+    return state.user;
+  }),
+      isLoggedIn = _useSelector2.isLoggedIn;
 
   var _useInput = Object(_login__WEBPACK_IMPORTED_MODULE_7__["useInput"])(''),
       _useInput2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useInput, 2),
@@ -9914,6 +9919,11 @@ var Upload = function Upload() {
       setDesciption = _useInput4[1];
 
   var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    if (!isLoggedIn) {
+      next_Router__WEBPACK_IMPORTED_MODULE_3___default.a.push('/');
+    }
+  }, [isLoggedIn]);
 
   var addPhoto = function addPhoto(e) {
     e.preventDefault();
@@ -9935,7 +9945,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 38,
       columnNumber: 5
     }
   }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -9944,16 +9954,35 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 39,
       columnNumber: 7
     }
-  }, "\uBBF8\uB9AC\uBCF4\uAE30 \uC774\uBBF8\uC9C0"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_5__["Form"], {
+  }, imagePaths[0] ? __jsx("img", {
+    src: "http://localhost:5000/".concat(imagePaths[0]),
+    style: {
+      width: '100%'
+    },
+    alt: imagePaths[0],
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 26
+    }
+  }) : __jsx("span", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 129
+    }
+  }, "\uBBF8\uB9AC\uBCF4\uAE30 \uC774\uBBF8\uC9C0")), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_5__["Form"], {
     onSubmit: addPhoto,
     encType: "multipart/form-data",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 43,
       columnNumber: 7
     }
   }, __jsx("label", {
@@ -9961,7 +9990,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 44,
       columnNumber: 9
     }
   }, "\uD30C\uC77C \uC120\uD0DD"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_5__["Input"], {
@@ -9972,14 +10001,14 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 45,
       columnNumber: 9
     }
   }), __jsx("label", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 52,
       columnNumber: 9
     }
   }, "\uADF8\uB9BC \uC81C\uBAA9"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_5__["Input"], {
@@ -9989,14 +10018,14 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 53,
       columnNumber: 9
     }
   }), __jsx("label", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 55,
       columnNumber: 9
     }
   }, "\uADF8\uB9BC \uC124\uBA85"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_5__["Textarea"], {
@@ -10005,7 +10034,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 56,
       columnNumber: 9
     }
   }), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_5__["Input"], {
@@ -10014,7 +10043,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49,
+      lineNumber: 57,
       columnNumber: 9
     }
   })));
@@ -10355,14 +10384,14 @@ var EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 
 /***/ }),
 
-/***/ 3:
-/*!*******************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js ***!
-  \*******************************************************************************************************************/
+/***/ 2:
+/*!*****************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fupload&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cupload.js ***!
+  \*****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fupload&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cupload.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cupload.js!./");
 
 
 /***/ }),
@@ -10378,5 +10407,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=upload.js.map

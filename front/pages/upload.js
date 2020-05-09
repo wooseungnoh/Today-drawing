@@ -3,14 +3,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import Router from 'next/Router';
 import Container from '../components/container';
 import { Input, Form, Textarea } from '../components/uiComponent';
-import { UPPLOAD_CANVAS_REQUEST, ADDING_PHOTO_OFF } from '../reducers/drawing';
+import { UPPLOAD_CANVAS_REQUEST } from '../reducers/drawing';
 import { useInput } from './login';
 
 const Upload = () => {
-  const { addingPhoto } = useSelector((state) => state.drawing);
+  const { imagePaths } = useSelector((state) => state.drawing);
+  const { isLoggedIn } = useSelector((state) => state.user);
   const [title, setTitle] = useInput('');
   const [desciption, setDesciption] = useInput('');
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      Router.push('/');
+    }
+  }, [isLoggedIn]);
 
   const addPhoto = (e) => {
     e.preventDefault();
@@ -30,7 +37,8 @@ const Upload = () => {
   return (
     <Container flexDirection="column">
       <Container wsize="300px" hsize="300px">
-        미리보기 이미지
+        {imagePaths[0] ? <img src={`http://localhost:5000/${imagePaths[0]}`} style={{ width: '100%' }} alt={imagePaths[0]} /> : <span>미리보기 이미지</span>}
+
       </Container>
       <Form onSubmit={addPhoto} encType="multipart/form-data">
         <label htmlFor="file">파일 선택</label>

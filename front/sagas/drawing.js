@@ -8,7 +8,7 @@ import {
 } from '../reducers/drawing';
 
 function addPhotoApi(photoData) {
-  axios.post('http://localhost:5000/upload/uploadphoto', photoData, {
+  return axios.post('http://localhost:5000/upload/uploadphoto', photoData, {
     withCredentials: true,
   });
 }
@@ -16,9 +16,10 @@ function addPhotoApi(photoData) {
 function* addPhoto(action) {
   try {
     const result = yield call(addPhotoApi, action.data);
-    console.log(result);
+    console.log(result.data)
     yield put({
       type: UPPLOAD_CANVAS_SUCCESS,
+      data: result.data,
     });
   } catch (e) {
     console.log(e);

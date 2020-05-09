@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Router from 'next/Router';
 import Container from '../components/container';
 import Text from '../components/text';
 import { Button } from '../components/uiComponent';
@@ -7,8 +8,14 @@ import { EDITING_PROFILE_ON } from '../reducers/user';
 import EditProfile from '../components/editProfile';
 
 const Mypage = () => {
-  const { me } = useSelector((state) => state.user);
+  const { me, isLoggedIn } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      Router.push('/');
+    }
+  }, [isLoggedIn]);
 
   const editProfile = (e) => {
     e.preventDefault();
