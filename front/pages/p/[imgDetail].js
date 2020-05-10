@@ -9,13 +9,10 @@ const imgDetail = () => {
   const { photo } = useSelector((state) => state.drawing);
   const router = useRouter();
 
-  const indexNumber = photo.findIndex(
-    (i) => Number(i.id) === Number(router.query.imgDetail),
-  );
   return (
     <Container flexDirection="column">
       <div>
-        <Img src={photo[indexNumber].Img} width="500px" />
+        <Img src={"#"} width="500px" />
         <div
           style={{
             display: 'flex',
@@ -28,18 +25,18 @@ const imgDetail = () => {
             bold
             fontSize="big"
             style={{ padding: '15px 0' }}
-          >{`${photo[indexNumber].creater}`}</Text>
+          >{`${"#"}`}</Text>
           <Text
             fontSize="medium"
             style={{ paddingBottom: '30px' }}
-          >{`${photo[indexNumber].createAt}`}</Text>
+          >{`${"#"}`}</Text>
           <Text
             bold
             fontSize="huge"
             style={{ paddingBottom: '15px' }}
-          >{`${photo[indexNumber].title}`}</Text>
+          >{`${"#"}`}</Text>
           <div style={{ width: '500px' }}>
-            <Text>{photo[indexNumber].description}</Text>
+            <Text>{"#"}</Text>
           </div>
         </div>
       </div>

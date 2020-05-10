@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -193,7 +193,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/container */ "./components/container.js");
 /* harmony import */ var _components_uiComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/uiComponent */ "./components/uiComponent.js");
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
-var _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\login.js";
+var _jsxFileName = "D:\\todayDraw\\front\\pages\\login.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -313,7 +313,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_uiComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/uiComponent */ "./components/uiComponent.js");
 /* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/drawing */ "./reducers/drawing.js");
 /* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./login */ "./pages/login.js");
-var _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\upload.js";
+var _jsxFileName = "D:\\todayDraw\\front\\pages\\upload.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -325,13 +325,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const Upload = () => {
   const {
-    imagePaths
+    imagePaths,
+    isUploadingPost
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.drawing);
   const {
     isLoggedIn
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.user);
   const [title, setTitle] = Object(_login__WEBPACK_IMPORTED_MODULE_6__["useInput"])('');
-  const [desciption, setDesciption] = Object(_login__WEBPACK_IMPORTED_MODULE_6__["useInput"])('');
+  const [description, setDescription] = Object(_login__WEBPACK_IMPORTED_MODULE_6__["useInput"])('');
   const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useDispatch"])();
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     if (!isLoggedIn) {
@@ -341,6 +342,14 @@ const Upload = () => {
 
   const addPhoto = e => {
     e.preventDefault();
+    dispatch({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_5__["UPPLOAD_POST_REQUEST"],
+      data: {
+        title,
+        description,
+        imagePaths
+      }
+    });
   };
 
   const handlePhotoFile = e => {
@@ -354,24 +363,54 @@ const Upload = () => {
     });
   };
 
+  const handleDeleteImage = () => {
+    dispatch({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_5__["DELETE_PHOTO"]
+    });
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (isUploadingPost) {
+      handleDeleteImage();
+      dispatch({
+        type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_5__["UPPLOADING_DONE"]
+      });
+      next_Router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/gallery');
+    }
+  }, [isUploadingPost]);
   return __jsx(_components_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
     flexDirection: "column",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 63,
       columnNumber: 5
     }
-  }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    wsize: "300px",
-    hsize: "300px",
+  }, __jsx("div", {
+    style: {
+      minHeight: '200px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '300px'
+    },
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 64,
       columnNumber: 7
     }
-  }, imagePaths[0] ? __jsx("img", {
+  }, imagePaths[0] ? __jsx("div", {
+    style: {
+      position: 'relative'
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 74,
+      columnNumber: 11
+    }
+  }, __jsx("img", {
     src: `http://localhost:5000/${imagePaths[0]}`,
     style: {
       width: '100%'
@@ -380,15 +419,28 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 26
+      lineNumber: 75,
+      columnNumber: 13
     }
-  }) : __jsx("span", {
+  }), __jsx("button", {
+    onClick: handleDeleteImage,
+    style: {
+      position: 'absolute',
+      top: '5px',
+      right: '5px'
+    },
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 129
+      lineNumber: 80,
+      columnNumber: 13
+    }
+  }, "X")) : __jsx("span", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 88,
+      columnNumber: 11
     }
   }, "\uBBF8\uB9AC\uBCF4\uAE30 \uC774\uBBF8\uC9C0")), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_4__["Form"], {
     onSubmit: addPhoto,
@@ -396,7 +448,7 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 92,
       columnNumber: 7
     }
   }, __jsx("label", {
@@ -404,7 +456,7 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 93,
       columnNumber: 9
     }
   }, "\uD30C\uC77C \uC120\uD0DD"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_4__["Input"], {
@@ -415,14 +467,14 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 94,
       columnNumber: 9
     }
   }), __jsx("label", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 101,
       columnNumber: 9
     }
   }, "\uADF8\uB9BC \uC81C\uBAA9"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_4__["Input"], {
@@ -432,23 +484,23 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 102,
       columnNumber: 9
     }
   }), __jsx("label", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 104,
       columnNumber: 9
     }
   }, "\uADF8\uB9BC \uC124\uBA85"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_4__["Textarea"], {
-    value: desciption,
-    onChange: setDesciption,
+    value: description,
+    onChange: setDescription,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 105,
       columnNumber: 9
     }
   }), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_4__["Input"], {
@@ -457,7 +509,7 @@ const Upload = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 106,
       columnNumber: 9
     }
   })));
@@ -471,19 +523,26 @@ const Upload = () => {
 /*!*****************************!*\
   !*** ./reducers/drawing.js ***!
   \*****************************/
-/*! exports provided: initialState, LOAD_GALLERY_POST, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, default */
+/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_POST", function() { return LOAD_GALLERY_POST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_REQUEST", function() { return LOAD_GALLERY_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_SUCCESS", function() { return LOAD_GALLERY_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_FAILURE", function() { return LOAD_GALLERY_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_ON", function() { return MODAL_ON; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_OFF", function() { return MODAL_OFF; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADDING_PHOTO_OFF", function() { return ADDING_PHOTO_OFF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_PHOTO", function() { return DELETE_PHOTO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_REQUEST", function() { return UPPLOAD_CANVAS_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_SUCCESS", function() { return UPPLOAD_CANVAS_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_FAILURE", function() { return UPPLOAD_CANVAS_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_REQUEST", function() { return UPPLOAD_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_SUCCESS", function() { return UPPLOAD_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_FAILURE", function() { return UPPLOAD_POST_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOADING_DONE", function() { return UPPLOADING_DONE; });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -491,44 +550,42 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 const initialState = {
-  photo: [{
-    id: 1,
-    creater: '개',
-    Img: 'https://us.123rf.com/450wm/bigandt/bigandt1408/bigandt140800118/30980522-%EC%95%BC%EC%99%B8%EC%97%90%EC%84%9C-%EB%A7%91%EC%9D%80-%EB%82%A0%EC%97%90-7-%EC%A3%BC-%EC%98%A4%EB%9E%98-%EB%90%9C-%EA%B3%A8%EB%93%A0-%EB%A6%AC%ED%8A%B8%EB%A6%AC%EB%B2%84-%EA%B0%95%EC%95%84%EC%A7%80-.jpg?ver=6',
-    description: '강아지입니다.',
-    title: '강아지',
-    createAt: '2020.10.03'
-  }, {
-    id: 2,
-    creater: 'wooseung',
-    Img: 'https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000&gif=true',
-    description: '이 그림은 그냥 그려본 그림입니다이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다..',
-    title: '고먐미',
-    createAt: '2020.10.03'
-  }],
+  postList: [],
   modalState: false,
   addingPhoto: false,
   isLoadding: false,
-  imagePaths: []
+  imagePaths: [],
+  isUploadingPost: false
 };
-const dummyPhoto = {
-  id: 2,
-  creater: '더미',
-  Img: 'https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000&gif=true',
-  description: '더미 그림',
-  title: '더미더미',
-  createAt: '2020.10.03'
-};
-const LOAD_GALLERY_POST = 'LOAD_GALLERY_POST';
+const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
+const LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';
+const LOAD_GALLERY_FAILURE = 'LOAD_GALLERY_FAILURE';
 const MODAL_ON = 'MODAL_ON';
 const MODAL_OFF = 'MODAL_OFF';
 const ADDING_PHOTO_OFF = 'ADDING_PHOTO_OFF';
+const DELETE_PHOTO = 'DELETE_PHOTO';
 const UPPLOAD_CANVAS_REQUEST = 'UPPLOAD_CANVAS_REQUEST';
 const UPPLOAD_CANVAS_SUCCESS = 'UPPLOAD_CANVAS_SUCCESS';
 const UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
+const UPPLOAD_POST_REQUEST = 'UPPLOAD_POST_REQUEST';
+const UPPLOAD_POST_SUCCESS = 'UPPLOAD_POST_SUCCESS';
+const UPPLOAD_POST_FAILURE = 'UPPLOAD_POST_FAILURE';
+const UPPLOADING_DONE = 'UPPLOADING_DONE';
 /* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
   switch (action.type) {
-    case LOAD_GALLERY_POST:
+    case LOAD_GALLERY_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case LOAD_GALLERY_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          postList: action.data
+        });
+      }
+
+    case LOAD_GALLERY_FAILURE:
       {
         return _objectSpread({}, state);
       }
@@ -556,11 +613,11 @@ const UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
 
     case UPPLOAD_CANVAS_SUCCESS:
       {
-        return {
+        return _objectSpread({}, state, {
           addingPhoto: true,
           isLoadding: false,
           imagePaths: [...state.imagePaths, action.data]
-        };
+        });
       }
 
     case UPPLOAD_CANVAS_FAILURE:
@@ -574,6 +631,42 @@ const UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
       {
         return _objectSpread({}, state, {
           addingPhoto: false
+        });
+      }
+
+    case DELETE_PHOTO:
+      {
+        return _objectSpread({}, state, {
+          imagePaths: []
+        });
+      }
+
+    case UPPLOAD_POST_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          isUploadingPost: false
+        });
+      }
+
+    case UPPLOAD_POST_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          postList: [...state.postList, action.data],
+          isUploadingPost: true
+        });
+      }
+
+    case UPPLOAD_POST_FAILURE:
+      {
+        return _objectSpread({}, state, {
+          isUploadingPost: false
+        });
+      }
+
+    case UPPLOADING_DONE:
+      {
+        return _objectSpread({}, state, {
+          isUploadingPost: false
         });
       }
 
@@ -632,12 +725,6 @@ const initialState = {
   // 내 정보
   isUserLoadding: false,
   editing: false
-};
-const dummyUser = {
-  id: 1,
-  nickName: '노우승',
-  userInfo: '안녕하세요 노우승입니다.',
-  photo: []
 };
 const LOG_IN_REQUEST = 'LOG_IN_REQUEST';
 const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
@@ -788,14 +875,14 @@ const EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*******************************!*\
   !*** multi ./pages/upload.js ***!
   \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\shdnt\Desktop\today\front\pages\upload.js */"./pages/upload.js");
+module.exports = __webpack_require__(/*! D:\todayDraw\front\pages\upload.js */"./pages/upload.js");
 
 
 /***/ }),

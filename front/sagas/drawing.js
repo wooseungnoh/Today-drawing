@@ -5,7 +5,15 @@ import {
   UPPLOAD_CANVAS_REQUEST,
   UPPLOAD_CANVAS_SUCCESS,
   UPPLOAD_CANVAS_FAILURE,
+  UPPLOAD_POST_REQUEST,
+  UPPLOAD_POST_SUCCESS,
+  UPPLOAD_POST_FAILURE,
+  LOAD_GALLERY_SUCCESS,
+  LOAD_GALLERY_FAILURE,
+  LOAD_GALLERY_REQUEST,
 } from '../reducers/drawing';
+
+// 미리보기 사진 업로드
 
 function addPhotoApi(photoData) {
   return axios.post('http://localhost:5000/upload/uploadphoto', photoData, {
@@ -16,7 +24,6 @@ function addPhotoApi(photoData) {
 function* addPhoto(action) {
   try {
     const result = yield call(addPhotoApi, action.data);
-    console.log(result.data)
     yield put({
       type: UPPLOAD_CANVAS_SUCCESS,
       data: result.data,
@@ -33,6 +40,60 @@ function* watchAddPhoto() {
   yield takeEvery(UPPLOAD_CANVAS_REQUEST, addPhoto);
 }
 
+// post upload
+
+function addPostApi(postData) {
+  return axios.post('http://localhost:5000/upload/uploadpost', postData, {
+    withCredentials: true,
+  });
+}
+
+function* addPost(action) {
+  try {
+    const result = yield call(addPostApi, action.data);
+    yield put({
+      type: UPPLOAD_POST_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: UPPLOAD_POST_FAILURE,
+    });
+  }
+}
+
+function* watchAddPost() {
+  yield takeEvery(UPPLOAD_POST_REQUEST, addPost);
+}
+
+// loaded post list
+
+function loadedPostApi() {
+  return axios.get('http://localhost:5000/upload/loaded', {
+    withCredentials: true,
+  });
+}
+
+function* loadedPost(action) {
+  try {
+    const result = yield call(loadedPostApi, action.data);
+    yield put({
+      type: LOAD_GALLERY_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: LOAD_GALLERY_FAILURE,
+    });
+  }
+}
+
+function* watchloadedPost() {
+  yield takeEvery(LOAD_GALLERY_REQUEST, loadedPost);
+}
+
 export default function* drawingSaga() {
-  yield all([fork(watchAddPhoto)]);
+  yield all([fork(watchAddPhoto), fork(watchAddPost), fork(watchloadedPost)]);
 }

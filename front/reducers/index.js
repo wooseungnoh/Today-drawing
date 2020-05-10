@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import drawing from './drawing';
 import user from './user';
+import drawing from './drawing';
 
 const rootReducer = combineReducers({
-  drawing,
   user,
+  drawing,
 });
 
 export default rootReducer;

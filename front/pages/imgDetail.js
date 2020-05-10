@@ -9,9 +9,9 @@ const imgDetail = () => {
 
   return (
     <Container flexDirection="column">
-      <Img src={photo[0].Img} width="500px" />
+      {/* <Img src={photo[0].Img} width="500px" />
       <Text>{`작품 제목 : ${photo[0].title}`}</Text>
-      <Text>{photo[0].description}</Text>
+      <Text>{photo[0].description}</Text> */}
     </Container>
   );
 };

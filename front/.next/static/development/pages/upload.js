@@ -1551,10 +1551,10 @@ module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cupload.js!./":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cupload.js ***!
-  \*************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js!./":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js ***!
+  \***************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9750,7 +9750,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _this = undefined,
-    _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\login.js";
+    _jsxFileName = "D:\\todayDraw\\front\\pages\\login.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -9886,7 +9886,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _this = undefined,
-    _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\upload.js";
+    _jsxFileName = "D:\\todayDraw\\front\\pages\\upload.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -9901,7 +9901,8 @@ var Upload = function Upload() {
   var _useSelector = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (state) {
     return state.drawing;
   }),
-      imagePaths = _useSelector.imagePaths;
+      imagePaths = _useSelector.imagePaths,
+      isUploadingPost = _useSelector.isUploadingPost;
 
   var _useSelector2 = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (state) {
     return state.user;
@@ -9915,8 +9916,8 @@ var Upload = function Upload() {
 
   var _useInput3 = Object(_login__WEBPACK_IMPORTED_MODULE_7__["useInput"])(''),
       _useInput4 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useInput3, 2),
-      desciption = _useInput4[0],
-      setDesciption = _useInput4[1];
+      description = _useInput4[0],
+      setDescription = _useInput4[1];
 
   var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
@@ -9927,6 +9928,14 @@ var Upload = function Upload() {
 
   var addPhoto = function addPhoto(e) {
     e.preventDefault();
+    dispatch({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["UPPLOAD_POST_REQUEST"],
+      data: {
+        title: title,
+        description: description,
+        imagePaths: imagePaths
+      }
+    });
   };
 
   var handlePhotoFile = function handlePhotoFile(e) {
@@ -9940,24 +9949,54 @@ var Upload = function Upload() {
     });
   };
 
+  var handleDeleteImage = function handleDeleteImage() {
+    dispatch({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["DELETE_PHOTO"]
+    });
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    if (isUploadingPost) {
+      handleDeleteImage();
+      dispatch({
+        type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["UPPLOADING_DONE"]
+      });
+      next_Router__WEBPACK_IMPORTED_MODULE_3___default.a.push('/gallery');
+    }
+  }, [isUploadingPost]);
   return __jsx(_components_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
     flexDirection: "column",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 63,
       columnNumber: 5
     }
-  }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    wsize: "300px",
-    hsize: "300px",
+  }, __jsx("div", {
+    style: {
+      minHeight: '200px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '300px'
+    },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 64,
       columnNumber: 7
     }
-  }, imagePaths[0] ? __jsx("img", {
+  }, imagePaths[0] ? __jsx("div", {
+    style: {
+      position: 'relative'
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 74,
+      columnNumber: 11
+    }
+  }, __jsx("img", {
     src: "http://localhost:5000/".concat(imagePaths[0]),
     style: {
       width: '100%'
@@ -9966,15 +10005,28 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 26
+      lineNumber: 75,
+      columnNumber: 13
     }
-  }) : __jsx("span", {
+  }), __jsx("button", {
+    onClick: handleDeleteImage,
+    style: {
+      position: 'absolute',
+      top: '5px',
+      right: '5px'
+    },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 129
+      lineNumber: 80,
+      columnNumber: 13
+    }
+  }, "X")) : __jsx("span", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 88,
+      columnNumber: 11
     }
   }, "\uBBF8\uB9AC\uBCF4\uAE30 \uC774\uBBF8\uC9C0")), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_5__["Form"], {
     onSubmit: addPhoto,
@@ -9982,7 +10034,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 92,
       columnNumber: 7
     }
   }, __jsx("label", {
@@ -9990,7 +10042,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 93,
       columnNumber: 9
     }
   }, "\uD30C\uC77C \uC120\uD0DD"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_5__["Input"], {
@@ -10001,14 +10053,14 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 94,
       columnNumber: 9
     }
   }), __jsx("label", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 101,
       columnNumber: 9
     }
   }, "\uADF8\uB9BC \uC81C\uBAA9"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_5__["Input"], {
@@ -10018,23 +10070,23 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 102,
       columnNumber: 9
     }
   }), __jsx("label", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 104,
       columnNumber: 9
     }
   }, "\uADF8\uB9BC \uC124\uBA85"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_5__["Textarea"], {
-    value: desciption,
-    onChange: setDesciption,
+    value: description,
+    onChange: setDescription,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 105,
       columnNumber: 9
     }
   }), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_5__["Input"], {
@@ -10043,7 +10095,7 @@ var Upload = function Upload() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 106,
       columnNumber: 9
     }
   })));
@@ -10057,19 +10109,26 @@ var Upload = function Upload() {
 /*!*****************************!*\
   !*** ./reducers/drawing.js ***!
   \*****************************/
-/*! exports provided: initialState, LOAD_GALLERY_POST, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, default */
+/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_POST", function() { return LOAD_GALLERY_POST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_REQUEST", function() { return LOAD_GALLERY_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_SUCCESS", function() { return LOAD_GALLERY_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_FAILURE", function() { return LOAD_GALLERY_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_ON", function() { return MODAL_ON; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_OFF", function() { return MODAL_OFF; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADDING_PHOTO_OFF", function() { return ADDING_PHOTO_OFF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_PHOTO", function() { return DELETE_PHOTO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_REQUEST", function() { return UPPLOAD_CANVAS_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_SUCCESS", function() { return UPPLOAD_CANVAS_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_FAILURE", function() { return UPPLOAD_CANVAS_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_REQUEST", function() { return UPPLOAD_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_SUCCESS", function() { return UPPLOAD_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_FAILURE", function() { return UPPLOAD_POST_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOADING_DONE", function() { return UPPLOADING_DONE; });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 
@@ -10080,47 +10139,45 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var initialState = {
-  photo: [{
-    id: 1,
-    creater: '개',
-    Img: 'https://us.123rf.com/450wm/bigandt/bigandt1408/bigandt140800118/30980522-%EC%95%BC%EC%99%B8%EC%97%90%EC%84%9C-%EB%A7%91%EC%9D%80-%EB%82%A0%EC%97%90-7-%EC%A3%BC-%EC%98%A4%EB%9E%98-%EB%90%9C-%EA%B3%A8%EB%93%A0-%EB%A6%AC%ED%8A%B8%EB%A6%AC%EB%B2%84-%EA%B0%95%EC%95%84%EC%A7%80-.jpg?ver=6',
-    description: '강아지입니다.',
-    title: '강아지',
-    createAt: '2020.10.03'
-  }, {
-    id: 2,
-    creater: 'wooseung',
-    Img: 'https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000&gif=true',
-    description: '이 그림은 그냥 그려본 그림입니다이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다.이 그림은 그냥 그려본 그림입니다..',
-    title: '고먐미',
-    createAt: '2020.10.03'
-  }],
+  postList: [],
   modalState: false,
   addingPhoto: false,
   isLoadding: false,
-  imagePaths: []
+  imagePaths: [],
+  isUploadingPost: false
 };
-var dummyPhoto = {
-  id: 2,
-  creater: '더미',
-  Img: 'https://cdn.clien.net/web/api/file/F01/8943891/37854b4f3dc856.png?w=780&h=30000&gif=true',
-  description: '더미 그림',
-  title: '더미더미',
-  createAt: '2020.10.03'
-};
-var LOAD_GALLERY_POST = 'LOAD_GALLERY_POST';
+var LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
+var LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';
+var LOAD_GALLERY_FAILURE = 'LOAD_GALLERY_FAILURE';
 var MODAL_ON = 'MODAL_ON';
 var MODAL_OFF = 'MODAL_OFF';
 var ADDING_PHOTO_OFF = 'ADDING_PHOTO_OFF';
+var DELETE_PHOTO = 'DELETE_PHOTO';
 var UPPLOAD_CANVAS_REQUEST = 'UPPLOAD_CANVAS_REQUEST';
 var UPPLOAD_CANVAS_SUCCESS = 'UPPLOAD_CANVAS_SUCCESS';
 var UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
+var UPPLOAD_POST_REQUEST = 'UPPLOAD_POST_REQUEST';
+var UPPLOAD_POST_SUCCESS = 'UPPLOAD_POST_SUCCESS';
+var UPPLOAD_POST_FAILURE = 'UPPLOAD_POST_FAILURE';
+var UPPLOADING_DONE = 'UPPLOADING_DONE';
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case LOAD_GALLERY_POST:
+    case LOAD_GALLERY_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case LOAD_GALLERY_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          postList: action.data
+        });
+      }
+
+    case LOAD_GALLERY_FAILURE:
       {
         return _objectSpread({}, state);
       }
@@ -10148,11 +10205,11 @@ var UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
 
     case UPPLOAD_CANVAS_SUCCESS:
       {
-        return {
+        return _objectSpread({}, state, {
           addingPhoto: true,
           isLoadding: false,
           imagePaths: [].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.imagePaths), [action.data])
-        };
+        });
       }
 
     case UPPLOAD_CANVAS_FAILURE:
@@ -10166,6 +10223,42 @@ var UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
       {
         return _objectSpread({}, state, {
           addingPhoto: false
+        });
+      }
+
+    case DELETE_PHOTO:
+      {
+        return _objectSpread({}, state, {
+          imagePaths: []
+        });
+      }
+
+    case UPPLOAD_POST_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          isUploadingPost: false
+        });
+      }
+
+    case UPPLOAD_POST_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          postList: [].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.postList), [action.data]),
+          isUploadingPost: true
+        });
+      }
+
+    case UPPLOAD_POST_FAILURE:
+      {
+        return _objectSpread({}, state, {
+          isUploadingPost: false
+        });
+      }
+
+    case UPPLOADING_DONE:
+      {
+        return _objectSpread({}, state, {
+          isUploadingPost: false
         });
       }
 
@@ -10225,12 +10318,6 @@ var initialState = {
   // 내 정보
   isUserLoadding: false,
   editing: false
-};
-var dummyUser = {
-  id: 1,
-  nickName: '노우승',
-  userInfo: '안녕하세요 노우승입니다.',
-  photo: []
 };
 var LOG_IN_REQUEST = 'LOG_IN_REQUEST';
 var LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
@@ -10384,14 +10471,14 @@ var EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 
 /***/ }),
 
-/***/ 2:
-/*!*****************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fupload&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cupload.js ***!
-  \*****************************************************************************************************************************************/
+/***/ 3:
+/*!*******************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fupload&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cupload.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cupload.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js!./");
 
 
 /***/ }),
@@ -10407,5 +10494,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[3,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=upload.js.map

@@ -9,13 +9,6 @@ export const initialState = {
   editing: false,
 };
 
-const dummyUser = {
-  id: 1,
-  nickName: '노우승',
-  userInfo: '안녕하세요 노우승입니다.',
-  photo: [],
-};
-
 export const LOG_IN_REQUEST = 'LOG_IN_REQUEST';
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
 export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';

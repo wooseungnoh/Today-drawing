@@ -1,12 +1,20 @@
 import Link from 'next/link';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Container from '../components/container';
 import Text from '../components/text';
 import PhotoView from '../components/photoView';
+import { LOAD_GALLERY_REQUEST } from '../reducers/drawing';
 
 const Gallery = () => {
-  const { photo } = useSelector((state) => state.drawing);
+  const dispatch = useDispatch();
+  const { postList } = useSelector((state) => state.drawing);
+
+  useEffect(() => {
+    dispatch({
+      type: LOAD_GALLERY_REQUEST,
+    });
+  }, []);
 
   return (
     <Container
@@ -28,10 +36,13 @@ const Gallery = () => {
           marginBottom: '30px',
         }}
       >
-        {photo.map((item, id) => (
-          <Link key={id} href="/p/[imgDetail]" as={`/p/${item.id}`}>
+        {postList.map((item, id) => (
+          <Link key={id} href="/p/[imgDetail]" as={`/p/${item._id}`}>
             <a>
-              <PhotoView creater={item.creater} url={item.Img} />
+              <PhotoView
+                creater={item.title}
+                url={`http://localhost:5000/${item.fileUrl}`}
+              />
             </a>
           </Link>
         ))}

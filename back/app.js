@@ -1,7 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import multer from 'multer';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
