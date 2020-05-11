@@ -5,6 +5,7 @@ export const initialState = {
   isLoadding: false,
   imagePaths: [],
   isUploadingPost: false,
+  nowShowingPost: null,
 };
 
 export const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
@@ -28,8 +29,28 @@ export const UPPLOAD_POST_FAILURE = 'UPPLOAD_POST_FAILURE';
 
 export const UPPLOADING_DONE = 'UPPLOADING_DONE';
 
+export const LOAD_PHOTO_DETAIL_REQUEST = 'LOAD_PHOTO_DETAIL_REQUEST';
+export const LOAD_PHOTO_DETAIL_SUCCESS = 'LOAD_PHOTO_DETAIL_SUCCESS';
+export const LOAD_PHOTO_DETAIL_FAILURE = 'LOAD_PHOTO_DETAIL_FAILURE';
+
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOAD_PHOTO_DETAIL_REQUEST: {
+      return {
+        ...state,
+      };
+    }
+    case LOAD_PHOTO_DETAIL_SUCCESS: {
+      return {
+        ...state,
+        nowShowingPost: action.data,
+      };
+    }
+    case LOAD_PHOTO_DETAIL_FAILURE: {
+      return {
+        ...state,
+      };
+    }
     case LOAD_GALLERY_REQUEST: {
       return {
         ...state,

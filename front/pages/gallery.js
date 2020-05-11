@@ -36,16 +36,20 @@ const Gallery = () => {
           marginBottom: '30px',
         }}
       >
-        {postList.map((item, id) => (
-          <Link key={id} href="/p/[imgDetail]" as={`/p/${item._id}`}>
-            <a>
-              <PhotoView
-                creater={item.title}
-                url={`http://localhost:5000/${item.fileUrl}`}
-              />
-            </a>
-          </Link>
-        ))}
+        {postList ? (
+          postList.map((item, id) => (
+            <Link key={id} href="/p/[imgDetail]" as={`/p/${item._id}`}>
+              <a>
+                <PhotoView
+                  creater={item.title}
+                  url={`http://localhost:5000/${item.fileUrl}`}
+                />
+              </a>
+            </Link>
+          ))
+        ) : (
+          <></>
+        )}
       </Container>
     </Container>
   );

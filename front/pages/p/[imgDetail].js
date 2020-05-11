@@ -1,45 +1,60 @@
 import { useRouter } from 'next/router';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Img } from '../../components/uiComponent';
 import Text from '../../components/text';
 import Container from '../../components/container';
+import { LOAD_PHOTO_DETAIL_REQUEST } from '../../reducers/drawing';
 
 const imgDetail = () => {
-  const { photo } = useSelector((state) => state.drawing);
-  const router = useRouter();
+  const dispatch = useDispatch();
+  const { nowShowingPost } = useSelector((state) => state.drawing);
 
+  useEffect(() => {
+    const nowUrl = document.location.href;
+    const slice = nowUrl.split('p/');
+    dispatch({
+      type: LOAD_PHOTO_DETAIL_REQUEST,
+      data: { postId: slice[1] },
+    });
+  }, []);
   return (
     <Container flexDirection="column">
-      <div>
-        <Img src={"#"} width="500px" />
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            textAlign: 'left',
-            margin: '10px 0 ',
-          }}
-        >
-          <Text
-            bold
-            fontSize="big"
-            style={{ padding: '15px 0' }}
-          >{`${"#"}`}</Text>
-          <Text
-            fontSize="medium"
-            style={{ paddingBottom: '30px' }}
-          >{`${"#"}`}</Text>
-          <Text
-            bold
-            fontSize="huge"
-            style={{ paddingBottom: '15px' }}
-          >{`${"#"}`}</Text>
-          <div style={{ width: '500px' }}>
-            <Text>{"#"}</Text>
+      {nowShowingPost ? (
+        <div>
+          <Img
+            src={`http://localhost:5000/${nowShowingPost.fileUrl}`}
+            width="500px"
+          />
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              textAlign: 'left',
+              margin: '10px 0 ',
+            }}
+          >
+            <Text
+              bold
+              fontSize="big"
+              style={{ padding: '15px 0' }}
+            >{`${nowShowingPost.creator.writer}`}</Text>
+            <Text fontSize="medium" style={{ paddingBottom: '30px' }}>{`${
+              nowShowingPost.createAt.split('T')[0]
+            }`}</Text>
+            <Text
+              bold
+              fontSize="huge"
+              style={{ paddingBottom: '15px' }}
+            >{`${nowShowingPost.title}`}</Text>
+            <div style={{ width: '500px' }}>
+              <Text>{nowShowingPost.description}</Text>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <></>
+      )}
     </Container>
   );
 };

@@ -10109,7 +10109,7 @@ var Upload = function Upload() {
 /*!*****************************!*\
   !*** ./reducers/drawing.js ***!
   \*****************************/
-/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, default */
+/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_PHOTO_DETAIL_REQUEST, LOAD_PHOTO_DETAIL_SUCCESS, LOAD_PHOTO_DETAIL_FAILURE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10129,6 +10129,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_SUCCESS", function() { return UPPLOAD_POST_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_FAILURE", function() { return UPPLOAD_POST_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOADING_DONE", function() { return UPPLOADING_DONE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_PHOTO_DETAIL_REQUEST", function() { return LOAD_PHOTO_DETAIL_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_PHOTO_DETAIL_SUCCESS", function() { return LOAD_PHOTO_DETAIL_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_PHOTO_DETAIL_FAILURE", function() { return LOAD_PHOTO_DETAIL_FAILURE; });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 
@@ -10144,7 +10147,8 @@ var initialState = {
   addingPhoto: false,
   isLoadding: false,
   imagePaths: [],
-  isUploadingPost: false
+  isUploadingPost: false,
+  nowShowingPost: null
 };
 var LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
 var LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';
@@ -10160,11 +10164,31 @@ var UPPLOAD_POST_REQUEST = 'UPPLOAD_POST_REQUEST';
 var UPPLOAD_POST_SUCCESS = 'UPPLOAD_POST_SUCCESS';
 var UPPLOAD_POST_FAILURE = 'UPPLOAD_POST_FAILURE';
 var UPPLOADING_DONE = 'UPPLOADING_DONE';
+var LOAD_PHOTO_DETAIL_REQUEST = 'LOAD_PHOTO_DETAIL_REQUEST';
+var LOAD_PHOTO_DETAIL_SUCCESS = 'LOAD_PHOTO_DETAIL_SUCCESS';
+var LOAD_PHOTO_DETAIL_FAILURE = 'LOAD_PHOTO_DETAIL_FAILURE';
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case LOAD_PHOTO_DETAIL_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case LOAD_PHOTO_DETAIL_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          nowShowingPost: action.data
+        });
+      }
+
+    case LOAD_PHOTO_DETAIL_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
     case LOAD_GALLERY_REQUEST:
       {
         return _objectSpread({}, state);
@@ -10471,7 +10495,7 @@ var EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 
 /***/ }),
 
-/***/ 3:
+/***/ 7:
 /*!*******************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fupload&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cupload.js ***!
   \*******************************************************************************************************************/
@@ -10494,5 +10518,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[7,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=upload.js.map

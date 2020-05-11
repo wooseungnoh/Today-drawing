@@ -35,5 +35,16 @@ export const loadedPostList = async (req, res) => {
   } catch (e) {
     console.log(e);
   }
-  res.send('로딩');
+  return;
+};
+
+export const loadedPhotoDetail = async (req, res) => {
+  const { postId } = req.body;
+  try {
+    const post = await Photo.findById(postId).populate('creator');
+    res.json(post);
+  } catch (e) {
+    console.log(e);
+  }
+  return;
 };

@@ -10,6 +10,7 @@ const PHOTO = '/photo';
 const UPLOADPHOTO = '/uploadphoto';
 const UPLOADPOST = '/uploadpost';
 const LOADEDPOST = '/loaded';
+const PHOTODETAIL = '/photodetail';
 
 const routes = {
   login: LOGIN,
@@ -21,6 +22,7 @@ const routes = {
   uploadphoto: UPLOADPHOTO,
   uploadpost: UPLOADPOST,
   loadedpost: LOADEDPOST,
+  photodetail: PHOTODETAIL,
 };
 
 export default routes;
