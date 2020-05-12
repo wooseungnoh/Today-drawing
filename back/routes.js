@@ -11,6 +11,7 @@ const UPLOADPHOTO = '/uploadphoto';
 const UPLOADPOST = '/uploadpost';
 const LOADEDPOST = '/loaded';
 const PHOTODETAIL = '/photodetail';
+const EDITPOST = '/editpost';
 
 const routes = {
   login: LOGIN,
@@ -23,6 +24,7 @@ const routes = {
   uploadpost: UPLOADPOST,
   loadedpost: LOADEDPOST,
   photodetail: PHOTODETAIL,
+  editpost: EDITPOST,
 };
 
 export default routes;

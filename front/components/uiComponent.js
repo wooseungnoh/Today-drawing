@@ -25,18 +25,25 @@ export const NavUl = styled.ul`
   display: flex;
   width: 100%;
   height: 30px;
-  background: #3f3f3f6b;
+  background: #1111116b;
   justify-content: center;
   align-items: center;
   margin: 0;
   padding: 25px 0;
 `;
 export const NavLi = styled.li`
+  display: flex;
+  align-items: center;
   font-weight: bold;
+  height: 50px;
   color: #333;
   list-style: none;
-  margin: 0 10px;
+  margin: 0 15px;
+  transition: 0.5s;
   text-align: center;
+  &:hover {
+    border-bottom: 2px solid #fff;
+  }
 `;
 
 export const Input = styled.input`

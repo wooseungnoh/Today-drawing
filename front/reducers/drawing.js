@@ -6,6 +6,7 @@ export const initialState = {
   imagePaths: [],
   isUploadingPost: false,
   nowShowingPost: null,
+  editingSuccess: false,
 };
 
 export const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
@@ -33,8 +34,30 @@ export const LOAD_PHOTO_DETAIL_REQUEST = 'LOAD_PHOTO_DETAIL_REQUEST';
 export const LOAD_PHOTO_DETAIL_SUCCESS = 'LOAD_PHOTO_DETAIL_SUCCESS';
 export const LOAD_PHOTO_DETAIL_FAILURE = 'LOAD_PHOTO_DETAIL_FAILURE';
 
+export const EDIT_PHOTO_DETAIL_REQUEST = 'EDIT_PHOTO_DETAIL_REQUEST';
+export const EDIT_PHOTO_DETAIL_SUCCESS = 'EDIT_PHOTO_DETAIL_SUCCESS';
+export const EDIT_PHOTO_DETAIL_FAILURE = 'EDIT_PHOTO_DETAIL_FAILURE';
+
 export default (state = initialState, action) => {
   switch (action.type) {
+    case EDIT_PHOTO_DETAIL_REQUEST: {
+      return {
+        ...state,
+        editingSuccess: false,
+      };
+    }
+    case EDIT_PHOTO_DETAIL_SUCCESS: {
+      return {
+        ...state,
+        editingSuccess: true,
+      };
+    }
+    case EDIT_PHOTO_DETAIL_FAILURE: {
+      return {
+        ...state,
+        editingSuccess: true,
+      };
+    }
     case LOAD_PHOTO_DETAIL_REQUEST: {
       return {
         ...state,
@@ -54,17 +77,20 @@ export default (state = initialState, action) => {
     case LOAD_GALLERY_REQUEST: {
       return {
         ...state,
+        isLoadding: true,
       };
     }
     case LOAD_GALLERY_SUCCESS: {
       return {
         ...state,
         postList: action.data,
+        isLoadding: false,
       };
     }
     case LOAD_GALLERY_FAILURE: {
       return {
         ...state,
+        isLoadding: false,
       };
     }
     case MODAL_ON: {

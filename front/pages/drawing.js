@@ -189,7 +189,9 @@ const Upload = () => {
                 }}
               ></div>
               {colorPicker ? (
-                <div style={{ position: 'relative', left: '-200px', top:'10px' }}>
+                <div
+                  style={{ position: 'relative', left: '-200px', top: '10px' }}
+                >
                   <CompactPicker
                     color={canvasState.strokeStyle}
                     onChangeComplete={handleChangeColor}
@@ -201,7 +203,9 @@ const Upload = () => {
             </Li>
           </Ul>
         </Container>
-        <Button style={{marginTop:'25px'}} onClick={handleSave}>SAVE</Button>
+        <Button style={{ marginTop: '25px' }} onClick={handleSave}>
+          SAVE
+        </Button>
       </Container>
     </>
   );

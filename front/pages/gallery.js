@@ -19,10 +19,11 @@ const Gallery = () => {
   return (
     <Container
       flexDirection="column"
+      hsize="750px"
+      wsize="70%"
       style={{
-        minHeight: '700px',
         justifyContent: 'flex-start',
-        marginTop: '100px',
+        overflowY: 'scroll',
       }}
     >
       <Text>오늘의 그림들</Text>

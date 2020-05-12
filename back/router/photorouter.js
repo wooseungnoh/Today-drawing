@@ -7,11 +7,11 @@ import {
   postUploadPost,
   loadedPostList,
   loadedPhotoDetail,
+  editPost,
 } from '../controller/photoController';
 
 const photoRouter = express();
 
-photoRouter.get(routes.photo, getPhoto);
 photoRouter.post(routes.uploadphoto, uploadPhoto, postUploadPhoto);
 
 photoRouter.post(routes.uploadpost, postUploadPost);
@@ -19,5 +19,7 @@ photoRouter.post(routes.uploadpost, postUploadPost);
 photoRouter.get(routes.loadedpost, loadedPostList);
 
 photoRouter.post(routes.photodetail, loadedPhotoDetail);
+
+photoRouter.post(routes.editpost, editPost);
 
 export default photoRouter;

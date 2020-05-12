@@ -1,6 +1,5 @@
 import Photo from '../model/Photo';
-
-export const getPhoto = (req, res) => {};
+import mongoose from 'mongoose';
 
 export const postUploadPhoto = (req, res) => {
   res.json(req.file.filename);
@@ -39,10 +38,43 @@ export const loadedPostList = async (req, res) => {
 };
 
 export const loadedPhotoDetail = async (req, res) => {
-  const { postId } = req.body;
+  const {
+    body: { postId },
+    user,
+  } = req;
   try {
     const post = await Photo.findById(postId).populate('creator');
-    res.json(post);
+    if (user) {
+      console.log(user);
+      const data = {
+        post,
+        user,
+      };
+      res.json(data);
+    } else {
+      const data = {
+        post,
+        user: '',
+      };
+      res.json(data);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+  return;
+};
+
+export const editPost = async (req, res) => {
+  const { id, title, description } = req.body;
+  mongoose.set('useFindAndModify', false);
+
+  try {
+    const post = await Photo.findByIdAndUpdate(id, {
+      title,
+      description,
+    });
+    console.log(post);
+    res.send('수정완료');
   } catch (e) {
     console.log(e);
   }

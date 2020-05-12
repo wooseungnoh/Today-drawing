@@ -14,6 +14,9 @@ import {
   LOAD_PHOTO_DETAIL_FAILURE,
   LOAD_PHOTO_DETAIL_SUCCESS,
   LOAD_PHOTO_DETAIL_REQUEST,
+  EDIT_PHOTO_DETAIL_SUCCESS,
+  EDIT_PHOTO_DETAIL_FAILURE,
+  EDIT_PHOTO_DETAIL_REQUEST,
 } from '../reducers/drawing';
 
 // 미리보기 사진 업로드
@@ -124,11 +127,38 @@ function* watchloadedPostDetail() {
   yield takeEvery(LOAD_PHOTO_DETAIL_REQUEST, loadedPostDetail);
 }
 
+// 포스트 에딧
+
+function editPostDetailApi(urldata) {
+  return axios.post('http://localhost:5000/upload/editpost', urldata, {
+    withCredentials: true,
+  });
+}
+
+function* editPostDetail(action) {
+  try {
+    const result = yield call(editPostDetailApi, action.data);
+    yield put({
+      type: EDIT_PHOTO_DETAIL_SUCCESS,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: EDIT_PHOTO_DETAIL_FAILURE,
+    });
+  }
+}
+
+function* watchEditPostDetail() {
+  yield takeEvery(EDIT_PHOTO_DETAIL_REQUEST, editPostDetail);
+}
+
 export default function* drawingSaga() {
   yield all([
     fork(watchAddPhoto),
     fork(watchAddPost),
     fork(watchloadedPost),
     fork(watchloadedPostDetail),
+    fork(watchEditPostDetail),
   ]);
 }

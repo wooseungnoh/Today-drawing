@@ -45,7 +45,9 @@ const Root = ({ Component, store }) => (
           display: flex;
           justify-content: center;
           align-items: center;
-          background: #eeeeee;
+          background: url('static/background_img.jpg') no-repeat;
+          background-size:100% 110%;
+          background-position:0 28%;
         }
         a,
         h1,
@@ -60,7 +62,7 @@ const Root = ({ Component, store }) => (
           display: inline-block;
         }
         a {
-          color: #333;
+          color: #eee;
         }
       `}
     </style>

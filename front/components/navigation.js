@@ -54,7 +54,7 @@ const Navigation = () => {
                 color: 'black',
                 fontSize: '16px',
                 fontWeight: 'bold',
-                color: '#333333',
+                color: '#eee',
               }}
             >
               로그아웃
