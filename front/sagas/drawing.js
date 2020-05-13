@@ -11,12 +11,15 @@ import {
   LOAD_GALLERY_SUCCESS,
   LOAD_GALLERY_FAILURE,
   LOAD_GALLERY_REQUEST,
-  LOAD_PHOTO_DETAIL_FAILURE,
-  LOAD_PHOTO_DETAIL_SUCCESS,
-  LOAD_PHOTO_DETAIL_REQUEST,
-  EDIT_PHOTO_DETAIL_SUCCESS,
-  EDIT_PHOTO_DETAIL_FAILURE,
-  EDIT_PHOTO_DETAIL_REQUEST,
+  LOAD_POST_DETAIL_FAILURE,
+  LOAD_POST_DETAIL_SUCCESS,
+  LOAD_POST_DETAIL_REQUEST,
+  EDIT_POST_DETAIL_SUCCESS,
+  EDIT_POST_DETAIL_FAILURE,
+  EDIT_POST_DETAIL_REQUEST,
+  DELETE_POST_SUCCESS,
+  DELETE_POST_FAILURE,
+  DELETE_POST_REQUEST,
 } from '../reducers/drawing';
 
 // 미리보기 사진 업로드
@@ -112,19 +115,19 @@ function* loadedPostDetail(action) {
   try {
     const result = yield call(loadedPostDetailApi, action.data);
     yield put({
-      type: LOAD_PHOTO_DETAIL_SUCCESS,
+      type: LOAD_POST_DETAIL_SUCCESS,
       data: result.data,
     });
   } catch (e) {
     console.log(e);
     yield put({
-      type: LOAD_PHOTO_DETAIL_FAILURE,
+      type: LOAD_POST_DETAIL_FAILURE,
     });
   }
 }
 
 function* watchloadedPostDetail() {
-  yield takeEvery(LOAD_PHOTO_DETAIL_REQUEST, loadedPostDetail);
+  yield takeEvery(LOAD_POST_DETAIL_REQUEST, loadedPostDetail);
 }
 
 // 포스트 에딧
@@ -137,20 +140,46 @@ function editPostDetailApi(urldata) {
 
 function* editPostDetail(action) {
   try {
-    const result = yield call(editPostDetailApi, action.data);
+    yield call(editPostDetailApi, action.data);
     yield put({
-      type: EDIT_PHOTO_DETAIL_SUCCESS,
+      type: EDIT_POST_DETAIL_SUCCESS,
     });
   } catch (e) {
     console.log(e);
     yield put({
-      type: EDIT_PHOTO_DETAIL_FAILURE,
+      type: EDIT_POST_DETAIL_FAILURE,
     });
   }
 }
 
 function* watchEditPostDetail() {
-  yield takeEvery(EDIT_PHOTO_DETAIL_REQUEST, editPostDetail);
+  yield takeEvery(EDIT_POST_DETAIL_REQUEST, editPostDetail);
+}
+
+// 포스트 지우기
+
+function deletePostApi(targetPostData) {
+  return axios.post('http://localhost:5000/upload/deletepost', targetPostData, {
+    withCredentials: true,
+  });
+}
+
+function* deletePost(action) {
+  try {
+    yield call(deletePostApi, action.data);
+    yield put({
+      type: DELETE_POST_SUCCESS,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: DELETE_POST_FAILURE,
+    });
+  }
+}
+
+function* watchDeletePost() {
+  yield takeEvery(DELETE_POST_REQUEST, deletePost);
 }
 
 export default function* drawingSaga() {
@@ -160,5 +189,6 @@ export default function* drawingSaga() {
     fork(watchloadedPost),
     fork(watchloadedPostDetail),
     fork(watchEditPostDetail),
+    fork(watchDeletePost),
   ]);
 }

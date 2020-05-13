@@ -52,7 +52,6 @@ export const signup = async (req, res, next) => {
     });
     await User.register(user, password);
     next();
-    7;
   } catch (e) {
     console.log(e);
     res.send('가입실패');
@@ -65,9 +64,8 @@ export const editing = async (req, res) => {
     me: { _id, email, name },
     writerData: { userInfo, writer },
   } = req.body;
-  mongoose.set('useFindAndModify', false);
   try {
-    await User.findOneAndUpdate(_id, {
+    await User.findByIdAndUpdate(_id, {
       name,
       email,
       userInfo,

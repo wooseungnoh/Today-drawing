@@ -1,5 +1,50 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\p\\[imgDetail].js"],{
 
+/***/ "../back/routes.js":
+/*!*************************!*\
+  !*** ../back/routes.js ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//global
+const LOGIN = '/login';
+const LOGOUT = '/logout';
+const SIGNUP = '/signup';
+const EDITING = '/editing';
+const LOAD = '/load';
+
+//photo
+const PHOTO = '/photo';
+const UPLOADPHOTO = '/uploadphoto';
+const UPLOADPOST = '/uploadpost';
+const LOADEDPOST = '/loaded';
+const PHOTODETAIL = '/photodetail';
+const EDITPOST = '/editpost';
+const DELETEPOST = '/deletepost';
+
+const routes = {
+  login: LOGIN,
+  logout: LOGOUT,
+  signup: SIGNUP,
+  editing: EDITING,
+  load: LOAD,
+  photo: PHOTO,
+  uploadphoto: UPLOADPHOTO,
+  uploadpost: UPLOADPOST,
+  loadedpost: LOADEDPOST,
+  photodetail: PHOTODETAIL,
+  editpost: EDITPOST,
+  deletepost: DELETEPOST,
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (routes);
+
+
+/***/ }),
+
 /***/ "./components/container.js":
 /*!*********************************!*\
   !*** ./components/container.js ***!
@@ -84,37 +129,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Form", function() { return Form; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputContainer", function() { return InputContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Img", function() { return Img; });
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
-var Button = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].button.withConfig({
+
+function _templateObject2() {
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n          min-height: 200px;\n        "]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n          height: 100px;\n        "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+
+var Button = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button.withConfig({
   displayName: "uiComponent__Button",
   componentId: "sc-4dqk1x-0"
 })(["margin:10px;border:none;outline:none;width:300px;height:35px;background:#bbb;border-radius:5px;transition:0.3s;color:#444;&:hover{background:#ccc;}&:active{background:#888;}"]);
-var NavUl = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].ul.withConfig({
+var NavUl = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].ul.withConfig({
   displayName: "uiComponent__NavUl",
   componentId: "sc-4dqk1x-1"
 })(["position:fixed;z-index:99;top:0;display:flex;width:100%;height:30px;background:#1111116b;justify-content:center;align-items:center;margin:0;padding:25px 0;"]);
-var NavLi = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].li.withConfig({
+var NavLi = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].li.withConfig({
   displayName: "uiComponent__NavLi",
   componentId: "sc-4dqk1x-2"
 })(["display:flex;align-items:center;font-weight:bold;height:50px;color:#333;list-style:none;margin:0 15px;transition:0.5s;text-align:center;&:hover{border-bottom:2px solid #fff;}"]);
-var Input = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].input.withConfig({
+var Input = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].input.withConfig({
   displayName: "uiComponent__Input",
   componentId: "sc-4dqk1x-3"
 })(["width:300px;height:35px;border-radius:5px;outline:none;border:1px solid #ccc;margin:10px;text-align:center;"]);
-var Textarea = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].textarea.withConfig({
+var Textarea = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].textarea.withConfig({
   displayName: "uiComponent__Textarea",
   componentId: "sc-4dqk1x-4"
-})(["width:300px;min-height:200px;border-radius:5px;border:1px solid #ccc;margin:10px;text-align:center;padding:10px;"]);
-var Form = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].form.withConfig({
+})(["width:300px;", " border-radius:5px;border:1px solid #ccc;margin:10px;text-align:center;padding:10px;"], function (_ref) {
+  var edit = _ref.edit;
+  return edit ? Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(_templateObject()) : Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(_templateObject2());
+});
+var Form = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].form.withConfig({
   displayName: "uiComponent__Form",
   componentId: "sc-4dqk1x-5"
 })(["display:flex;justify-content:center;align-items:center;flex-direction:column;"]);
-var InputContainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+var InputContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
   displayName: "uiComponent__InputContainer",
   componentId: "sc-4dqk1x-6"
 })(["height:10px;display:flex;flex-direction:row-reverse;justify-content:center;align-items:center;transform:rotate(-90deg);position:absolute;right:10px;"]);
-var Img = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].img.withConfig({
+var Img = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].img.withConfig({
   displayName: "uiComponent__Img",
   componentId: "sc-4dqk1x-7"
 })([""]);
@@ -357,6 +428,30 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   }
 
   return target;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _taggedTemplateLiteral; });
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
 }
 
 /***/ }),
@@ -9680,19 +9775,21 @@ module.exports = function(originalModule) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var next_Router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/Router */ "./node_modules/next/Router.js");
-/* harmony import */ var next_Router__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_Router__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_Router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/Router */ "./node_modules/next/Router.js");
+/* harmony import */ var next_Router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_Router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_uiComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/uiComponent */ "./components/uiComponent.js");
 /* harmony import */ var _components_text__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/text */ "./components/text.js");
 /* harmony import */ var _components_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/container */ "./components/container.js");
 /* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../reducers/drawing */ "./reducers/drawing.js");
+/* harmony import */ var _back_routes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../back/routes */ "../back/routes.js");
 var _this = undefined,
     _jsxFileName = "D:\\todayDraw\\front\\pages\\p\\[imgDetail].js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -9704,21 +9801,27 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 var imgDetail = function imgDetail() {
   var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       editing = _useState[0],
       setEditing = _useState[1];
 
   var _useSelector = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (state) {
+    return state.user;
+  }),
+      me = _useSelector.me;
+
+  var _useSelector2 = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (state) {
     return state.drawing;
   }),
-      nowShowingPost = _useSelector.nowShowingPost,
-      editingSuccess = _useSelector.editingSuccess;
+      nowShowingPost = _useSelector2.nowShowingPost,
+      editingSuccess = _useSelector2.editingSuccess,
+      deletePostSuccess = _useSelector2.deletePostSuccess;
 
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var nowUrl = document.location.href;
     var slice = nowUrl.split('p/');
     dispatch({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["LOAD_PHOTO_DETAIL_REQUEST"],
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["LOAD_POST_DETAIL_REQUEST"],
       data: {
         postId: slice[1]
       }
@@ -9733,42 +9836,80 @@ var imgDetail = function imgDetail() {
 
   var onChangeData = function onChangeData(e) {
     e.preventDefault();
-    dispatch({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["EDIT_PHOTO_DETAIL_REQUEST"],
-      data: {
-        id: nowShowingPost.post._id,
-        title: e.target.childNodes[2].value,
-        description: e.target.childNodes[4].value
-      }
-    });
+
+    if (me === null) {
+      alert('권한이 없습니다.');
+      location.href = "".concat(document.location.href);
+    } else if (me._id === nowShowingPost.post.creator._id) {
+      dispatch({
+        type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["EDIT_POST_DETAIL_REQUEST"],
+        data: {
+          id: nowShowingPost.post._id,
+          title: e.target.childNodes[2].value,
+          description: e.target.childNodes[4].value
+        }
+      });
+    } else {
+      alert('권한이 없습니다.');
+      location.href = "".concat(document.location.href);
+    }
+
     setEditing(false);
   };
 
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (editingSuccess) {
       var nowUrl = document.location.href;
       var slice = nowUrl.split('p/');
       dispatch({
-        type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["LOAD_PHOTO_DETAIL_REQUEST"],
+        type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["LOAD_POST_DETAIL_REQUEST"],
         data: {
           postId: slice[1]
         }
       });
     }
   }, [editingSuccess]);
+
+  var onDeletePost = function onDeletePost() {
+    if (confirm('정말 게시물을 삭제하시겠습니까?') === true) {
+      if (me === null) {
+        alert('권한이 없습니다.');
+        location.href = "".concat(document.location.href);
+      } else if (me._id === nowShowingPost.post.creator._id) {
+        dispatch({
+          type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["DELETE_POST_REQUEST"],
+          data: {
+            id: nowShowingPost.post._id
+          }
+        });
+      } else {
+        alert('권한이 없습니다.');
+        location.href = "".concat(document.location.href);
+      }
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (deletePostSuccess) {
+      next_Router__WEBPACK_IMPORTED_MODULE_1___default.a.push('/gallery');
+      dispatch({
+        type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["DELETE_STATE_OFF"]
+      });
+    }
+  }, [deletePostSuccess]);
   return __jsx(_components_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
     flexDirection: "column",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 97,
       columnNumber: 5
     }
   }, nowShowingPost ? __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 99,
       columnNumber: 9
     }
   }, __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Img"], {
@@ -9777,7 +9918,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 100,
       columnNumber: 11
     }
   }), __jsx("div", {
@@ -9790,10 +9931,10 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 104,
       columnNumber: 11
     }
-  }, editing ? __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx("form", {
+  }, editing ? __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("form", {
     onSubmit: onChangeData,
     style: {
       display: 'flex',
@@ -9802,20 +9943,32 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74,
+      lineNumber: 114,
       columnNumber: 17
     }
   }, __jsx("div", {
     style: {
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center'
+      alignItems: 'center',
+      height: '65px'
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 118,
       columnNumber: 19
+    }
+  }, __jsx("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 126,
+      columnNumber: 21
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
     bold: true,
@@ -9826,8 +9979,8 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85,
-      columnNumber: 21
+      lineNumber: 127,
+      columnNumber: 23
     }
   }, "".concat(nowShowingPost.post.creator.writer)), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
     fontSize: "medium",
@@ -9837,24 +9990,24 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90,
-      columnNumber: 21
+      lineNumber: 130,
+      columnNumber: 23
     }
-  }, "".concat(nowShowingPost.post.createAt.split('T')[0])), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+  }, "".concat(nowShowingPost.post.createAt.split('T')[0]))), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     style: {
       width: '80px'
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94,
+      lineNumber: 134,
       columnNumber: 21
     }
   }, "\uC791\uC131\uC644\uB8CC")), __jsx("label", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96,
+      lineNumber: 136,
       columnNumber: 19
     }
   }, "\uC81C\uBAA9"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Input"], {
@@ -9866,28 +10019,30 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97,
+      lineNumber: 137,
       columnNumber: 19
     }
   }), __jsx("label", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102,
+      lineNumber: 142,
       columnNumber: 19
     }
   }, "\uB0B4\uC6A9"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Textarea"], {
+    edit: true,
     style: {
-      width: '100%'
+      width: '100%',
+      resize: 'none'
     },
     defaultValue: nowShowingPost.post.description,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103,
+      lineNumber: 143,
       columnNumber: 19
     }
-  }))) : __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx("div", {
+  }))) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("div", {
     style: {
       display: 'flex',
       justifyContent: 'space-between',
@@ -9896,7 +10051,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111,
+      lineNumber: 152,
       columnNumber: 17
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -9908,41 +10063,41 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118,
+      lineNumber: 159,
       columnNumber: 19
     }
   }, "".concat(nowShowingPost.post.creator.writer)), nowShowingPost.post.creator._id === nowShowingPost.user._id ? __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 125,
+      lineNumber: 164,
       columnNumber: 21
     }
   }, __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     style: {
       width: '80px',
-      margin: "2.5px"
+      margin: '2.5px'
     },
     onClick: handleEditingState,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 126,
+      lineNumber: 165,
       columnNumber: 23
     }
   }, "\uC218\uC815"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     style: {
       width: '80px',
-      margin: "2.5px"
+      margin: '2.5px'
     },
-    onClick: handleEditingState,
+    onClick: onDeletePost,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 132,
+      lineNumber: 171,
       columnNumber: 23
     }
-  }, "\uC0AD\uC81C")) : __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null)), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, "\uC0AD\uC81C")) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null)), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
     fontSize: "medium",
     style: {
       paddingBottom: '30px'
@@ -9950,7 +10105,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 143,
+      lineNumber: 182,
       columnNumber: 17
     }
   }, "".concat(nowShowingPost.post.createAt.split('T')[0])), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -9962,7 +10117,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 146,
+      lineNumber: 185,
       columnNumber: 17
     }
   }, nowShowingPost.post.title), __jsx("div", {
@@ -9972,17 +10127,17 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149,
+      lineNumber: 188,
       columnNumber: 17
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 150,
+      lineNumber: 189,
       columnNumber: 19
     }
-  }, nowShowingPost.post.description))))) : __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null));
+  }, nowShowingPost.post.description))))) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (imgDetail);
@@ -9993,7 +10148,7 @@ var imgDetail = function imgDetail() {
 /*!*****************************!*\
   !*** ./reducers/drawing.js ***!
   \*****************************/
-/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_PHOTO_DETAIL_REQUEST, LOAD_PHOTO_DETAIL_SUCCESS, LOAD_PHOTO_DETAIL_FAILURE, EDIT_PHOTO_DETAIL_REQUEST, EDIT_PHOTO_DETAIL_SUCCESS, EDIT_PHOTO_DETAIL_FAILURE, default */
+/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10013,12 +10168,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_SUCCESS", function() { return UPPLOAD_POST_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_FAILURE", function() { return UPPLOAD_POST_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOADING_DONE", function() { return UPPLOADING_DONE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_PHOTO_DETAIL_REQUEST", function() { return LOAD_PHOTO_DETAIL_REQUEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_PHOTO_DETAIL_SUCCESS", function() { return LOAD_PHOTO_DETAIL_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_PHOTO_DETAIL_FAILURE", function() { return LOAD_PHOTO_DETAIL_FAILURE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_PHOTO_DETAIL_REQUEST", function() { return EDIT_PHOTO_DETAIL_REQUEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_PHOTO_DETAIL_SUCCESS", function() { return EDIT_PHOTO_DETAIL_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_PHOTO_DETAIL_FAILURE", function() { return EDIT_PHOTO_DETAIL_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_POST_DETAIL_REQUEST", function() { return LOAD_POST_DETAIL_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_POST_DETAIL_SUCCESS", function() { return LOAD_POST_DETAIL_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_POST_DETAIL_FAILURE", function() { return LOAD_POST_DETAIL_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_POST_DETAIL_REQUEST", function() { return EDIT_POST_DETAIL_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_POST_DETAIL_SUCCESS", function() { return EDIT_POST_DETAIL_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_POST_DETAIL_FAILURE", function() { return EDIT_POST_DETAIL_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_REQUEST", function() { return DELETE_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_SUCCESS", function() { return DELETE_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_FAILURE", function() { return DELETE_POST_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_STATE_OFF", function() { return DELETE_STATE_OFF; });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 
@@ -10036,7 +10195,8 @@ var initialState = {
   imagePaths: [],
   isUploadingPost: false,
   nowShowingPost: null,
-  editingSuccess: false
+  editingSuccess: false,
+  deletePostSuccess: false
 };
 var LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
 var LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';
@@ -10052,51 +10212,83 @@ var UPPLOAD_POST_REQUEST = 'UPPLOAD_POST_REQUEST';
 var UPPLOAD_POST_SUCCESS = 'UPPLOAD_POST_SUCCESS';
 var UPPLOAD_POST_FAILURE = 'UPPLOAD_POST_FAILURE';
 var UPPLOADING_DONE = 'UPPLOADING_DONE';
-var LOAD_PHOTO_DETAIL_REQUEST = 'LOAD_PHOTO_DETAIL_REQUEST';
-var LOAD_PHOTO_DETAIL_SUCCESS = 'LOAD_PHOTO_DETAIL_SUCCESS';
-var LOAD_PHOTO_DETAIL_FAILURE = 'LOAD_PHOTO_DETAIL_FAILURE';
-var EDIT_PHOTO_DETAIL_REQUEST = 'EDIT_PHOTO_DETAIL_REQUEST';
-var EDIT_PHOTO_DETAIL_SUCCESS = 'EDIT_PHOTO_DETAIL_SUCCESS';
-var EDIT_PHOTO_DETAIL_FAILURE = 'EDIT_PHOTO_DETAIL_FAILURE';
+var LOAD_POST_DETAIL_REQUEST = 'LOAD_POST_DETAIL_REQUEST';
+var LOAD_POST_DETAIL_SUCCESS = 'LOAD_POST_DETAIL_SUCCESS';
+var LOAD_POST_DETAIL_FAILURE = 'LOAD_POST_DETAIL_FAILURE';
+var EDIT_POST_DETAIL_REQUEST = 'EDIT_POST_DETAIL_REQUEST';
+var EDIT_POST_DETAIL_SUCCESS = 'EDIT_POST_DETAIL_SUCCESS';
+var EDIT_POST_DETAIL_FAILURE = 'EDIT_POST_DETAIL_FAILURE';
+var DELETE_POST_REQUEST = 'DELETE_POST_REQUEST';
+var DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
+var DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
+var DELETE_STATE_OFF = 'DELETE_STATE_OFF';
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case EDIT_PHOTO_DETAIL_REQUEST:
+    case DELETE_STATE_OFF:
+      {
+        return _objectSpread({}, state, {
+          deletePostSuccess: false
+        });
+      }
+
+    case DELETE_POST_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          deletePostSuccess: false
+        });
+      }
+
+    case DELETE_POST_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          deletePostSuccess: true
+        });
+      }
+
+    case DELETE_POST_FAILURE:
+      {
+        return _objectSpread({}, state, {
+          deletePostSuccess: false
+        });
+      }
+
+    case EDIT_POST_DETAIL_REQUEST:
       {
         return _objectSpread({}, state, {
           editingSuccess: false
         });
       }
 
-    case EDIT_PHOTO_DETAIL_SUCCESS:
+    case EDIT_POST_DETAIL_SUCCESS:
       {
         return _objectSpread({}, state, {
           editingSuccess: true
         });
       }
 
-    case EDIT_PHOTO_DETAIL_FAILURE:
+    case EDIT_POST_DETAIL_FAILURE:
       {
         return _objectSpread({}, state, {
           editingSuccess: true
         });
       }
 
-    case LOAD_PHOTO_DETAIL_REQUEST:
+    case LOAD_POST_DETAIL_REQUEST:
       {
         return _objectSpread({}, state);
       }
 
-    case LOAD_PHOTO_DETAIL_SUCCESS:
+    case LOAD_POST_DETAIL_SUCCESS:
       {
         return _objectSpread({}, state, {
           nowShowingPost: action.data
         });
       }
 
-    case LOAD_PHOTO_DETAIL_FAILURE:
+    case LOAD_POST_DETAIL_FAILURE:
       {
         return _objectSpread({}, state);
       }
@@ -10212,7 +10404,7 @@ var EDIT_PHOTO_DETAIL_FAILURE = 'EDIT_PHOTO_DETAIL_FAILURE';
 
 /***/ }),
 
-/***/ 3:
+/***/ 5:
 /*!*********************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fp%2F%5BimgDetail%5D&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cp%5C%5BimgDetail%5D.js ***!
   \*********************************************************************************************************************************************/
@@ -10235,5 +10427,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[5,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=[imgDetail].js.map

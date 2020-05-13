@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
   margin: 10px;
@@ -58,7 +58,14 @@ export const Input = styled.input`
 
 export const Textarea = styled.textarea`
   width: 300px;
-  min-height: 200px;
+  ${({ edit }) =>
+    edit
+      ? css`
+          height: 100px;
+        `
+      : css`
+          min-height: 200px;
+        `}
   border-radius: 5px;
   border: 1px solid #ccc;
   margin: 10px;

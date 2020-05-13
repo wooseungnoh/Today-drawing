@@ -66,15 +66,24 @@ export const loadedPhotoDetail = async (req, res) => {
 
 export const editPost = async (req, res) => {
   const { id, title, description } = req.body;
-  mongoose.set('useFindAndModify', false);
 
   try {
     const post = await Photo.findByIdAndUpdate(id, {
       title,
       description,
     });
-    console.log(post);
     res.send('수정완료');
+  } catch (e) {
+    console.log(e);
+  }
+  return;
+};
+
+export const deletePost = async (req, res) => {
+  const { id } = req.body;
+  try {
+    const post = await Photo.findByIdAndRemove({ _id: id });
+    res.send('삭제완료');
   } catch (e) {
     console.log(e);
   }

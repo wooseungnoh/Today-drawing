@@ -3,11 +3,11 @@ import routes from '../routes';
 import { uploadPhoto } from '../middlewares';
 import {
   postUploadPhoto,
-  getPhoto,
   postUploadPost,
   loadedPostList,
   loadedPhotoDetail,
   editPost,
+  deletePost,
 } from '../controller/photoController';
 
 const photoRouter = express();
@@ -21,5 +21,7 @@ photoRouter.get(routes.loadedpost, loadedPostList);
 photoRouter.post(routes.photodetail, loadedPhotoDetail);
 
 photoRouter.post(routes.editpost, editPost);
+
+photoRouter.post(routes.deletepost, deletePost)
 
 export default photoRouter;

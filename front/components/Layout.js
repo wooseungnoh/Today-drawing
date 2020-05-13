@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { LOAD_USER_REQUEST } from '../reducers/user';
 
 const AppLayout = ({ children }) => {
-  const { isUserLoadding } = useSelector((state) => state.user);
+  const { isUserLoadding, me } = useSelector((state) => state.user);
   const { isLoadding } = useSelector((state) => state.drawing);
   const dispatch = useDispatch();
 

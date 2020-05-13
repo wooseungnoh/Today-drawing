@@ -23,7 +23,7 @@ const Root = ({ Component, store }) => (
       />
       <script
         src="https://kit.fontawesome.com/308bd8919c.js"
-        crossorigin="anonymous"
+        crossOrigin="anonymous"
       />
     </Head>
     <AppLayout>
@@ -46,8 +46,8 @@ const Root = ({ Component, store }) => (
           justify-content: center;
           align-items: center;
           background: url('static/background_img.jpg') no-repeat;
-          background-size:100% 110%;
-          background-position:0 28%;
+          background-size: 100% 110%;
+          background-position: 0 28%;
         }
         a,
         h1,

@@ -67,6 +67,8 @@ function* watchLogin() {
   yield takeEvery(LOG_IN_REQUEST, login);
 }
 
+// 사용자 프로필 수정
+
 function editingAPI(userID) {
   return axios.post('http://localhost:5000/editing', userID, {
     withCredentials: true,

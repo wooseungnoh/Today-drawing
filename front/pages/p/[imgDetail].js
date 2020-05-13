@@ -1,18 +1,22 @@
-import Router from 'next/Router';
 import React, { useEffect, useState } from 'react';
+import Router from 'next/Router';
 import { useSelector, useDispatch } from 'react-redux';
 import { Img, Input, Textarea, Button } from '../../components/uiComponent';
 import Text from '../../components/text';
 import Container from '../../components/container';
 import {
-  LOAD_PHOTO_DETAIL_REQUEST,
-  EDIT_PHOTO_DETAIL_REQUEST,
+  LOAD_POST_DETAIL_REQUEST,
+  EDIT_POST_DETAIL_REQUEST,
+  DELETE_POST_REQUEST,
+  DELETE_STATE_OFF,
 } from '../../reducers/drawing';
+import routes from '../../../back/routes';
 
 const imgDetail = () => {
   const dispatch = useDispatch();
   const [editing, setEditing] = useState(false);
-  const { nowShowingPost, editingSuccess } = useSelector(
+  const { me } = useSelector((state) => state.user);
+  const { nowShowingPost, editingSuccess, deletePostSuccess } = useSelector(
     (state) => state.drawing,
   );
 
@@ -20,7 +24,7 @@ const imgDetail = () => {
     const nowUrl = document.location.href;
     const slice = nowUrl.split('p/');
     dispatch({
-      type: LOAD_PHOTO_DETAIL_REQUEST,
+      type: LOAD_POST_DETAIL_REQUEST,
       data: { postId: slice[1] },
     });
   }, []);
@@ -31,14 +35,22 @@ const imgDetail = () => {
 
   const onChangeData = (e) => {
     e.preventDefault();
-    dispatch({
-      type: EDIT_PHOTO_DETAIL_REQUEST,
-      data: {
-        id: nowShowingPost.post._id,
-        title: e.target.childNodes[2].value,
-        description: e.target.childNodes[4].value,
-      },
-    });
+    if (me === null) {
+      alert('권한이 없습니다.');
+      location.href = `${document.location.href}`;
+    } else if (me._id === nowShowingPost.post.creator._id) {
+      dispatch({
+        type: EDIT_POST_DETAIL_REQUEST,
+        data: {
+          id: nowShowingPost.post._id,
+          title: e.target.childNodes[2].value,
+          description: e.target.childNodes[4].value,
+        },
+      });
+    } else {
+      alert('권한이 없습니다.');
+      location.href = `${document.location.href}`;
+    }
     setEditing(false);
   };
 
@@ -47,11 +59,39 @@ const imgDetail = () => {
       const nowUrl = document.location.href;
       const slice = nowUrl.split('p/');
       dispatch({
-        type: LOAD_PHOTO_DETAIL_REQUEST,
+        type: LOAD_POST_DETAIL_REQUEST,
         data: { postId: slice[1] },
       });
     }
   }, [editingSuccess]);
+
+  const onDeletePost = () => {
+    if (confirm('정말 게시물을 삭제하시겠습니까?') === true) {
+      if (me === null) {
+        alert('권한이 없습니다.');
+        location.href = `${document.location.href}`;
+      } else if (me._id === nowShowingPost.post.creator._id) {
+        dispatch({
+          type: DELETE_POST_REQUEST,
+          data: {
+            id: nowShowingPost.post._id,
+          },
+        });
+      } else {
+        alert('권한이 없습니다.');
+        location.href = `${document.location.href}`;
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (deletePostSuccess) {
+      Router.push('/gallery');
+      dispatch({
+        type: DELETE_STATE_OFF,
+      });
+    }
+  }, [deletePostSuccess]);
 
   return (
     <Container flexDirection="column">
@@ -80,17 +120,17 @@ const imgDetail = () => {
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
+                      height: '65px',
                     }}
                   >
-                    <Text
-                      bold
-                      fontSize="big"
-                      style={{ padding: '15px 0' }}
-                    >{`${nowShowingPost.post.creator.writer}`}</Text>
-                    <Text
-                      fontSize="medium"
-                      style={{ paddingBottom: '30px' }}
-                    >{`${nowShowingPost.post.createAt.split('T')[0]}`}</Text>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <Text bold fontSize="big" style={{ padding: '15px 0' }}>
+                        {`${nowShowingPost.post.creator.writer}`}
+                      </Text>
+                      <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
+                        {`${nowShowingPost.post.createAt.split('T')[0]}`}
+                      </Text>
+                    </div>
                     <Button style={{ width: '80px' }}>작성완료</Button>
                   </div>
                   <label>제목</label>
@@ -101,9 +141,10 @@ const imgDetail = () => {
                   />
                   <label>내용</label>
                   <Textarea
-                    style={{ width: '100%' }}
+                    edit
+                    style={{ width: '100%', resize: 'none' }}
                     defaultValue={nowShowingPost.post.description}
-                  ></Textarea>
+                  />
                 </form>
               </>
             ) : (
@@ -115,23 +156,21 @@ const imgDetail = () => {
                     alignItems: 'center',
                   }}
                 >
-                  <Text
-                    bold
-                    fontSize="big"
-                    style={{ padding: '15px 0' }}
-                  >{`${nowShowingPost.post.creator.writer}`}</Text>
+                  <Text bold fontSize="big" style={{ padding: '15px 0' }}>
+                    {`${nowShowingPost.post.creator.writer}`}
+                  </Text>
                   {nowShowingPost.post.creator._id ===
                   nowShowingPost.user._id ? (
                     <div>
                       <Button
-                        style={{ width: '80px', margin:"2.5px" }}
+                        style={{ width: '80px', margin: '2.5px' }}
                         onClick={handleEditingState}
                       >
                         수정
                       </Button>
                       <Button
-                        style={{ width: '80px', margin:"2.5px" }}
-                        onClick={handleEditingState}
+                        style={{ width: '80px', margin: '2.5px' }}
+                        onClick={onDeletePost}
                       >
                         삭제
                       </Button>
@@ -140,9 +179,9 @@ const imgDetail = () => {
                     <></>
                   )}
                 </div>
-                <Text fontSize="medium" style={{ paddingBottom: '30px' }}>{`${
-                  nowShowingPost.post.createAt.split('T')[0]
-                }`}</Text>
+                <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
+                  {`${nowShowingPost.post.createAt.split('T')[0]}`}
+                </Text>
                 <Text bold fontSize="huge" style={{ paddingBottom: '15px' }}>
                   {nowShowingPost.post.title}
                 </Text>

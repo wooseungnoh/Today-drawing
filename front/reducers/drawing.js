@@ -7,6 +7,7 @@ export const initialState = {
   isUploadingPost: false,
   nowShowingPost: null,
   editingSuccess: false,
+  deletePostSuccess: false,
 };
 
 export const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
@@ -30,46 +31,76 @@ export const UPPLOAD_POST_FAILURE = 'UPPLOAD_POST_FAILURE';
 
 export const UPPLOADING_DONE = 'UPPLOADING_DONE';
 
-export const LOAD_PHOTO_DETAIL_REQUEST = 'LOAD_PHOTO_DETAIL_REQUEST';
-export const LOAD_PHOTO_DETAIL_SUCCESS = 'LOAD_PHOTO_DETAIL_SUCCESS';
-export const LOAD_PHOTO_DETAIL_FAILURE = 'LOAD_PHOTO_DETAIL_FAILURE';
+export const LOAD_POST_DETAIL_REQUEST = 'LOAD_POST_DETAIL_REQUEST';
+export const LOAD_POST_DETAIL_SUCCESS = 'LOAD_POST_DETAIL_SUCCESS';
+export const LOAD_POST_DETAIL_FAILURE = 'LOAD_POST_DETAIL_FAILURE';
 
-export const EDIT_PHOTO_DETAIL_REQUEST = 'EDIT_PHOTO_DETAIL_REQUEST';
-export const EDIT_PHOTO_DETAIL_SUCCESS = 'EDIT_PHOTO_DETAIL_SUCCESS';
-export const EDIT_PHOTO_DETAIL_FAILURE = 'EDIT_PHOTO_DETAIL_FAILURE';
+export const EDIT_POST_DETAIL_REQUEST = 'EDIT_POST_DETAIL_REQUEST';
+export const EDIT_POST_DETAIL_SUCCESS = 'EDIT_POST_DETAIL_SUCCESS';
+export const EDIT_POST_DETAIL_FAILURE = 'EDIT_POST_DETAIL_FAILURE';
+
+export const DELETE_POST_REQUEST = 'DELETE_POST_REQUEST';
+export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
+export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
+
+export const DELETE_STATE_OFF = 'DELETE_STATE_OFF';
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case EDIT_PHOTO_DETAIL_REQUEST: {
+    case DELETE_STATE_OFF: {
+      return {
+        ...state,
+        deletePostSuccess: false,
+      };
+    }
+    case DELETE_POST_REQUEST: {
+      return {
+        ...state,
+        deletePostSuccess: false,
+      };
+    }
+    case DELETE_POST_SUCCESS: {
+      return {
+        ...state,
+        deletePostSuccess: true,
+      };
+    }
+    case DELETE_POST_FAILURE: {
+      return {
+        ...state,
+        deletePostSuccess: false,
+      };
+    }
+    case EDIT_POST_DETAIL_REQUEST: {
       return {
         ...state,
         editingSuccess: false,
       };
     }
-    case EDIT_PHOTO_DETAIL_SUCCESS: {
+    case EDIT_POST_DETAIL_SUCCESS: {
       return {
         ...state,
         editingSuccess: true,
       };
     }
-    case EDIT_PHOTO_DETAIL_FAILURE: {
+    case EDIT_POST_DETAIL_FAILURE: {
       return {
         ...state,
         editingSuccess: true,
       };
     }
-    case LOAD_PHOTO_DETAIL_REQUEST: {
+    case LOAD_POST_DETAIL_REQUEST: {
       return {
         ...state,
       };
     }
-    case LOAD_PHOTO_DETAIL_SUCCESS: {
+    case LOAD_POST_DETAIL_SUCCESS: {
       return {
         ...state,
         nowShowingPost: action.data,
       };
     }
-    case LOAD_PHOTO_DETAIL_FAILURE: {
+    case LOAD_POST_DETAIL_FAILURE: {
       return {
         ...state,
       };
