@@ -78,3 +78,16 @@ export const editing = async (req, res) => {
     res.send('프로필 업데이트 실패');
   }
 };
+
+// like list 불러오기
+export const loadLikeList = async (req, res) => {
+  const { _id } = req.user;
+  try {
+    const user = await User.findById(_id).populate('likeList');
+    res.json(user.likeList);
+  } catch (e) {
+    console.log(e);
+    res.status(400);
+  }
+  return;
+};

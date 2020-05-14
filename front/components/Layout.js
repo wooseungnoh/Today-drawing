@@ -22,7 +22,6 @@ const AppLayout = ({ children }) => {
         position: 'absolute',
         top: 0,
         left: 0,
-        minHeight: '700px',
       }}
       flexDirection="column"
     >

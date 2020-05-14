@@ -4,6 +4,7 @@ const LOGOUT = '/logout';
 const SIGNUP = '/signup';
 const EDITING = '/editing';
 const LOAD = '/load';
+const LOADLIKELIST = '/loadlikelist';
 
 //photo
 const PHOTO = '/photo';
@@ -13,6 +14,7 @@ const LOADEDPOST = '/loaded';
 const PHOTODETAIL = '/photodetail';
 const EDITPOST = '/editpost';
 const DELETEPOST = '/deletepost';
+const LIKE = '/like';
 
 const routes = {
   login: LOGIN,
@@ -27,6 +29,8 @@ const routes = {
   photodetail: PHOTODETAIL,
   editpost: EDITPOST,
   deletepost: DELETEPOST,
+  like: LIKE,
+  loadlikelist: LOADLIKELIST,
 };
 
 export default routes;

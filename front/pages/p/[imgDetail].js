@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Router from 'next/Router';
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { Img, Input, Textarea, Button } from '../../components/uiComponent';
 import Text from '../../components/text';
 import Container from '../../components/container';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as fullHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   LOAD_POST_DETAIL_REQUEST,
   EDIT_POST_DETAIL_REQUEST,
@@ -15,7 +19,7 @@ import routes from '../../../back/routes';
 const imgDetail = () => {
   const dispatch = useDispatch();
   const [editing, setEditing] = useState(false);
-  const { me } = useSelector((state) => state.user);
+  const { me, isLoggedIn } = useSelector((state) => state.user);
   const { nowShowingPost, editingSuccess, deletePostSuccess } = useSelector(
     (state) => state.drawing,
   );
@@ -93,13 +97,37 @@ const imgDetail = () => {
     }
   }, [deletePostSuccess]);
 
+  const printHeart = () => {
+    if (isLoggedIn) {
+      return <FontAwesomeIcon onClick={like} icon={faHeart} />;
+    } else {
+      return <></>;
+    }
+  };
+
+  const like = () => {
+    const id = {
+      id: nowShowingPost.post._id,
+    };
+    axios.post('http://localhost:5000/upload/like', id, {
+      withCredentials: true,
+    });
+  };
+
   return (
     <Container flexDirection="column">
       {nowShowingPost ? (
-        <div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
           <Img
             src={`http://localhost:5000/${nowShowingPost.post.fileUrl}`}
-            width="500px"
+            width="30%"
+            style={{ minWidth: '350px' }}
           />
           <div
             style={{
@@ -107,6 +135,8 @@ const imgDetail = () => {
               flexDirection: 'column',
               textAlign: 'left',
               margin: '10px 0 ',
+              width: '30%',
+              minWidth: '350px',
             }}
           >
             {editing ? (
@@ -160,7 +190,7 @@ const imgDetail = () => {
                     {`${nowShowingPost.post.creator.writer}`}
                   </Text>
                   {nowShowingPost.post.creator._id ===
-                  nowShowingPost.user._id ? (
+                    nowShowingPost.user._id && isLoggedIn ? (
                     <div>
                       <Button
                         style={{ width: '80px', margin: '2.5px' }}
@@ -176,7 +206,7 @@ const imgDetail = () => {
                       </Button>
                     </div>
                   ) : (
-                    <></>
+                    printHeart()
                   )}
                 </div>
                 <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
@@ -185,7 +215,7 @@ const imgDetail = () => {
                 <Text bold fontSize="huge" style={{ paddingBottom: '15px' }}>
                   {nowShowingPost.post.title}
                 </Text>
-                <div style={{ width: '500px' }}>
+                <div style={{ width: '100%' }}>
                   <Text>{nowShowingPost.post.description}</Text>
                 </div>
               </>

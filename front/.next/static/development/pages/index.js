@@ -4,24 +4,32 @@
 /*!*********************************!*\
   !*** ./components/container.js ***!
   \*********************************/
-/*! exports provided: default */
+/*! exports provided: GalleryContainer, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GalleryContainer", function() { return GalleryContainer; });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
+var GalleryContainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+  displayName: "container__GalleryContainer",
+  componentId: "sc-1pv9ren-0"
+})(["margin-top:30px;display:grid;grid-template-rows:repeat(3,200px);grid-template-columns:repeat(2,300px);grid-gap:10px;margin-bottom:30px;", ""], function (_ref) {
+  var mypage = _ref.mypage;
+  return mypage && Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["grid-template-rows:repeat(2,200px);"]);
+});
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
   displayName: "container__Container",
-  componentId: "sc-1pv9ren-0"
-})(["display:flex;justify-content:center;align-items:center;flex-direction:", ";text-align:center;width:", ";height:", ";"], function (_ref) {
-  var flexDirection = _ref.flexDirection;
+  componentId: "sc-1pv9ren-1"
+})(["display:flex;justify-content:center;align-items:center;flex-direction:", ";text-align:center;width:", ";height:", ";"], function (_ref2) {
+  var flexDirection = _ref2.flexDirection;
   return flexDirection || 'row';
-}, function (_ref2) {
-  var wsize = _ref2.wsize;
-  return wsize || '100%';
 }, function (_ref3) {
-  var hsize = _ref3.hsize;
+  var wsize = _ref3.wsize;
+  return wsize || '100%';
+}, function (_ref4) {
+  var hsize = _ref4.hsize;
   return hsize || '100%';
 });
 /* harmony default export */ __webpack_exports__["default"] = (Container);
@@ -7542,7 +7550,7 @@ var Home = function Home() {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cindex.js ***!
   \************************************************************************************************************/
@@ -7565,5 +7573,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

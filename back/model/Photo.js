@@ -21,6 +21,10 @@ const PhotoSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  like: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const model = mongoose.model('Photo', PhotoSchema);

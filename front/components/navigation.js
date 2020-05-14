@@ -29,11 +29,16 @@ const Navigation = () => {
           <a>그림그리기</a>
         </Link>
       </NavLi>
-      <NavLi>
-        <Link href="/upload">
-          <a>업로드</a>
-        </Link>
-      </NavLi>
+      {isLoggedIn ? (
+        <NavLi>
+          <Link href="/upload">
+            <a>업로드</a>
+          </Link>
+        </NavLi>
+      ) : (
+        <></>
+      )}
+
       <NavLi>
         <Link href="/gallery">
           <a>갤러리</a>

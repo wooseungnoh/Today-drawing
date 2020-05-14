@@ -15,6 +15,9 @@ import user, {
   LOG_OUT_REQUEST,
   LOG_OUT_SUCCESS,
   LOG_OUT_FAILURE,
+  LOAD_LIKELIST_REQUEST,
+  LOAD_LIKELIST_SUCCESS,
+  LOAD_LIKELIST_FAILURE,
 } from '../reducers/user';
 
 function signUpAPI(signUpData) {
@@ -142,6 +145,30 @@ function* watchLogOut() {
   yield takeEvery(LOG_OUT_REQUEST, logOut);
 }
 
+// 좋아하는 리스트 불러오기
+function loadLikePostAPI() {
+  return axios.get('http://localhost:5000/loadlikelist', {
+    withCredentials: true,
+  });
+}
+function* loadLikePost() {
+  try {
+    const result = yield call(loadLikePostAPI);
+    yield put({
+      type: LOAD_LIKELIST_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: LOAD_LIKELIST_FAILURE,
+    });
+  }
+}
+function* watchloadLikePost() {
+  yield takeEvery(LOAD_LIKELIST_REQUEST, loadLikePost);
+}
+
 export default function* userSaga() {
   yield all([
     fork(watchLogin),
@@ -149,5 +176,6 @@ export default function* userSaga() {
     fork(watchEditing),
     fork(watchloadUser),
     fork(watchLogOut),
+    fork(watchloadLikePost),
   ]);
 }

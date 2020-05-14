@@ -7,6 +7,7 @@ export const initialState = {
   me: null, // 내 정보
   isUserLoadding: false,
   editing: false,
+  likeList: [],
 };
 
 export const LOG_IN_REQUEST = 'LOG_IN_REQUEST';
@@ -32,8 +33,29 @@ export const EDITING_PROFILE_FAILURE = 'EDITING_PROFILE_FAILURE';
 export const EDITING_PROFILE_OFF = 'EDITING_PROFILE_OFF';
 export const EDITING_PROFILE_ON = 'EDITING_PROFILE_ON';
 
+export const LOAD_LIKELIST_REQUEST = 'LOAD_LIKELIST_REQUEST';
+export const LOAD_LIKELIST_SUCCESS = 'LOAD_LIKELIST_SUCCESS';
+export const LOAD_LIKELIST_FAILURE = 'LOAD_LIKELIST_FAILURE';
+
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOAD_LIKELIST_REQUEST: {
+      return {
+        ...state,
+      };
+    }
+    case LOAD_LIKELIST_SUCCESS: {
+      console.log(action.data)
+      return {
+        ...state,
+        likeList: [...state.likeList, ...action.data],
+      };
+    }
+    case LOAD_LIKELIST_FAILURE: {
+      return {
+        ...state,
+      };
+    }
     case LOAD_USER_REQUEST: {
       return {
         ...state,

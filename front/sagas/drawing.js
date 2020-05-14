@@ -86,7 +86,7 @@ function loadedPostApi() {
 
 function* loadedPost(action) {
   try {
-    const result = yield call(loadedPostApi, action.data);
+    const result = yield call(loadedPostApi);
     yield put({
       type: LOAD_GALLERY_SUCCESS,
       data: result.data,

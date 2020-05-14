@@ -1,4 +1,5 @@
 import Photo from '../model/Photo';
+import User from '../model/User';
 import mongoose from 'mongoose';
 
 export const postUploadPhoto = (req, res) => {
@@ -22,7 +23,7 @@ export const postUploadPost = async (req, res) => {
     res.send(post);
   } catch (e) {
     console.log(e);
-    res.send('포스트 업데이트 실패');
+    res.status(400);
   }
   return;
 };
@@ -33,6 +34,7 @@ export const loadedPostList = async (req, res) => {
     res.json(post);
   } catch (e) {
     console.log(e);
+    res.status(400);
   }
   return;
 };
@@ -60,6 +62,7 @@ export const loadedPhotoDetail = async (req, res) => {
     }
   } catch (e) {
     console.log(e);
+    res.status(400);
   }
   return;
 };
@@ -75,6 +78,7 @@ export const editPost = async (req, res) => {
     res.send('수정완료');
   } catch (e) {
     console.log(e);
+    res.status(400);
   }
   return;
 };
@@ -89,3 +93,20 @@ export const deletePost = async (req, res) => {
   }
   return;
 };
+
+export const like = async (req, res) => {
+  const { id } = req.body;
+  try {
+    const post = await Photo.findById(id);
+    req.user.likeList.push(id);
+    req.user.save();
+    post.like = post.like += 1;
+    post.save();
+    res.status(200);
+  } catch (e) {
+    console.log(e);
+    res.status(400);
+  }
+};
+
+export const unlike = async (req, res) => {};

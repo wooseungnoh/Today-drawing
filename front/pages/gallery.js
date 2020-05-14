@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Container from '../components/container';
+import Container, { GalleryContainer } from '../components/container';
 import Text from '../components/text';
 import PhotoView from '../components/photoView';
 import { LOAD_GALLERY_REQUEST } from '../reducers/drawing';
@@ -27,16 +27,7 @@ const Gallery = () => {
       }}
     >
       <Text>오늘의 그림들</Text>
-      <Container
-        style={{
-          marginTop: '30px',
-          display: 'grid',
-          gridTemplateRows: 'repeat(3, 200px)',
-          gridTemplateColumns: 'repeat(2, 300px)',
-          gridGap: '10px',
-          marginBottom: '30px',
-        }}
-      >
+      <GalleryContainer>
         {postList ? (
           postList.map((item, id) => (
             <Link key={id} href="/p/[imgDetail]" as={`/p/${item._id}`}>
@@ -51,7 +42,7 @@ const Gallery = () => {
         ) : (
           <></>
         )}
-      </Container>
+      </GalleryContainer>
     </Container>
   );
 };

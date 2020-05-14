@@ -20,7 +20,7 @@ const Upload = () => {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      Router.push('/');
+      Router.push('/login');
     }
   }, [isLoggedIn]);
 
@@ -107,7 +107,11 @@ const Upload = () => {
         <Input value={title} onChange={setTitle} type="text" />
 
         <label>그림 설명</label>
-        <Textarea value={description} onChange={setDescription} />
+        <Textarea
+          value={description}
+          onChange={setDescription}
+          style={{ resize: 'none' }}
+        />
         <Input type="submit" value="작성" />
       </Form>
     </Container>
