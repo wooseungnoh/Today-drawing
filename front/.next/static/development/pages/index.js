@@ -7550,7 +7550,7 @@ var Home = function Home() {
 
 /***/ }),
 
-/***/ 1:
+/***/ 4:
 /*!************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cindex.js ***!
   \************************************************************************************************************/
@@ -7573,5 +7573,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[4,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

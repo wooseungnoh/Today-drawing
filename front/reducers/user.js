@@ -45,10 +45,9 @@ export default (state = initialState, action) => {
       };
     }
     case LOAD_LIKELIST_SUCCESS: {
-      console.log(action.data)
       return {
         ...state,
-        likeList: [...state.likeList, ...action.data],
+        likeList: action.data,
       };
     }
     case LOAD_LIKELIST_FAILURE: {

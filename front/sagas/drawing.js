@@ -20,6 +20,12 @@ import {
   DELETE_POST_SUCCESS,
   DELETE_POST_FAILURE,
   DELETE_POST_REQUEST,
+  LIKE_SUCCESS,
+  LIKE_FAILURE,
+  LIKE_REQUEST,
+  UNLIKE_REQUEST,
+  UNLIKE_FAILURE,
+  UNLIKE_SUCCESS,
 } from '../reducers/drawing';
 
 // 미리보기 사진 업로드
@@ -182,6 +188,60 @@ function* watchDeletePost() {
   yield takeEvery(DELETE_POST_REQUEST, deletePost);
 }
 
+// 좋아요
+
+function likeApi(id) {
+  return axios.post('http://localhost:5000/upload/like', id, {
+    withCredentials: true,
+  });
+}
+
+function* like(action) {
+  try {
+    const result = yield call(likeApi, action.data);
+    yield put({
+      type: LIKE_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: LIKE_FAILURE,
+    });
+  }
+}
+
+function* watchlike() {
+  yield takeEvery(LIKE_REQUEST, like);
+}
+
+// 좋아요취소
+
+function unlikeApi(id) {
+  return axios.post('http://localhost:5000/upload/unlike', id, {
+    withCredentials: true,
+  });
+}
+
+function* unlike(action) {
+  try {
+    const result = yield call(unlikeApi, action.data);
+    yield put({
+      type: UNLIKE_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: UNLIKE_FAILURE,
+    });
+  }
+}
+
+function* watchUnlike() {
+  yield takeEvery(UNLIKE_REQUEST, unlike);
+}
+
 export default function* drawingSaga() {
   yield all([
     fork(watchAddPhoto),
@@ -190,5 +250,7 @@ export default function* drawingSaga() {
     fork(watchloadedPostDetail),
     fork(watchEditPostDetail),
     fork(watchDeletePost),
+    fork(watchlike),
+    fork(watchUnlike),
   ]);
 }

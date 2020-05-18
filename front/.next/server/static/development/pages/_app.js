@@ -2431,7 +2431,7 @@ const configureStore = (initialState, options) => {
 /*!*****************************!*\
   !*** ./reducers/drawing.js ***!
   \*****************************/
-/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, default */
+/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, LIKE_REQUEST, LIKE_SUCCESS, LIKE_FAILURE, LIKE_ON, UNLIKE_REQUEST, UNLIKE_SUCCESS, UNLIKE_FAILURE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2461,6 +2461,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_SUCCESS", function() { return DELETE_POST_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_FAILURE", function() { return DELETE_POST_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_STATE_OFF", function() { return DELETE_STATE_OFF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LIKE_REQUEST", function() { return LIKE_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LIKE_SUCCESS", function() { return LIKE_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LIKE_FAILURE", function() { return LIKE_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LIKE_ON", function() { return LIKE_ON; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNLIKE_REQUEST", function() { return UNLIKE_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNLIKE_SUCCESS", function() { return UNLIKE_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNLIKE_FAILURE", function() { return UNLIKE_FAILURE; });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2476,7 +2483,8 @@ const initialState = {
   isUploadingPost: false,
   nowShowingPost: null,
   editingSuccess: false,
-  deletePostSuccess: false
+  deletePostSuccess: false,
+  like: false
 };
 const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
 const LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';
@@ -2502,8 +2510,58 @@ const DELETE_POST_REQUEST = 'DELETE_POST_REQUEST';
 const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
 const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
 const DELETE_STATE_OFF = 'DELETE_STATE_OFF';
+const LIKE_REQUEST = 'LIKE_REQUEST';
+const LIKE_SUCCESS = 'LIKE_SUCCESS';
+const LIKE_FAILURE = 'LIKE_FAILURE';
+const LIKE_ON = 'LIKE_ON';
+const UNLIKE_REQUEST = 'UNLIKE_REQUEST';
+const UNLIKE_SUCCESS = 'UNLIKE_SUCCESS';
+const UNLIKE_FAILURE = 'UNLIKE_FAILURE';
 /* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
   switch (action.type) {
+    case LIKE_ON:
+      {
+        return _objectSpread({}, state, {
+          like: true
+        });
+      }
+
+    case LIKE_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case LIKE_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          like: true,
+          nowShowingPost: action.data
+        });
+      }
+
+    case LIKE_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case UNLIKE_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case UNLIKE_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          like: false,
+          nowShowingPost: action.data
+        });
+      }
+
+    case UNLIKE_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
     case DELETE_STATE_OFF:
       {
         return _objectSpread({}, state, {
@@ -2785,9 +2843,8 @@ const LOAD_LIKELIST_FAILURE = 'LOAD_LIKELIST_FAILURE';
 
     case LOAD_LIKELIST_SUCCESS:
       {
-        console.log(action.data);
         return _objectSpread({}, state, {
-          likeList: [...state.likeList, ...action.data]
+          likeList: action.data
         });
       }
 
@@ -3096,10 +3153,62 @@ function* deletePost(action) {
 
 function* watchDeletePost() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["DELETE_POST_REQUEST"], deletePost);
+} // 좋아요
+
+
+function likeApi(id) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:5000/upload/like', id, {
+    withCredentials: true
+  });
+}
+
+function* like(action) {
+  try {
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(likeApi, action.data);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LIKE_SUCCESS"],
+      data: result.data
+    });
+  } catch (e) {
+    console.log(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LIKE_FAILURE"]
+    });
+  }
+}
+
+function* watchlike() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LIKE_REQUEST"], like);
+} // 좋아요취소
+
+
+function unlikeApi(id) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:5000/upload/unlike', id, {
+    withCredentials: true
+  });
+}
+
+function* unlike(action) {
+  try {
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(unlikeApi, action.data);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["UNLIKE_SUCCESS"],
+      data: result.data
+    });
+  } catch (e) {
+    console.log(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["UNLIKE_FAILURE"]
+    });
+  }
+}
+
+function* watchUnlike() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["UNLIKE_REQUEST"], unlike);
 }
 
 function* drawingSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPhoto), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchEditPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchDeletePost)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPhoto), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchEditPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchDeletePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchUnlike)]);
 }
 
 /***/ }),

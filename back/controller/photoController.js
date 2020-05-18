@@ -47,7 +47,6 @@ export const loadedPhotoDetail = async (req, res) => {
   try {
     const post = await Photo.findById(postId).populate('creator');
     if (user) {
-      console.log(user);
       const data = {
         post,
         user,
@@ -95,18 +94,66 @@ export const deletePost = async (req, res) => {
 };
 
 export const like = async (req, res) => {
-  const { id } = req.body;
+  const {
+    body: { id },
+    user,
+  } = req;
   try {
-    const post = await Photo.findById(id);
-    req.user.likeList.push(id);
-    req.user.save();
-    post.like = post.like += 1;
+    const post = await Photo.findById(id).populate('creator');
+    const users = await User.findById(user._id);
+    post.liker.push(req.user._id);
+    users.likeList.push(id);
+    users.save();
     post.save();
-    res.status(200);
+
+    if (user) {
+      const data = {
+        post,
+        user,
+      };
+      res.json(data);
+    } else {
+      const data = {
+        post,
+        user: '',
+      };
+      res.json(data);
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(400);
+  }
+  return;
+};
+
+export const unlike = async (req, res) => {
+  const {
+    body: { id },
+    user,
+  } = req;
+  try {
+    const post = await Photo.findById(id).populate('creator');
+    const users = await User.findById(user._id);
+    users.likeList.pull(id);
+    post.liker.pull(user._id);
+    users.save();
+    post.save();
+
+    if (user) {
+      const data = {
+        post,
+        user,
+      };
+      res.json(data);
+    } else {
+      const data = {
+        post,
+        user: '',
+      };
+      res.json(data);
+    }
   } catch (e) {
     console.log(e);
     res.status(400);
   }
 };
-
-export const unlike = async (req, res) => {};

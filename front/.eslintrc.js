@@ -9,6 +9,7 @@ module.exports = {
     'airbnb',
     'eslint:recommended',
     'prettier/react',
+    'react-hooks/recommended",
   ],
   globals: {
     Atomics: 'readonly',
@@ -21,8 +22,10 @@ module.exports = {
     ecmaVersion: 6,
     sourceType: 'module',
   },
-  plugins: ['react', 'import'],
+  plugins: ['react', 'import', 'react-hooks'],
   rules: {
+    'react-hooks/rules-of-hooks':'error',
+    "react-hooks/exhaustive-deps": "warn",
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'linebreak-style': 0,
     'no-underscore-dangle': 'off',

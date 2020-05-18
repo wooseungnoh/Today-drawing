@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2412,9 +2412,8 @@ const LOAD_LIKELIST_FAILURE = 'LOAD_LIKELIST_FAILURE';
 
     case LOAD_LIKELIST_SUCCESS:
       {
-        console.log(action.data);
         return _objectSpread({}, state, {
-          likeList: [...state.likeList, ...action.data]
+          likeList: action.data
         });
       }
 
@@ -2553,7 +2552,7 @@ const LOAD_LIKELIST_FAILURE = 'LOAD_LIKELIST_FAILURE';
 
 /***/ }),
 
-/***/ 5:
+/***/ 7:
 /*!*******************************!*\
   !*** multi ./pages/mypage.js ***!
   \*******************************/

@@ -13,16 +13,21 @@ import {
   EDIT_POST_DETAIL_REQUEST,
   DELETE_POST_REQUEST,
   DELETE_STATE_OFF,
+  LIKE_REQUEST,
+  UNLIKE_REQUEST,
+  LIKE_ON,
 } from '../../reducers/drawing';
-import routes from '../../../back/routes';
 
 const imgDetail = () => {
   const dispatch = useDispatch();
   const [editing, setEditing] = useState(false);
   const { me, isLoggedIn } = useSelector((state) => state.user);
-  const { nowShowingPost, editingSuccess, deletePostSuccess } = useSelector(
-    (state) => state.drawing,
-  );
+  const {
+    nowShowingPost,
+    editingSuccess,
+    deletePostSuccess,
+    like,
+  } = useSelector((state) => state.drawing);
 
   useEffect(() => {
     const nowUrl = document.location.href;
@@ -32,6 +37,7 @@ const imgDetail = () => {
       data: { postId: slice[1] },
     });
   }, []);
+  
 
   const handleEditingState = () => {
     setEditing((prev) => !prev);
@@ -93,25 +99,41 @@ const imgDetail = () => {
       Router.push('/gallery');
       dispatch({
         type: DELETE_STATE_OFF,
+        data: {
+          id: nowShowingPost.post._id,
+        },
       });
     }
   }, [deletePostSuccess]);
 
-  const printHeart = () => {
-    if (isLoggedIn) {
-      return <FontAwesomeIcon onClick={like} icon={faHeart} />;
-    } else {
-      return <></>;
-    }
+  const likeRequest = () => {
+    dispatch({
+      type: LIKE_REQUEST,
+      data: {
+        id: nowShowingPost.post._id,
+      },
+    });
+    dispatch({
+      type: LIKE_ON,
+    });
   };
 
-  const like = () => {
-    const id = {
-      id: nowShowingPost.post._id,
-    };
-    axios.post('http://localhost:5000/upload/like', id, {
-      withCredentials: true,
+  const unlikeRequest = () => {
+    dispatch({
+      type: UNLIKE_REQUEST,
+      data: {
+        id: nowShowingPost.post._id,
+      },
     });
+  };
+  const printLike = () => {
+    if (nowShowingPost && me) {
+      return String(nowShowingPost.post.liker.indexOf(me._id)) === '-1' ? (
+        <FontAwesomeIcon icon={faHeart} onClick={likeRequest} />
+      ) : (
+        <FontAwesomeIcon icon={fullHeart} onClick={unlikeRequest} />
+      );
+    }
   };
 
   return (
@@ -206,7 +228,7 @@ const imgDetail = () => {
                       </Button>
                     </div>
                   ) : (
-                    printHeart()
+                    printLike()
                   )}
                 </div>
                 <Text fontSize="medium" style={{ paddingBottom: '30px' }}>

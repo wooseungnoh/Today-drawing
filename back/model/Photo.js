@@ -21,10 +21,10 @@ const PhotoSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
-  like: {
-    type: Number,
-    default: 0,
-  },
+  liker: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }],
 });
 
 const model = mongoose.model('Photo', PhotoSchema);

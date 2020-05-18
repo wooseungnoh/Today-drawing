@@ -8,6 +8,7 @@ export const initialState = {
   nowShowingPost: null,
   editingSuccess: false,
   deletePostSuccess: false,
+  like: false,
 };
 
 export const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
@@ -45,8 +46,56 @@ export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
 
 export const DELETE_STATE_OFF = 'DELETE_STATE_OFF';
 
+export const LIKE_REQUEST = 'LIKE_REQUEST';
+export const LIKE_SUCCESS = 'LIKE_SUCCESS';
+export const LIKE_FAILURE = 'LIKE_FAILURE';
+export const LIKE_ON = 'LIKE_ON';
+export const UNLIKE_REQUEST = 'UNLIKE_REQUEST';
+export const UNLIKE_SUCCESS = 'UNLIKE_SUCCESS';
+export const UNLIKE_FAILURE = 'UNLIKE_FAILURE';
+
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LIKE_ON: {
+      return {
+        ...state,
+        like: true,
+      };
+    }
+    case LIKE_REQUEST: {
+      return {
+        ...state,
+      };
+    }
+    case LIKE_SUCCESS: {
+      return {
+        ...state,
+        like: true,
+        nowShowingPost: action.data,
+      };
+    }
+    case LIKE_FAILURE: {
+      return {
+        ...state,
+      };
+    }
+    case UNLIKE_REQUEST: {
+      return {
+        ...state,
+      };
+    }
+    case UNLIKE_SUCCESS: {
+      return {
+        ...state,
+        like: false,
+        nowShowingPost: action.data,
+      };
+    }
+    case UNLIKE_FAILURE: {
+      return {
+        ...state,
+      };
+    }
     case DELETE_STATE_OFF: {
       return {
         ...state,
