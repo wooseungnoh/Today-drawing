@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -115,13 +115,17 @@ const GalleryContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.
 const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "container__Container",
   componentId: "sc-1pv9ren-1"
-})(["display:flex;justify-content:center;align-items:center;flex-direction:", ";text-align:center;width:", ";height:", ";"], ({
-  flexDirection
-}) => flexDirection || 'row', ({
+})(["display:flex;justify-content:", ";align-items:", ";text-align:center;width:", ";height:", ";flex-direction:", ";"], ({
+  justifyContent
+}) => justifyContent || 'center', ({
+  alignItems
+}) => alignItems || 'center', ({
   wsize
 }) => wsize || '100%', ({
   hsize
-}) => hsize || '100%');
+}) => hsize || '100%', ({
+  flexDirection
+}) => flexDirection || 'row');
 /* harmony default export */ __webpack_exports__["default"] = (Container);
 
 /***/ }),
@@ -1963,7 +1967,7 @@ const Home = () => __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["def
 
 /***/ }),
 
-/***/ 6:
+/***/ 7:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

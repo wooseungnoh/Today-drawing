@@ -5,16 +5,17 @@ export const Button = styled.button`
   border: none;
   outline: none;
   width: 300px;
-  height: 35px;
-  background: #bbb;
+  height: 25px;
+  background: #e0cfb6;
   border-radius: 5px;
   transition: 0.3s;
-  color: #444;
+  color: #555;
   &:hover {
-    background: #ccc;
+    background: #f0e1cc;
   }
   &:active {
-    background: #888;
+  box-shadow:inset 2px 2px 3px;
+    background: #e3d3bc;
   }
 `;
 
@@ -76,8 +77,10 @@ export const Textarea = styled.textarea`
 export const Form = styled.form`
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
+  ${({none}) => !none && css`
+  align-items: center;
+  `}
 `;
 
 export const InputContainer = styled.div`

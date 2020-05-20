@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Router from 'next/Router';
-import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { Img, Input, Textarea, Button } from '../../components/uiComponent';
+import {
+  Img,
+  Input,
+  Textarea,
+  Button,
+  Form,
+} from '../../components/uiComponent';
 import Text from '../../components/text';
 import Container from '../../components/container';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
@@ -26,7 +31,6 @@ const imgDetail = () => {
     nowShowingPost,
     editingSuccess,
     deletePostSuccess,
-    like,
   } = useSelector((state) => state.drawing);
 
   useEffect(() => {
@@ -37,31 +41,34 @@ const imgDetail = () => {
       data: { postId: slice[1] },
     });
   }, []);
-  
 
-  const handleEditingState = () => {
+  const handleEditingState = (e) => {
+    e.preventDefault();
     setEditing((prev) => !prev);
   };
 
   const onChangeData = (e) => {
     e.preventDefault();
-    if (me === null) {
-      alert('권한이 없습니다.');
-      location.href = `${document.location.href}`;
-    } else if (me._id === nowShowingPost.post.creator._id) {
-      dispatch({
-        type: EDIT_POST_DETAIL_REQUEST,
-        data: {
-          id: nowShowingPost.post._id,
-          title: e.target.childNodes[2].value,
-          description: e.target.childNodes[4].value,
-        },
-      });
-    } else {
-      alert('권한이 없습니다.');
-      location.href = `${document.location.href}`;
+    const result = confirm('게시물을 수정하시겠습니까?');
+    if (result) {
+      if (me === null) {
+        alert('권한이 없습니다.');
+        location.href = `${document.location.href}`;
+      } else if (me._id === nowShowingPost.post.creator._id) {
+        dispatch({
+          type: EDIT_POST_DETAIL_REQUEST,
+          data: {
+            id: nowShowingPost.post._id,
+            title: e.target.childNodes[2].value,
+            description: e.target.childNodes[4].value,
+          },
+        });
+      } else {
+        alert('권한이 없습니다.');
+        location.href = `${document.location.href}`;
+      }
+      setEditing(false);
     }
-    setEditing(false);
   };
 
   useEffect(() => {
@@ -163,28 +170,24 @@ const imgDetail = () => {
           >
             {editing ? (
               <>
-                <form
-                  onSubmit={onChangeData}
-                  style={{ display: 'flex', flexDirection: 'column' }}
-                >
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      height: '65px',
-                    }}
+                <Form onSubmit={onChangeData} none>
+                  <Container
+                    flexDirection="column"
+                    alignItems="baseline"
+                    justifyContent="space-between"
+                    hsize="40px"
                   >
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <Container justifyContent="space-between">
                       <Text bold fontSize="big" style={{ padding: '15px 0' }}>
                         {`${nowShowingPost.post.creator.writer}`}
                       </Text>
-                      <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
-                        {`${nowShowingPost.post.createAt.split('T')[0]}`}
-                      </Text>
-                    </div>
-                    <Button style={{ width: '80px' }}>작성완료</Button>
-                  </div>
+                      <Button style={{ width: '80px' }}>작성완료</Button>
+                    </Container>
+                    <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
+                      {`${nowShowingPost.post.createAt.split('T')[0]}`}
+                    </Text>
+                  </Container>
+                  
                   <label>제목</label>
                   <Input
                     type="text"
@@ -197,17 +200,11 @@ const imgDetail = () => {
                     style={{ width: '100%', resize: 'none' }}
                     defaultValue={nowShowingPost.post.description}
                   />
-                </form>
+                </Form>
               </>
             ) : (
               <>
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}
-                >
+                <Container justifyContent="space-between" hsize="40px">
                   <Text bold fontSize="big" style={{ padding: '15px 0' }}>
                     {`${nowShowingPost.post.creator.writer}`}
                   </Text>
@@ -230,7 +227,7 @@ const imgDetail = () => {
                   ) : (
                     printLike()
                   )}
-                </div>
+                </Container>
                 <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
                   {`${nowShowingPost.post.createAt.split('T')[0]}`}
                 </Text>

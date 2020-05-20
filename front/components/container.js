@@ -14,12 +14,12 @@ export const GalleryContainer = styled.div`
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: ${({ flexDirection }) => flexDirection || 'row'};
+  justify-content: ${({ justifyContent }) => justifyContent || 'center'};
+  align-items: ${({ alignItems }) => alignItems || 'center'};
   text-align: center;
   width: ${({ wsize }) => wsize || '100%'};
   height: ${({ hsize }) => hsize || '100%'};
+  flex-direction: ${({ flexDirection }) => flexDirection || 'row'};
 `;
 
 export default Container;

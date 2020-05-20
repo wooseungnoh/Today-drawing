@@ -22,15 +22,21 @@ var GalleryContainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"]
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
   displayName: "container__Container",
   componentId: "sc-1pv9ren-1"
-})(["display:flex;justify-content:center;align-items:center;flex-direction:", ";text-align:center;width:", ";height:", ";"], function (_ref2) {
-  var flexDirection = _ref2.flexDirection;
-  return flexDirection || 'row';
+})(["display:flex;justify-content:", ";align-items:", ";text-align:center;width:", ";height:", ";flex-direction:", ";"], function (_ref2) {
+  var justifyContent = _ref2.justifyContent;
+  return justifyContent || 'center';
 }, function (_ref3) {
-  var wsize = _ref3.wsize;
-  return wsize || '100%';
+  var alignItems = _ref3.alignItems;
+  return alignItems || 'center';
 }, function (_ref4) {
-  var hsize = _ref4.hsize;
+  var wsize = _ref4.wsize;
+  return wsize || '100%';
+}, function (_ref5) {
+  var hsize = _ref5.hsize;
   return hsize || '100%';
+}, function (_ref6) {
+  var flexDirection = _ref6.flexDirection;
+  return flexDirection || 'row';
 });
 /* harmony default export */ __webpack_exports__["default"] = (Container);
 
@@ -7550,7 +7556,7 @@ var Home = function Home() {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cindex.js ***!
   \************************************************************************************************************/
@@ -7573,5 +7579,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]);
+},[[5,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
