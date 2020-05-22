@@ -38,6 +38,7 @@ const Upload = () => {
   };
 
   const handlePhotoFile = (e) => {
+    handleDeleteImage()
     const imageFormData = new FormData();
     [].forEach.call(e.target.files, (f) => {
       imageFormData.append('photo', f);
@@ -55,6 +56,14 @@ const Upload = () => {
   };
 
   useEffect(() => {
+    return () => {
+      dispatch({
+        type: DELETE_PHOTO,
+      });
+    }
+  }, [])
+
+  useEffect(() => {
     if (isUploadingPost) {
       handleDeleteImage();
       dispatch({
@@ -68,7 +77,7 @@ const Upload = () => {
     <Container flexDirection="column">
       <div
         style={{
-          minHeight: '200px',
+          height: '200px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -76,10 +85,10 @@ const Upload = () => {
         }}
       >
         {imagePaths[0] ? (
-          <div style={{ position: 'relative' }}>
+          <div style={{ position: 'relative', width: '100%', height: '100%' }}>
             <img
               src={`http://localhost:5000/${imagePaths[0]}`}
-              style={{ width: '100%' }}
+              style={{ height: '100%' }}
               alt={imagePaths[0]}
             />
             <button
@@ -90,8 +99,10 @@ const Upload = () => {
             </button>
           </div>
         ) : (
-          <span>미리보기 이미지</span>
-        )}
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+              <span>미리보기 이미지</span>
+            </div>
+          )}
       </div>
 
       <Form onSubmit={addPhoto} encType="multipart/form-data">

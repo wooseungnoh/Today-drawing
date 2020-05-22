@@ -24,11 +24,31 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
+    "/drawing": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/gallery": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+    "/mypage": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/next/dist/pages/_error": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/p/[imgDetail]": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/upload": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

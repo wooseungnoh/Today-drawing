@@ -121,7 +121,7 @@ var Textarea = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].textare
   componentId: "sc-4dqk1x-4"
 })(["width:300px;", " border-radius:5px;border:1px solid #ccc;margin:10px;text-align:center;padding:10px;"], function (_ref) {
   var edit = _ref.edit;
-  return edit ? Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["height:100px;"]) : Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["min-height:200px;"]);
+  return edit ? Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["height:100px;"]) : Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["min-height:110px;"]);
 });
 var Form = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].form.withConfig({
   displayName: "uiComponent__Form",
@@ -12434,10 +12434,10 @@ module.exports = (__webpack_require__(/*! dll-reference dll_2adc2403d89adc16ead0
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5BimgDetail%5D&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cp%5C%5BimgDetail%5D.js!./":
-/*!*****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5BimgDetail%5D&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cp%5C%5BimgDetail%5D.js ***!
-  \*****************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5BimgDetail%5D&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cp%5C%5BimgDetail%5D.js!./":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5BimgDetail%5D&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cp%5C%5BimgDetail%5D.js ***!
+  \***************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20633,7 +20633,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../reducers/drawing */ "./reducers/drawing.js");
 var _this = undefined,
-    _jsxFileName = "D:\\todayDraw\\front\\pages\\p\\[imgDetail].js";
+    _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\p\\[imgDetail].js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -21364,14 +21364,14 @@ var UNLIKE_FAILURE = 'UNLIKE_FAILURE';
 
 /***/ }),
 
-/***/ 4:
-/*!*********************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fp%2F%5BimgDetail%5D&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cp%5C%5BimgDetail%5D.js ***!
-  \*********************************************************************************************************************************************/
+/***/ 2:
+/*!*******************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fp%2F%5BimgDetail%5D&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cp%5C%5BimgDetail%5D.js ***!
+  \*******************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fp%2F%5BimgDetail%5D&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cp%5C%5BimgDetail%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5BimgDetail%5D&absolutePagePath=D%3A%5CtodayDraw%5Cfront%5Cpages%5Cp%5C%5BimgDetail%5D.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fp%2F%5BimgDetail%5D&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cp%5C%5BimgDetail%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fp%2F%5BimgDetail%5D&absolutePagePath=C%3A%5CUsers%5Cshdnt%5CDesktop%5Ctoday%5Cfront%5Cpages%5Cp%5C%5BimgDetail%5D.js!./");
 
 
 /***/ }),
@@ -21387,5 +21387,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=[imgDetail].js.map

@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -209,7 +209,7 @@ const Textarea = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.textar
   componentId: "sc-4dqk1x-4"
 })(["width:300px;", " border-radius:5px;border:1px solid #ccc;margin:10px;text-align:center;padding:10px;"], ({
   edit
-}) => edit ? Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["height:100px;"]) : Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["min-height:200px;"]));
+}) => edit ? Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["height:100px;"]) : Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["min-height:110px;"]));
 const Form = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.form.withConfig({
   displayName: "uiComponent__Form",
   componentId: "sc-4dqk1x-5"
@@ -252,7 +252,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../reducers/drawing */ "./reducers/drawing.js");
-var _jsxFileName = "D:\\todayDraw\\front\\pages\\p\\[imgDetail].js";
+var _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\p\\[imgDetail].js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -969,14 +969,14 @@ const UNLIKE_FAILURE = 'UNLIKE_FAILURE';
 
 /***/ }),
 
-/***/ 6:
+/***/ 4:
 /*!**************************************!*\
   !*** multi ./pages/p/[imgDetail].js ***!
   \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\todayDraw\front\pages\p\[imgDetail].js */"./pages/p/[imgDetail].js");
+module.exports = __webpack_require__(/*! C:\Users\shdnt\Desktop\today\front\pages\p\[imgDetail].js */"./pages/p/[imgDetail].js");
 
 
 /***/ }),

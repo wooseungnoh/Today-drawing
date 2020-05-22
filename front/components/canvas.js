@@ -5,7 +5,7 @@ export const Canvas = styled.canvas`
   height: 500px;
   border-radius: 15px;
   background: #ffffff;
-  box-shadow: 18px 18px 25px #00000057, -18px -18px 25px #ffffff;
+  border:2px solid #eee;
 `;
 
 export const PainterSize = styled.div`
@@ -21,7 +21,7 @@ export const Ul = styled.ul`
   position: absolute;
   display: flex;
   flex-direction: row;
-  bottom: -15px;
+  bottom: -40px;
   padding:0;
 `;
 export const Li = styled.li`

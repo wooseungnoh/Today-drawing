@@ -17,35 +17,37 @@ const Gallery = () => {
   }, []);
 
   return (
-    <Container
-      flexDirection="column"
-      hsize="750px"
-      wsize="70%"
-      style={{
-        justifyContent: 'flex-start',
-        overflowY: 'scroll',
-      }}
-    >
-      <Text>오늘의 그림들</Text>
-      <GalleryContainer>
-        {postList ? (
-          postList.map((item) => {
-            const { id } = item;
-            return (
-              <Link key={id} href="/p/[imgDetail]" as={`/p/${item._id}`}>
-                <a>
-                  <PhotoView
-                    creater={item.title}
-                    url={`http://localhost:5000/${item.fileUrl}`}
-                  />
-                </a>
-              </Link>
-            );
-          })
-        ) : (
-          <></>
-        )}
-      </GalleryContainer>
+    <Container flexDirection="column" justifyContent="flex-start">
+      <Text style={{margin:'15px 0'}}>오늘의 그림들</Text>
+      <Container
+        flexDirection="column"
+        hsize="85%"
+        wsize="70%"
+        style={{
+          justifyContent: 'flex-start',
+          overflowY: 'scroll',
+        }}
+      >
+        <GalleryContainer>
+          {postList ? (
+            postList.map((item) => {
+              const { id } = item;
+              return (
+                <Link key={id} href="/p/[imgDetail]" as={`/p/${item._id}`}>
+                  <a>
+                    <PhotoView
+                      creater={item.title}
+                      url={`http://localhost:5000/${item.fileUrl}`}
+                    />
+                  </a>
+                </Link>
+              );
+            })
+          ) : (
+              <></>
+            )}
+        </GalleryContainer>
+      </Container>
     </Container>
   );
 };

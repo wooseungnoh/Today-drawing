@@ -122,10 +122,10 @@ const Upload = () => {
         <h2 style={{ margin: 0 }}>그림 그리기</h2>
         <Container
           style={{
-            padding: '30px 0',
+            padding: '15px 0 15px 0',
             width: '580px',
+            height: '530px',
             position: 'relative',
-            height: '600px',
           }}
         >
           <Canvas
@@ -190,7 +190,7 @@ const Upload = () => {
               ></div>
               {colorPicker ? (
                 <div
-                  style={{ position: 'relative', left: '-200px', top: '10px' }}
+                  style={{ position: 'relative', left: '-230px', top: '-140px' }}
                 >
                   <CompactPicker
                     color={canvasState.strokeStyle}
@@ -198,8 +198,8 @@ const Upload = () => {
                   />
                 </div>
               ) : (
-                <></>
-              )}
+                  <></>
+                )}
             </Li>
           </Ul>
         </Container>
