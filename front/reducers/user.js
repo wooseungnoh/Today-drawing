@@ -90,7 +90,8 @@ export default (state = initialState, action) => {
     case LOG_IN_FAILURE: {
       return {
         ...state,
-        isLoggedIn: true,
+        isLoggedIn: false,
+        isUserLoadding:false,
       };
     }
     case LOG_OUT_REQUEST: {

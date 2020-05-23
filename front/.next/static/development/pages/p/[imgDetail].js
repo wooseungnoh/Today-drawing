@@ -42,6 +42,100 @@ var Container = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.wi
 
 /***/ }),
 
+/***/ "./components/like.js":
+/*!****************************!*\
+  !*** ./components/like.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/drawing */ "./reducers/drawing.js");
+var _this = undefined,
+    _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\components\\like.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+var Like = function Like() {
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useDispatch"])();
+
+  var _useSelector = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useSelector"])(function (state) {
+    return state.user;
+  }),
+      me = _useSelector.me;
+
+  var _useSelector2 = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useSelector"])(function (state) {
+    return state.drawing;
+  }),
+      nowShowingPost = _useSelector2.nowShowingPost;
+
+  var likeRequest = function likeRequest() {
+    dispatch({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_5__["LIKE_REQUEST"],
+      data: {
+        id: nowShowingPost.post._id
+      }
+    });
+    dispatch({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_5__["LIKE_ON"]
+    });
+  };
+
+  var unlikeRequest = function unlikeRequest() {
+    dispatch({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_5__["UNLIKE_REQUEST"],
+      data: {
+        id: nowShowingPost.post._id
+      }
+    });
+  };
+
+  var printLike = function printLike() {
+    if (nowShowingPost && me) {
+      return String(nowShowingPost.post.liker.indexOf(me._id)) === '-1' ? __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faHeart"],
+        color: "#707070",
+        onClick: likeRequest,
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 37,
+          columnNumber: 9
+        }
+      }) : __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faHeart"],
+        color: "#ff5959",
+        onClick: unlikeRequest,
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39,
+          columnNumber: 11
+        }
+      });
+    }
+  };
+
+  return printLike();
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Like);
+
+/***/ }),
+
 /***/ "./components/text.js":
 /*!****************************!*\
   !*** ./components/text.js ***!
@@ -20628,16 +20722,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_uiComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/uiComponent */ "./components/uiComponent.js");
 /* harmony import */ var _components_text__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/text */ "./components/text.js");
 /* harmony import */ var _components_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/container */ "./components/container.js");
-/* harmony import */ var _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/free-regular-svg-icons */ "./node_modules/@fortawesome/free-regular-svg-icons/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../reducers/drawing */ "./reducers/drawing.js");
+/* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../reducers/drawing */ "./reducers/drawing.js");
+/* harmony import */ var _components_like__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/like */ "./components/like.js");
 var _this = undefined,
     _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\p\\[imgDetail].js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
 
 
 
@@ -20671,7 +20761,7 @@ var imgDetail = function imgDetail() {
     var nowUrl = document.location.href;
     var slice = nowUrl.split('p/');
     dispatch({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_9__["LOAD_POST_DETAIL_REQUEST"],
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["LOAD_POST_DETAIL_REQUEST"],
       data: {
         postId: slice[1]
       }
@@ -20695,7 +20785,7 @@ var imgDetail = function imgDetail() {
         location.href = "".concat(document.location.href);
       } else if (me._id === nowShowingPost.post.creator._id) {
         dispatch({
-          type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_9__["EDIT_POST_DETAIL_REQUEST"],
+          type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["EDIT_POST_DETAIL_REQUEST"],
           data: {
             id: nowShowingPost.post._id,
             title: e.target.childNodes[2].value,
@@ -20716,7 +20806,7 @@ var imgDetail = function imgDetail() {
       var nowUrl = document.location.href;
       var slice = nowUrl.split('p/');
       dispatch({
-        type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_9__["LOAD_POST_DETAIL_REQUEST"],
+        type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["LOAD_POST_DETAIL_REQUEST"],
         data: {
           postId: slice[1]
         }
@@ -20731,7 +20821,7 @@ var imgDetail = function imgDetail() {
         location.href = "".concat(document.location.href);
       } else if (me._id === nowShowingPost.post.creator._id) {
         dispatch({
-          type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_9__["DELETE_POST_REQUEST"],
+          type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["DELETE_POST_REQUEST"],
           data: {
             id: nowShowingPost.post._id
           }
@@ -20747,65 +20837,19 @@ var imgDetail = function imgDetail() {
     if (deletePostSuccess) {
       next_Router__WEBPACK_IMPORTED_MODULE_1___default.a.push('/gallery');
       dispatch({
-        type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_9__["DELETE_STATE_OFF"],
+        type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_6__["DELETE_STATE_OFF"],
         data: {
           id: nowShowingPost.post._id
         }
       });
     }
   }, [deletePostSuccess]);
-
-  var likeRequest = function likeRequest() {
-    dispatch({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_9__["LIKE_REQUEST"],
-      data: {
-        id: nowShowingPost.post._id
-      }
-    });
-    dispatch({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_9__["LIKE_ON"]
-    });
-  };
-
-  var unlikeRequest = function unlikeRequest() {
-    dispatch({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_9__["UNLIKE_REQUEST"],
-      data: {
-        id: nowShowingPost.post._id
-      }
-    });
-  };
-
-  var printLike = function printLike() {
-    if (nowShowingPost && me) {
-      return String(nowShowingPost.post.liker.indexOf(me._id)) === '-1' ? __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
-        icon: _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faHeart"],
-        onClick: likeRequest,
-        __self: _this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 139,
-          columnNumber: 9
-        }
-      }) : __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
-        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faHeart"],
-        onClick: unlikeRequest,
-        __self: _this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 141,
-          columnNumber: 9
-        }
-      });
-    }
-  };
-
   return __jsx(_components_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
     flexDirection: "column",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 147,
+      lineNumber: 112,
       columnNumber: 5
     }
   }, nowShowingPost ? __jsx("div", {
@@ -20817,7 +20861,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149,
+      lineNumber: 114,
       columnNumber: 9
     }
   }, __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Img"], {
@@ -20829,7 +20873,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 156,
+      lineNumber: 121,
       columnNumber: 11
     }
   }), __jsx("div", {
@@ -20844,7 +20888,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 161,
+      lineNumber: 126,
       columnNumber: 11
     }
   }, editing ? __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Form"], {
@@ -20853,7 +20897,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 173,
+      lineNumber: 138,
       columnNumber: 17
     }
   }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -20864,7 +20908,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 174,
+      lineNumber: 139,
       columnNumber: 19
     }
   }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -20872,7 +20916,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 180,
+      lineNumber: 145,
       columnNumber: 21
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -20884,7 +20928,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 181,
+      lineNumber: 146,
       columnNumber: 23
     }
   }, "".concat(nowShowingPost.post.creator.writer)), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Button"], {
@@ -20894,7 +20938,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 184,
+      lineNumber: 149,
       columnNumber: 23
     }
   }, "\uC791\uC131\uC644\uB8CC")), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -20905,14 +20949,14 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 186,
+      lineNumber: 151,
       columnNumber: 21
     }
   }, "".concat(nowShowingPost.post.createAt.split('T')[0]))), __jsx("label", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 191,
+      lineNumber: 156,
       columnNumber: 19
     }
   }, "\uC81C\uBAA9"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Input"], {
@@ -20924,14 +20968,14 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 192,
+      lineNumber: 157,
       columnNumber: 19
     }
   }), __jsx("label", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 197,
+      lineNumber: 162,
       columnNumber: 19
     }
   }, "\uB0B4\uC6A9"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Textarea"], {
@@ -20944,7 +20988,7 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 198,
+      lineNumber: 163,
       columnNumber: 19
     }
   }))) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -20953,8 +20997,8 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 207,
-      columnNumber: 17
+      lineNumber: 172,
+      columnNumber: 19
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
     bold: true,
@@ -20965,15 +21009,15 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 208,
-      columnNumber: 19
+      lineNumber: 173,
+      columnNumber: 21
     }
   }, "".concat(nowShowingPost.post.creator.writer)), nowShowingPost.post.creator._id === nowShowingPost.user._id && isLoggedIn ? __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 213,
-      columnNumber: 21
+      lineNumber: 178,
+      columnNumber: 25
     }
   }, __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     style: {
@@ -20984,8 +21028,8 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 214,
-      columnNumber: 23
+      lineNumber: 179,
+      columnNumber: 27
     }
   }, "\uC218\uC815"), __jsx(_components_uiComponent__WEBPACK_IMPORTED_MODULE_3__["Button"], {
     style: {
@@ -20996,10 +21040,17 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 220,
-      columnNumber: 23
+      lineNumber: 185,
+      columnNumber: 27
     }
-  }, "\uC0AD\uC81C")) : printLike()), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, "\uC0AD\uC81C")) : __jsx(_components_like__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 193,
+      columnNumber: 25
+    }
+  })), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
     fontSize: "medium",
     style: {
       paddingBottom: '30px'
@@ -21007,8 +21058,8 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 231,
-      columnNumber: 17
+      lineNumber: 196,
+      columnNumber: 19
     }
   }, "".concat(nowShowingPost.post.createAt.split('T')[0])), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
     bold: true,
@@ -21019,8 +21070,8 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 234,
-      columnNumber: 17
+      lineNumber: 199,
+      columnNumber: 19
     }
   }, nowShowingPost.post.title), __jsx("div", {
     style: {
@@ -21029,15 +21080,15 @@ var imgDetail = function imgDetail() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 237,
-      columnNumber: 17
+      lineNumber: 202,
+      columnNumber: 19
     }
   }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 238,
-      columnNumber: 19
+      lineNumber: 203,
+      columnNumber: 21
     }
   }, nowShowingPost.post.description))))) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null));
 };

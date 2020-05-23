@@ -3,7 +3,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as fullHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector, useDispatch } from 'react-redux';
-import { LIKE_REQUEST, UNLIKE_REQUEST, LIKE_ON } from '../../reducers/drawing';
+import { LIKE_REQUEST, UNLIKE_REQUEST, LIKE_ON } from '../reducers/drawing';
 
 const Like = () => {
   const dispatch = useDispatch();
@@ -34,10 +34,10 @@ const Like = () => {
   const printLike = () => {
     if (nowShowingPost && me) {
       return String(nowShowingPost.post.liker.indexOf(me._id)) === '-1' ? (
-        <FontAwesomeIcon icon={faHeart} onClick={likeRequest} />
+        <FontAwesomeIcon icon={faHeart} color="#707070" onClick={likeRequest} />
       ) : (
-        <FontAwesomeIcon icon={fullHeart} onClick={unlikeRequest} />
-      );
+          <FontAwesomeIcon icon={fullHeart} color="#ff5959" onClick={unlikeRequest} />
+        );
     }
   };
 

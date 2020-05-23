@@ -33,7 +33,6 @@ const Root = ({ Component, store }) => (
       {`
         * {
           font-family: 'Nanum Myeongjo', serif;
-          color: #707070;
           box-sizing: border-box;
         }
         html,

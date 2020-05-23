@@ -10,18 +10,13 @@ import {
 } from '../../components/uiComponent';
 import Text from '../../components/text';
 import Container from '../../components/container';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faHeart as fullHeart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   LOAD_POST_DETAIL_REQUEST,
   EDIT_POST_DETAIL_REQUEST,
   DELETE_POST_REQUEST,
   DELETE_STATE_OFF,
-  LIKE_REQUEST,
-  UNLIKE_REQUEST,
-  LIKE_ON,
 } from '../../reducers/drawing';
+import Like from '../../components/like';
 
 const imgDetail = () => {
   const dispatch = useDispatch();
@@ -113,36 +108,6 @@ const imgDetail = () => {
     }
   }, [deletePostSuccess]);
 
-  const likeRequest = () => {
-    dispatch({
-      type: LIKE_REQUEST,
-      data: {
-        id: nowShowingPost.post._id,
-      },
-    });
-    dispatch({
-      type: LIKE_ON,
-    });
-  };
-
-  const unlikeRequest = () => {
-    dispatch({
-      type: UNLIKE_REQUEST,
-      data: {
-        id: nowShowingPost.post._id,
-      },
-    });
-  };
-  const printLike = () => {
-    if (nowShowingPost && me) {
-      return String(nowShowingPost.post.liker.indexOf(me._id)) === '-1' ? (
-        <FontAwesomeIcon icon={faHeart} onClick={likeRequest} />
-      ) : (
-        <FontAwesomeIcon icon={fullHeart} onClick={unlikeRequest} />
-      );
-    }
-  };
-
   return (
     <Container flexDirection="column">
       {nowShowingPost ? (
@@ -187,7 +152,7 @@ const imgDetail = () => {
                       {`${nowShowingPost.post.createAt.split('T')[0]}`}
                     </Text>
                   </Container>
-                  
+
                   <label>제목</label>
                   <Input
                     type="text"
@@ -203,47 +168,47 @@ const imgDetail = () => {
                 </Form>
               </>
             ) : (
-              <>
-                <Container justifyContent="space-between" hsize="40px">
-                  <Text bold fontSize="big" style={{ padding: '15px 0' }}>
-                    {`${nowShowingPost.post.creator.writer}`}
+                <>
+                  <Container justifyContent="space-between" hsize="40px">
+                    <Text bold fontSize="big" style={{ padding: '15px 0' }}>
+                      {`${nowShowingPost.post.creator.writer}`}
+                    </Text>
+                    {nowShowingPost.post.creator._id ===
+                      nowShowingPost.user._id && isLoggedIn ? (
+                        <div>
+                          <Button
+                            style={{ width: '80px', margin: '2.5px' }}
+                            onClick={handleEditingState}
+                          >
+                            수정
+                      </Button>
+                          <Button
+                            style={{ width: '80px', margin: '2.5px' }}
+                            onClick={onDeletePost}
+                          >
+                            삭제
+                      </Button>
+                        </div>
+                      ) : (
+                        <Like />
+                      )}
+                  </Container>
+                  <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
+                    {`${nowShowingPost.post.createAt.split('T')[0]}`}
                   </Text>
-                  {nowShowingPost.post.creator._id ===
-                    nowShowingPost.user._id && isLoggedIn ? (
-                    <div>
-                      <Button
-                        style={{ width: '80px', margin: '2.5px' }}
-                        onClick={handleEditingState}
-                      >
-                        수정
-                      </Button>
-                      <Button
-                        style={{ width: '80px', margin: '2.5px' }}
-                        onClick={onDeletePost}
-                      >
-                        삭제
-                      </Button>
-                    </div>
-                  ) : (
-                    printLike()
-                  )}
-                </Container>
-                <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
-                  {`${nowShowingPost.post.createAt.split('T')[0]}`}
-                </Text>
-                <Text bold fontSize="huge" style={{ paddingBottom: '15px' }}>
-                  {nowShowingPost.post.title}
-                </Text>
-                <div style={{ width: '100%' }}>
-                  <Text>{nowShowingPost.post.description}</Text>
-                </div>
-              </>
-            )}
+                  <Text bold fontSize="huge" style={{ paddingBottom: '15px' }}>
+                    {nowShowingPost.post.title}
+                  </Text>
+                  <div style={{ width: '100%' }}>
+                    <Text>{nowShowingPost.post.description}</Text>
+                  </div>
+                </>
+              )}
           </div>
         </div>
       ) : (
-        <></>
-      )}
+          <></>
+        )}
     </Container>
   );
 };
