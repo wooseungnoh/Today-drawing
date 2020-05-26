@@ -9,6 +9,7 @@ export const initialState = {
   editingSuccess: false,
   deletePostSuccess: false,
   like: false,
+  word: 'undefined',
 };
 
 export const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
@@ -54,8 +55,28 @@ export const UNLIKE_REQUEST = 'UNLIKE_REQUEST';
 export const UNLIKE_SUCCESS = 'UNLIKE_SUCCESS';
 export const UNLIKE_FAILURE = 'UNLIKE_FAILURE';
 
+export const WORD_UPDATE_REQUEST = 'WORD_UPDATE_REQUEST';
+export const WORD_UPDATE_SUCCESS = 'WORD_UPDATE_SUCCESS';
+export const WORD_UPDATE_FAILURE = 'WORD_UPDATE_FAILURE';
+
 export default (state = initialState, action) => {
   switch (action.type) {
+    case WORD_UPDATE_REQUEST: {
+      return {
+        ...state,
+      };
+    }
+    case WORD_UPDATE_SUCCESS: {
+      return {
+        ...state,
+        word: action.data,
+      };
+    }
+    case WORD_UPDATE_FAILURE: {
+      return {
+        ...state,
+      };
+    }
     case LIKE_ON: {
       return {
         ...state,

@@ -1,5 +1,6 @@
 import Photo from '../model/Photo';
 import User from '../model/User';
+import { wordList } from '../wordList';
 import mongoose from 'mongoose';
 
 export const postUploadPhoto = (req, res) => {
@@ -156,4 +157,10 @@ export const unlike = async (req, res) => {
     console.log(e);
     res.status(400);
   }
+};
+
+export const loadWord = async (req, res) => {
+  const date = new Date();
+  const day = String(date).split(' ')[2];
+  res.json(wordList[Number(day)]);
 };

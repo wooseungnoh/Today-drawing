@@ -26,6 +26,9 @@ import {
   UNLIKE_REQUEST,
   UNLIKE_FAILURE,
   UNLIKE_SUCCESS,
+  WORD_UPDATE_SUCCESS,
+  WORD_UPDATE_FAILURE,
+  WORD_UPDATE_REQUEST,
 } from '../reducers/drawing';
 
 // 미리보기 사진 업로드
@@ -242,6 +245,35 @@ function* watchUnlike() {
   yield takeEvery(UNLIKE_REQUEST, unlike);
 }
 
+
+// loaded word
+
+function loadedWordApi() {
+  return axios.get('http://localhost:5000/upload/loadword', {
+    withCredentials: true,
+  });
+}
+
+function* loadedWord(action) {
+  try {
+    const result = yield call(loadedWordApi);
+    yield put({
+      type: WORD_UPDATE_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: WORD_UPDATE_FAILURE,
+    });
+  }
+}
+
+function* watchloadedWord() {
+  yield takeEvery(WORD_UPDATE_REQUEST, loadedWord);
+}
+
+
 export default function* drawingSaga() {
   yield all([
     fork(watchAddPhoto),
@@ -252,5 +284,6 @@ export default function* drawingSaga() {
     fork(watchDeletePost),
     fork(watchlike),
     fork(watchUnlike),
+    fork(watchloadedWord),
   ]);
 }

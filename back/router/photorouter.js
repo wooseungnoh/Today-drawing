@@ -10,6 +10,7 @@ import {
   deletePost,
   like,
   unlike,
+  loadWord,
 } from '../controller/photoController';
 
 const photoRouter = express();
@@ -28,4 +29,6 @@ photoRouter.post(routes.deletepost, deletePost);
 
 photoRouter.post(routes.like, like);
 photoRouter.post(routes.unlike, unlike);
+
+photoRouter.get(routes.loadword, loadWord)
 export default photoRouter;

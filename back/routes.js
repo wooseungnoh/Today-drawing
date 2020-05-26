@@ -16,8 +16,10 @@ const EDITPOST = '/editpost';
 const DELETEPOST = '/deletepost';
 const LIKE = '/like';
 const UNLIKE = '/unlike';
+const LOADWORD = '/loadword'
 
 const routes = {
+  loadword: LOADWORD,
   login: LOGIN,
   logout: LOGOUT,
   signup: SIGNUP,

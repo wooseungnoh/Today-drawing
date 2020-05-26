@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1856,126 +1856,573 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/container */ "./components/container.js");
-/* harmony import */ var _components_text__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/text */ "./components/text.js");
-var _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\index.js";
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/container */ "./components/container.js");
+/* harmony import */ var _components_text__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/text */ "./components/text.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../reducers/drawing */ "./reducers/drawing.js");
+var _jsxFileName = "D:\\today\\Today-drawing\\front\\pages\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
 
-const Home = () => __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-  flexDirection: "column",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 7,
-    columnNumber: 3
-  }
-}, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
-  fontSize: "mainTitle",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 8,
-    columnNumber: 5
-  }
-}, "\uD558\uB8E8 \uADF8\uB9BC"), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
-  style: {
-    marginBottom: '80px'
-  },
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 9,
-    columnNumber: 5
-  }
-}, "\uB2F9\uC2E0\uC758 \uADF8\uB9BC\uC2B5\uAD00"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-  href: "/upload",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 10,
-    columnNumber: 5
-  }
-}, __jsx("a", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 11,
-    columnNumber: 7
-  }
-}, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-  flexDirection: "column",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 12,
-    columnNumber: 9
-  }
-}, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
-  fontSize: "massive",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 13,
-    columnNumber: 11
-  }
-}, "\" \uC2A4\uCF00\uCE58\uBD81 \""), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
-  style: {
-    marginBottom: '80px'
-  },
-  bold: true,
-  fontSize: "big",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 14,
-    columnNumber: 11
-  }
-}, "\uC5C5\uB85C\uB4DC")))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-  href: "/gallery",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 20,
-    columnNumber: 5
-  }
-}, __jsx("a", {
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 21,
-    columnNumber: 7
-  }
-}, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_3__["default"], {
-  style: {
-    margin: '30px'
-  },
-  bold: true,
-  fontSize: "huge",
-  __self: undefined,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 22,
-    columnNumber: 9
-  }
-}, "\uC624\uB298\uC758 \uADF8\uB9BC\uB4E4"))));
+
+
+
+
+const Home = () => {
+  const {
+    word
+  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["useSelector"])(state => state.drawing);
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    dispatch({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_7__["WORD_UPDATE_REQUEST"]
+    });
+  }, []);
+
+  const onPrompt = () => {
+    const result = prompt('주제를 입력해주세요', ['']);
+    console.log(result);
+  };
+
+  return __jsx(_components_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    flexDirection: "column",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26,
+      columnNumber: 5
+    }
+  }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    fontSize: "mainTitle",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27,
+      columnNumber: 7
+    }
+  }, "\uD558\uB8E8 \uADF8\uB9BC"), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    style: {
+      marginBottom: '80px'
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 7
+    }
+  }, "\uB2F9\uC2E0\uC758 \uADF8\uB9BC\uC2B5\uAD00"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/upload",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 7
+    }
+  }, __jsx("a", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30,
+      columnNumber: 9
+    }
+  }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    flexDirection: "column",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 11
+    }
+  }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    fontSize: "massive",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 13
+    }
+  }, `"${word}"`), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    style: {
+      marginBottom: '80px'
+    },
+    bold: true,
+    fontSize: "big",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33,
+      columnNumber: 13
+    }
+  }, "\uC5C5\uB85C\uB4DC")))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/gallery",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 7
+    }
+  }, __jsx("a", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 9
+    }
+  }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    style: {
+      margin: '30px'
+    },
+    bold: true,
+    fontSize: "huge",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41,
+      columnNumber: 11
+    }
+  }, "\uC624\uB298\uC758 \uADF8\uB9BC\uB4E4"))), __jsx("div", {
+    onClick: onPrompt,
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      width: '160px',
+      height: '55px',
+      background: '#eee',
+      borderRadius: '30px',
+      boxShadow: '3px 3px 5px #707070',
+      position: 'fixed',
+      right: '20%',
+      bottom: '12%',
+      cursor: 'pointer',
+      border: 'none',
+      outline: 'none'
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46,
+      columnNumber: 7
+    }
+  }, __jsx("div", {
+    style: {
+      width: '45px',
+      height: '45px',
+      borderRadius: '50%',
+      background: '#aaa',
+      margin: '4px'
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64,
+      columnNumber: 9
+    }
+  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faPen"],
+    color: "#eee",
+    style: {
+      fontSize: '22px',
+      margin: '12px 0'
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73,
+      columnNumber: 11
+    }
+  })), __jsx("span", {
+    style: {
+      margin: '0 15px',
+      color: '#707070'
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 79,
+      columnNumber: 9
+    }
+  }, "\uC8FC\uC81C \uC81C\uCD9C")));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
 
 /***/ }),
 
-/***/ 5:
+/***/ "./reducers/drawing.js":
+/*!*****************************!*\
+  !*** ./reducers/drawing.js ***!
+  \*****************************/
+/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, LIKE_REQUEST, LIKE_SUCCESS, LIKE_FAILURE, LIKE_ON, UNLIKE_REQUEST, UNLIKE_SUCCESS, UNLIKE_FAILURE, WORD_UPDATE_REQUEST, WORD_UPDATE_SUCCESS, WORD_UPDATE_FAILURE, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_REQUEST", function() { return LOAD_GALLERY_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_SUCCESS", function() { return LOAD_GALLERY_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_FAILURE", function() { return LOAD_GALLERY_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_ON", function() { return MODAL_ON; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_OFF", function() { return MODAL_OFF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADDING_PHOTO_OFF", function() { return ADDING_PHOTO_OFF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_PHOTO", function() { return DELETE_PHOTO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_REQUEST", function() { return UPPLOAD_CANVAS_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_SUCCESS", function() { return UPPLOAD_CANVAS_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_FAILURE", function() { return UPPLOAD_CANVAS_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_REQUEST", function() { return UPPLOAD_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_SUCCESS", function() { return UPPLOAD_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_POST_FAILURE", function() { return UPPLOAD_POST_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOADING_DONE", function() { return UPPLOADING_DONE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_POST_DETAIL_REQUEST", function() { return LOAD_POST_DETAIL_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_POST_DETAIL_SUCCESS", function() { return LOAD_POST_DETAIL_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_POST_DETAIL_FAILURE", function() { return LOAD_POST_DETAIL_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_POST_DETAIL_REQUEST", function() { return EDIT_POST_DETAIL_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_POST_DETAIL_SUCCESS", function() { return EDIT_POST_DETAIL_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_POST_DETAIL_FAILURE", function() { return EDIT_POST_DETAIL_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_REQUEST", function() { return DELETE_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_SUCCESS", function() { return DELETE_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST_FAILURE", function() { return DELETE_POST_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_STATE_OFF", function() { return DELETE_STATE_OFF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LIKE_REQUEST", function() { return LIKE_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LIKE_SUCCESS", function() { return LIKE_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LIKE_FAILURE", function() { return LIKE_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LIKE_ON", function() { return LIKE_ON; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNLIKE_REQUEST", function() { return UNLIKE_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNLIKE_SUCCESS", function() { return UNLIKE_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNLIKE_FAILURE", function() { return UNLIKE_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_REQUEST", function() { return WORD_UPDATE_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_SUCCESS", function() { return WORD_UPDATE_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_FAILURE", function() { return WORD_UPDATE_FAILURE; });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const initialState = {
+  postList: [],
+  modalState: false,
+  addingPhoto: false,
+  isLoadding: false,
+  imagePaths: [],
+  isUploadingPost: false,
+  nowShowingPost: null,
+  editingSuccess: false,
+  deletePostSuccess: false,
+  like: false,
+  word: 'undefined'
+};
+const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
+const LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';
+const LOAD_GALLERY_FAILURE = 'LOAD_GALLERY_FAILURE';
+const MODAL_ON = 'MODAL_ON';
+const MODAL_OFF = 'MODAL_OFF';
+const ADDING_PHOTO_OFF = 'ADDING_PHOTO_OFF';
+const DELETE_PHOTO = 'DELETE_PHOTO';
+const UPPLOAD_CANVAS_REQUEST = 'UPPLOAD_CANVAS_REQUEST';
+const UPPLOAD_CANVAS_SUCCESS = 'UPPLOAD_CANVAS_SUCCESS';
+const UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
+const UPPLOAD_POST_REQUEST = 'UPPLOAD_POST_REQUEST';
+const UPPLOAD_POST_SUCCESS = 'UPPLOAD_POST_SUCCESS';
+const UPPLOAD_POST_FAILURE = 'UPPLOAD_POST_FAILURE';
+const UPPLOADING_DONE = 'UPPLOADING_DONE';
+const LOAD_POST_DETAIL_REQUEST = 'LOAD_POST_DETAIL_REQUEST';
+const LOAD_POST_DETAIL_SUCCESS = 'LOAD_POST_DETAIL_SUCCESS';
+const LOAD_POST_DETAIL_FAILURE = 'LOAD_POST_DETAIL_FAILURE';
+const EDIT_POST_DETAIL_REQUEST = 'EDIT_POST_DETAIL_REQUEST';
+const EDIT_POST_DETAIL_SUCCESS = 'EDIT_POST_DETAIL_SUCCESS';
+const EDIT_POST_DETAIL_FAILURE = 'EDIT_POST_DETAIL_FAILURE';
+const DELETE_POST_REQUEST = 'DELETE_POST_REQUEST';
+const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
+const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
+const DELETE_STATE_OFF = 'DELETE_STATE_OFF';
+const LIKE_REQUEST = 'LIKE_REQUEST';
+const LIKE_SUCCESS = 'LIKE_SUCCESS';
+const LIKE_FAILURE = 'LIKE_FAILURE';
+const LIKE_ON = 'LIKE_ON';
+const UNLIKE_REQUEST = 'UNLIKE_REQUEST';
+const UNLIKE_SUCCESS = 'UNLIKE_SUCCESS';
+const UNLIKE_FAILURE = 'UNLIKE_FAILURE';
+const WORD_UPDATE_REQUEST = 'WORD_UPDATE_REQUEST';
+const WORD_UPDATE_SUCCESS = 'WORD_UPDATE_SUCCESS';
+const WORD_UPDATE_FAILURE = 'WORD_UPDATE_FAILURE';
+/* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
+  switch (action.type) {
+    case WORD_UPDATE_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case WORD_UPDATE_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          word: action.data
+        });
+      }
+
+    case WORD_UPDATE_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case LIKE_ON:
+      {
+        return _objectSpread({}, state, {
+          like: true
+        });
+      }
+
+    case LIKE_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case LIKE_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          like: true,
+          nowShowingPost: action.data
+        });
+      }
+
+    case LIKE_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case UNLIKE_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case UNLIKE_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          like: false,
+          nowShowingPost: action.data
+        });
+      }
+
+    case UNLIKE_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case DELETE_STATE_OFF:
+      {
+        return _objectSpread({}, state, {
+          deletePostSuccess: false
+        });
+      }
+
+    case DELETE_POST_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          deletePostSuccess: false
+        });
+      }
+
+    case DELETE_POST_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          deletePostSuccess: true
+        });
+      }
+
+    case DELETE_POST_FAILURE:
+      {
+        return _objectSpread({}, state, {
+          deletePostSuccess: false
+        });
+      }
+
+    case EDIT_POST_DETAIL_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          editingSuccess: false
+        });
+      }
+
+    case EDIT_POST_DETAIL_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          editingSuccess: true
+        });
+      }
+
+    case EDIT_POST_DETAIL_FAILURE:
+      {
+        return _objectSpread({}, state, {
+          editingSuccess: true
+        });
+      }
+
+    case LOAD_POST_DETAIL_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case LOAD_POST_DETAIL_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          nowShowingPost: action.data
+        });
+      }
+
+    case LOAD_POST_DETAIL_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case LOAD_GALLERY_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          isLoadding: true
+        });
+      }
+
+    case LOAD_GALLERY_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          postList: action.data,
+          isLoadding: false
+        });
+      }
+
+    case LOAD_GALLERY_FAILURE:
+      {
+        return _objectSpread({}, state, {
+          isLoadding: false
+        });
+      }
+
+    case MODAL_ON:
+      {
+        return _objectSpread({}, state, {
+          modalState: true
+        });
+      }
+
+    case MODAL_OFF:
+      {
+        return _objectSpread({}, state, {
+          modalState: false
+        });
+      }
+
+    case UPPLOAD_CANVAS_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          isLoadding: true
+        });
+      }
+
+    case UPPLOAD_CANVAS_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          addingPhoto: true,
+          isLoadding: false,
+          imagePaths: [...state.imagePaths, action.data]
+        });
+      }
+
+    case UPPLOAD_CANVAS_FAILURE:
+      {
+        return _objectSpread({}, state, {
+          addingPhoto: false
+        });
+      }
+
+    case ADDING_PHOTO_OFF:
+      {
+        return _objectSpread({}, state, {
+          addingPhoto: false
+        });
+      }
+
+    case DELETE_PHOTO:
+      {
+        return _objectSpread({}, state, {
+          imagePaths: []
+        });
+      }
+
+    case UPPLOAD_POST_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          isUploadingPost: false
+        });
+      }
+
+    case UPPLOAD_POST_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          postList: [...state.postList, action.data],
+          isUploadingPost: true
+        });
+      }
+
+    case UPPLOAD_POST_FAILURE:
+      {
+        return _objectSpread({}, state, {
+          isUploadingPost: false
+        });
+      }
+
+    case UPPLOADING_DONE:
+      {
+        return _objectSpread({}, state, {
+          isUploadingPost: false
+        });
+      }
+
+    default:
+      {
+        return _objectSpread({}, state);
+      }
+  }
+});
+
+/***/ }),
+
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\shdnt\Desktop\today\front\pages\index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! D:\today\Today-drawing\front\pages\index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "@fortawesome/free-solid-svg-icons":
+/*!****************************************************!*\
+  !*** external "@fortawesome/free-solid-svg-icons" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@fortawesome/free-solid-svg-icons");
+
+/***/ }),
+
+/***/ "@fortawesome/react-fontawesome":
+/*!*************************************************!*\
+  !*** external "@fortawesome/react-fontawesome" ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@fortawesome/react-fontawesome");
 
 /***/ }),
 
@@ -2020,6 +2467,17 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-is");
+
+/***/ }),
+
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
 
 /***/ }),
 
