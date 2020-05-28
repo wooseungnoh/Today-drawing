@@ -9,7 +9,7 @@ export const initialState = {
   editingSuccess: false,
   deletePostSuccess: false,
   like: false,
-  word: 'undefined',
+  word: '단어 불러오는 중',
 };
 
 export const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';

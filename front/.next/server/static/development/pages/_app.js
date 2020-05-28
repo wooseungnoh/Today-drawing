@@ -2490,7 +2490,7 @@ const initialState = {
   editingSuccess: false,
   deletePostSuccess: false,
   like: false,
-  word: 'undefined'
+  word: '단어 불러오는 중'
 };
 const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
 const LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';

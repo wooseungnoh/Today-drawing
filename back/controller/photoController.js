@@ -1,5 +1,6 @@
 import Photo from '../model/Photo';
 import User from '../model/User';
+import Word from '../model/Word';
 import { wordList } from '../wordList';
 import mongoose from 'mongoose';
 
@@ -161,6 +162,37 @@ export const unlike = async (req, res) => {
 
 export const loadWord = async (req, res) => {
   const date = new Date();
-  const day = String(date).split(' ')[2];
-  res.json(wordList[Number(day)]);
+  const now = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  let wordArray = [];
+  const lastDay = now.getDate();
+  const wordLength = wordList.length;
+  try {
+    if (date.getDate() === 1) {
+      for (let i = 0; i < lastDay; i++) {
+        const choiceword = wordList[Math.floor(Math.random() * wordLength)];
+        wordArray.push(choiceword);
+      }
+
+      const wordData = await Word.create({
+        name: String(`${date.getMonth() + 1}월`),
+        wordListArray: wordArray,
+      });
+
+      res.json(wordData.wordListArray[date.getDate()-1]);
+    } else {
+      const wordData = await Word.find({});
+
+      const arrnumber = wordData.findIndex(
+        (i) => i.name === `${date.getMonth() + 1}월`,
+      );
+
+      res.json(wordData[arrnumber].wordListArray[date.getDate()-1]);
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(400);
+  }
+  return;
+  // const day = String(date).split(' ')[2];
+  // res.json(wordList[Number(day)]);
 };
