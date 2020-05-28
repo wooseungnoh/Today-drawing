@@ -29,6 +29,7 @@ import {
   WORD_UPDATE_SUCCESS,
   WORD_UPDATE_FAILURE,
   WORD_UPDATE_REQUEST,
+  ADD_WORD,
 } from '../reducers/drawing';
 
 // 미리보기 사진 업로드
@@ -273,7 +274,6 @@ function* watchloadedWord() {
   yield takeEvery(WORD_UPDATE_REQUEST, loadedWord);
 }
 
-
 export default function* drawingSaga() {
   yield all([
     fork(watchAddPhoto),
@@ -284,6 +284,6 @@ export default function* drawingSaga() {
     fork(watchDeletePost),
     fork(watchlike),
     fork(watchUnlike),
-    fork(watchloadedWord),
+    fork(watchloadedWord)
   ]);
 }

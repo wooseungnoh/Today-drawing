@@ -59,8 +59,15 @@ export const WORD_UPDATE_REQUEST = 'WORD_UPDATE_REQUEST';
 export const WORD_UPDATE_SUCCESS = 'WORD_UPDATE_SUCCESS';
 export const WORD_UPDATE_FAILURE = 'WORD_UPDATE_FAILURE';
 
+export const ADD_WORD = 'ADD_WORD';
+
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ADD_WORD: {
+      return{
+        ...state,
+      }
+    }
     case WORD_UPDATE_REQUEST: {
       return {
         ...state,

@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import axios from 'axios'
 import Link from 'next/link';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,7 +20,10 @@ const Home = () => {
 
   const onPrompt = () => {
     const result = prompt('주제를 입력해주세요', ['']);
-    console.log(result);
+    const object = {
+      wordName : result
+    }
+    axios.post('http://localhost:5000/upload/addword', object)
   };
 
   return (

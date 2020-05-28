@@ -178,7 +178,7 @@ export const loadWord = async (req, res) => {
         wordListArray: wordArray,
       });
 
-      res.json(wordData.wordListArray[date.getDate()-1]);
+      res.json(wordData.wordListArray[date.getDate() - 1]);
     } else {
       const wordData = await Word.find({});
 
@@ -186,7 +186,7 @@ export const loadWord = async (req, res) => {
         (i) => i.name === `${date.getMonth() + 1}월`,
       );
 
-      res.json(wordData[arrnumber].wordListArray[date.getDate()-1]);
+      res.json(wordData[arrnumber].wordListArray[date.getDate() - 1]);
     }
   } catch (e) {
     console.log(e);
@@ -195,4 +195,21 @@ export const loadWord = async (req, res) => {
   return;
   // const day = String(date).split(' ')[2];
   // res.json(wordList[Number(day)]);
+};
+
+export const addWord = async (req, res) => {
+  const { wordName } = req.body;
+  const date = new Date();
+  try {
+    const wordData = await Word.find({});
+    const arrnumber = wordData.findIndex(
+      (i) => i.name === `${date.getMonth() + 1}월`,
+    );
+    wordData[arrnumber].wordListArray.splice(date.getDate(), 0, wordName);
+    wordData[arrnumber].save();
+  } catch (e) {
+    console.log(e);
+    res.status(400);
+  }
+  return;
 };

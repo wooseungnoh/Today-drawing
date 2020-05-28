@@ -17,8 +17,10 @@ const DELETEPOST = '/deletepost';
 const LIKE = '/like';
 const UNLIKE = '/unlike';
 const LOADWORD = '/loadword'
+const ADDWORD = '/addword'
 
 const routes = {
+  addword: ADDWORD,
   loadword: LOADWORD,
   login: LOGIN,
   logout: LOGOUT,

@@ -1854,19 +1854,22 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/container */ "./components/container.js");
-/* harmony import */ var _components_text__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/text */ "./components/text.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../reducers/drawing */ "./reducers/drawing.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/container */ "./components/container.js");
+/* harmony import */ var _components_text__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/text */ "./components/text.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _reducers_drawing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../reducers/drawing */ "./reducers/drawing.js");
 var _jsxFileName = "D:\\today\\Today-drawing\\front\\pages\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -1879,77 +1882,80 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 const Home = () => {
   const {
     word
-  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["useSelector"])(state => state.drawing);
-  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["useDispatch"])();
+  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_7__["useSelector"])(state => state.drawing);
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_7__["useDispatch"])();
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     dispatch({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_7__["WORD_UPDATE_REQUEST"]
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_8__["WORD_UPDATE_REQUEST"]
     });
   }, []);
 
   const onPrompt = () => {
     const result = prompt('주제를 입력해주세요', ['']);
-    console.log(result);
+    const object = {
+      wordName: result
+    };
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:5000/upload/addword', object);
   };
 
-  return __jsx(_components_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return __jsx(_components_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
     flexDirection: "column",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 30,
       columnNumber: 5
     }
-  }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_6__["default"], {
     fontSize: "mainTitle",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 31,
       columnNumber: 7
     }
-  }, "\uD558\uB8E8 \uADF8\uB9BC"), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, "\uD558\uB8E8 \uADF8\uB9BC"), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_6__["default"], {
     style: {
       marginBottom: '80px'
     },
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 32,
       columnNumber: 7
     }
-  }, "\uB2F9\uC2E0\uC758 \uADF8\uB9BC\uC2B5\uAD00"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  }, "\uB2F9\uC2E0\uC758 \uADF8\uB9BC\uC2B5\uAD00"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
     href: "/upload",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 33,
       columnNumber: 7
     }
   }, __jsx("a", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 34,
       columnNumber: 9
     }
-  }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, __jsx(_components_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
     flexDirection: "column",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 35,
       columnNumber: 11
     }
-  }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_6__["default"], {
     fontSize: "massive",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 36,
       columnNumber: 13
     }
-  }, `"${word}"`), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, `"${word}"`), __jsx(_components_text__WEBPACK_IMPORTED_MODULE_6__["default"], {
     style: {
       marginBottom: '80px'
     },
@@ -1958,25 +1964,25 @@ const Home = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 37,
       columnNumber: 13
     }
-  }, "\uC5C5\uB85C\uB4DC")))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  }, "\uC5C5\uB85C\uB4DC")))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
     href: "/gallery",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 43,
       columnNumber: 7
     }
   }, __jsx("a", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 44,
       columnNumber: 9
     }
-  }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, __jsx(_components_text__WEBPACK_IMPORTED_MODULE_6__["default"], {
     style: {
       margin: '30px'
     },
@@ -1985,7 +1991,7 @@ const Home = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 45,
       columnNumber: 11
     }
   }, "\uC624\uB298\uC758 \uADF8\uB9BC\uB4E4"))), __jsx("div", {
@@ -2008,7 +2014,7 @@ const Home = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 50,
       columnNumber: 7
     }
   }, __jsx("div", {
@@ -2022,11 +2028,11 @@ const Home = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 68,
       columnNumber: 9
     }
-  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faPen"],
+  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faPen"],
     color: "#eee",
     style: {
       fontSize: '22px',
@@ -2035,7 +2041,7 @@ const Home = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 77,
       columnNumber: 11
     }
   })), __jsx("span", {
@@ -2046,7 +2052,7 @@ const Home = () => {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79,
+      lineNumber: 83,
       columnNumber: 9
     }
   }, "\uC8FC\uC81C \uC81C\uCD9C")));
@@ -2060,7 +2066,7 @@ const Home = () => {
 /*!*****************************!*\
   !*** ./reducers/drawing.js ***!
   \*****************************/
-/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, LIKE_REQUEST, LIKE_SUCCESS, LIKE_FAILURE, LIKE_ON, UNLIKE_REQUEST, UNLIKE_SUCCESS, UNLIKE_FAILURE, WORD_UPDATE_REQUEST, WORD_UPDATE_SUCCESS, WORD_UPDATE_FAILURE, default */
+/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, LIKE_REQUEST, LIKE_SUCCESS, LIKE_FAILURE, LIKE_ON, UNLIKE_REQUEST, UNLIKE_SUCCESS, UNLIKE_FAILURE, WORD_UPDATE_REQUEST, WORD_UPDATE_SUCCESS, WORD_UPDATE_FAILURE, ADD_WORD, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2100,6 +2106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_REQUEST", function() { return WORD_UPDATE_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_SUCCESS", function() { return WORD_UPDATE_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_FAILURE", function() { return WORD_UPDATE_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_WORD", function() { return ADD_WORD; });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2153,8 +2160,14 @@ const UNLIKE_FAILURE = 'UNLIKE_FAILURE';
 const WORD_UPDATE_REQUEST = 'WORD_UPDATE_REQUEST';
 const WORD_UPDATE_SUCCESS = 'WORD_UPDATE_SUCCESS';
 const WORD_UPDATE_FAILURE = 'WORD_UPDATE_FAILURE';
+const ADD_WORD = 'ADD_WORD';
 /* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
   switch (action.type) {
+    case ADD_WORD:
+      {
+        return _objectSpread({}, state);
+      }
+
     case WORD_UPDATE_REQUEST:
       {
         return _objectSpread({}, state);
@@ -2423,6 +2436,17 @@ module.exports = require("@fortawesome/free-solid-svg-icons");
 /***/ (function(module, exports) {
 
 module.exports = require("@fortawesome/react-fontawesome");
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
 
 /***/ }),
 
