@@ -167,7 +167,12 @@ export const loadWord = async (req, res) => {
   const lastDay = now.getDate();
   const wordLength = wordList.length;
   try {
-    if (date.getDate() === 1) {
+    const wordsLists = await Word.find({});
+    const arrnumber = wordsLists.findIndex(
+      (i) => i.name === `${date.getMonth() + 1}월`,
+    );
+
+    if (date.getDate() === 1 && arrnumber === -1) {
       for (let i = 0; i < lastDay; i++) {
         const choiceword = wordList[Math.floor(Math.random() * wordLength)];
         wordArray.push(choiceword);
