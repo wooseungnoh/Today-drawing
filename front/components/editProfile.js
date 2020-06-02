@@ -1,18 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import Router from 'next/Router';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Container from './container';
 import { EDITING_PROFILE_REQUEST, EDITING_PROFILE_OFF } from '../reducers/user';
 import { Button, Input, Textarea } from './uiComponent';
 
 const EditProfile = ({ signUp }) => {
+  const dispatch = useDispatch();
   const { editing, me } = useSelector((state) => state.user);
+  const userWriterValue = useRef();
+  const userInfomationValue = useRef();
+
   const [info, setInfo] = useState({
     userInfo: '',
     name: '',
   });
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    setInfo({
+      userInfo: userInfomationValue.current.value,
+      name: userWriterValue.current.value,
+    });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,16 +40,16 @@ const EditProfile = ({ signUp }) => {
     });
   };
 
-  const handleChangeInfo = (e) => {
+  const handleChangename = () => {
     setInfo({
       ...info,
-      userInfo: e.target.value,
+      name: userWriterValue.current.value,
     });
   };
-  const handleChangename = (e) => {
+  const handleChangeInfo = () => {
     setInfo({
       ...info,
-      name: e.target.value,
+      userInfo: userInfomationValue.current.value,
     });
   };
 
@@ -58,7 +66,8 @@ const EditProfile = ({ signUp }) => {
       }}
     >
       <Container
-        wsize="400px"
+        wsize="350px"
+        hsize="400px"
         flexDirection="column"
         style={{ borderRadius: '10px', background: '#ccc' }}
       >
@@ -73,12 +82,14 @@ const EditProfile = ({ signUp }) => {
         >
           <Input
             type="text"
-            value={info.name}
+            ref={userWriterValue}
+            defaultValue={me ? me.writer : ''}
             onChange={handleChangename}
             placeholder="작가명"
           />
           <Textarea
-            value={info.userInfo}
+            ref={userInfomationValue}
+            defaultValue={me ? me.userInfo : ''}
             onChange={handleChangeInfo}
             placeholder="작가소개"
           />

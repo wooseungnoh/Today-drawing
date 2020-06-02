@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Router from 'next/Router';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -22,11 +22,11 @@ const imgDetail = () => {
   const dispatch = useDispatch();
   const [editing, setEditing] = useState(false);
   const { me, isLoggedIn } = useSelector((state) => state.user);
-  const {
-    nowShowingPost,
-    editingSuccess,
-    deletePostSuccess,
-  } = useSelector((state) => state.drawing);
+  const { nowShowingPost, editingSuccess, deletePostSuccess } = useSelector(
+    (state) => state.drawing,
+  );
+  const postTitle = useRef();
+  const postInfomation = useRef();
 
   useEffect(() => {
     const nowUrl = document.location.href;
@@ -50,14 +50,21 @@ const imgDetail = () => {
         alert('권한이 없습니다.');
         location.href = `${document.location.href}`;
       } else if (me._id === nowShowingPost.post.creator._id) {
-        dispatch({
-          type: EDIT_POST_DETAIL_REQUEST,
-          data: {
-            id: nowShowingPost.post._id,
-            title: e.target.childNodes[2].value,
-            description: e.target.childNodes[4].value,
-          },
-        });
+        if (
+          postTitle.current.value !== '' &&
+          postInfomation.current.value !== ''
+        ) {
+          dispatch({
+            type: EDIT_POST_DETAIL_REQUEST,
+            data: {
+              id: nowShowingPost.post._id,
+              title: postTitle.current.value,
+              description: postInfomation.current.value,
+            },
+          });
+        } else {
+          alert('양식을 작성하여야 합니다.');
+        }
       } else {
         alert('권한이 없습니다.');
         location.href = `${document.location.href}`;
@@ -156,59 +163,61 @@ const imgDetail = () => {
                   <label>제목</label>
                   <Input
                     type="text"
+                    ref={postTitle}
                     style={{ width: '100%' }}
                     defaultValue={nowShowingPost.post.title}
                   />
                   <label>내용</label>
                   <Textarea
                     edit
+                    ref={postInfomation}
                     style={{ width: '100%', resize: 'none' }}
                     defaultValue={nowShowingPost.post.description}
                   />
                 </Form>
               </>
             ) : (
-                <>
-                  <Container justifyContent="space-between" hsize="40px">
-                    <Text bold fontSize="big" style={{ padding: '15px 0' }}>
-                      {`${nowShowingPost.post.creator.writer}`}
-                    </Text>
-                    {nowShowingPost.post.creator._id ===
-                      nowShowingPost.user._id && isLoggedIn ? (
-                        <div>
-                          <Button
-                            style={{ width: '80px', margin: '2.5px' }}
-                            onClick={handleEditingState}
-                          >
-                            수정
-                      </Button>
-                          <Button
-                            style={{ width: '80px', margin: '2.5px' }}
-                            onClick={onDeletePost}
-                          >
-                            삭제
-                      </Button>
-                        </div>
-                      ) : (
-                        <Like />
-                      )}
-                  </Container>
-                  <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
-                    {`${nowShowingPost.post.createAt.split('T')[0]}`}
+              <>
+                <Container justifyContent="space-between" hsize="40px">
+                  <Text bold fontSize="big" style={{ padding: '15px 0' }}>
+                    {`${nowShowingPost.post.creator.writer}`}
                   </Text>
-                  <Text bold fontSize="huge" style={{ paddingBottom: '15px' }}>
-                    {nowShowingPost.post.title}
-                  </Text>
-                  <div style={{ width: '100%' }}>
-                    <Text>{nowShowingPost.post.description}</Text>
-                  </div>
-                </>
-              )}
+                  {nowShowingPost.post.creator._id ===
+                    nowShowingPost.user._id && isLoggedIn ? (
+                    <div>
+                      <Button
+                        style={{ width: '80px', margin: '2.5px' }}
+                        onClick={handleEditingState}
+                      >
+                        수정
+                      </Button>
+                      <Button
+                        style={{ width: '80px', margin: '2.5px' }}
+                        onClick={onDeletePost}
+                      >
+                        삭제
+                      </Button>
+                    </div>
+                  ) : (
+                    <Like />
+                  )}
+                </Container>
+                <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
+                  {`${nowShowingPost.post.createAt.split('T')[0]}`}
+                </Text>
+                <Text bold fontSize="huge" style={{ paddingBottom: '15px' }}>
+                  {nowShowingPost.post.title}
+                </Text>
+                <div style={{ width: '100%' }}>
+                  <Text>{nowShowingPost.post.description}</Text>
+                </div>
+              </>
+            )}
           </div>
         </div>
       ) : (
-          <></>
-        )}
+        <></>
+      )}
     </Container>
   );
 };

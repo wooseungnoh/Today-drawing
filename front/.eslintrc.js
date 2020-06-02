@@ -9,7 +9,7 @@ module.exports = {
     'airbnb',
     'eslint:recommended',
     'prettier/react',
-    'react-hooks/recommended",
+    "plugin:react-hooks/recommended"
   ],
   globals: {
     Atomics: 'readonly',
