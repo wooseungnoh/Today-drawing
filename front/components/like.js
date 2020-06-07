@@ -38,6 +38,8 @@ const Like = () => {
       ) : (
           <FontAwesomeIcon icon={fullHeart} color="#ff5959" onClick={unlikeRequest} />
         );
+    }else{
+      return <></>;
     }
   };
 

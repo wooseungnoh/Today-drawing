@@ -4,21 +4,27 @@ import { useSelector, useDispatch } from 'react-redux';
 import Container, { GalleryContainer } from '../components/container';
 import Text from '../components/text';
 import PhotoView from '../components/photoView';
-import { LOAD_GALLERY_REQUEST } from '../reducers/drawing';
+import { LOAD_GALLERY_REQUEST, WORD_UPDATE_REQUEST } from '../reducers/drawing';
 
 const Gallery = () => {
   const dispatch = useDispatch();
   const { postList } = useSelector((state) => state.drawing);
+  const { word } = useSelector((state) => state.drawing);
 
   useEffect(() => {
     dispatch({
       type: LOAD_GALLERY_REQUEST,
     });
+    dispatch({
+      type: WORD_UPDATE_REQUEST,
+    });
   }, []);
-
   return (
     <Container flexDirection="column" justifyContent="flex-start">
-      <Text style={{margin:'15px 0'}}>오늘의 그림들</Text>
+      <div>
+      <Text style={{margin:'15px 0'}}>{`오늘의 주제 - ${word}`}</Text>
+      <Text style={{marginLeft:'35px'}}>전체보기</Text>
+      </div>
       <Container
         flexDirection="column"
         hsize="85%"

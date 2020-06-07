@@ -147,7 +147,6 @@ const imgDetail = () => {
                     flexDirection="column"
                     alignItems="baseline"
                     justifyContent="space-between"
-                    hsize="40px"
                   >
                     <Container justifyContent="space-between">
                       <Text bold fontSize="big" style={{ padding: '15px 0' }}>
@@ -155,7 +154,7 @@ const imgDetail = () => {
                       </Text>
                       <Button style={{ width: '80px' }}>작성완료</Button>
                     </Container>
-                    <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
+                    <Text fontSize="medium" style={{ paddingBottom: '25px' }}>
                       {`${nowShowingPost.post.createAt.split('T')[0]}`}
                     </Text>
                   </Container>
@@ -202,7 +201,7 @@ const imgDetail = () => {
                     <Like />
                   )}
                 </Container>
-                <Text fontSize="medium" style={{ paddingBottom: '30px' }}>
+                <Text fontSize="medium" style={{ paddingBottom: '25px' }}>
                   {`${nowShowingPost.post.createAt.split('T')[0]}`}
                 </Text>
                 <Text bold fontSize="huge" style={{ paddingBottom: '15px' }}>
