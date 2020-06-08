@@ -16,6 +16,10 @@ export const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
 export const LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';
 export const LOAD_GALLERY_FAILURE = 'LOAD_GALLERY_FAILURE';
 
+export const LOAD_ALLGALLERY_REQUEST = 'LOAD_ALLGALLERY_REQUEST';
+export const LOAD_ALLGALLERY_SUCCESS = 'LOAD_ALLGALLERY_SUCCESS';
+export const LOAD_ALLGALLERY_FAILURE = 'LOAD_ALLGALLERY_FAILURE';
+
 export const MODAL_ON = 'MODAL_ON';
 export const MODAL_OFF = 'MODAL_OFF';
 
@@ -64,9 +68,9 @@ export const ADD_WORD = 'ADD_WORD';
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_WORD: {
-      return{
+      return {
         ...state,
-      }
+      };
     }
     case WORD_UPDATE_REQUEST: {
       return {
@@ -196,6 +200,25 @@ export default (state = initialState, action) => {
       };
     }
     case LOAD_GALLERY_FAILURE: {
+      return {
+        ...state,
+        isLoadding: false,
+      };
+    }
+    case LOAD_ALLGALLERY_REQUEST: {
+      return {
+        ...state,
+        isLoadding: true,
+      };
+    }
+    case LOAD_ALLGALLERY_SUCCESS: {
+      return {
+        ...state,
+        isLoadding: false,
+        postList: action.data,
+      };
+    }
+    case LOAD_ALLGALLERY_FAILURE: {
       return {
         ...state,
         isLoadding: false,

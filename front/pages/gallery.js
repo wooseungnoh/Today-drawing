@@ -4,7 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import Container, { GalleryContainer } from '../components/container';
 import Text from '../components/text';
 import PhotoView from '../components/photoView';
-import { LOAD_GALLERY_REQUEST, WORD_UPDATE_REQUEST } from '../reducers/drawing';
+import {
+  LOAD_GALLERY_REQUEST,
+  WORD_UPDATE_REQUEST,
+  LOAD_ALLGALLERY_REQUEST,
+} from '../reducers/drawing';
 
 const Gallery = () => {
   const dispatch = useDispatch();
@@ -19,11 +23,27 @@ const Gallery = () => {
       type: WORD_UPDATE_REQUEST,
     });
   }, []);
+
+  const loadTodayPost = () => {
+    dispatch({
+      type: LOAD_GALLERY_REQUEST,
+    });
+  };
+
+  const loadAllPost = () => {
+    dispatch({
+      type: LOAD_ALLGALLERY_REQUEST,
+    });
+  };
+
   return (
     <Container flexDirection="column" justifyContent="flex-start">
       <div>
-      <Text style={{margin:'15px 0'}}>{`오늘의 주제 - ${word}`}</Text>
-      <Text style={{marginLeft:'35px'}}>전체보기</Text>
+        <Text style={{ margin: '15px 0' }}>오늘의 주제 - </Text>
+        <button onClick={loadTodayPost}>{`${word}`}</button>
+        <button style={{ marginLeft: '35px' }} onClick={loadAllPost}>
+          전체보기
+        </button>
       </div>
       <Container
         flexDirection="column"
@@ -50,8 +70,8 @@ const Gallery = () => {
               );
             })
           ) : (
-              <></>
-            )}
+            <></>
+          )}
         </GalleryContainer>
       </Container>
     </Container>

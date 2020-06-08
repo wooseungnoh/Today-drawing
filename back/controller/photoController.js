@@ -48,6 +48,17 @@ export const loadedPostList = async (req, res) => {
   return;
 };
 
+export const loadedAllPostList = async (req, res) => {
+  try {
+    const post = await Photo.find({}).sort({ _id: -1 });
+    res.json(post);
+  } catch (e) {
+    console.log(e);
+    res.status(400);
+  }
+  return;
+};
+
 export const loadedPhotoDetail = async (req, res) => {
   const {
     body: { postId },

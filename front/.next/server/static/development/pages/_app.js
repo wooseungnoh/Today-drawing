@@ -2433,7 +2433,7 @@ const configureStore = (initialState, options) => {
 /*!*****************************!*\
   !*** ./reducers/drawing.js ***!
   \*****************************/
-/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, LIKE_REQUEST, LIKE_SUCCESS, LIKE_FAILURE, LIKE_ON, UNLIKE_REQUEST, UNLIKE_SUCCESS, UNLIKE_FAILURE, WORD_UPDATE_REQUEST, WORD_UPDATE_SUCCESS, WORD_UPDATE_FAILURE, ADD_WORD, default */
+/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, LOAD_ALLGALLERY_REQUEST, LOAD_ALLGALLERY_SUCCESS, LOAD_ALLGALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, LIKE_REQUEST, LIKE_SUCCESS, LIKE_FAILURE, LIKE_ON, UNLIKE_REQUEST, UNLIKE_SUCCESS, UNLIKE_FAILURE, WORD_UPDATE_REQUEST, WORD_UPDATE_SUCCESS, WORD_UPDATE_FAILURE, ADD_WORD, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2442,6 +2442,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_REQUEST", function() { return LOAD_GALLERY_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_SUCCESS", function() { return LOAD_GALLERY_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_FAILURE", function() { return LOAD_GALLERY_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_ALLGALLERY_REQUEST", function() { return LOAD_ALLGALLERY_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_ALLGALLERY_SUCCESS", function() { return LOAD_ALLGALLERY_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_ALLGALLERY_FAILURE", function() { return LOAD_ALLGALLERY_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_ON", function() { return MODAL_ON; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_OFF", function() { return MODAL_OFF; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADDING_PHOTO_OFF", function() { return ADDING_PHOTO_OFF; });
@@ -2496,6 +2499,9 @@ const initialState = {
 const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
 const LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';
 const LOAD_GALLERY_FAILURE = 'LOAD_GALLERY_FAILURE';
+const LOAD_ALLGALLERY_REQUEST = 'LOAD_ALLGALLERY_REQUEST';
+const LOAD_ALLGALLERY_SUCCESS = 'LOAD_ALLGALLERY_SUCCESS';
+const LOAD_ALLGALLERY_FAILURE = 'LOAD_ALLGALLERY_FAILURE';
 const MODAL_ON = 'MODAL_ON';
 const MODAL_OFF = 'MODAL_OFF';
 const ADDING_PHOTO_OFF = 'ADDING_PHOTO_OFF';
@@ -2677,6 +2683,28 @@ const ADD_WORD = 'ADD_WORD';
       }
 
     case LOAD_GALLERY_FAILURE:
+      {
+        return _objectSpread({}, state, {
+          isLoadding: false
+        });
+      }
+
+    case LOAD_ALLGALLERY_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          isLoadding: true
+        });
+      }
+
+    case LOAD_ALLGALLERY_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          isLoadding: false,
+          postList: action.data
+        });
+      }
+
+    case LOAD_ALLGALLERY_FAILURE:
       {
         return _objectSpread({}, state, {
           isLoadding: false
@@ -3111,6 +3139,32 @@ function* loadedPost(action) {
 
 function* watchloadedPost() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_GALLERY_REQUEST"], loadedPost);
+} // loaded all post list
+
+
+function loadedAllPostApi() {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:5000/upload/allloaded', {
+    withCredentials: true
+  });
+}
+
+function* loadedAllPost() {
+  try {
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadedAllPostApi);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_ALLGALLERY_SUCCESS"],
+      data: result.data
+    });
+  } catch (e) {
+    console.log(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_ALLGALLERY_FAILURE"]
+    });
+  }
+}
+
+function* watchloadedAllPost() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_ALLGALLERY_REQUEST"], loadedAllPost);
 } // 포스트 세부사항 로딩
 
 
@@ -3248,7 +3302,7 @@ function loadedWordApi() {
   });
 }
 
-function* loadedWord(action) {
+function* loadedWord() {
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadedWordApi);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
@@ -3268,7 +3322,7 @@ function* watchloadedWord() {
 }
 
 function* drawingSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPhoto), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchEditPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchDeletePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchUnlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedWord)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPhoto), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchEditPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchDeletePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchUnlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedWord), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedAllPost)]);
 }
 
 /***/ }),

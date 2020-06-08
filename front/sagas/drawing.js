@@ -30,6 +30,9 @@ import {
   WORD_UPDATE_FAILURE,
   WORD_UPDATE_REQUEST,
   ADD_WORD,
+  LOAD_ALLGALLERY_SUCCESS,
+  LOAD_ALLGALLERY_FAILURE,
+  LOAD_ALLGALLERY_REQUEST,
 } from '../reducers/drawing';
 
 // 미리보기 사진 업로드
@@ -111,6 +114,33 @@ function* loadedPost(action) {
 
 function* watchloadedPost() {
   yield takeEvery(LOAD_GALLERY_REQUEST, loadedPost);
+}
+
+// loaded all post list
+
+function loadedAllPostApi() {
+  return axios.get('http://localhost:5000/upload/allloaded', {
+    withCredentials: true,
+  });
+}
+
+function* loadedAllPost() {
+  try {
+    const result = yield call(loadedAllPostApi);
+    yield put({
+      type: LOAD_ALLGALLERY_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: LOAD_ALLGALLERY_FAILURE,
+    });
+  }
+}
+
+function* watchloadedAllPost() {
+  yield takeEvery(LOAD_ALLGALLERY_REQUEST, loadedAllPost);
 }
 
 // 포스트 세부사항 로딩
@@ -255,7 +285,7 @@ function loadedWordApi() {
   });
 }
 
-function* loadedWord(action) {
+function* loadedWord() {
   try {
     const result = yield call(loadedWordApi);
     yield put({
@@ -284,6 +314,7 @@ export default function* drawingSaga() {
     fork(watchDeletePost),
     fork(watchlike),
     fork(watchUnlike),
-    fork(watchloadedWord)
+    fork(watchloadedWord),
+    fork(watchloadedAllPost)
   ]);
 }

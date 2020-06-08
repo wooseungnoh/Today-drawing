@@ -21,12 +21,14 @@ const Home = () => {
 
   const onPrompt = async () => {
     const result = prompt('주제를 입력해주세요', ['']);
-    const object = {
-      wordName: result,
-    };
-    const addwordResult = await axios.post('http://localhost:5000/upload/addword', object);
-    if(addwordResult.status === 200){
-      alert('추가성공')
+    if(result !== '' || result !== null){
+      const object = {
+        wordName: result,
+      };
+      const addwordResult = await axios.post('http://localhost:5000/upload/addword', object);
+      if(addwordResult.status === 200){
+        alert('추가성공')
+      }
     }
   };
 

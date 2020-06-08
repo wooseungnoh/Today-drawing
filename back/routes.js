@@ -11,13 +11,14 @@ const PHOTO = '/photo';
 const UPLOADPHOTO = '/uploadphoto';
 const UPLOADPOST = '/uploadpost';
 const LOADEDPOST = '/loaded';
+const LOADEDALLPOST = '/allloaded';
 const PHOTODETAIL = '/photodetail';
 const EDITPOST = '/editpost';
 const DELETEPOST = '/deletepost';
 const LIKE = '/like';
 const UNLIKE = '/unlike';
-const LOADWORD = '/loadword'
-const ADDWORD = '/addword'
+const LOADWORD = '/loadword';
+const ADDWORD = '/addword';
 
 const routes = {
   addword: ADDWORD,
@@ -31,6 +32,7 @@ const routes = {
   uploadphoto: UPLOADPHOTO,
   uploadpost: UPLOADPOST,
   loadedpost: LOADEDPOST,
+  loadedallpost: LOADEDALLPOST,
   photodetail: PHOTODETAIL,
   editpost: EDITPOST,
   deletepost: DELETEPOST,
