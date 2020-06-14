@@ -2429,6 +2429,61 @@ const configureStore = (initialState, options) => {
 
 /***/ }),
 
+/***/ "./reducers/admin.js":
+/*!***************************!*\
+  !*** ./reducers/admin.js ***!
+  \***************************/
+/*! exports provided: initialState, LOAD_USER_DATA_SUCCESS, LOAD_USER_DATA_FAILURE, LOAD_USER_DATA_REQUEST, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_SUCCESS", function() { return LOAD_USER_DATA_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_FAILURE", function() { return LOAD_USER_DATA_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_REQUEST", function() { return LOAD_USER_DATA_REQUEST; });
+/* harmony import */ var _drawing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./drawing */ "./reducers/drawing.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+const initialState = {
+  user: []
+};
+const LOAD_USER_DATA_SUCCESS = 'LOAD_USER_DATA_SUCCESS';
+const LOAD_USER_DATA_FAILURE = 'LOAD_USER_DATA_FAILURE';
+const LOAD_USER_DATA_REQUEST = 'LOAD_USER_DATA_REQUEST';
+/* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
+  switch (action.type) {
+    case LOAD_USER_DATA_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          user: [...action.data]
+        });
+      }
+
+    case LOAD_USER_DATA_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case _drawing__WEBPACK_IMPORTED_MODULE_0__["LOAD_ALLGALLERY_FAILURE"]:
+      {
+        return _objectSpread({}, state);
+      }
+
+    default:
+      {
+        return _objectSpread({}, state);
+      }
+  }
+});
+
+/***/ }),
+
 /***/ "./reducers/drawing.js":
 /*!*****************************!*\
   !*** ./reducers/drawing.js ***!
@@ -2813,12 +2868,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user */ "./reducers/user.js");
 /* harmony import */ var _drawing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./drawing */ "./reducers/drawing.js");
+/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./admin */ "./reducers/admin.js");
+
 
 
 
 const rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   user: _user__WEBPACK_IMPORTED_MODULE_1__["default"],
-  drawing: _drawing__WEBPACK_IMPORTED_MODULE_2__["default"]
+  drawing: _drawing__WEBPACK_IMPORTED_MODULE_2__["default"],
+  admin: _admin__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 
@@ -3042,6 +3100,56 @@ const LOAD_LIKELIST_FAILURE = 'LOAD_LIKELIST_FAILURE';
       }
   }
 });
+
+/***/ }),
+
+/***/ "./sagas/admin.js":
+/*!************************!*\
+  !*** ./sagas/admin.js ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return adminSaga; });
+/* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-saga/effects */ "redux-saga/effects");
+/* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _reducers_admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/admin */ "./reducers/admin.js");
+
+
+
+
+function loadUserListAPI() {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:5000/loaduserlist', {
+    withCredentials: true
+  });
+}
+
+function* loadUserList() {
+  try {
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadUserListAPI);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_admin__WEBPACK_IMPORTED_MODULE_2__["LOAD_USER_DATA_SUCCESS"],
+      data: result.data
+    });
+  } catch (e) {
+    console.log(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_admin__WEBPACK_IMPORTED_MODULE_2__["LOAD_USER_DATA_FAILURE"]
+    });
+  }
+}
+
+function* watchloadUserList() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_admin__WEBPACK_IMPORTED_MODULE_2__["LOAD_USER_DATA_REQUEST"], loadUserList);
+}
+
+function* adminSaga() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadUserList)]);
+}
 
 /***/ }),
 
@@ -3297,9 +3405,7 @@ function* watchUnlike() {
 
 
 function loadedWordApi() {
-  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:5000/upload/loadword', {
-    withCredentials: true
-  });
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:5000/upload/loadword');
 }
 
 function* loadedWord() {
@@ -3341,11 +3447,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user */ "./sagas/user.js");
 /* harmony import */ var _drawing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./drawing */ "./sagas/drawing.js");
+/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./admin */ "./sagas/admin.js");
+
 
 
 
 function* rootSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(_user__WEBPACK_IMPORTED_MODULE_1__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(_drawing__WEBPACK_IMPORTED_MODULE_2__["default"])]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(_user__WEBPACK_IMPORTED_MODULE_1__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(_drawing__WEBPACK_IMPORTED_MODULE_2__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(_admin__WEBPACK_IMPORTED_MODULE_3__["default"])]);
 }
 
 /***/ }),

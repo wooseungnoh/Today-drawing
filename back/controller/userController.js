@@ -1,4 +1,5 @@
 import User from '../model/User';
+import Photo from '../model/Photo';
 import passport from 'passport';
 import mongoose from 'mongoose';
 
@@ -90,4 +91,15 @@ export const loadLikeList = async (req, res) => {
     res.status(400);
   }
   return;
+};
+
+//유저 리스트 불러오기
+export const loadUserList = async (req, res) => {
+  try {
+    const user = await User.find();
+    res.json(user);
+  } catch (e) {
+    console.log(e);
+    res.status(400);
+  }
 };

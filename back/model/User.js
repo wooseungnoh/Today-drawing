@@ -11,6 +11,10 @@ const UserSchema = new mongoose.Schema({
       ref: 'Photo',
     },
   ],
+  createAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' });

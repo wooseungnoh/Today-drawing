@@ -280,9 +280,7 @@ function* watchUnlike() {
 // loaded word
 
 function loadedWordApi() {
-  return axios.get('http://localhost:5000/upload/loadword', {
-    withCredentials: true,
-  });
+  return axios.get('http://localhost:5000/upload/loadword');
 }
 
 function* loadedWord() {

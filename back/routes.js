@@ -5,6 +5,7 @@ const SIGNUP = '/signup';
 const EDITING = '/editing';
 const LOAD = '/load';
 const LOADLIKELIST = '/loadlikelist';
+const LOADUSERLIST = '/loaduserlist';
 
 //photo
 const PHOTO = '/photo';
@@ -21,6 +22,7 @@ const LOADWORD = '/loadword';
 const ADDWORD = '/addword';
 
 const routes = {
+  loaduserlist: LOADUSERLIST,
   addword: ADDWORD,
   loadword: LOADWORD,
   login: LOGIN,

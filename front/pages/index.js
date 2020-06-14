@@ -26,7 +26,7 @@ const Home = () => {
         wordName: result,
       };
       const addwordResult = await axios.post('http://localhost:5000/upload/addword', object);
-      if(addwordResult.status === 200){
+      if(addwordResult.status === 200 && result){
         alert('추가성공')
       }
     }

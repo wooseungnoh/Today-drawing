@@ -7,6 +7,7 @@ import {
   load,
   loadUser,
   loadLikeList,
+  loadUserList,
 } from '../controller/userController';
 import routes from '../routes';
 
@@ -18,6 +19,6 @@ globalRouter.post(routes.signup, signup, login);
 globalRouter.post(routes.editing, editing);
 globalRouter.get(routes.load, loadUser);
 globalRouter.get(routes.loadlikelist, loadLikeList);
-
+globalRouter.get(routes.loaduserlist, loadUserList);
 
 export default globalRouter;
