@@ -25,6 +25,7 @@ const PhotoSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   }],
+  subject: String,
 });
 
 const model = mongoose.model('Photo', PhotoSchema);

@@ -12,7 +12,7 @@ import {
 import { useInput } from './login';
 
 const Upload = () => {
-  const { imagePaths, isUploadingPost } = useSelector((state) => state.drawing);
+  const { imagePaths, isUploadingPost, word } = useSelector((state) => state.drawing);
   const { isLoggedIn } = useSelector((state) => state.user);
   const [title, setTitle] = useInput('');
   const [description, setDescription] = useInput('');
@@ -29,7 +29,7 @@ const Upload = () => {
     if (isLoggedIn) {
       dispatch({
         type: UPPLOAD_POST_REQUEST,
-        data: { title, description, imagePaths },
+        data: { title, description, imagePaths, word },
       });
     } else {
       alert('작성 권한이 없습니다. 로그인페이지로 이동합니다.');

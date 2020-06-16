@@ -10,7 +10,7 @@ export const postUploadPhoto = (req, res) => {
 
 export const postUploadPost = async (req, res) => {
   const {
-    body: { title, description, imagePaths },
+    body: { title, description, imagePaths, word },
   } = req;
 
   const newPost = await Photo.create({
@@ -18,6 +18,7 @@ export const postUploadPost = async (req, res) => {
     title,
     description,
     creator: req.user.id,
+    subject: word,
   });
 
   try {
@@ -33,11 +34,11 @@ export const postUploadPost = async (req, res) => {
 export const loadedPostList = async (req, res) => {
   try {
     let now = new Date();
-    let start = new Date(now.getFullYear(),now.getMonth(),now.getDate(),1,0,0);
+    let start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 1, 0, 0);
 
-    let end = new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,59,59);
-  
-    let query = {createAt: {$gte: start, $lt: end} };
+    let end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 59, 59);
+
+    let query = { createAt: { $gte: start, $lt: end } };
 
     const post = await Photo.find(query);
     res.json(post);
@@ -231,8 +232,8 @@ export const addWord = async (req, res) => {
     wordData[arrnumber].wordListArray.splice(
       Math.floor(
         Math.random() *
-          (wordData[arrnumber].wordListArray.length - (date.getDate() + 1)) +
-          (date.getDate() + 1),
+        (wordData[arrnumber].wordListArray.length - (date.getDate() + 1)) +
+        (date.getDate() + 1),
       ),
       0,
       wordName,

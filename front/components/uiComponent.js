@@ -78,7 +78,7 @@ export const Form = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  ${({none}) => !none && css`
+  ${({ none }) => !none && css`
   align-items: center;
   `}
 `;
@@ -95,3 +95,11 @@ export const InputContainer = styled.div`
 `;
 
 export const Img = styled.img``;
+
+export const GalleryButton = styled.button`
+border:none;
+background:none;
+color:#707070;
+font-weight:bold;
+font-size:19px;
+`
