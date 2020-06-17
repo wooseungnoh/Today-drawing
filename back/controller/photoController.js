@@ -33,14 +33,34 @@ export const postUploadPost = async (req, res) => {
 
 export const loadedPostList = async (req, res) => {
   try {
-    let now = new Date();
-    let start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 1, 0, 0);
+    // let now = new Date();
+    // let start = new Date(
+    //   now.getFullYear(),
+    //   now.getMonth(),
+    //   now.getDate(),
+    //   1,
+    //   0,
+    //   0,
+    // );
 
-    let end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 59, 59);
+    // let end = new Date(
+    //   now.getFullYear(),
+    //   now.getMonth(),
+    //   now.getDate() + 1,
+    //   0,
+    //   59,
+    //   59,
+    // );
 
-    let query = { createAt: { $gte: start, $lt: end } };
+    // let query = { createAt: { $gte: start, $lt: end } };
+    const date = new Date();
+    const wordData = await Word.find({});
+    const arrnumber = wordData.findIndex(
+      (i) => i.name === `${date.getMonth() + 1}월`,
+    );
+    const todayWord = wordData[arrnumber].wordListArray[date.getDate() - 1];
+    const post = await Photo.find({ subject: todayWord });
 
-    const post = await Photo.find(query);
     res.json(post);
   } catch (e) {
     console.log(e);
@@ -49,9 +69,10 @@ export const loadedPostList = async (req, res) => {
   return;
 };
 
-export const loadedAllPostList = async (req, res) => {
+export const loadedSelectedPostList = async (req, res) => {
+  const { word } = req.body;
   try {
-    const post = await Photo.find({}).sort({ _id: -1 });
+    const post = await Photo.find({ subject: word });
     res.json(post);
   } catch (e) {
     console.log(e);
@@ -181,9 +202,9 @@ export const unlike = async (req, res) => {
 
 export const loadWord = async (req, res) => {
   const date = new Date();
-  const now = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  const lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
   let wordArray = [];
-  const lastDay = now.getDate();
+  const lastDay = lastDate.getDate();
   const wordLength = wordList.length;
   try {
     const wordsLists = await Word.find({});
@@ -200,6 +221,7 @@ export const loadWord = async (req, res) => {
       const wordData = await Word.create({
         name: String(`${date.getMonth() + 1}월`),
         wordListArray: wordArray,
+        oldWordList: [],
       });
 
       res.json(wordData.wordListArray[date.getDate() - 1]);
@@ -210,7 +232,19 @@ export const loadWord = async (req, res) => {
         (i) => i.name === `${date.getMonth() + 1}월`,
       );
 
-      res.json(wordData[arrnumber].wordListArray[date.getDate() - 1]);
+      const yesterdayWord =
+        wordData[arrnumber].wordListArray[date.getDate() - 2];
+      const findindex = wordData[arrnumber].oldWordList.indexOf(yesterdayWord);
+      if (findindex === -1) {
+        wordData[arrnumber].oldWordList.push(
+          wordData[arrnumber].wordListArray[date.getDate() - 2],
+        );
+      }
+      wordData[arrnumber].save();
+      res.json({
+        word: wordData[arrnumber].wordListArray[date.getDate() - 1],
+        oldWordList: wordData[arrnumber].oldWordList,
+      });
     }
   } catch (e) {
     console.log(e);
@@ -232,8 +266,8 @@ export const addWord = async (req, res) => {
     wordData[arrnumber].wordListArray.splice(
       Math.floor(
         Math.random() *
-        (wordData[arrnumber].wordListArray.length - (date.getDate() + 1)) +
-        (date.getDate() + 1),
+          (wordData[arrnumber].wordListArray.length - (date.getDate() + 1)) +
+          (date.getDate() + 1),
       ),
       0,
       wordName,

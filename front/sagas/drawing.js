@@ -33,6 +33,9 @@ import {
   LOAD_ALLGALLERY_SUCCESS,
   LOAD_ALLGALLERY_FAILURE,
   LOAD_ALLGALLERY_REQUEST,
+  LOAD_SELECT_POST_SUCCESS,
+  LOAD_SELECT_POST_FAILURE,
+  LOAD_SELECT_POST_REQUEST,
 } from '../reducers/drawing';
 
 // 미리보기 사진 업로드
@@ -276,7 +279,6 @@ function* watchUnlike() {
   yield takeEvery(UNLIKE_REQUEST, unlike);
 }
 
-
 // loaded word
 
 function loadedWordApi() {
@@ -302,6 +304,31 @@ function* watchloadedWord() {
   yield takeEvery(WORD_UPDATE_REQUEST, loadedWord);
 }
 
+// select post
+
+function selectpostApi(word) {
+  return axios.post('http://localhost:5000/upload/select', word);
+}
+
+function* selectpost(action) {
+  try {
+    const result = yield call(selectpostApi, action.data);
+    yield put({
+      type: LOAD_SELECT_POST_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: LOAD_SELECT_POST_FAILURE,
+    });
+  }
+}
+
+function* watchselectpost() {
+  yield takeEvery(LOAD_SELECT_POST_REQUEST, selectpost);
+}
+
 export default function* drawingSaga() {
   yield all([
     fork(watchAddPhoto),
@@ -313,6 +340,7 @@ export default function* drawingSaga() {
     fork(watchlike),
     fork(watchUnlike),
     fork(watchloadedWord),
-    fork(watchloadedAllPost)
+    fork(watchloadedAllPost),
+    fork(watchselectpost),
   ]);
 }

@@ -12,7 +12,7 @@ import {
   unlike,
   loadWord,
   addWord,
-  loadedAllPostList,
+  loadedSelectedPostList,
 } from '../controller/photoController';
 
 const photoRouter = express();
@@ -22,7 +22,6 @@ photoRouter.post(routes.uploadphoto, uploadPhoto, postUploadPhoto);
 photoRouter.post(routes.uploadpost, postUploadPost);
 
 photoRouter.get(routes.loadedpost, loadedPostList);
-photoRouter.get(routes.loadedallpost, loadedAllPostList);
 
 photoRouter.post(routes.photodetail, loadedPhotoDetail);
 
@@ -33,6 +32,8 @@ photoRouter.post(routes.deletepost, deletePost);
 photoRouter.post(routes.like, like);
 photoRouter.post(routes.unlike, unlike);
 
-photoRouter.get(routes.loadword, loadWord)
-photoRouter.post(routes.addword, addWord)
+photoRouter.get(routes.loadword, loadWord);
+photoRouter.post(routes.addword, addWord);
+
+photoRouter.post(routes.select, loadedSelectedPostList);
 export default photoRouter;

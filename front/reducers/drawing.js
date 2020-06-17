@@ -10,6 +10,7 @@ export const initialState = {
   deletePostSuccess: false,
   like: false,
   word: '단어 불러오는 중',
+  oldWordList: [],
 };
 
 export const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
@@ -63,10 +64,31 @@ export const WORD_UPDATE_REQUEST = 'WORD_UPDATE_REQUEST';
 export const WORD_UPDATE_SUCCESS = 'WORD_UPDATE_SUCCESS';
 export const WORD_UPDATE_FAILURE = 'WORD_UPDATE_FAILURE';
 
+export const LOAD_SELECT_POST_REQUEST = 'LOAD_SELECT_POST_REQUEST';
+export const LOAD_SELECT_POST_SUCCESS = 'LOAD_SELECT_POST_SUCCESS';
+export const LOAD_SELECT_POST_FAILURE = 'LOAD_SELECT_POST_FAILURE';
+
 export const ADD_WORD = 'ADD_WORD';
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOAD_SELECT_POST_REQUEST: {
+      return {
+        ...state,
+        postList: null,
+      };
+    }
+    case LOAD_SELECT_POST_SUCCESS: {
+      return {
+        ...state,
+        postList: [...action.data],
+      };
+    }
+    case LOAD_SELECT_POST_FAILURE: {
+      return {
+        ...state,
+      };
+    }
     case ADD_WORD: {
       return {
         ...state,
@@ -80,7 +102,8 @@ export default (state = initialState, action) => {
     case WORD_UPDATE_SUCCESS: {
       return {
         ...state,
-        word: action.data,
+        word: action.data.word,
+        oldWordList: action.data.oldWordList,
       };
     }
     case WORD_UPDATE_FAILURE: {

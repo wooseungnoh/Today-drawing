@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
-var _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\components\\Layout.js";
+var _jsxFileName = "D:\\today\\Today-drawing\\front\\components\\Layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -244,7 +244,7 @@ const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.w
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\components\\loading.js";
+var _jsxFileName = "D:\\today\\Today-drawing\\front\\components\\loading.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0__["createElement"];
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -322,7 +322,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_text__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/text */ "./components/text.js");
 /* harmony import */ var _uiComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./uiComponent */ "./components/uiComponent.js");
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
-var _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\components\\navigation.js";
+var _jsxFileName = "D:\\today\\Today-drawing\\front\\components\\navigation.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
  // import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -2332,7 +2332,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 /* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../reducers */ "./reducers/index.js");
 /* harmony import */ var _sagas__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../sagas */ "./sagas/index.js");
-var _jsxFileName = "C:\\Users\\shdnt\\Desktop\\today\\front\\pages\\_app.js";
+var _jsxFileName = "D:\\today\\Today-drawing\\front\\pages\\_app.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -2419,7 +2419,7 @@ const Root = ({
 })), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
   id: "79496788",
   __self: undefined
-}, "*{font-family:'Nanum Myeongjo',serif;box-sizing:border-box;}html,body{width:100%;height:100%;margin:0;padding:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:url('static/background_img.jpg') no-repeat;background-size:125% 110%;background-position:50% 28%;}@media (min-width:1024px){body{background-size:100% 110%;background-position:50% 28%;}}a,h1,h2,h3,h4,h5,h6,span,p{-webkit-text-decoration:none;text-decoration:none;display:inline-block;}a{color:#eee;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcc2hkbnRcXERlc2t0b3BcXHRvZGF5XFxmcm9udFxccGFnZXNcXF9hcHAuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBZ0NPLEFBRytDLEFBS3pCLEFBYWlCLEFBYVAsQUFJVixXQTdCQyxBQThCZCxZQTdCVyxHQVlxQixNQVhwQixHQVBZLE9BUVQsUUF1QlEsSUFackIsR0FsQkYsY0ErQkEsNkNBdkJ5QixtR0FDSiw2RkFDbUMsc0RBQzVCLDBCQUNFLDRCQUM5QiIsImZpbGUiOiJDOlxcVXNlcnNcXHNoZG50XFxEZXNrdG9wXFx0b2RheVxcZnJvbnRcXHBhZ2VzXFxfYXBwLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IEhlYWQgZnJvbSAnbmV4dC9oZWFkJztcclxuaW1wb3J0IHdpdGhSZWR1eCBmcm9tICduZXh0LXJlZHV4LXdyYXBwZXInO1xyXG5pbXBvcnQgeyBhcHBseU1pZGRsZXdhcmUsIGNvbXBvc2UsIGNyZWF0ZVN0b3JlIH0gZnJvbSAncmVkdXgnO1xyXG5pbXBvcnQgeyBQcm92aWRlciB9IGZyb20gJ3JlYWN0LXJlZHV4JztcclxuaW1wb3J0IGNyZWF0ZVNhZ2FNaWRkbGV3YXJlIGZyb20gJ3JlZHV4LXNhZ2EnO1xyXG5cclxuaW1wb3J0IEFwcExheW91dCBmcm9tICcuLi9jb21wb25lbnRzL0xheW91dCc7XHJcbmltcG9ydCByZWR1Y2VyIGZyb20gJy4uL3JlZHVjZXJzJztcclxuaW1wb3J0IHJvb3RTYWdhIGZyb20gJy4uL3NhZ2FzJztcclxuXHJcbmNvbnN0IFJvb3QgPSAoeyBDb21wb25lbnQsIHN0b3JlIH0pID0+IChcclxuICA8UHJvdmlkZXIgc3RvcmU9e3N0b3JlfT5cclxuICAgIDxIZWFkPlxyXG4gICAgICA8dGl0bGU+7ZWY66OoIOq3uOumvDwvdGl0bGU+XHJcbiAgICAgIDxtZXRhXHJcbiAgICAgICAgbmFtZT1cInZpZXdwb3J0XCJcclxuICAgICAgICBjb250ZW50PVwid2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEsIHVzZXItc2NhbGFibGU9bm9cIlxyXG4gICAgICAvPlxyXG4gICAgICA8bGlua1xyXG4gICAgICAgIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PU5hbnVtK015ZW9uZ2pvOndnaHRANDAwOzcwMDs4MDAmZGlzcGxheT1zd2FwXCJcclxuICAgICAgICByZWw9XCJzdHlsZXNoZWV0XCJcclxuICAgICAgLz5cclxuICAgICAgPHNjcmlwdFxyXG4gICAgICAgIHNyYz1cImh0dHBzOi8va2l0LmZvbnRhd2Vzb21lLmNvbS8zMDhiZDg5MTljLmpzXCJcclxuICAgICAgICBjcm9zc09yaWdpbj1cImFub255bW91c1wiXHJcbiAgICAgIC8+XHJcbiAgICA8L0hlYWQ+XHJcbiAgICA8QXBwTGF5b3V0PlxyXG4gICAgICA8Q29tcG9uZW50IC8+XHJcbiAgICA8L0FwcExheW91dD5cclxuICAgIDxzdHlsZSBqc3ggZ2xvYmFsPlxyXG4gICAgICB7YFxyXG4gICAgICAgICoge1xyXG4gICAgICAgICAgZm9udC1mYW1pbHk6ICdOYW51bSBNeWVvbmdqbycsIHNlcmlmO1xyXG4gICAgICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuICAgICAgICB9XHJcbiAgICAgICAgaHRtbCxcclxuICAgICAgICBib2R5IHtcclxuICAgICAgICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgICAgICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgICAgICAgbWFyZ2luOiAwO1xyXG4gICAgICAgICAgcGFkZGluZzogMDtcclxuICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB1cmwoJ3N0YXRpYy9iYWNrZ3JvdW5kX2ltZy5qcGcnKSBuby1yZXBlYXQ7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kLXNpemU6IDEyNSUgMTEwJTtcclxuICAgICAgICAgIGJhY2tncm91bmQtcG9zaXRpb246IDUwJSAyOCU7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIEBtZWRpYSAobWluLXdpZHRoOiAxMDI0cHgpIHtcclxuICAgICAgICAgIGJvZHkge1xyXG4gICAgICAgICAgICBiYWNrZ3JvdW5kLXNpemU6IDEwMCUgMTEwJTtcclxuICAgICAgICAgICAgYmFja2dyb3VuZC1wb3NpdGlvbjogNTAlIDI4JTtcclxuICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICAgICAgYSxcclxuICAgICAgICBoMSxcclxuICAgICAgICBoMixcclxuICAgICAgICBoMyxcclxuICAgICAgICBoNCxcclxuICAgICAgICBoNSxcclxuICAgICAgICBoNixcclxuICAgICAgICBzcGFuLFxyXG4gICAgICAgIHAge1xyXG4gICAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gICAgICAgICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gICAgICAgIH1cclxuICAgICAgICBhIHtcclxuICAgICAgICAgIGNvbG9yOiAjZWVlO1xyXG4gICAgICAgIH1cclxuICAgICAgYH1cclxuICAgIDwvc3R5bGU+XHJcbiAgPC9Qcm92aWRlcj5cclxuKTtcclxuXHJcbmNvbnN0IGNvbmZpZ3VyZVN0b3JlID0gKGluaXRpYWxTdGF0ZSwgb3B0aW9ucykgPT4ge1xyXG4gIGNvbnN0IHNhZ2FNaWRkbGV3YXJlID0gY3JlYXRlU2FnYU1pZGRsZXdhcmUoKTtcclxuICBjb25zdCBtaWRkbGV3YXJlcyA9IFtzYWdhTWlkZGxld2FyZV07XHJcbiAgY29uc3QgZW5oYW5jZXIgPVxyXG4gICAgcHJvY2Vzcy5lbnYuTk9ERV9FTlYgPT09ICdwcm9kdWN0aW9uJ1xyXG4gICAgICA/IGNvbXBvc2UoYXBwbHlNaWRkbGV3YXJlKC4uLm1pZGRsZXdhcmVzKSlcclxuICAgICAgOiBjb21wb3NlKFxyXG4gICAgICAgICAgYXBwbHlNaWRkbGV3YXJlKC4uLm1pZGRsZXdhcmVzKSxcclxuICAgICAgICAgICFvcHRpb25zLmlzU2VydmVyICYmXHJcbiAgICAgICAgICAgIHR5cGVvZiB3aW5kb3cuX19SRURVWF9ERVZUT09MU19FWFRFTlNJT05fXyAhPT0gJ3VuZGVmaW5lZCdcclxuICAgICAgICAgICAgPyB3aW5kb3cuX19SRURVWF9ERVZUT09MU19FWFRFTlNJT05fXygpXHJcbiAgICAgICAgICAgIDogKGYpID0+IGYsXHJcbiAgICAgICAgKTtcclxuICBjb25zdCBzdG9yZSA9IGNyZWF0ZVN0b3JlKHJlZHVjZXIsIGluaXRpYWxTdGF0ZSwgZW5oYW5jZXIpO1xyXG4gIHNhZ2FNaWRkbGV3YXJlLnJ1bihyb290U2FnYSk7XHJcbiAgcmV0dXJuIHN0b3JlO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgd2l0aFJlZHV4KGNvbmZpZ3VyZVN0b3JlKShSb290KTtcclxuIl19 */\n/*@ sourceURL=C:\\\\Users\\\\shdnt\\\\Desktop\\\\today\\\\front\\\\pages\\\\_app.js */"));
+}, "*{font-family:'Nanum Myeongjo',serif;box-sizing:border-box;}html,body{width:100%;height:100%;margin:0;padding:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:url('static/background_img.jpg') no-repeat;background-size:125% 110%;background-position:50% 28%;}@media (min-width:1024px){body{background-size:100% 110%;background-position:50% 28%;}}a,h1,h2,h3,h4,h5,h6,span,p{-webkit-text-decoration:none;text-decoration:none;display:inline-block;}a{color:#eee;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkQ6XFx0b2RheVxcVG9kYXktZHJhd2luZ1xcZnJvbnRcXHBhZ2VzXFxfYXBwLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWdDTyxBQUcrQyxBQUt6QixBQWFpQixBQWFQLEFBSVYsV0E3QkMsQUE4QmQsWUE3QlcsR0FZcUIsTUFYcEIsR0FQWSxPQVFULFFBdUJRLElBWnJCLEdBbEJGLGNBK0JBLDZDQXZCeUIsbUdBQ0osNkZBQ21DLHNEQUM1QiwwQkFDRSw0QkFDOUIiLCJmaWxlIjoiRDpcXHRvZGF5XFxUb2RheS1kcmF3aW5nXFxmcm9udFxccGFnZXNcXF9hcHAuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQgSGVhZCBmcm9tICduZXh0L2hlYWQnO1xyXG5pbXBvcnQgd2l0aFJlZHV4IGZyb20gJ25leHQtcmVkdXgtd3JhcHBlcic7XHJcbmltcG9ydCB7IGFwcGx5TWlkZGxld2FyZSwgY29tcG9zZSwgY3JlYXRlU3RvcmUgfSBmcm9tICdyZWR1eCc7XHJcbmltcG9ydCB7IFByb3ZpZGVyIH0gZnJvbSAncmVhY3QtcmVkdXgnO1xyXG5pbXBvcnQgY3JlYXRlU2FnYU1pZGRsZXdhcmUgZnJvbSAncmVkdXgtc2FnYSc7XHJcblxyXG5pbXBvcnQgQXBwTGF5b3V0IGZyb20gJy4uL2NvbXBvbmVudHMvTGF5b3V0JztcclxuaW1wb3J0IHJlZHVjZXIgZnJvbSAnLi4vcmVkdWNlcnMnO1xyXG5pbXBvcnQgcm9vdFNhZ2EgZnJvbSAnLi4vc2FnYXMnO1xyXG5cclxuY29uc3QgUm9vdCA9ICh7IENvbXBvbmVudCwgc3RvcmUgfSkgPT4gKFxyXG4gIDxQcm92aWRlciBzdG9yZT17c3RvcmV9PlxyXG4gICAgPEhlYWQ+XHJcbiAgICAgIDx0aXRsZT7tlZjro6gg6re466a8PC90aXRsZT5cclxuICAgICAgPG1ldGFcclxuICAgICAgICBuYW1lPVwidmlld3BvcnRcIlxyXG4gICAgICAgIGNvbnRlbnQ9XCJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MSwgdXNlci1zY2FsYWJsZT1ub1wiXHJcbiAgICAgIC8+XHJcbiAgICAgIDxsaW5rXHJcbiAgICAgICAgaHJlZj1cImh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzMj9mYW1pbHk9TmFudW0rTXllb25nam86d2dodEA0MDA7NzAwOzgwMCZkaXNwbGF5PXN3YXBcIlxyXG4gICAgICAgIHJlbD1cInN0eWxlc2hlZXRcIlxyXG4gICAgICAvPlxyXG4gICAgICA8c2NyaXB0XHJcbiAgICAgICAgc3JjPVwiaHR0cHM6Ly9raXQuZm9udGF3ZXNvbWUuY29tLzMwOGJkODkxOWMuanNcIlxyXG4gICAgICAgIGNyb3NzT3JpZ2luPVwiYW5vbnltb3VzXCJcclxuICAgICAgLz5cclxuICAgIDwvSGVhZD5cclxuICAgIDxBcHBMYXlvdXQ+XHJcbiAgICAgIDxDb21wb25lbnQgLz5cclxuICAgIDwvQXBwTGF5b3V0PlxyXG4gICAgPHN0eWxlIGpzeCBnbG9iYWw+XHJcbiAgICAgIHtgXHJcbiAgICAgICAgKiB7XHJcbiAgICAgICAgICBmb250LWZhbWlseTogJ05hbnVtIE15ZW9uZ2pvJywgc2VyaWY7XHJcbiAgICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gICAgICAgIH1cclxuICAgICAgICBodG1sLFxyXG4gICAgICAgIGJvZHkge1xyXG4gICAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgICAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICAgICAgICBtYXJnaW46IDA7XHJcbiAgICAgICAgICBwYWRkaW5nOiAwO1xyXG4gICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICAgIGJhY2tncm91bmQ6IHVybCgnc3RhdGljL2JhY2tncm91bmRfaW1nLmpwZycpIG5vLXJlcGVhdDtcclxuICAgICAgICAgIGJhY2tncm91bmQtc2l6ZTogMTI1JSAxMTAlO1xyXG4gICAgICAgICAgYmFja2dyb3VuZC1wb3NpdGlvbjogNTAlIDI4JTtcclxuICAgICAgICB9XHJcbiAgICAgICAgQG1lZGlhIChtaW4td2lkdGg6IDEwMjRweCkge1xyXG4gICAgICAgICAgYm9keSB7XHJcbiAgICAgICAgICAgIGJhY2tncm91bmQtc2l6ZTogMTAwJSAxMTAlO1xyXG4gICAgICAgICAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiA1MCUgMjglO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgIH1cclxuICAgICAgICBhLFxyXG4gICAgICAgIGgxLFxyXG4gICAgICAgIGgyLFxyXG4gICAgICAgIGgzLFxyXG4gICAgICAgIGg0LFxyXG4gICAgICAgIGg1LFxyXG4gICAgICAgIGg2LFxyXG4gICAgICAgIHNwYW4sXHJcbiAgICAgICAgcCB7XHJcbiAgICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgICAgICAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIGEge1xyXG4gICAgICAgICAgY29sb3I6ICNlZWU7XHJcbiAgICAgICAgfVxyXG4gICAgICBgfVxyXG4gICAgPC9zdHlsZT5cclxuICA8L1Byb3ZpZGVyPlxyXG4pO1xyXG5cclxuY29uc3QgY29uZmlndXJlU3RvcmUgPSAoaW5pdGlhbFN0YXRlLCBvcHRpb25zKSA9PiB7XHJcbiAgY29uc3Qgc2FnYU1pZGRsZXdhcmUgPSBjcmVhdGVTYWdhTWlkZGxld2FyZSgpO1xyXG4gIGNvbnN0IG1pZGRsZXdhcmVzID0gW3NhZ2FNaWRkbGV3YXJlXTtcclxuICBjb25zdCBlbmhhbmNlciA9XHJcbiAgICBwcm9jZXNzLmVudi5OT0RFX0VOViA9PT0gJ3Byb2R1Y3Rpb24nXHJcbiAgICAgID8gY29tcG9zZShhcHBseU1pZGRsZXdhcmUoLi4ubWlkZGxld2FyZXMpKVxyXG4gICAgICA6IGNvbXBvc2UoXHJcbiAgICAgICAgICBhcHBseU1pZGRsZXdhcmUoLi4ubWlkZGxld2FyZXMpLFxyXG4gICAgICAgICAgIW9wdGlvbnMuaXNTZXJ2ZXIgJiZcclxuICAgICAgICAgICAgdHlwZW9mIHdpbmRvdy5fX1JFRFVYX0RFVlRPT0xTX0VYVEVOU0lPTl9fICE9PSAndW5kZWZpbmVkJ1xyXG4gICAgICAgICAgICA/IHdpbmRvdy5fX1JFRFVYX0RFVlRPT0xTX0VYVEVOU0lPTl9fKClcclxuICAgICAgICAgICAgOiAoZikgPT4gZixcclxuICAgICAgICApO1xyXG4gIGNvbnN0IHN0b3JlID0gY3JlYXRlU3RvcmUocmVkdWNlciwgaW5pdGlhbFN0YXRlLCBlbmhhbmNlcik7XHJcbiAgc2FnYU1pZGRsZXdhcmUucnVuKHJvb3RTYWdhKTtcclxuICByZXR1cm4gc3RvcmU7XHJcbn07XHJcblxyXG5leHBvcnQgZGVmYXVsdCB3aXRoUmVkdXgoY29uZmlndXJlU3RvcmUpKFJvb3QpO1xyXG4iXX0= */\n/*@ sourceURL=D:\\\\today\\\\Today-drawing\\\\front\\\\pages\\\\_app.js */"));
 
 const configureStore = (initialState, options) => {
   const sagaMiddleware = redux_saga__WEBPACK_IMPORTED_MODULE_6___default()();
@@ -2493,7 +2493,7 @@ const LOAD_USER_DATA_REQUEST = 'LOAD_USER_DATA_REQUEST';
 /*!*****************************!*\
   !*** ./reducers/drawing.js ***!
   \*****************************/
-/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, LOAD_ALLGALLERY_REQUEST, LOAD_ALLGALLERY_SUCCESS, LOAD_ALLGALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, LIKE_REQUEST, LIKE_SUCCESS, LIKE_FAILURE, LIKE_ON, UNLIKE_REQUEST, UNLIKE_SUCCESS, UNLIKE_FAILURE, WORD_UPDATE_REQUEST, WORD_UPDATE_SUCCESS, WORD_UPDATE_FAILURE, ADD_WORD, default */
+/*! exports provided: initialState, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, LOAD_ALLGALLERY_REQUEST, LOAD_ALLGALLERY_SUCCESS, LOAD_ALLGALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, LIKE_REQUEST, LIKE_SUCCESS, LIKE_FAILURE, LIKE_ON, UNLIKE_REQUEST, UNLIKE_SUCCESS, UNLIKE_FAILURE, WORD_UPDATE_REQUEST, WORD_UPDATE_SUCCESS, WORD_UPDATE_FAILURE, LOAD_SELECT_POST_REQUEST, LOAD_SELECT_POST_SUCCESS, LOAD_SELECT_POST_FAILURE, ADD_WORD, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2536,6 +2536,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_REQUEST", function() { return WORD_UPDATE_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_SUCCESS", function() { return WORD_UPDATE_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_FAILURE", function() { return WORD_UPDATE_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_SELECT_POST_REQUEST", function() { return LOAD_SELECT_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_SELECT_POST_SUCCESS", function() { return LOAD_SELECT_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_SELECT_POST_FAILURE", function() { return LOAD_SELECT_POST_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_WORD", function() { return ADD_WORD; });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -2554,7 +2557,8 @@ const initialState = {
   editingSuccess: false,
   deletePostSuccess: false,
   like: false,
-  word: '단어 불러오는 중'
+  word: '단어 불러오는 중',
+  oldWordList: []
 };
 const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
 const LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';
@@ -2593,9 +2597,31 @@ const UNLIKE_FAILURE = 'UNLIKE_FAILURE';
 const WORD_UPDATE_REQUEST = 'WORD_UPDATE_REQUEST';
 const WORD_UPDATE_SUCCESS = 'WORD_UPDATE_SUCCESS';
 const WORD_UPDATE_FAILURE = 'WORD_UPDATE_FAILURE';
+const LOAD_SELECT_POST_REQUEST = 'LOAD_SELECT_POST_REQUEST';
+const LOAD_SELECT_POST_SUCCESS = 'LOAD_SELECT_POST_SUCCESS';
+const LOAD_SELECT_POST_FAILURE = 'LOAD_SELECT_POST_FAILURE';
 const ADD_WORD = 'ADD_WORD';
 /* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
   switch (action.type) {
+    case LOAD_SELECT_POST_REQUEST:
+      {
+        return _objectSpread({}, state, {
+          postList: null
+        });
+      }
+
+    case LOAD_SELECT_POST_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          postList: [...action.data]
+        });
+      }
+
+    case LOAD_SELECT_POST_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
     case ADD_WORD:
       {
         return _objectSpread({}, state);
@@ -2609,7 +2635,8 @@ const ADD_WORD = 'ADD_WORD';
     case WORD_UPDATE_SUCCESS:
       {
         return _objectSpread({}, state, {
-          word: action.data
+          word: action.data.word,
+          oldWordList: action.data.oldWordList
         });
       }
 
@@ -3430,10 +3457,34 @@ function* loadedWord() {
 
 function* watchloadedWord() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["WORD_UPDATE_REQUEST"], loadedWord);
+} // select post
+
+
+function selectpostApi(word) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:5000/upload/select', word);
+}
+
+function* selectpost(action) {
+  try {
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(selectpostApi, action.data);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_SELECT_POST_SUCCESS"],
+      data: result.data
+    });
+  } catch (e) {
+    console.log(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_SELECT_POST_FAILURE"]
+    });
+  }
+}
+
+function* watchselectpost() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_SELECT_POST_REQUEST"], selectpost);
 }
 
 function* drawingSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPhoto), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchEditPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchDeletePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchUnlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedWord), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedAllPost)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPhoto), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchEditPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchDeletePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchUnlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedWord), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedAllPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchselectpost)]);
 }
 
 /***/ }),

@@ -20,8 +20,10 @@ const LIKE = '/like';
 const UNLIKE = '/unlike';
 const LOADWORD = '/loadword';
 const ADDWORD = '/addword';
+const SELECT = '/select';
 
 const routes = {
+  select: SELECT,
   loaduserlist: LOADUSERLIST,
   addword: ADDWORD,
   loadword: LOADWORD,
