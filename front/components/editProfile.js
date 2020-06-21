@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Container from './container';
+import Container from './styled/container';
 import { EDITING_PROFILE_REQUEST, EDITING_PROFILE_OFF } from '../reducers/user';
-import { Button, Input, Textarea } from './uiComponent';
+import { Button, Input, Textarea } from './styled/uiComponent';
 
 const EditProfile = ({ signUp }) => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const EditProfile = ({ signUp }) => {
     });
   };
 
-  const modalOff = () => {
+  const handleModalOff = () => {
     dispatch({
       type: EDITING_PROFILE_OFF,
     });
@@ -99,7 +99,7 @@ const EditProfile = ({ signUp }) => {
             hsize="50px"
           >
             <Button>확인</Button>
-            {!signUp && <Button onClick={modalOff}>취소</Button>}
+            {!signUp && <Button onClick={handleModalOff}>취소</Button>}
           </Container>
         </form>
       </Container>

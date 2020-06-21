@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Router from 'next/Router';
-import Container from '../components/container';
-import { Input, Form, Textarea } from '../components/uiComponent';
+import Container from '../components/styled/container';
+import { Input, Form, Textarea } from '../components/styled/uiComponent';
 import {
   UPPLOAD_CANVAS_REQUEST,
   DELETE_PHOTO,

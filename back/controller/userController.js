@@ -1,7 +1,5 @@
 import User from '../model/User';
-import Photo from '../model/Photo';
 import passport from 'passport';
-import mongoose from 'mongoose';
 
 //로그인
 export const login = (req, res, next) => {
@@ -27,7 +25,7 @@ export const login = (req, res, next) => {
 //유저 정보 불러오기
 export const loadUser = (req, res) => {
   if (!req.user) {
-    return res.status(401).send('로그인 되어있지 않음.');
+    return res.status(401)
   }
   return res.json(req.user);
 };

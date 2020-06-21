@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Router from 'next/Router';
-import Container from '../components/container';
-import { Button, Input, Form } from '../components/uiComponent';
+import Container from '../components/styled/container';
+import { Button, Input, Form } from '../components/styled/uiComponent';
 import { LOG_IN_REQUEST } from '../reducers/user';
 
 export const useInput = (initValue = null) => {

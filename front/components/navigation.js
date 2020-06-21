@@ -3,8 +3,8 @@ import React from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
-import Text from '../components/text';
-import { NavUl, NavLi } from './uiComponent';
+import Text from './styled/text';
+import { NavUl, NavLi } from './styled/uiComponent';
 import { LOG_OUT_REQUEST } from '../reducers/user';
 
 const Navigation = () => {

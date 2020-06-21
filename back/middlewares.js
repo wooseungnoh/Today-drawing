@@ -15,4 +15,4 @@ const multerPhoto = multer({
   limits: { fileSize: 20 * 1024 * 1024 },
 });
 
-export const uploadPhoto = multerPhoto.single('photo');
+export const uploadPhotoMulter = multerPhoto.single('photo');

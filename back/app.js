@@ -5,12 +5,13 @@ import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import MongoStore from 'connect-mongo';
-import globalRouter from './router/globalrouter';
 import session from 'express-session';
 import mongoose from 'mongoose';
 
 import './passport';
-import photoRouter from './router/photorouter';
+import globalRouter from './router/globalrouter';
+import postRouter from './router/postrouter';
+import adminRouter from './router/adminrouter';
 const app = express();
 
 const CokieStore = MongoStore(session);
@@ -39,6 +40,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', globalRouter);
-app.use('/upload', photoRouter);
+app.use('/upload', postRouter);
+app.use('/admin', adminRouter)
 
 export default app;

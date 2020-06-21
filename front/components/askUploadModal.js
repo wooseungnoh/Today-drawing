@@ -1,10 +1,10 @@
 import React from 'react';
 import Router from 'next/Router';
 import { useSelector, useDispatch } from 'react-redux';
-import Container from './container';
-import Text from './text';
+import Container from './styled/container';
+import Text from './styled/text';
 import { MODAL_OFF } from '../reducers/drawing';
-import { Button } from './uiComponent';
+import { Button } from './styled/uiComponent';
 
 const AskUploadModal = () => {
   const { modalState } = useSelector((state) => state.drawing);

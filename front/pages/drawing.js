@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { CompactPicker } from 'react-color';
 import React, { useEffect, useRef, useState } from 'react';
 import AskUploadModal from '../components/askUploadModal';
-import Container from '../components/container';
-import { Button, InputContainer } from '../components/uiComponent';
-import { Canvas, PainterSize, Ul, Li } from '../components/canvas';
+import Container from '../components/styled/container';
+import { Button, InputContainer } from '../components/styled/uiComponent';
+import { Canvas, PainterSize, Ul, Li } from '../components/styled/canvas';
 import { MODAL_ON } from '../reducers/drawing';
 
 const Input = styled.input``;

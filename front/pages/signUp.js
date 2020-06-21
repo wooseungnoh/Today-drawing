@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Router from 'next/Router';
 import { useSelector, useDispatch } from 'react-redux';
-import Container from '../components/container';
+import Container from '../components/styled/container';
 import EditProfile from '../components/editProfile';
-import { Button, Input, Form } from '../components/uiComponent';
+import { Button, Input, Form } from '../components/styled/uiComponent';
 import { useInput } from './login';
 import { SIGN_UP_REQUEST } from '../reducers/user';
 

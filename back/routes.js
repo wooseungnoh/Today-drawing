@@ -22,6 +22,9 @@ const LOADWORD = '/loadword';
 const ADDWORD = '/addword';
 const SELECT = '/select';
 
+//admin
+const SECESSION = '/secession'
+
 const routes = {
   select: SELECT,
   loaduserlist: LOADUSERLIST,
@@ -43,6 +46,7 @@ const routes = {
   like: LIKE,
   loadlikelist: LOADLIKELIST,
   unlike: UNLIKE,
+  secession:SECESSION,
 };
 
 export default routes;

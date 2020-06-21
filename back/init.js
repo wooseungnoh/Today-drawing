@@ -2,7 +2,7 @@ import './db';
 import app from './app';
 
 import './model/User';
-import './model/Photo';
+import './model/Post';
 import './model/Word';
 
 const handleListening = () => {
