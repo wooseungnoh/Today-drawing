@@ -1,4 +1,4 @@
-export const wordList = [
+export const basicWordList = [
   '가게',
   '가격',
   '가구',
