@@ -1,17 +1,20 @@
 import { all, delay, fork, put, takeEvery, call } from 'redux-saga/effects';
 import axios from 'axios';
 import {
-  LOAD_USER_DATA_SUCCESS,
-  LOAD_USER_DATA_FAILURE,
-  LOAD_USER_DATA_REQUEST,
+  LOAD_DATA_SUCCESS,
+  LOAD_DATA_FAILURE,
+  LOAD_DATA_REQUEST,
   REMOVE_USER_DATA_REQUEST,
   REMOVE_USER_DATA_SUCCESS,
   REMOVE_USER_DATA_FAILURE,
+  REMOVE_POST_SUCCESS,
+  REMOVE_POST_FAILURE,
+  REMOVE_POST_REQUEST,
 } from '../reducers/admin';
 
 //유저 데이터 불러오기
 function loadUserListAPI() {
-  return axios.get('http://localhost:5000/loaduserlist', {
+  return axios.get('http://localhost:5000/admin/loadlist', {
     withCredentials: true,
   });
 }
@@ -19,18 +22,18 @@ function* loadUserList() {
   try {
     const result = yield call(loadUserListAPI);
     yield put({
-      type: LOAD_USER_DATA_SUCCESS,
+      type: LOAD_DATA_SUCCESS,
       data: result.data,
     });
   } catch (e) {
     console.log(e);
     yield put({
-      type: LOAD_USER_DATA_FAILURE,
+      type: LOAD_DATA_FAILURE,
     });
   }
 }
 function* watchloadUserList() {
-  yield takeEvery(LOAD_USER_DATA_REQUEST, loadUserList);
+  yield takeEvery(LOAD_DATA_REQUEST, loadUserList);
 }
 
 //유저 삭제하기
@@ -55,6 +58,32 @@ function* watchremoveUser() {
   yield takeEvery(REMOVE_USER_DATA_REQUEST, removeUser);
 }
 
+//포스트 삭제하기
+function removePostAPI(postId) {
+  return axios.post('http://localhost:5000/admin/removepost', postId);
+}
+function* removePost(action) {
+  try {
+    const result = yield call(removePostAPI, action.data);
+    yield put({
+      type: REMOVE_POST_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: REMOVE_POST_FAILURE,
+    });
+  }
+}
+function* watchremovePost() {
+  yield takeEvery(REMOVE_POST_REQUEST, removePost);
+}
+
 export default function* adminSaga() {
-  yield all([fork(watchloadUserList), fork(watchremoveUser)]);
+  yield all([
+    fork(watchloadUserList),
+    fork(watchremoveUser),
+    fork(watchremovePost),
+  ]);
 }

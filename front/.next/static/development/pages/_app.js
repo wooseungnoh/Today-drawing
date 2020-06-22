@@ -17115,18 +17115,21 @@ var configureStore = function configureStore(initialState, options) {
 /*!***************************!*\
   !*** ./reducers/admin.js ***!
   \***************************/
-/*! exports provided: initialState, LOAD_USER_DATA_REQUEST, LOAD_USER_DATA_SUCCESS, LOAD_USER_DATA_FAILURE, REMOVE_USER_DATA_REQUEST, REMOVE_USER_DATA_SUCCESS, REMOVE_USER_DATA_FAILURE, default */
+/*! exports provided: initialState, LOAD_DATA_REQUEST, LOAD_DATA_SUCCESS, LOAD_DATA_FAILURE, REMOVE_USER_DATA_REQUEST, REMOVE_USER_DATA_SUCCESS, REMOVE_USER_DATA_FAILURE, REMOVE_POST_REQUEST, REMOVE_POST_SUCCESS, REMOVE_POST_FAILURE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_REQUEST", function() { return LOAD_USER_DATA_REQUEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_SUCCESS", function() { return LOAD_USER_DATA_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_FAILURE", function() { return LOAD_USER_DATA_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA_REQUEST", function() { return LOAD_DATA_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA_SUCCESS", function() { return LOAD_DATA_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA_FAILURE", function() { return LOAD_DATA_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER_DATA_REQUEST", function() { return REMOVE_USER_DATA_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER_DATA_SUCCESS", function() { return REMOVE_USER_DATA_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER_DATA_FAILURE", function() { return REMOVE_USER_DATA_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_POST_REQUEST", function() { return REMOVE_POST_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_POST_SUCCESS", function() { return REMOVE_POST_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_POST_FAILURE", function() { return REMOVE_POST_FAILURE; });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _drawing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./drawing */ "./reducers/drawing.js");
@@ -17139,19 +17142,40 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var initialState = {
-  user: []
+  user: [],
+  post: []
 };
-var LOAD_USER_DATA_REQUEST = 'LOAD_USER_DATA_REQUEST';
-var LOAD_USER_DATA_SUCCESS = 'LOAD_USER_DATA_SUCCESS';
-var LOAD_USER_DATA_FAILURE = 'LOAD_USER_DATA_FAILURE';
+var LOAD_DATA_REQUEST = 'LOAD_DATA_REQUEST';
+var LOAD_DATA_SUCCESS = 'LOAD_DATA_SUCCESS';
+var LOAD_DATA_FAILURE = 'LOAD_DATA_FAILURE';
 var REMOVE_USER_DATA_REQUEST = 'REMOVE_USER_DATA_REQUEST';
 var REMOVE_USER_DATA_SUCCESS = 'REMOVE_USER_DATA_SUCCESS';
 var REMOVE_USER_DATA_FAILURE = 'REMOVE_USER_DATA_FAILURE';
+var REMOVE_POST_REQUEST = 'REMOVE_POST_REQUEST';
+var REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS';
+var REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case REMOVE_POST_REQUEST:
+      {
+        return _objectSpread({}, state);
+      }
+
+    case REMOVE_POST_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          post: action.data
+        });
+      }
+
+    case REMOVE_POST_FAILURE:
+      {
+        return _objectSpread({}, state);
+      }
+
     case REMOVE_USER_DATA_REQUEST:
       {
         return _objectSpread({}, state);
@@ -17169,19 +17193,20 @@ var REMOVE_USER_DATA_FAILURE = 'REMOVE_USER_DATA_FAILURE';
         return _objectSpread({}, state);
       }
 
-    case LOAD_USER_DATA_SUCCESS:
+    case LOAD_DATA_SUCCESS:
       {
         return _objectSpread({}, state, {
-          user: Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(action.data)
+          user: Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(action.data.user),
+          post: Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(action.data.post)
         });
       }
 
-    case LOAD_USER_DATA_REQUEST:
+    case LOAD_DATA_REQUEST:
       {
         return _objectSpread({}, state);
       }
 
-    case _drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_ALLGALLERY_FAILURE"]:
+    case LOAD_DATA_FAILURE:
       {
         return _objectSpread({}, state);
       }
@@ -17872,14 +17897,16 @@ var _marked = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0
     _marked2 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(watchloadUserList),
     _marked3 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(removeUser),
     _marked4 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(watchremoveUser),
-    _marked5 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(adminSaga);
+    _marked5 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(removePost),
+    _marked6 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(watchremovePost),
+    _marked7 = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(adminSaga);
 
 
 
  //유저 데이터 불러오기
 
 function loadUserListAPI() {
-  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:5000/loaduserlist', {
+  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:5000/admin/loadlist', {
     withCredentials: true
   });
 }
@@ -17898,7 +17925,7 @@ function loadUserList() {
           result = _context.sent;
           _context.next = 6;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
-            type: _reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_USER_DATA_SUCCESS"],
+            type: _reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_DATA_SUCCESS"],
             data: result.data
           });
 
@@ -17912,7 +17939,7 @@ function loadUserList() {
           console.log(_context.t0);
           _context.next = 13;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
-            type: _reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_USER_DATA_FAILURE"]
+            type: _reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_DATA_FAILURE"]
           });
 
         case 13:
@@ -17929,7 +17956,7 @@ function watchloadUserList() {
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeEvery"])(_reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_USER_DATA_REQUEST"], loadUserList);
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeEvery"])(_reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_DATA_REQUEST"], loadUserList);
 
         case 2:
         case "end":
@@ -17997,22 +18024,82 @@ function watchremoveUser() {
       }
     }
   }, _marked4);
+} //포스트 삭제하기
+
+
+function removePostAPI(postId) {
+  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://localhost:5000/admin/removepost', postId);
 }
 
-function adminSaga() {
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function adminSaga$(_context5) {
+function removePost(action) {
+  var result;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function removePost$(_context5) {
     while (1) {
       switch (_context5.prev = _context5.next) {
         case 0:
-          _context5.next = 2;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchloadUserList), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchremoveUser)]);
+          _context5.prev = 0;
+          _context5.next = 3;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["call"])(removePostAPI, action.data);
 
-        case 2:
+        case 3:
+          result = _context5.sent;
+          _context5.next = 6;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
+            type: _reducers_admin__WEBPACK_IMPORTED_MODULE_3__["REMOVE_POST_SUCCESS"],
+            data: result.data
+          });
+
+        case 6:
+          _context5.next = 13;
+          break;
+
+        case 8:
+          _context5.prev = 8;
+          _context5.t0 = _context5["catch"](0);
+          console.log(_context5.t0);
+          _context5.next = 13;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
+            type: _reducers_admin__WEBPACK_IMPORTED_MODULE_3__["REMOVE_POST_FAILURE"]
+          });
+
+        case 13:
         case "end":
           return _context5.stop();
       }
     }
-  }, _marked5);
+  }, _marked5, null, [[0, 8]]);
+}
+
+function watchremovePost() {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function watchremovePost$(_context6) {
+    while (1) {
+      switch (_context6.prev = _context6.next) {
+        case 0:
+          _context6.next = 2;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeEvery"])(_reducers_admin__WEBPACK_IMPORTED_MODULE_3__["REMOVE_POST_REQUEST"], removePost);
+
+        case 2:
+        case "end":
+          return _context6.stop();
+      }
+    }
+  }, _marked6);
+}
+
+function adminSaga() {
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function adminSaga$(_context7) {
+    while (1) {
+      switch (_context7.prev = _context7.next) {
+        case 0:
+          _context7.next = 2;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchloadUserList), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchremoveUser), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchremovePost)]);
+
+        case 2:
+        case "end":
+          return _context7.stop();
+      }
+    }
+  }, _marked7);
 }
 
 /***/ }),

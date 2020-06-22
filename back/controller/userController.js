@@ -91,13 +91,3 @@ export const loadLikeList = async (req, res) => {
   return;
 };
 
-//유저 리스트 불러오기
-export const loadUserList = async (req, res) => {
-  try {
-    const user = await User.find();
-    res.json(user);
-  } catch (e) {
-    console.log(e);
-    res.status(400);
-  }
-};
