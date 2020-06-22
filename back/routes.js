@@ -5,7 +5,6 @@ const SIGNUP = '/signup';
 const EDITING = '/editing';
 const LOAD = '/load';
 const LOADLIKELIST = '/loadlikelist';
-const LOADUSERLIST = '/loaduserlist';
 
 //photo
 const PHOTO = '/photo';
@@ -23,11 +22,12 @@ const ADDWORD = '/addword';
 const SELECT = '/select';
 
 //admin
-const SECESSION = '/secession'
+const SECESSION = '/secession';
+const LOADLIST = '/loadlist';
 
 const routes = {
   select: SELECT,
-  loaduserlist: LOADUSERLIST,
+  loadlist: LOADLIST,
   addword: ADDWORD,
   loadword: LOADWORD,
   login: LOGIN,
@@ -46,7 +46,7 @@ const routes = {
   like: LIKE,
   loadlikelist: LOADLIKELIST,
   unlike: UNLIKE,
-  secession:SECESSION,
+  secession: SECESSION,
 };
 
 export default routes;

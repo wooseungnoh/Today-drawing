@@ -219,7 +219,7 @@ export const loadWord = async (req, res) => {
           wordData[arrnumber].wordListArray[date.getDate() - 2],
         );
       }
-      const sortOldWordList = wordData[arrnumber].oldWordList.reverse()
+      const sortOldWordList = wordData[arrnumber].oldWordList.reverse();
       wordData[arrnumber].save();
       res.json({
         word: wordData[arrnumber].wordListArray[date.getDate() - 1],
@@ -260,3 +260,5 @@ export const addWord = async (req, res) => {
   }
   return;
 };
+
+

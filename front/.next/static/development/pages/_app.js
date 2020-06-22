@@ -17115,15 +17115,15 @@ var configureStore = function configureStore(initialState, options) {
 /*!***************************!*\
   !*** ./reducers/admin.js ***!
   \***************************/
-/*! exports provided: initialState, LOAD_USER_DATA_REQUEST, LOAD_USER_DATA_SUCCESS, LOAD_USER_DATA_FAILURE, REMOVE_USER_DATA_REQUEST, REMOVE_USER_DATA_SUCCESS, REMOVE_USER_DATA_FAILURE, default */
+/*! exports provided: initialState, LOAD_DATA_REQUEST, LOAD_DATA_SUCCESS, LOAD_DATA_FAILURE, REMOVE_USER_DATA_REQUEST, REMOVE_USER_DATA_SUCCESS, REMOVE_USER_DATA_FAILURE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_REQUEST", function() { return LOAD_USER_DATA_REQUEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_SUCCESS", function() { return LOAD_USER_DATA_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_FAILURE", function() { return LOAD_USER_DATA_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA_REQUEST", function() { return LOAD_DATA_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA_SUCCESS", function() { return LOAD_DATA_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA_FAILURE", function() { return LOAD_DATA_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER_DATA_REQUEST", function() { return REMOVE_USER_DATA_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER_DATA_SUCCESS", function() { return REMOVE_USER_DATA_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER_DATA_FAILURE", function() { return REMOVE_USER_DATA_FAILURE; });
@@ -17139,11 +17139,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 var initialState = {
-  user: []
+  user: [],
+  post: []
 };
-var LOAD_USER_DATA_REQUEST = 'LOAD_USER_DATA_REQUEST';
-var LOAD_USER_DATA_SUCCESS = 'LOAD_USER_DATA_SUCCESS';
-var LOAD_USER_DATA_FAILURE = 'LOAD_USER_DATA_FAILURE';
+var LOAD_DATA_REQUEST = 'LOAD_DATA_REQUEST';
+var LOAD_DATA_SUCCESS = 'LOAD_DATA_SUCCESS';
+var LOAD_DATA_FAILURE = 'LOAD_DATA_FAILURE';
 var REMOVE_USER_DATA_REQUEST = 'REMOVE_USER_DATA_REQUEST';
 var REMOVE_USER_DATA_SUCCESS = 'REMOVE_USER_DATA_SUCCESS';
 var REMOVE_USER_DATA_FAILURE = 'REMOVE_USER_DATA_FAILURE';
@@ -17169,19 +17170,20 @@ var REMOVE_USER_DATA_FAILURE = 'REMOVE_USER_DATA_FAILURE';
         return _objectSpread({}, state);
       }
 
-    case LOAD_USER_DATA_SUCCESS:
+    case LOAD_DATA_SUCCESS:
       {
         return _objectSpread({}, state, {
-          user: Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(action.data)
+          user: Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(action.data.user),
+          post: Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(action.data.post)
         });
       }
 
-    case LOAD_USER_DATA_REQUEST:
+    case LOAD_DATA_REQUEST:
       {
         return _objectSpread({}, state);
       }
 
-    case _drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_ALLGALLERY_FAILURE"]:
+    case LOAD_DATA_FAILURE:
       {
         return _objectSpread({}, state);
       }
@@ -17879,7 +17881,7 @@ var _marked = /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0
  //유저 데이터 불러오기
 
 function loadUserListAPI() {
-  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:5000/loaduserlist', {
+  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:5000/admin/loadlist', {
     withCredentials: true
   });
 }
@@ -17898,7 +17900,7 @@ function loadUserList() {
           result = _context.sent;
           _context.next = 6;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
-            type: _reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_USER_DATA_SUCCESS"],
+            type: _reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_DATA_SUCCESS"],
             data: result.data
           });
 
@@ -17912,7 +17914,7 @@ function loadUserList() {
           console.log(_context.t0);
           _context.next = 13;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
-            type: _reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_USER_DATA_FAILURE"]
+            type: _reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_DATA_FAILURE"]
           });
 
         case 13:
@@ -17929,7 +17931,7 @@ function watchloadUserList() {
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeEvery"])(_reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_USER_DATA_REQUEST"], loadUserList);
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeEvery"])(_reducers_admin__WEBPACK_IMPORTED_MODULE_3__["LOAD_DATA_REQUEST"], loadUserList);
 
         case 2:
         case "end":

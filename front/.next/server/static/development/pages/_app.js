@@ -2450,15 +2450,15 @@ const configureStore = (initialState, options) => {
 /*!***************************!*\
   !*** ./reducers/admin.js ***!
   \***************************/
-/*! exports provided: initialState, LOAD_USER_DATA_REQUEST, LOAD_USER_DATA_SUCCESS, LOAD_USER_DATA_FAILURE, REMOVE_USER_DATA_REQUEST, REMOVE_USER_DATA_SUCCESS, REMOVE_USER_DATA_FAILURE, default */
+/*! exports provided: initialState, LOAD_DATA_REQUEST, LOAD_DATA_SUCCESS, LOAD_DATA_FAILURE, REMOVE_USER_DATA_REQUEST, REMOVE_USER_DATA_SUCCESS, REMOVE_USER_DATA_FAILURE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_REQUEST", function() { return LOAD_USER_DATA_REQUEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_SUCCESS", function() { return LOAD_USER_DATA_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_DATA_FAILURE", function() { return LOAD_USER_DATA_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA_REQUEST", function() { return LOAD_DATA_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA_SUCCESS", function() { return LOAD_DATA_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA_FAILURE", function() { return LOAD_DATA_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER_DATA_REQUEST", function() { return REMOVE_USER_DATA_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER_DATA_SUCCESS", function() { return REMOVE_USER_DATA_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER_DATA_FAILURE", function() { return REMOVE_USER_DATA_FAILURE; });
@@ -2471,11 +2471,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 const initialState = {
-  user: []
+  user: [],
+  post: []
 };
-const LOAD_USER_DATA_REQUEST = 'LOAD_USER_DATA_REQUEST';
-const LOAD_USER_DATA_SUCCESS = 'LOAD_USER_DATA_SUCCESS';
-const LOAD_USER_DATA_FAILURE = 'LOAD_USER_DATA_FAILURE';
+const LOAD_DATA_REQUEST = 'LOAD_DATA_REQUEST';
+const LOAD_DATA_SUCCESS = 'LOAD_DATA_SUCCESS';
+const LOAD_DATA_FAILURE = 'LOAD_DATA_FAILURE';
 const REMOVE_USER_DATA_REQUEST = 'REMOVE_USER_DATA_REQUEST';
 const REMOVE_USER_DATA_SUCCESS = 'REMOVE_USER_DATA_SUCCESS';
 const REMOVE_USER_DATA_FAILURE = 'REMOVE_USER_DATA_FAILURE';
@@ -2498,19 +2499,20 @@ const REMOVE_USER_DATA_FAILURE = 'REMOVE_USER_DATA_FAILURE';
         return _objectSpread({}, state);
       }
 
-    case LOAD_USER_DATA_SUCCESS:
+    case LOAD_DATA_SUCCESS:
       {
         return _objectSpread({}, state, {
-          user: [...action.data]
+          user: [...action.data.user],
+          post: [...action.data.post]
         });
       }
 
-    case LOAD_USER_DATA_REQUEST:
+    case LOAD_DATA_REQUEST:
       {
         return _objectSpread({}, state);
       }
 
-    case _drawing__WEBPACK_IMPORTED_MODULE_0__["LOAD_ALLGALLERY_FAILURE"]:
+    case LOAD_DATA_FAILURE:
       {
         return _objectSpread({}, state);
       }
@@ -3190,7 +3192,7 @@ __webpack_require__.r(__webpack_exports__);
  //유저 데이터 불러오기
 
 function loadUserListAPI() {
-  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:5000/loaduserlist', {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:5000/admin/loadlist', {
     withCredentials: true
   });
 }
@@ -3199,19 +3201,19 @@ function* loadUserList() {
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadUserListAPI);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_admin__WEBPACK_IMPORTED_MODULE_2__["LOAD_USER_DATA_SUCCESS"],
+      type: _reducers_admin__WEBPACK_IMPORTED_MODULE_2__["LOAD_DATA_SUCCESS"],
       data: result.data
     });
   } catch (e) {
     console.log(e);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_admin__WEBPACK_IMPORTED_MODULE_2__["LOAD_USER_DATA_FAILURE"]
+      type: _reducers_admin__WEBPACK_IMPORTED_MODULE_2__["LOAD_DATA_FAILURE"]
     });
   }
 }
 
 function* watchloadUserList() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_admin__WEBPACK_IMPORTED_MODULE_2__["LOAD_USER_DATA_REQUEST"], loadUserList);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_admin__WEBPACK_IMPORTED_MODULE_2__["LOAD_DATA_REQUEST"], loadUserList);
 } //유저 삭제하기
 
 

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  LOAD_USER_DATA_REQUEST,
+  LOAD_DATA_REQUEST,
   REMOVE_USER_DATA_REQUEST,
 } from '../../reducers/admin';
 
@@ -16,12 +16,12 @@ const Main = styled.div`
 `;
 
 const Table = ({ change }) => {
-  const { user } = useSelector((state) => state.admin);
+  const { user, post } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   useEffect(() => {
     console.log('실행');
     dispatch({
-      type: LOAD_USER_DATA_REQUEST,
+      type: LOAD_DATA_REQUEST,
     });
   }, []);
 
@@ -70,7 +70,44 @@ const Table = ({ change }) => {
           </table>
         </>
       ) : (
-        <></>
+        <>
+          <h2 style={{ textAlign: 'center', width: '100%' }}>게시물 관리</h2>
+          <table style={{ textAlign: 'center', width: '100%' }}>
+            <tbody>
+              <tr>
+                <th>번호</th>
+                <th>게시물사진</th>
+                <th>타이틀</th>
+                <th>내용</th>
+                <th>작성자</th>
+                <th>관리</th>
+              </tr>
+              {post.map((item, idx) => (
+                <tr key={idx}>
+                  <td>{idx}</td>
+                  <td style={{ width: '90px' }}>
+                    <img
+                      src={`http://localhost:5000/${item.fileUrl}`}
+                      style={{ width: '100%'}}
+                    />
+                  </td>
+                  <td>{item.title}</td>
+                  <td>{item.description}</td>
+                  <td>{item.creator ? item.creator.name : '탈퇴한회원'}</td>
+                  <td>
+                    <button
+                      type="button"
+                      data={item._id}
+                      onClick={handleSecession}
+                    >
+                      삭제
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
       )}
     </Main>
   );
