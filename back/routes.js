@@ -23,9 +23,11 @@ const SELECT = '/select';
 
 //admin
 const SECESSION = '/secession';
+const REMOVEPOST = '/removepost';
 const LOADLIST = '/loadlist';
 
 const routes = {
+  removepost: REMOVEPOST,
   select: SELECT,
   loadlist: LOADLIST,
   addword: ADDWORD,

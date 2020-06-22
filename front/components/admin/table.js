@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   LOAD_DATA_REQUEST,
   REMOVE_USER_DATA_REQUEST,
+  REMOVE_POST_REQUEST,
 } from '../../reducers/admin';
 
 const Main = styled.div`
@@ -33,6 +34,14 @@ const Table = ({ change }) => {
     });
   };
 
+  const handleRemovePost = (e) => {
+    const postId = { id: e.target.getAttribute('data') };
+    dispatch({
+      type: REMOVE_POST_REQUEST,
+      data: postId,
+    });
+  };
+
   return (
     <Main>
       {change ? (
@@ -43,6 +52,7 @@ const Table = ({ change }) => {
               <tr>
                 <th>번호</th>
                 <th>ID</th>
+
                 <th>이름</th>
                 <th>작가명</th>
                 <th>가입일</th>
@@ -52,6 +62,7 @@ const Table = ({ change }) => {
                 <tr key={idx}>
                   <td>{idx}</td>
                   <td>{item.email}</td>
+
                   <td>{item.name}</td>
                   <td>{item.writer}</td>
                   <td>{item.createAt}</td>
@@ -75,8 +86,9 @@ const Table = ({ change }) => {
           <table style={{ textAlign: 'center', width: '100%' }}>
             <tbody>
               <tr>
-                <th>번호</th>
+                <th>게시한 날짜</th>
                 <th>게시물사진</th>
+                <th>주제</th>
                 <th>타이틀</th>
                 <th>내용</th>
                 <th>작성자</th>
@@ -84,13 +96,14 @@ const Table = ({ change }) => {
               </tr>
               {post.map((item, idx) => (
                 <tr key={idx}>
-                  <td>{idx}</td>
+                  <td>{item.createAt.split('T')[0]}</td>
                   <td style={{ width: '90px' }}>
                     <img
                       src={`http://localhost:5000/${item.fileUrl}`}
-                      style={{ width: '100%'}}
+                      style={{ width: '100%' }}
                     />
                   </td>
+                  <td>{item.subject}</td>
                   <td>{item.title}</td>
                   <td>{item.description}</td>
                   <td>{item.creator ? item.creator.name : '탈퇴한회원'}</td>
@@ -98,7 +111,7 @@ const Table = ({ change }) => {
                     <button
                       type="button"
                       data={item._id}
-                      onClick={handleSecession}
+                      onClick={handleRemovePost}
                     >
                       삭제
                     </button>

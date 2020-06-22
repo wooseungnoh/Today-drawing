@@ -7,6 +7,9 @@ import {
   REMOVE_USER_DATA_REQUEST,
   REMOVE_USER_DATA_SUCCESS,
   REMOVE_USER_DATA_FAILURE,
+  REMOVE_POST_SUCCESS,
+  REMOVE_POST_FAILURE,
+  REMOVE_POST_REQUEST,
 } from '../reducers/admin';
 
 //유저 데이터 불러오기
@@ -55,6 +58,32 @@ function* watchremoveUser() {
   yield takeEvery(REMOVE_USER_DATA_REQUEST, removeUser);
 }
 
+//포스트 삭제하기
+function removePostAPI(postId) {
+  return axios.post('http://localhost:5000/admin/removepost', postId);
+}
+function* removePost(action) {
+  try {
+    const result = yield call(removePostAPI, action.data);
+    yield put({
+      type: REMOVE_POST_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: REMOVE_POST_FAILURE,
+    });
+  }
+}
+function* watchremovePost() {
+  yield takeEvery(REMOVE_POST_REQUEST, removePost);
+}
+
 export default function* adminSaga() {
-  yield all([fork(watchloadUserList), fork(watchremoveUser)]);
+  yield all([
+    fork(watchloadUserList),
+    fork(watchremoveUser),
+    fork(watchremovePost),
+  ]);
 }
