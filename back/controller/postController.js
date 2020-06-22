@@ -1,34 +1,7 @@
 import Post from '../model/Post';
 import User from '../model/User';
 import Word from '../model/Word';
-import { basicWordList } from '../wordList';
-
-class DateConstructor {
-  constructor(model) {
-    this.model = model;
-  }
-  thisMonthIndexnumber() {
-    const date = new Date();
-    const thisMonthIndexnumber = this.model.findIndex(
-      (i) => i.name === `${date.getMonth() + 1}월`,
-    );
-    return thisMonthIndexnumber;
-  }
-  yesterdayWord() {
-    const date = new Date();
-    const thisMonthIndexnumber = this.model.findIndex(
-      (i) => i.name === `${date.getMonth() + 1}월`,
-    );
-    return this.model[thisMonthIndexnumber].wordListArray[date.getDate() - 2];
-  }
-  todayWord() {
-    const date = new Date();
-    const thisMonthIndexnumber = this.model.findIndex(
-      (i) => i.name === `${date.getMonth() + 1}월`,
-    );
-    return this.model[thisMonthIndexnumber].wordListArray[date.getDate() - 1];
-  }
-}
+import { wordList } from '../wordList';
 
 export const uploadPhoto = (req, res) => {
   res.json(req.file.filename);
@@ -59,9 +32,13 @@ export const uploadPost = async (req, res) => {
 
 export const loadedPostList = async (req, res) => {
   try {
+    const date = new Date();
     const wordData = await Word.find({});
-    const dateConstructor = new DateConstructor(wordData);
-    const post = await Post.find({ subject: dateConstructor.todayWord() });
+    const arrnumber = wordData.findIndex(
+      (i) => i.name === `${date.getMonth() + 1}월`,
+    );
+    const todayWord = wordData[arrnumber].wordListArray[date.getDate() - 1];
+    const post = await Post.find({ subject: todayWord });
 
     res.json(post);
   } catch (e) {
@@ -207,16 +184,17 @@ export const loadWord = async (req, res) => {
   const lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
   let wordArray = [];
   const lastDay = lastDate.getDate();
-  const wordLength = basicWordList.length;
+  const wordLength = wordList.length;
   try {
-    const wordData = await Word.find({});
-    const dateConstructor = new DateConstructor(wordData);
+    const wordsLists = await Word.find({});
+    const arrnumber = wordsLists.findIndex(
+      (i) => i.name === `${date.getMonth() + 1}월`,
+    );
 
-    if (date.getDate() === 1 && dateConstructor.thisMonthIndexnumber() === -1) {
-      //1일마다 새로운 배열생성
+    if (date.getDate() === 1 && arrnumber === -1) {
       for (let i = 0; i < lastDay; i++) {
-        const worditem = basicWordList[Math.floor(Math.random() * wordLength)];
-        wordArray.push(worditem);
+        const choiceword = wordList[Math.floor(Math.random() * wordLength)];
+        wordArray.push(choiceword);
       }
 
       const wordData = await Word.create({
@@ -227,29 +205,24 @@ export const loadWord = async (req, res) => {
 
       res.json(wordData.wordListArray[date.getDate() - 1]);
     } else {
-      //오늘의 단어를 리턴하는 부분
+      const wordData = await Word.find({});
 
-      //어제의 단어가 oldWordList 에 포함되었는지 확인용
-      const findindex = wordData[
-        dateConstructor.thisMonthIndexnumber()
-      ].oldWordList.includes(dateConstructor.yesterdayWord());
+      const arrnumber = wordData.findIndex(
+        (i) => i.name === `${date.getMonth() + 1}월`,
+      );
 
-      //민약 어제의 단어가 리스트에 없다면 추가하는 부분
+      const yesterdayWord =
+        wordData[arrnumber].wordListArray[date.getDate() - 2];
+      const findindex = wordData[arrnumber].oldWordList.includes(yesterdayWord);
       if (!findindex) {
-        wordData[dateConstructor.thisMonthIndexnumber()].oldWordList.push(
-          dateConstructor.yesterdayWord(),
+        wordData[arrnumber].oldWordList.push(
+          wordData[arrnumber].wordListArray[date.getDate() - 2],
         );
       }
-
-      //oldList 정렬
-      const sortOldWordList = wordData[
-        dateConstructor.thisMonthIndexnumber()
-      ].oldWordList.reverse();
-      wordData[dateConstructor.thisMonthIndexnumber()].save();
-
-      //프론트로 반환
+      const sortOldWordList = wordData[arrnumber].oldWordList.reverse();
+      wordData[arrnumber].save();
       res.json({
-        word: dateConstructor.todayWord(),
+        word: wordData[arrnumber].wordListArray[date.getDate() - 1],
         oldWordList: sortOldWordList,
       });
     }
@@ -267,19 +240,19 @@ export const addWord = async (req, res) => {
   const date = new Date();
   try {
     const wordData = await Word.find({});
-    const dateConstructor = new DateConstructor(wordData);
-    wordData[dateConstructor.thisMonthIndexnumber()].wordListArray.splice(
+    const arrnumber = wordData.findIndex(
+      (i) => i.name === `${date.getMonth() + 1}월`,
+    );
+    wordData[arrnumber].wordListArray.splice(
       Math.floor(
         Math.random() *
-          (wordData[dateConstructor.thisMonthIndexnumber()].wordListArray
-            .length -
-            (date.getDate() + 1)) +
+          (wordData[arrnumber].wordListArray.length - (date.getDate() + 1)) +
           (date.getDate() + 1),
       ),
       0,
       wordName,
     );
-    wordData[dateConstructor.thisMonthIndexnumber()].save();
+    wordData[arrnumber].save();
     res.send('추가성공');
   } catch (e) {
     console.log(e);
@@ -287,3 +260,5 @@ export const addWord = async (req, res) => {
   }
   return;
 };
+
+
