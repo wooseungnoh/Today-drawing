@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://localhost:27017/todayDraw", {
+mongoose.connect("mongodb+srv://todaydrawadmin:study@cluster0-welpw.mongodb.net/<dbname>?retryWrites=true&w=majority", {
   useUnifiedTopology: true,
   useNewUrlParser: true
 });

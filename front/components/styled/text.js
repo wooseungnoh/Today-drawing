@@ -15,7 +15,9 @@ const SIZES = {
 const COLOR = {
   normal: '#707070',
 };
-
+export const Heading = styled.h2`
+  margin: 0;
+`;
 const Text = styled.span`
   color: ${COLOR.normal};
   font-size: ${({ fontSize }) => SIZES[fontSize] || `${SIZES.medium}`};

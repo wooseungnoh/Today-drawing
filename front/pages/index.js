@@ -30,13 +30,6 @@ const Home = () => {
           </Container>
         </a>
       </Link>
-      <Link href="/gallery">
-        <a>
-          <Text style={{ margin: '30px' }} bold fontSize="huge">
-            오늘의 그림들
-          </Text>
-        </a>
-      </Link>
       {isLoggedIn ? <AddWordButton /> : <></>}
     </Container>
   );

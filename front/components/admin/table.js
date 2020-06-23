@@ -52,7 +52,6 @@ const Table = ({ change }) => {
               <tr>
                 <th>번호</th>
                 <th>ID</th>
-
                 <th>이름</th>
                 <th>작가명</th>
                 <th>가입일</th>

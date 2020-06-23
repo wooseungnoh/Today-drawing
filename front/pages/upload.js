@@ -10,9 +10,12 @@ import {
   UPPLOADING_DONE,
 } from '../reducers/drawing';
 import { useInput } from './login';
+import Text, { Heading } from '../components/styled/text';
 
 const Upload = () => {
-  const { imagePaths, isUploadingPost, word } = useSelector((state) => state.drawing);
+  const { imagePaths, isUploadingPost, word, addingPhoto } = useSelector(
+    (state) => state.drawing,
+  );
   const { isLoggedIn } = useSelector((state) => state.user);
   const [title, setTitle] = useInput('');
   const [description, setDescription] = useInput('');
@@ -26,11 +29,13 @@ const Upload = () => {
 
   const addPhoto = (e) => {
     e.preventDefault();
-    if (isLoggedIn) {
+    if (isLoggedIn && addingPhoto) {
       dispatch({
         type: UPPLOAD_POST_REQUEST,
         data: { title, description, imagePaths, word },
       });
+    } else if (addingPhoto === false) {
+      alert('사진을 추가해야 합니다.');
     } else {
       alert('작성 권한이 없습니다. 로그인페이지로 이동합니다.');
       Router.push('/login');
@@ -38,7 +43,7 @@ const Upload = () => {
   };
 
   const handlePhotoFile = (e) => {
-    handleDeleteImage()
+    handleDeleteImage();
     const imageFormData = new FormData();
     [].forEach.call(e.target.files, (f) => {
       imageFormData.append('photo', f);
@@ -60,8 +65,8 @@ const Upload = () => {
       dispatch({
         type: DELETE_PHOTO,
       });
-    }
-  }, [])
+    };
+  }, []);
 
   useEffect(() => {
     if (isUploadingPost) {
@@ -75,6 +80,10 @@ const Upload = () => {
 
   return (
     <Container flexDirection="column">
+      <Heading>당신의 그림을 자랑해보세요</Heading>
+      <Text fontSize="tiny" style={{ paddingBottom: '10px' }}>
+        어떤 그림이든 좋아요
+      </Text>
       <div
         style={{
           height: '200px',
@@ -82,6 +91,7 @@ const Upload = () => {
           justifyContent: 'center',
           alignItems: 'center',
           width: '300px',
+          paddingBottom: '10px',
         }}
       >
         {imagePaths[0] ? (
@@ -99,10 +109,20 @@ const Upload = () => {
             </button>
           </div>
         ) : (
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
-              <span>미리보기 이미지</span>
-            </div>
-          )}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              height: '100%',
+              background: 'rgba(0,0,0,0.1)',
+              borderRadius: '5px',
+            }}
+          >
+            <span>미리보기 이미지</span>
+          </div>
+        )}
       </div>
 
       <Form onSubmit={addPhoto} encType="multipart/form-data">
@@ -112,16 +132,18 @@ const Upload = () => {
           name="photo"
           onChange={handlePhotoFile}
           accept="image/*"
+          required
         />
 
         <label>그림 제목</label>
-        <Input value={title} onChange={setTitle} type="text" />
+        <Input value={title} onChange={setTitle} type="text" required />
 
         <label>그림 설명</label>
         <Textarea
           value={description}
           onChange={setDescription}
           style={{ resize: 'none' }}
+          required
         />
         <Input type="submit" value="작성" />
       </Form>

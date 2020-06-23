@@ -9,15 +9,16 @@ import {
 import GalleryHeader from '../components/galleryHeader';
 
 const Gallery = () => {
+  
   const dispatch = useDispatch();
-  const { postList} = useSelector((state) => state.drawing);
-
+  const { postList, popSubjectMenu} = useSelector((state) => state.drawing);
   useEffect(() => {
     dispatch({
       type: LOAD_GALLERY_REQUEST,
     });
   }, []);
-
+  
+  
   return (
     <Container flexDirection="column" justifyContent="flex-start">
       <GalleryHeader />

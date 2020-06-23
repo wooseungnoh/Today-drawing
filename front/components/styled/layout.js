@@ -4,10 +4,11 @@ import Navigation from '../navigation';
 import Loading from './loading';
 import { useSelector, useDispatch } from 'react-redux';
 import { LOAD_USER_REQUEST } from '../../reducers/user';
+import { CLOSE_SUBJECT_MENU } from '../../reducers/drawing';
 
 const AppLayout = ({ children }) => {
   const { isUserLoadding, me } = useSelector((state) => state.user);
-  const { isLoadding } = useSelector((state) => state.drawing);
+  const { isLoadding, popSubjectMenu } = useSelector((state) => state.drawing);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,6 +16,14 @@ const AppLayout = ({ children }) => {
       type: LOAD_USER_REQUEST,
     });
   }, []);
+
+  const handleSubjectMenuControll = () => {
+    if (popSubjectMenu) {
+      dispatch({
+        type: CLOSE_SUBJECT_MENU,
+      });
+    }
+  };
 
   return (
     <Container
@@ -24,6 +33,7 @@ const AppLayout = ({ children }) => {
         left: 0,
       }}
       flexDirection="column"
+      onClick={handleSubjectMenuControll}
     >
       <Navigation />
       <Container style={{ paddingTop: '60px' }}>{children}</Container>

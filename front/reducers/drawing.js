@@ -11,7 +11,11 @@ export const initialState = {
   like: false,
   word: '단어 불러오는 중',
   oldWordList: [],
+  popSubjectMenu: false,
 };
+
+export const OPEN_SUBJECT_MENU = 'OPEN_SUBJECT_MENU';
+export const CLOSE_SUBJECT_MENU = 'CLOSE_SUBJECT_MENU';
 
 export const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
 export const LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';
@@ -72,6 +76,18 @@ export const ADD_WORD = 'ADD_WORD';
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case OPEN_SUBJECT_MENU: {
+      return {
+        ...state,
+        popSubjectMenu: true,
+      };
+    }
+    case CLOSE_SUBJECT_MENU: {
+      return {
+        ...state,
+        popSubjectMenu: false,
+      };
+    }
     case LOAD_SELECT_POST_REQUEST: {
       return {
         ...state,

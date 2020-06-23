@@ -5,18 +5,28 @@ import {
   LOAD_GALLERY_REQUEST,
   WORD_UPDATE_REQUEST,
   LOAD_SELECT_POST_REQUEST,
+  OPEN_SUBJECT_MENU,
+  CLOSE_SUBJECT_MENU,
 } from '../reducers/drawing';
 import { GalleryButton, Ul, Li } from '../components/styled/uiComponent';
 
 const GalleryHeader = () => {
   const [subject, setSubject] = useState('');
-  const [state, setState] = useState(false);
-  const { oldWordList, word } = useSelector((state) => state.drawing);
+  const { oldWordList, word, popSubjectMenu } = useSelector(
+    (state) => state.drawing,
+  );
   const dispatch = useDispatch();
   const handleSubjectMenuState = () => {
-    setState((prev) => !prev);
+    if(popSubjectMenu){
+      dispatch({
+        type: CLOSE_SUBJECT_MENU,
+      });
+    }else{
+      dispatch({
+        type: OPEN_SUBJECT_MENU,
+      });
+    }
   };
-
   useEffect(() => {
     dispatch({
       type: WORD_UPDATE_REQUEST,
@@ -55,7 +65,7 @@ const GalleryHeader = () => {
         <button type="button" onClick={handleSubjectMenuState}>
           주제 선택
         </button>
-        <Ul toggleState={state}>
+        <Ul toggleState={popSubjectMenu}>
           <Li>
             <input
               type="text"
