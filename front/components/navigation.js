@@ -1,6 +1,4 @@
 import React from 'react';
-// import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import Text from './styled/text';
@@ -50,7 +48,7 @@ const Navigation = () => {
             <Link href="/mypage">
               <a>마이페이지</a>
             </Link>
-            <Text> / </Text>
+            <Text style={{ color: '#fff', padding: '0 5px' }}>/</Text>
             <button
               onClick={handleLogout}
               style={{
@@ -60,6 +58,7 @@ const Navigation = () => {
                 fontSize: '16px',
                 fontWeight: 'bold',
                 color: '#eee',
+                padding: '0',
               }}
             >
               로그아웃
@@ -69,10 +68,6 @@ const Navigation = () => {
           <>
             <Link href="/login">
               <a>로그인</a>
-            </Link>
-            <Text> / </Text>
-            <Link href="/signUp">
-              <a>회원가입</a>
             </Link>
           </>
         )}

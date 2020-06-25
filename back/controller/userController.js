@@ -1,5 +1,7 @@
 import User from '../model/User';
 import passport from 'passport';
+import dotenv from 'dotenv';
+dotenv.config();
 
 //로그인
 export const login = (req, res, next) => {
@@ -25,7 +27,7 @@ export const login = (req, res, next) => {
 //유저 정보 불러오기
 export const loadUser = (req, res) => {
   if (!req.user) {
-    return res.status(401)
+    return res.status(401);
   }
   return res.json(req.user);
 };
@@ -43,11 +45,13 @@ export const logout = (req, res) => {
 export const signup = async (req, res, next) => {
   const { email, name, password } = req.body;
   try {
-    const user = await User({
+    let user = await User({
       name,
       email,
       userInfo: '',
       writer: '',
+      role:
+        String(process.env.ADMIN_KEY) === String(password) ? 'admin' : 'user',
     });
     await User.register(user, password);
     next();
@@ -90,4 +94,3 @@ export const loadLikeList = async (req, res) => {
   }
   return;
 };
-

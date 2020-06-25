@@ -97,7 +97,7 @@ const Upload = () => {
         {imagePaths[0] ? (
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
             <img
-              src={`http://localhost:5000/${imagePaths[0]}`}
+              src={imagePaths[0]}
               style={{ height: '100%' }}
               alt={imagePaths[0]}
             />

@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '../styled/uiComponent';
 import { DELETE_POST_REQUEST } from '../../reducers/drawing';
 
-const EditButton = ({onEditingState}) => {
+const EditButton = ({ onEditingState }) => {
   const dispatch = useDispatch();
 
+  const { me } = useSelector((state) => state.user);
   const { nowShowingPost } = useSelector((state) => state.drawing);
 
   const handleDeletePost = () => {

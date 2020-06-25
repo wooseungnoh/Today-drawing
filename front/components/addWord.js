@@ -1,6 +1,7 @@
 import React from 'react';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ButtonAddword } from '../components/styled/uiComponent';
 import axios from 'axios';
 
 const AddWordButton = () => {
@@ -21,42 +22,41 @@ const AddWordButton = () => {
   };
 
   return (
-    <button
-      type="button"
-      onClick={onPrompt}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        width: '160px',
-        height: '55px',
-        background: '#eee',
-        borderRadius: '30px',
-        boxShadow: '3px 3px 5px #707070',
-        position: 'fixed',
-        right: '20%',
-        bottom: '12%',
-        cursor: 'pointer',
-        border: 'none',
-        outline: 'none',
-      }}
-    >
+    <ButtonAddword type="button" onClick={onPrompt}>
       <div
         style={{
+          display: 'inline-block',
+          position: 'absolute',
+          left: '1px',
           width: '45px',
           height: '45px',
           borderRadius: '50%',
-          background: '#aaa',
+          background: '#bf9d8c',
           margin: '4px',
+          verticalAlign: 'middle',
+          top: '2px',
         }}
       >
         <FontAwesomeIcon
           icon={faPen}
-          color="#eee"
-          style={{ fontSize: '22px', margin: '12px 0' }}
+          style={{ fontSize: '22px', margin: '12px 0', color:'#eee' }}
         />
       </div>
-      <span style={{ margin: '0 15px', color: '#707070' }}>주제 제출</span>
-    </button>
+      <span
+        style={{
+          width: '60px',
+          margin: '0 15px',
+          color: '#707070',
+          display: 'inline-block',
+          verticalAlign: 'middle',
+          position: 'absolute',
+          left:'55px',
+          top:'21px'
+        }}
+      >
+        주제 제출
+      </span>
+    </ButtonAddword>
   );
 };
 

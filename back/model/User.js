@@ -5,6 +5,7 @@ const UserSchema = new mongoose.Schema({
   writer: String,
   email: String,
   userInfo: String,
+  role: String,
   likeList: [
     {
       type: mongoose.Schema.Types.ObjectId,

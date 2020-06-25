@@ -11,7 +11,7 @@ import GalleryHeader from '../components/galleryHeader';
 const Gallery = () => {
   
   const dispatch = useDispatch();
-  const { postList, popSubjectMenu} = useSelector((state) => state.drawing);
+  const { postList} = useSelector((state) => state.drawing);
   useEffect(() => {
     dispatch({
       type: LOAD_GALLERY_REQUEST,
@@ -29,6 +29,7 @@ const Gallery = () => {
         justifyContent="flex-start"
         style={{
           overflowY: 'scroll',
+          overflowX: 'hidden',
         }}
       >
         <GalleryContainer>
@@ -40,7 +41,7 @@ const Gallery = () => {
                   <a>
                     <PhotoView
                       creater={item.title}
-                      url={`http://localhost:5000/${item.fileUrl}`}
+                      url={item.fileUrl}
                     />
                   </a>
                 </Link>

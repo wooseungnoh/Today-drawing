@@ -34,7 +34,6 @@ const Root = ({ Component, store }) => (
         * {
           font-family: 'Nanum Myeongjo', serif;
           box-sizing: border-box;
-          color:#666;
         }
         html,
         body {
@@ -45,14 +44,12 @@ const Root = ({ Component, store }) => (
           display: flex;
           justify-content: center;
           align-items: center;
-          background: url('static/background_img.jpg') no-repeat;
-          background-size: 125% 110%;
-          background-position: 50% 28%;
+          background: url('static/background_img.jpg');
+          background-size:15%;
         }
         @media (min-width: 1024px) {
           body {
-            background-size: 100% 110%;
-            background-position: 50% 28%;
+            background-size: 3%;
           }
         }
         a,
@@ -69,6 +66,7 @@ const Root = ({ Component, store }) => (
         }
         a {
           color: #eee;
+          font-size:15px;
         }
       `}
     </style>

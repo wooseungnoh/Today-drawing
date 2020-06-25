@@ -31,7 +31,7 @@ class DateConstructor {
 }
 
 export const uploadPhoto = (req, res) => {
-  res.json(req.file.filename);
+  res.json(req.file.location);
 };
 
 export const uploadPost = async (req, res) => {

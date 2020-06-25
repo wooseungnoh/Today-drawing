@@ -1,5 +1,25 @@
 import styled, { css } from 'styled-components';
 
+export const ButtonAddword = styled.button`
+  align-items: center;
+  width: 55px;
+  height: 55px;
+  background: #f0e1cc;
+  border-radius: 30px;
+  box-shadow: 3px 3px 5px #707070;
+  position: fixed;
+  right: 20%;
+  bottom: 12%;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  transition: 0.3s;
+  &:hover {
+    width: 160px;
+  }
+`;
+
 export const Button = styled.button`
   margin: 10px;
   border: none;
@@ -14,7 +34,7 @@ export const Button = styled.button`
     background: #f0e1cc;
   }
   &:active {
-  box-shadow:inset 2px 2px 3px;
+    box-shadow: inset 2px 2px 3px;
     background: #e3d3bc;
   }
 `;
@@ -26,7 +46,7 @@ export const NavUl = styled.ul`
   display: flex;
   width: 100%;
   height: 30px;
-  background: #1111116b;
+  background: #75503d6b;
   justify-content: center;
   align-items: center;
   margin: 0;
@@ -42,9 +62,6 @@ export const NavLi = styled.li`
   margin: 0 15px;
   transition: 0.5s;
   text-align: center;
-  &:hover {
-    border-bottom: 2px solid #fff;
-  }
 `;
 
 export const Input = styled.input`
@@ -78,9 +95,11 @@ export const Form = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  ${({ none }) => !none && css`
-  align-items: center;
-  `}
+  ${({ none }) =>
+    !none &&
+    css`
+      align-items: center;
+    `}
 `;
 
 export const InputContainer = styled.div`
@@ -97,12 +116,12 @@ export const InputContainer = styled.div`
 export const Img = styled.img``;
 
 export const GalleryButton = styled.button`
-border:none;
-background:none;
-color:#707070;
-font-weight:bold;
-font-size:19px;
-`
+  border: none;
+  background: none;
+  color: #707070;
+  font-weight: bold;
+  font-size: 19px;
+`;
 
 export const Ul = styled.ul`
   position: absolute;

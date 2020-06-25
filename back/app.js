@@ -7,11 +7,13 @@ import cors from 'cors';
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv'
 
 import './passport';
 import globalRouter from './router/globalrouter';
 import postRouter from './router/postrouter';
 import adminRouter from './router/adminrouter';
+dotenv.config();
 const app = express();
 
 const CokieStore = MongoStore(session);
@@ -30,7 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
-    secret: '1D@%$Fw!@DFWwfd$$%@Q!__%^(fdswe!',
+    secret: process.env.SECRET_KEY,
     resave: true,
     saveUninitialized: false,
     store: new CokieStore({ mongooseConnection: mongoose.connection }),

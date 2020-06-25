@@ -58,7 +58,7 @@ const imgDetail = () => {
           }}
         >
           <Img
-            src={`http://localhost:5000/${nowShowingPost.post.fileUrl}`}
+            src={nowShowingPost.post.fileUrl}
             width="30%"
             style={{ minWidth: '350px' }}
           />

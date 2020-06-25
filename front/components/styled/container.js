@@ -7,9 +7,15 @@ export const GalleryContainer = styled.div`
   grid-template-columns: repeat(2, 300px);
   grid-gap: 10px;
   margin-bottom: 30px;
-  ${({mypage}) => mypage && css`
-  grid-template-rows: repeat(2, 200px);
-  `}
+  ${({ mypage }) =>
+    mypage &&
+    css`
+      grid-template-rows: repeat(2, 200px);
+    `}
+  @media (max-width:700px) {
+    grid-template-columns: repeat(1, 300px);
+    overflow-x: hidden;
+  }
 `;
 
 const Container = styled.div`

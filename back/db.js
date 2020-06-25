@@ -1,14 +1,16 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
-mongoose.connect("mongodb+srv://todaydrawadmin:study@cluster0-welpw.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGO_URL, {
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
 });
 
 const db = mongoose.connection;
 
-const handleOpen = () => console.log("Connected to DB");
-const handleError = error => console.log(`error on DB connetction:${error}`);
+const handleOpen = () => console.log('Connected to DB');
+const handleError = (error) => console.log(`error on DB connetction:${error}`);
 
-db.once("open", handleOpen);
-db.on("error", handleError);
+db.once('open', handleOpen);
+db.on('error', handleError);
