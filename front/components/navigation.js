@@ -6,7 +6,7 @@ import { NavUl, NavLi } from './styled/uiComponent';
 import { LOG_OUT_REQUEST } from '../reducers/user';
 
 const Navigation = () => {
-  const { isLoggedIn } = useSelector((state) => state.user);
+  const { isLoggedIn, me } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -65,11 +65,16 @@ const Navigation = () => {
             </button>
           </>
         ) : (
-          <>
-            <Link href="/login">
-              <a>로그인</a>
-            </Link>
-          </>
+          <Link href="/login">
+            <a>로그인</a>
+          </Link>
+        )}
+        {isLoggedIn && me.role === 'admin' ? (
+          <Link href="/admin/main">
+            <a style={{ padding: '0 5px' }}>관리자페이지</a>
+          </Link>
+        ) : (
+          <></>
         )}
       </NavLi>
     </NavUl>

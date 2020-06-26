@@ -129,8 +129,9 @@ export const editPost = async (req, res) => {
 export const deletePost = async (req, res) => {
   const { id } = req.body;
   try {
-    const post = await Post.findByIdAndRemove({ _id: id });
-    res.send('삭제완료');
+    await Post.findByIdAndRemove({ _id: id });
+    const PostList = await Post.find({}).sort({ _id: -1 });
+    res.json(PostList);
   } catch (e) {
     console.log(e);
   }

@@ -10,6 +10,9 @@ import {
   REMOVE_POST_SUCCESS,
   REMOVE_POST_FAILURE,
   REMOVE_POST_REQUEST,
+  EDITING_ROLE_SUCCESS,
+  EDITING_ROLE_FAILURE,
+  EDITING_ROLE_REQUEST,
 } from '../reducers/admin';
 
 //유저 데이터 불러오기
@@ -80,8 +83,31 @@ function* watchremovePost() {
   yield takeEvery(REMOVE_POST_REQUEST, removePost);
 }
 
+//권한 수정하기
+function editingRoleAPI(userData) {
+  return axios.post('http://localhost:5000/admin/editrole', userData);
+}
+function* editingRole(action) {
+  try {
+    const result = yield call(editingRoleAPI, action.data);
+    yield put({
+      type: EDITING_ROLE_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.log(e);
+    yield put({
+      type: EDITING_ROLE_FAILURE,
+    });
+  }
+}
+function* watcheditingRole() {
+  yield takeEvery(EDITING_ROLE_REQUEST, editingRole);
+}
+
 export default function* adminSaga() {
   yield all([
+    fork(watcheditingRole),
     fork(watchloadUserList),
     fork(watchremoveUser),
     fork(watchremovePost),

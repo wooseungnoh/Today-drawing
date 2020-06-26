@@ -5,6 +5,7 @@ import {
   LOAD_DATA_REQUEST,
   REMOVE_USER_DATA_REQUEST,
   REMOVE_POST_REQUEST,
+  EDITING_ROLE_REQUEST,
 } from '../../reducers/admin';
 
 const Main = styled.div`
@@ -20,7 +21,6 @@ const Table = ({ change }) => {
   const { user, post } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log('실행');
     dispatch({
       type: LOAD_DATA_REQUEST,
     });
@@ -42,6 +42,15 @@ const Table = ({ change }) => {
     });
   };
 
+  const handleSubmit = (e) => {
+    const role = e.target.value;
+    const id = e.target.getAttribute('data');
+    dispatch({
+      type: EDITING_ROLE_REQUEST,
+      data: { objectId: id, role },
+    });
+  };
+
   return (
     <Main>
       {change ? (
@@ -55,16 +64,26 @@ const Table = ({ change }) => {
                 <th>이름</th>
                 <th>작가명</th>
                 <th>가입일</th>
+                <th>권한수정</th>
                 <th>관리</th>
               </tr>
               {user.map((item, idx) => (
                 <tr key={idx}>
                   <td>{idx}</td>
                   <td>{item.email}</td>
-
                   <td>{item.name}</td>
                   <td>{item.writer}</td>
                   <td>{item.createAt}</td>
+                  <td>
+                    <select
+                      defaultValue={`${item.role}`}
+                      onChange={handleSubmit}
+                      data={item._id}
+                    >
+                      <option value="user">일반회원</option>
+                      <option value="admin">관리자</option>
+                    </select>
+                  </td>
                   <td>
                     <button
                       type="button"
@@ -98,7 +117,7 @@ const Table = ({ change }) => {
                   <td>{item.createAt.split('T')[0]}</td>
                   <td style={{ width: '90px' }}>
                     <img
-                      src={`http://localhost:5000/${item.fileUrl}`}
+                      src={`${item.fileUrl}`}
                       style={{ width: '100%' }}
                     />
                   </td>

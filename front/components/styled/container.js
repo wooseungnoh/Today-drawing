@@ -10,7 +10,13 @@ export const GalleryContainer = styled.div`
   ${({ mypage }) =>
     mypage &&
     css`
+      height: 220px;
+      overflow-y: scroll;
       grid-template-rows: repeat(2, 200px);
+      @media (max-width: 700px) {
+        grid-template-columns: repeat(1, 300px);
+        overflow-x: hidden;
+      }
     `}
   @media (max-width:700px) {
     grid-template-columns: repeat(1, 300px);

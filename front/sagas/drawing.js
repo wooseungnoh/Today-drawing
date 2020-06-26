@@ -26,20 +26,15 @@ import {
   UNLIKE_REQUEST,
   UNLIKE_FAILURE,
   UNLIKE_SUCCESS,
-  WORD_UPDATE_SUCCESS,
-  WORD_UPDATE_FAILURE,
-  WORD_UPDATE_REQUEST,
-  ADD_WORD,
-  LOAD_ALLGALLERY_SUCCESS,
-  LOAD_ALLGALLERY_FAILURE,
-  LOAD_ALLGALLERY_REQUEST,
+  WORD_LOAD_SUCCESS,
+  WORD_LOAD_FAILURE,
+  WORD_LOAD_REQUEST,
   LOAD_SELECT_POST_SUCCESS,
   LOAD_SELECT_POST_FAILURE,
   LOAD_SELECT_POST_REQUEST,
 } from '../reducers/drawing';
 
 // 미리보기 사진 업로드
-
 function addPhotoApi(photoData) {
   return axios.post('http://localhost:5000/upload/uploadphoto', photoData, {
     withCredentials: true,
@@ -66,7 +61,6 @@ function* watchAddPhoto() {
 }
 
 // post upload
-
 function addPostApi(postData) {
   return axios.post('http://localhost:5000/upload/uploadpost', postData, {
     withCredentials: true,
@@ -93,7 +87,6 @@ function* watchAddPost() {
 }
 
 // loaded post list
-
 function loadedPostApi() {
   return axios.get('http://localhost:5000/upload/loaded', {
     withCredentials: true,
@@ -119,35 +112,7 @@ function* watchloadedPost() {
   yield takeEvery(LOAD_GALLERY_REQUEST, loadedPost);
 }
 
-// loaded all post list
-
-function loadedAllPostApi() {
-  return axios.get('http://localhost:5000/upload/allloaded', {
-    withCredentials: true,
-  });
-}
-
-function* loadedAllPost() {
-  try {
-    const result = yield call(loadedAllPostApi);
-    yield put({
-      type: LOAD_ALLGALLERY_SUCCESS,
-      data: result.data,
-    });
-  } catch (e) {
-    console.log(e);
-    yield put({
-      type: LOAD_ALLGALLERY_FAILURE,
-    });
-  }
-}
-
-function* watchloadedAllPost() {
-  yield takeEvery(LOAD_ALLGALLERY_REQUEST, loadedAllPost);
-}
-
 // 포스트 세부사항 로딩
-
 function loadedPostDetailApi(urldata) {
   return axios.post('http://localhost:5000/upload/photodetail', urldata, {
     withCredentials: true,
@@ -174,7 +139,6 @@ function* watchloadedPostDetail() {
 }
 
 // 포스트 에딧
-
 function editPostDetailApi(urldata) {
   return axios.post('http://localhost:5000/upload/editpost', urldata, {
     withCredentials: true,
@@ -200,7 +164,6 @@ function* watchEditPostDetail() {
 }
 
 // 포스트 지우기
-
 function deletePostApi(targetPostData) {
   return axios.post('http://localhost:5000/upload/deletepost', targetPostData, {
     withCredentials: true,
@@ -226,7 +189,6 @@ function* watchDeletePost() {
 }
 
 // 좋아요
-
 function likeApi(id) {
   return axios.post('http://localhost:5000/upload/like', id, {
     withCredentials: true,
@@ -253,7 +215,6 @@ function* watchlike() {
 }
 
 // 좋아요취소
-
 function unlikeApi(id) {
   return axios.post('http://localhost:5000/upload/unlike', id, {
     withCredentials: true,
@@ -280,7 +241,6 @@ function* watchUnlike() {
 }
 
 // loaded word
-
 function loadedWordApi() {
   return axios.get('http://localhost:5000/upload/loadword');
 }
@@ -289,23 +249,22 @@ function* loadedWord() {
   try {
     const result = yield call(loadedWordApi);
     yield put({
-      type: WORD_UPDATE_SUCCESS,
+      type: WORD_LOAD_SUCCESS,
       data: result.data,
     });
   } catch (e) {
     console.log(e);
     yield put({
-      type: WORD_UPDATE_FAILURE,
+      type: WORD_LOAD_FAILURE,
     });
   }
 }
 
 function* watchloadedWord() {
-  yield takeEvery(WORD_UPDATE_REQUEST, loadedWord);
+  yield takeEvery(WORD_LOAD_REQUEST, loadedWord);
 }
 
 // select post
-
 function selectpostApi(word) {
   return axios.post('http://localhost:5000/upload/select', word);
 }
@@ -340,7 +299,6 @@ export default function* drawingSaga() {
     fork(watchlike),
     fork(watchUnlike),
     fork(watchloadedWord),
-    fork(watchloadedAllPost),
     fork(watchselectpost),
   ]);
 }

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Text from '../components/styled/text';
 import {
   LOAD_GALLERY_REQUEST,
-  WORD_UPDATE_REQUEST,
+  WORD_LOAD_REQUEST,
   LOAD_SELECT_POST_REQUEST,
   OPEN_SUBJECT_MENU,
   CLOSE_SUBJECT_MENU,
@@ -17,11 +17,11 @@ const GalleryHeader = () => {
   );
   const dispatch = useDispatch();
   const handleSubjectMenuState = () => {
-    if(popSubjectMenu){
+    if (popSubjectMenu) {
       dispatch({
         type: CLOSE_SUBJECT_MENU,
       });
-    }else{
+    } else {
       dispatch({
         type: OPEN_SUBJECT_MENU,
       });
@@ -29,7 +29,7 @@ const GalleryHeader = () => {
   };
   useEffect(() => {
     dispatch({
-      type: WORD_UPDATE_REQUEST,
+      type: WORD_LOAD_REQUEST,
     });
   }, []);
 

@@ -122,7 +122,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const Navigation = () => {
   const {
-    isLoggedIn
+    isLoggedIn,
+    me
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.user);
   const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useDispatch"])();
 
@@ -277,22 +278,40 @@ const Navigation = () => {
       lineNumber: 52,
       columnNumber: 13
     }
-  }, "\uB85C\uADF8\uC544\uC6C3")) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+  }, "\uB85C\uADF8\uC544\uC6C3")) : __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
     href: "/login",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68,
+      columnNumber: 11
+    }
+  }, __jsx("a", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 69,
       columnNumber: 13
     }
-  }, __jsx("a", {
+  }, "\uB85C\uADF8\uC778")), isLoggedIn && me.role === 'admin' ? __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/admin/main",
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 15
+      lineNumber: 73,
+      columnNumber: 11
     }
-  }, "\uB85C\uADF8\uC778")))));
+  }, __jsx("a", {
+    style: {
+      padding: '0 5px'
+    },
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 74,
+      columnNumber: 13
+    }
+  }, "\uAD00\uB9AC\uC790\uD398\uC774\uC9C0")) : __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Navigation);
@@ -317,7 +336,7 @@ const GalleryContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.
   componentId: "w0r8a-0"
 })(["margin-top:30px;display:grid;grid-template-rows:repeat(3,200px);grid-template-columns:repeat(2,300px);grid-gap:10px;margin-bottom:30px;", " @media (max-width:700px){grid-template-columns:repeat(1,300px);overflow-x:hidden;}"], ({
   mypage
-}) => mypage && Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["grid-template-rows:repeat(2,200px);"]));
+}) => mypage && Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["height:220px;overflow-y:scroll;grid-template-rows:repeat(2,200px);@media (max-width:700px){grid-template-columns:repeat(1,300px);overflow-x:hidden;}"]));
 const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "container__Container",
   componentId: "w0r8a-1"
@@ -2454,7 +2473,7 @@ const configureStore = (initialState, options) => {
 /*!***************************!*\
   !*** ./reducers/admin.js ***!
   \***************************/
-/*! exports provided: initialState, LOAD_DATA_REQUEST, LOAD_DATA_SUCCESS, LOAD_DATA_FAILURE, REMOVE_USER_DATA_REQUEST, REMOVE_USER_DATA_SUCCESS, REMOVE_USER_DATA_FAILURE, REMOVE_POST_REQUEST, REMOVE_POST_SUCCESS, REMOVE_POST_FAILURE, default */
+/*! exports provided: initialState, LOAD_DATA_REQUEST, LOAD_DATA_SUCCESS, LOAD_DATA_FAILURE, REMOVE_USER_DATA_REQUEST, REMOVE_USER_DATA_SUCCESS, REMOVE_USER_DATA_FAILURE, REMOVE_POST_REQUEST, REMOVE_POST_SUCCESS, REMOVE_POST_FAILURE, EDITING_ROLE_REQUEST, EDITING_ROLE_SUCCESS, EDITING_ROLE_FAILURE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2469,6 +2488,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_POST_REQUEST", function() { return REMOVE_POST_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_POST_SUCCESS", function() { return REMOVE_POST_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_POST_FAILURE", function() { return REMOVE_POST_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_ROLE_REQUEST", function() { return EDITING_ROLE_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_ROLE_SUCCESS", function() { return EDITING_ROLE_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDITING_ROLE_FAILURE", function() { return EDITING_ROLE_FAILURE; });
 /* harmony import */ var _drawing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./drawing */ "./reducers/drawing.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -2490,11 +2512,24 @@ const REMOVE_USER_DATA_FAILURE = 'REMOVE_USER_DATA_FAILURE';
 const REMOVE_POST_REQUEST = 'REMOVE_POST_REQUEST';
 const REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS';
 const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
+const EDITING_ROLE_REQUEST = 'EDITING_ROLE_REQUEST';
+const EDITING_ROLE_SUCCESS = 'EDITING_ROLE_SUCCESS';
+const EDITING_ROLE_FAILURE = 'EDITING_ROLE_FAILURE';
 /* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
   switch (action.type) {
+    case EDITING_ROLE_REQUEST:
     case REMOVE_POST_REQUEST:
+    case REMOVE_USER_DATA_REQUEST:
+    case LOAD_DATA_REQUEST:
       {
         return _objectSpread({}, state);
+      }
+
+    case EDITING_ROLE_SUCCESS:
+      {
+        return _objectSpread({}, state, {
+          user: [...action.data]
+        });
       }
 
     case REMOVE_POST_SUCCESS:
@@ -2504,26 +2539,11 @@ const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
         });
       }
 
-    case REMOVE_POST_FAILURE:
-      {
-        return _objectSpread({}, state);
-      }
-
-    case REMOVE_USER_DATA_REQUEST:
-      {
-        return _objectSpread({}, state);
-      }
-
     case REMOVE_USER_DATA_SUCCESS:
       {
         return _objectSpread({}, state, {
           user: action.data
         });
-      }
-
-    case REMOVE_USER_DATA_FAILURE:
-      {
-        return _objectSpread({}, state);
       }
 
     case LOAD_DATA_SUCCESS:
@@ -2534,11 +2554,9 @@ const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
         });
       }
 
-    case LOAD_DATA_REQUEST:
-      {
-        return _objectSpread({}, state);
-      }
-
+    case EDITING_ROLE_FAILURE:
+    case REMOVE_POST_FAILURE:
+    case REMOVE_USER_DATA_FAILURE:
     case LOAD_DATA_FAILURE:
       {
         return _objectSpread({}, state);
@@ -2557,7 +2575,7 @@ const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
 /*!*****************************!*\
   !*** ./reducers/drawing.js ***!
   \*****************************/
-/*! exports provided: initialState, OPEN_SUBJECT_MENU, CLOSE_SUBJECT_MENU, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, LOAD_ALLGALLERY_REQUEST, LOAD_ALLGALLERY_SUCCESS, LOAD_ALLGALLERY_FAILURE, MODAL_ON, MODAL_OFF, ADDING_PHOTO_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, LIKE_REQUEST, LIKE_SUCCESS, LIKE_FAILURE, LIKE_ON, UNLIKE_REQUEST, UNLIKE_SUCCESS, UNLIKE_FAILURE, WORD_UPDATE_REQUEST, WORD_UPDATE_SUCCESS, WORD_UPDATE_FAILURE, LOAD_SELECT_POST_REQUEST, LOAD_SELECT_POST_SUCCESS, LOAD_SELECT_POST_FAILURE, ADD_WORD, default */
+/*! exports provided: initialState, OPEN_SUBJECT_MENU, CLOSE_SUBJECT_MENU, LOAD_GALLERY_REQUEST, LOAD_GALLERY_SUCCESS, LOAD_GALLERY_FAILURE, MODAL_ON, MODAL_OFF, DELETE_PHOTO, UPPLOAD_CANVAS_REQUEST, UPPLOAD_CANVAS_SUCCESS, UPPLOAD_CANVAS_FAILURE, UPPLOAD_POST_REQUEST, UPPLOAD_POST_SUCCESS, UPPLOAD_POST_FAILURE, UPPLOADING_DONE, LOAD_POST_DETAIL_REQUEST, LOAD_POST_DETAIL_SUCCESS, LOAD_POST_DETAIL_FAILURE, EDIT_POST_DETAIL_REQUEST, EDIT_POST_DETAIL_SUCCESS, EDIT_POST_DETAIL_FAILURE, DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, DELETE_STATE_OFF, LIKE_REQUEST, LIKE_SUCCESS, LIKE_FAILURE, LIKE_ON, UNLIKE_REQUEST, UNLIKE_SUCCESS, UNLIKE_FAILURE, WORD_LOAD_REQUEST, WORD_LOAD_SUCCESS, WORD_LOAD_FAILURE, LOAD_SELECT_POST_REQUEST, LOAD_SELECT_POST_SUCCESS, LOAD_SELECT_POST_FAILURE, ADD_WORD, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2568,12 +2586,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_REQUEST", function() { return LOAD_GALLERY_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_SUCCESS", function() { return LOAD_GALLERY_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_GALLERY_FAILURE", function() { return LOAD_GALLERY_FAILURE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_ALLGALLERY_REQUEST", function() { return LOAD_ALLGALLERY_REQUEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_ALLGALLERY_SUCCESS", function() { return LOAD_ALLGALLERY_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_ALLGALLERY_FAILURE", function() { return LOAD_ALLGALLERY_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_ON", function() { return MODAL_ON; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MODAL_OFF", function() { return MODAL_OFF; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADDING_PHOTO_OFF", function() { return ADDING_PHOTO_OFF; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_PHOTO", function() { return DELETE_PHOTO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_REQUEST", function() { return UPPLOAD_CANVAS_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPPLOAD_CANVAS_SUCCESS", function() { return UPPLOAD_CANVAS_SUCCESS; });
@@ -2599,9 +2613,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNLIKE_REQUEST", function() { return UNLIKE_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNLIKE_SUCCESS", function() { return UNLIKE_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UNLIKE_FAILURE", function() { return UNLIKE_FAILURE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_REQUEST", function() { return WORD_UPDATE_REQUEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_SUCCESS", function() { return WORD_UPDATE_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_UPDATE_FAILURE", function() { return WORD_UPDATE_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_LOAD_REQUEST", function() { return WORD_LOAD_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_LOAD_SUCCESS", function() { return WORD_LOAD_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WORD_LOAD_FAILURE", function() { return WORD_LOAD_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_SELECT_POST_REQUEST", function() { return LOAD_SELECT_POST_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_SELECT_POST_SUCCESS", function() { return LOAD_SELECT_POST_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_SELECT_POST_FAILURE", function() { return LOAD_SELECT_POST_FAILURE; });
@@ -2626,49 +2640,61 @@ const initialState = {
   word: '단어 불러오는 중',
   oldWordList: [],
   popSubjectMenu: false
-};
+}; // 주제목록 열고 닫기
+
 const OPEN_SUBJECT_MENU = 'OPEN_SUBJECT_MENU';
-const CLOSE_SUBJECT_MENU = 'CLOSE_SUBJECT_MENU';
+const CLOSE_SUBJECT_MENU = 'CLOSE_SUBJECT_MENU'; //갤러리 포스트 불러오기
+
 const LOAD_GALLERY_REQUEST = 'LOAD_GALLERY_REQUEST';
 const LOAD_GALLERY_SUCCESS = 'LOAD_GALLERY_SUCCESS';
-const LOAD_GALLERY_FAILURE = 'LOAD_GALLERY_FAILURE';
-const LOAD_ALLGALLERY_REQUEST = 'LOAD_ALLGALLERY_REQUEST';
-const LOAD_ALLGALLERY_SUCCESS = 'LOAD_ALLGALLERY_SUCCESS';
-const LOAD_ALLGALLERY_FAILURE = 'LOAD_ALLGALLERY_FAILURE';
+const LOAD_GALLERY_FAILURE = 'LOAD_GALLERY_FAILURE'; //모달창 온오프(방금 그린 그림 업로드 하겠습니까?)
+
 const MODAL_ON = 'MODAL_ON';
-const MODAL_OFF = 'MODAL_OFF';
-const ADDING_PHOTO_OFF = 'ADDING_PHOTO_OFF';
-const DELETE_PHOTO = 'DELETE_PHOTO';
+const MODAL_OFF = 'MODAL_OFF'; //미리보기 이미지 삭제
+
+const DELETE_PHOTO = 'DELETE_PHOTO'; //이미지 업로드(미리보기 이미지)
+
 const UPPLOAD_CANVAS_REQUEST = 'UPPLOAD_CANVAS_REQUEST';
 const UPPLOAD_CANVAS_SUCCESS = 'UPPLOAD_CANVAS_SUCCESS';
-const UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE';
+const UPPLOAD_CANVAS_FAILURE = 'UPPLOAD_CANVAS_FAILURE'; //실제 포스트 업로드
+
 const UPPLOAD_POST_REQUEST = 'UPPLOAD_POST_REQUEST';
 const UPPLOAD_POST_SUCCESS = 'UPPLOAD_POST_SUCCESS';
-const UPPLOAD_POST_FAILURE = 'UPPLOAD_POST_FAILURE';
-const UPPLOADING_DONE = 'UPPLOADING_DONE';
+const UPPLOAD_POST_FAILURE = 'UPPLOAD_POST_FAILURE'; //모든 업로드를 마치면 갤러리로 push 하기 위함
+
+const UPPLOADING_DONE = 'UPPLOADING_DONE'; //포스트 상세페이지 로드
+
 const LOAD_POST_DETAIL_REQUEST = 'LOAD_POST_DETAIL_REQUEST';
 const LOAD_POST_DETAIL_SUCCESS = 'LOAD_POST_DETAIL_SUCCESS';
-const LOAD_POST_DETAIL_FAILURE = 'LOAD_POST_DETAIL_FAILURE';
+const LOAD_POST_DETAIL_FAILURE = 'LOAD_POST_DETAIL_FAILURE'; // 포스트 상세페이지 정보수정
+
 const EDIT_POST_DETAIL_REQUEST = 'EDIT_POST_DETAIL_REQUEST';
 const EDIT_POST_DETAIL_SUCCESS = 'EDIT_POST_DETAIL_SUCCESS';
-const EDIT_POST_DETAIL_FAILURE = 'EDIT_POST_DETAIL_FAILURE';
+const EDIT_POST_DETAIL_FAILURE = 'EDIT_POST_DETAIL_FAILURE'; //포스트 지우기
+
 const DELETE_POST_REQUEST = 'DELETE_POST_REQUEST';
 const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
-const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
-const DELETE_STATE_OFF = 'DELETE_STATE_OFF';
+const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE'; //포스트 삭제 상태를 false 로 다시 바꿈(갤러리로 push)
+
+const DELETE_STATE_OFF = 'DELETE_STATE_OFF'; //좋아요
+
 const LIKE_REQUEST = 'LIKE_REQUEST';
 const LIKE_SUCCESS = 'LIKE_SUCCESS';
 const LIKE_FAILURE = 'LIKE_FAILURE';
-const LIKE_ON = 'LIKE_ON';
+const LIKE_ON = 'LIKE_ON'; //좋아요 취소
+
 const UNLIKE_REQUEST = 'UNLIKE_REQUEST';
 const UNLIKE_SUCCESS = 'UNLIKE_SUCCESS';
-const UNLIKE_FAILURE = 'UNLIKE_FAILURE';
-const WORD_UPDATE_REQUEST = 'WORD_UPDATE_REQUEST';
-const WORD_UPDATE_SUCCESS = 'WORD_UPDATE_SUCCESS';
-const WORD_UPDATE_FAILURE = 'WORD_UPDATE_FAILURE';
+const UNLIKE_FAILURE = 'UNLIKE_FAILURE'; //단어 불러오기
+
+const WORD_LOAD_REQUEST = 'WORD_LOAD_REQUEST';
+const WORD_LOAD_SUCCESS = 'WORD_LOAD_SUCCESS';
+const WORD_LOAD_FAILURE = 'WORD_LOAD_FAILURE'; //선택된 주제의 포스트 불러오기
+
 const LOAD_SELECT_POST_REQUEST = 'LOAD_SELECT_POST_REQUEST';
 const LOAD_SELECT_POST_SUCCESS = 'LOAD_SELECT_POST_SUCCESS';
-const LOAD_SELECT_POST_FAILURE = 'LOAD_SELECT_POST_FAILURE';
+const LOAD_SELECT_POST_FAILURE = 'LOAD_SELECT_POST_FAILURE'; //단어 추가하기
+
 const ADD_WORD = 'ADD_WORD';
 /* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
   switch (action.type) {
@@ -2710,12 +2736,12 @@ const ADD_WORD = 'ADD_WORD';
         return _objectSpread({}, state);
       }
 
-    case WORD_UPDATE_REQUEST:
+    case WORD_LOAD_REQUEST:
       {
         return _objectSpread({}, state);
       }
 
-    case WORD_UPDATE_SUCCESS:
+    case WORD_LOAD_SUCCESS:
       {
         return _objectSpread({}, state, {
           word: action.data.word,
@@ -2723,7 +2749,7 @@ const ADD_WORD = 'ADD_WORD';
         });
       }
 
-    case WORD_UPDATE_FAILURE:
+    case WORD_LOAD_FAILURE:
       {
         return _objectSpread({}, state);
       }
@@ -2859,28 +2885,6 @@ const ADD_WORD = 'ADD_WORD';
         });
       }
 
-    case LOAD_ALLGALLERY_REQUEST:
-      {
-        return _objectSpread({}, state, {
-          isLoadding: true
-        });
-      }
-
-    case LOAD_ALLGALLERY_SUCCESS:
-      {
-        return _objectSpread({}, state, {
-          isLoadding: false,
-          postList: action.data
-        });
-      }
-
-    case LOAD_ALLGALLERY_FAILURE:
-      {
-        return _objectSpread({}, state, {
-          isLoadding: false
-        });
-      }
-
     case MODAL_ON:
       {
         return _objectSpread({}, state, {
@@ -2912,13 +2916,6 @@ const ADD_WORD = 'ADD_WORD';
       }
 
     case UPPLOAD_CANVAS_FAILURE:
-      {
-        return _objectSpread({}, state, {
-          addingPhoto: false
-        });
-      }
-
-    case ADDING_PHOTO_OFF:
       {
         return _objectSpread({}, state, {
           addingPhoto: false
@@ -3308,10 +3305,34 @@ function* removePost(action) {
 
 function* watchremovePost() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_admin__WEBPACK_IMPORTED_MODULE_2__["REMOVE_POST_REQUEST"], removePost);
+} //권한 수정하기
+
+
+function editingRoleAPI(userData) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:5000/admin/editrole', userData);
+}
+
+function* editingRole(action) {
+  try {
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(editingRoleAPI, action.data);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_admin__WEBPACK_IMPORTED_MODULE_2__["EDITING_ROLE_SUCCESS"],
+      data: result.data
+    });
+  } catch (e) {
+    console.log(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_admin__WEBPACK_IMPORTED_MODULE_2__["EDITING_ROLE_FAILURE"]
+    });
+  }
+}
+
+function* watcheditingRole() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_admin__WEBPACK_IMPORTED_MODULE_2__["EDITING_ROLE_REQUEST"], editingRole);
 }
 
 function* adminSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadUserList), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchremoveUser), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchremovePost)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watcheditingRole), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadUserList), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchremoveUser), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchremovePost)]);
 }
 
 /***/ }),
@@ -3410,32 +3431,6 @@ function* loadedPost(action) {
 
 function* watchloadedPost() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_GALLERY_REQUEST"], loadedPost);
-} // loaded all post list
-
-
-function loadedAllPostApi() {
-  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:5000/upload/allloaded', {
-    withCredentials: true
-  });
-}
-
-function* loadedAllPost() {
-  try {
-    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadedAllPostApi);
-    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_ALLGALLERY_SUCCESS"],
-      data: result.data
-    });
-  } catch (e) {
-    console.log(e);
-    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_ALLGALLERY_FAILURE"]
-    });
-  }
-}
-
-function* watchloadedAllPost() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["LOAD_ALLGALLERY_REQUEST"], loadedAllPost);
 } // 포스트 세부사항 로딩
 
 
@@ -3575,19 +3570,19 @@ function* loadedWord() {
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadedWordApi);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["WORD_UPDATE_SUCCESS"],
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["WORD_LOAD_SUCCESS"],
       data: result.data
     });
   } catch (e) {
     console.log(e);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["WORD_UPDATE_FAILURE"]
+      type: _reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["WORD_LOAD_FAILURE"]
     });
   }
 }
 
 function* watchloadedWord() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["WORD_UPDATE_REQUEST"], loadedWord);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_drawing__WEBPACK_IMPORTED_MODULE_2__["WORD_LOAD_REQUEST"], loadedWord);
 } // select post
 
 
@@ -3615,7 +3610,7 @@ function* watchselectpost() {
 }
 
 function* drawingSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPhoto), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchEditPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchDeletePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchUnlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedWord), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedAllPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchselectpost)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPhoto), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchEditPostDetail), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchDeletePost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchUnlike), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchloadedWord), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchselectpost)]);
 }
 
 /***/ }),

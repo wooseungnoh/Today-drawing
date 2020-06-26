@@ -16,11 +16,12 @@ export const loadPostAndUser = async (req, res) => {
     res.status(400);
   }
 };
+
 //회원 탈퇴시키기
 export const secession = async (req, res) => {
   const { id } = req.body;
   try {
-    const user = await User.findByIdAndRemove(id);
+    await User.findByIdAndRemove(id);
     const userList = await User.find({}).sort({ _id: -1 });
     res.json(userList);
   } catch (e) {
@@ -28,13 +29,17 @@ export const secession = async (req, res) => {
     res.status(400);
   }
 };
-//포스트 삭제
-export const removePost = async (req, res) => {
-  const { id } = req.body;
+
+//권한 수정
+export const editRole = async (req, res) => {
+  const { objectId, role } = req.body;
   try {
-    const post = await Post.findByIdAndRemove(id);
-    const PostList = await Post.find({}).sort({ _id: -1 });
-    res.json(PostList);
+    console.log(objectId, role);
+    await User.findByIdAndUpdate(objectId, {
+      role,
+    });
+    const newUserList = await User.find({}).sort({ _id: -1 })
+    return res.json(newUserList);
   } catch (e) {
     console.log(e);
     res.status(400);

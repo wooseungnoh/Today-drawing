@@ -25,8 +25,10 @@ const SELECT = '/select';
 const SECESSION = '/secession';
 const REMOVEPOST = '/removepost';
 const LOADLIST = '/loadlist';
+const EDITROLE = '/editrole';
 
 const routes = {
+  editrole:EDITROLE,
   removepost: REMOVEPOST,
   select: SELECT,
   loadlist: LOADLIST,

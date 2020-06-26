@@ -64,13 +64,11 @@ export const signup = async (req, res, next) => {
 //프로필 정보 수정
 export const editing = async (req, res) => {
   const {
-    me: { _id, email, name },
+    me: { _id },
     writerData: { userInfo, writer },
   } = req.body;
   try {
     await User.findByIdAndUpdate(_id, {
-      name,
-      email,
       userInfo,
       writer,
     });

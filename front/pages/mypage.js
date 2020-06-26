@@ -42,7 +42,7 @@ const Mypage = () => {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            width: '500px',
+            width: '40%',
             textAlign: 'left',
           }}
         >
@@ -60,21 +60,19 @@ const Mypage = () => {
             {me ? me.userInfo : ''}
           </Text>
         </div>
+        <h2>좋아하는 그림</h2>
         <GalleryContainer mypage>
           {likeList ? (
-          likeList.map((item, id) => (
-            <Link key={id} href="/p/[imgDetail]" as={`/p/${item._id}`}>
-              <a>
-                <PhotoView
-                  creater={item.title}
-                  url={`http://localhost:5000/${item.fileUrl}`}
-                />
-              </a>
-            </Link>
-          ))
-        ) : (
-          <></>
-        )}
+            likeList.map((item, id) => (
+              <Link key={id} href="/p/[imgDetail]" as={`/p/${item._id}`}>
+                <a>
+                  <PhotoView creater={item.title} url={`${item.fileUrl}`} />
+                </a>
+              </Link>
+            ))
+          ) : (
+            <></>
+          )}
         </GalleryContainer>
       </Container>
     </>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Container from '../components/styled/container';
 import Text from '../components/styled/text';
 import { useSelector, useDispatch } from 'react-redux';
-import { WORD_UPDATE_REQUEST } from '../reducers/drawing';
+import { WORD_LOAD_REQUEST } from '../reducers/drawing';
 import AddWordButton from '../components/addWord'
 const Home = () => {
   const { isLoggedIn } = useSelector((state) => state.user);
@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch({
-      type: WORD_UPDATE_REQUEST,
+      type: WORD_LOAD_REQUEST,
     });
   }, []);
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Router from 'next/Router';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Table from '../../components/admin/table';
@@ -22,7 +23,7 @@ const Main = styled.div`
 `;
 
 const AdminMain = () => {
-  const { me } = useSelector((state) => state.user);
+  const { isLoggedIn, me } = useSelector((state) => state.user);
   const [state, setState] = useState(true);
   const onUser = () => {
     setState(true);
@@ -30,16 +31,21 @@ const AdminMain = () => {
   const onPost = () => {
     setState(false);
   };
+  useEffect(() => {
+    if (isLoggedIn === false || me === null || me.role !== 'admin') {
+      Router.push('/');
+    }
+  }, []);
+
   return (
     <Wrap style={{ display: 'flex' }}>
       <Category>
         <ul>
           <li onClick={onUser}>회원관리</li>
           <li onClick={onPost}>게시물관리</li>
-          <li onClick={onPost}>{me.role}</li>
         </ul>
       </Category>
-      <Table change={state}></Table>
+      <Table change={state} />
     </Wrap>
   );
 };

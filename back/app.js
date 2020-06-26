@@ -7,7 +7,7 @@ import cors from 'cors';
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
 import './passport';
 import globalRouter from './router/globalrouter';
@@ -21,7 +21,7 @@ const CokieStore = MongoStore(session);
 app.use(helmet());
 app.use(morgan('dev'));
 app.use('/', express.static('uploads'));
-app.use(cookieParser());
+app.use(cookieParser(process.env.SECRET_KEY));
 app.use(
   cors({
     origin: true,
@@ -43,6 +43,6 @@ app.use(passport.session());
 
 app.use('/', globalRouter);
 app.use('/upload', postRouter);
-app.use('/admin', adminRouter)
+app.use('/admin', adminRouter);
 
 export default app;

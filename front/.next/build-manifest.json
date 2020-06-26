@@ -8,6 +8,10 @@
     "static/development/_ssgManifest.js"
   ],
   "pages": {
+    "/": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
@@ -20,11 +24,27 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/admin/main": [
+    "/gallery": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/index": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/login": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/mypage": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
     "/p/[imgDetail]": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/upload": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

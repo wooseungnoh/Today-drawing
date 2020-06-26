@@ -40,9 +40,6 @@ const imgDetail = () => {
       Router.push('/gallery');
       dispatch({
         type: DELETE_STATE_OFF,
-        data: {
-          id: nowShowingPost.post._id,
-        },
       });
     }
   }, [deletePostSuccess]);
@@ -62,7 +59,7 @@ const imgDetail = () => {
             width="30%"
             style={{ minWidth: '350px' }}
           />
-          <PostDetail/>
+          <PostDetail />
         </div>
       ) : (
         <></>
