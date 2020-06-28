@@ -73,6 +73,7 @@ export const loadedPostList = async (req, res) => {
 
 export const loadedSelectedPostList = async (req, res) => {
   const { word } = req.body;
+  console.log(word);
   try {
     const post = await Post.find({ subject: word });
     res.json(post);

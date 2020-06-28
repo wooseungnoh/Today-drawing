@@ -56,14 +56,23 @@ export const GalleryContainer = styled.div`
     css`
       height: 220px;
       grid-template-rows: repeat(2, 200px);
-      ${({ postLength }) =>
-        postLength > 2
-          ? css`
-              overflow-y: scroll;
-            `
-          : css`
-              overflow-y: hidden;
-            `}
+      ${({ postLength }) => {
+    if (postLength > 2) {
+      return css`
+        overflow-y: scroll;
+      `;
+    } else if (postLength === 0) {
+      return css`
+        grid-template-columns: repeat(1, 400px);
+        grid-template-rows: repeat(1, 400px);
+        overflow-y: hidden;
+      `;
+    } else {
+      return css`
+        overflow-y: hidden;
+      `;
+    }
+  }}
       @media (max-width: 700px) {
         grid-template-columns: repeat(1, 300px);
         overflow-x: hidden;

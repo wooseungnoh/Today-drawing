@@ -55,7 +55,7 @@ const Mypage = () => {
         </Container>
         <h2>좋아하는 그림</h2>
         <GalleryContainer mypage postLength={likeList.length}>
-          {likeList ? (
+          {likeList && likeList.length !== 0 ? (
             likeList.map((item, id) => (
               <Link key={id} href="/p/[imgDetail]" as={`/p/${item._id}`}>
                 <a>
@@ -64,7 +64,7 @@ const Mypage = () => {
               </Link>
             ))
           ) : (
-            <></>
+            <h3 style={{lineHeight:'200px'}}>좋아하는 그림이 없습니다.</h3>
           )}
         </GalleryContainer>
       </Container>

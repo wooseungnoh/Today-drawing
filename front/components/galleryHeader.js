@@ -50,6 +50,19 @@ const GalleryHeader = () => {
       data: { word: e.target.getAttribute('data') },
     });
   };
+  const handleSubmit = (e) => {
+    if (e.keyCode === 13) {
+      const result = oldWordList.includes(subject);
+      if (result) {
+        dispatch({
+          type: LOAD_SELECT_POST_REQUEST,
+          data: { word: subject },
+        });
+      } else {
+        alert('등록되어있지 않은 단어입니다.');
+      }
+    }
+  };
 
   return (
     <div
@@ -81,6 +94,7 @@ const GalleryHeader = () => {
                 boxSizing: 'border-box',
                 textAlign: 'center',
               }}
+              onKeyDown={handleSubmit}
               placeholder="주제 검색"
             />
           </Li>
