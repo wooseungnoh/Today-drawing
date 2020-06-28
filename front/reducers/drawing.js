@@ -12,7 +12,12 @@ export const initialState = {
   word: '단어 불러오는 중',
   oldWordList: [],
   popSubjectMenu: false,
+  pod: true,
 };
+
+//중복클릭방지
+export const DONOT_DUPLICATION_ON = 'DONOT_DUPLICATION_ON';
+export const DONOT_DUPLICATION_OFF = 'DONOT_DUPLICATION_OFF';
 
 // 주제목록 열고 닫기
 export const OPEN_SUBJECT_MENU = 'OPEN_SUBJECT_MENU';
@@ -82,12 +87,23 @@ export const LOAD_SELECT_POST_REQUEST = 'LOAD_SELECT_POST_REQUEST';
 export const LOAD_SELECT_POST_SUCCESS = 'LOAD_SELECT_POST_SUCCESS';
 export const LOAD_SELECT_POST_FAILURE = 'LOAD_SELECT_POST_FAILURE';
 
-
 //단어 추가하기
 export const ADD_WORD = 'ADD_WORD';
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case DONOT_DUPLICATION_ON: {
+      return {
+        ...state,
+        pod: false,
+      };
+    }
+    case DONOT_DUPLICATION_OFF: {
+      return {
+        ...state,
+        pod: true,
+      };
+    }
     case OPEN_SUBJECT_MENU: {
       return {
         ...state,
@@ -104,17 +120,20 @@ export default (state = initialState, action) => {
       return {
         ...state,
         postList: null,
+        isLoadding: true,
       };
     }
     case LOAD_SELECT_POST_SUCCESS: {
       return {
         ...state,
         postList: [...action.data],
+        isLoadding: false,
       };
     }
     case LOAD_SELECT_POST_FAILURE: {
       return {
         ...state,
+        isLoadding: false,
       };
     }
     case ADD_WORD: {
@@ -224,11 +243,13 @@ export default (state = initialState, action) => {
     case LOAD_POST_DETAIL_REQUEST: {
       return {
         ...state,
+        isLoadding: true,
       };
     }
     case LOAD_POST_DETAIL_SUCCESS: {
       return {
         ...state,
+        isLoadding: false,
         nowShowingPost: action.data,
       };
     }

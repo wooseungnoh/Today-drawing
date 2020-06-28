@@ -1,4 +1,4 @@
-import { all, delay, fork, put, takeEvery, call } from 'redux-saga/effects';
+import { all, delay, fork, put, takeEvery, call, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
@@ -83,7 +83,7 @@ function* addPost(action) {
 }
 
 function* watchAddPost() {
-  yield takeEvery(UPPLOAD_POST_REQUEST, addPost);
+  yield takeLatest(UPPLOAD_POST_REQUEST, addPost);
 }
 
 // loaded post list

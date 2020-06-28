@@ -38,14 +38,7 @@ const Mypage = () => {
       <Container flexDirection="column">
         <h3>마이페이지</h3>
         <Button onClick={editProfile}>Edit Profile</Button>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '40%',
-            textAlign: 'left',
-          }}
-        >
+        <Container flexDirection="column" hsize="200px">
           <Text fontSize="medium" style={{ marginBottom: '8px' }}>
             작가
           </Text>
@@ -59,9 +52,9 @@ const Mypage = () => {
           <Text fontSize="big" bold>
             {me ? me.userInfo : ''}
           </Text>
-        </div>
+        </Container>
         <h2>좋아하는 그림</h2>
-        <GalleryContainer mypage>
+        <GalleryContainer mypage postLength={likeList.length}>
           {likeList ? (
             likeList.map((item, id) => (
               <Link key={id} href="/p/[imgDetail]" as={`/p/${item._id}`}>

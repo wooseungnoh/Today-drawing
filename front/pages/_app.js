@@ -26,9 +26,6 @@ const Root = ({ Component, store }) => (
         crossOrigin="anonymous"
       />
     </Head>
-    <AppLayout>
-      <Component />
-    </AppLayout>
     <style jsx global>
       {`
         * {
@@ -44,13 +41,7 @@ const Root = ({ Component, store }) => (
           display: flex;
           justify-content: center;
           align-items: center;
-          background: url('static/background_img.jpg');
-          background-size:15%;
-        }
-        @media (min-width: 1024px) {
-          body {
-            background-size: 3%;
-          }
+          background: url('static/background_img.jpg') no-repeat;
         }
         a,
         h1,
@@ -63,13 +54,27 @@ const Root = ({ Component, store }) => (
         p {
           text-decoration: none;
           display: inline-block;
+          color: #eee;
         }
         a {
           color: #eee;
-          font-size:15px;
+          font-size: 15px;
+        }
+        label {
+          color: #eee;
+        }
+        #__next {
+          width: 100%;
+          height: 100%;
+          display:flex;
+          justify-content:center;
+          align-items:center;
         }
       `}
     </style>
+    <AppLayout>
+      <Component />
+    </AppLayout>
   </Provider>
 );
 

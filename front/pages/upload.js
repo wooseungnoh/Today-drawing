@@ -8,12 +8,13 @@ import {
   DELETE_PHOTO,
   UPPLOAD_POST_REQUEST,
   UPPLOADING_DONE,
+  DONOT_DUPLICATION_ON,
 } from '../reducers/drawing';
 import { useInput } from './login';
 import Text, { Heading } from '../components/styled/text';
 
 const Upload = () => {
-  const { imagePaths, isUploadingPost, word, addingPhoto } = useSelector(
+  const { imagePaths, isUploadingPost, word, addingPhoto, pod } = useSelector(
     (state) => state.drawing,
   );
   const { isLoggedIn } = useSelector((state) => state.user);
@@ -30,10 +31,15 @@ const Upload = () => {
   const addPhoto = (e) => {
     e.preventDefault();
     if (isLoggedIn && addingPhoto) {
-      dispatch({
-        type: UPPLOAD_POST_REQUEST,
-        data: { title, description, imagePaths, word },
-      });
+      if(pod){
+        dispatch({
+          type: UPPLOAD_POST_REQUEST,
+          data: { title, description, imagePaths, word },
+        });
+        dispatch({
+          type: DONOT_DUPLICATION_ON,
+        });
+      }
     } else if (addingPhoto === false) {
       alert('사진을 추가해야 합니다.');
     } else {

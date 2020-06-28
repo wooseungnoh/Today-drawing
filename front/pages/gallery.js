@@ -5,20 +5,31 @@ import Container, { GalleryContainer } from '../components/styled/container';
 import PhotoView from '../components/photoView';
 import {
   LOAD_GALLERY_REQUEST,
+  DONOT_DUPLICATION_OFF,
+  CLOSE_SUBJECT_MENU,
 } from '../reducers/drawing';
 import GalleryHeader from '../components/galleryHeader';
 
 const Gallery = () => {
-  
   const dispatch = useDispatch();
-  const { postList} = useSelector((state) => state.drawing);
+  const { postList, popSubjectMenu } = useSelector((state) => state.drawing);
   useEffect(() => {
     dispatch({
       type: LOAD_GALLERY_REQUEST,
     });
+    dispatch({
+      type: DONOT_DUPLICATION_OFF,
+    });
   }, []);
-  
-  
+
+  useEffect(() => {
+    return () => {
+      dispatch({
+        type: CLOSE_SUBJECT_MENU,
+      });
+    };
+  }, []);
+
   return (
     <Container flexDirection="column" justifyContent="flex-start">
       <GalleryHeader />
@@ -28,21 +39,17 @@ const Gallery = () => {
         wsize="70%"
         justifyContent="flex-start"
         style={{
-          overflowY: 'scroll',
           overflowX: 'hidden',
         }}
       >
-        <GalleryContainer>
+        <GalleryContainer postLength={postList ? postList.length : 0}>
           {postList ? (
             postList.map((item) => {
               const { id } = item;
               return (
                 <Link key={id} href="/p/[imgDetail]" as={`/p/${item._id}`}>
                   <a>
-                    <PhotoView
-                      creater={item.title}
-                      url={item.fileUrl}
-                    />
+                    <PhotoView creater={item.title} url={item.fileUrl} />
                   </a>
                 </Link>
               );

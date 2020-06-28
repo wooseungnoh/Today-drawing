@@ -32,14 +32,6 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/login": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/mypage": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/p/[imgDetail]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"

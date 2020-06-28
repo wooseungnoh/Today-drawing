@@ -19,10 +19,11 @@ const ViewContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  width: 300px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   background: ${({ url }) => `url(${url}) no-repeat`};
   background-size: cover;
+  border-radius: 10px;
   &:hover ${Text} {
     top: 0;
   }

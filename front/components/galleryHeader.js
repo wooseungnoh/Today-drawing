@@ -65,7 +65,7 @@ const GalleryHeader = () => {
         <button type="button" onClick={handleSubjectMenuState}>
           주제 선택
         </button>
-        <Ul toggleState={popSubjectMenu}>
+        <Ul toggleState={popSubjectMenu} subjectLength={oldWordList.length}>
           <Li>
             <input
               type="text"

@@ -13,7 +13,7 @@ const SIZES = {
 };
 
 const COLOR = {
-  normal: '#707070',
+  normal: '#eee',
 };
 export const Heading = styled.h2`
   margin: 0;

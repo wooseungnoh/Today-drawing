@@ -46,7 +46,7 @@ const AddWordButton = () => {
         style={{
           width: '60px',
           margin: '0 15px',
-          color: '#707070',
+          color: '#eee',
           display: 'inline-block',
           verticalAlign: 'middle',
           position: 'absolute',

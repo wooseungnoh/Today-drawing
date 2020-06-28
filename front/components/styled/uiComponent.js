@@ -4,9 +4,9 @@ export const ButtonAddword = styled.button`
   align-items: center;
   width: 55px;
   height: 55px;
-  background: #f0e1cc;
+  background: #0000006b;
   border-radius: 30px;
-  box-shadow: 3px 3px 5px #707070;
+  box-shadow: 3px 3px 5px;
   position: fixed;
   right: 20%;
   bottom: 12%;
@@ -40,17 +40,18 @@ export const Button = styled.button`
 `;
 
 export const NavUl = styled.ul`
-  position: fixed;
+  position: absolute;
   z-index: 99;
   top: 0;
   display: flex;
   width: 100%;
   height: 30px;
-  background: #75503d6b;
+  background: #ffffff6b;
   justify-content: center;
   align-items: center;
   margin: 0;
   padding: 25px 0;
+  border-radius:10px 10px 0 0;
 `;
 export const NavLi = styled.li`
   display: flex;
@@ -118,7 +119,7 @@ export const Img = styled.img``;
 export const GalleryButton = styled.button`
   border: none;
   background: none;
-  color: #707070;
+  color: #eee;
   font-weight: bold;
   font-size: 19px;
 `;
@@ -129,14 +130,20 @@ export const Ul = styled.ul`
   width: 100%;
   list-style: none;
   transition: 0.5s;
-  overflow: hidden;
   height: ${({ toggleState }) => (toggleState ? '200px' : '0')};
-  overflow-y: scroll;
+  ${({ subjectLength }) =>
+    subjectLength < 7
+      ? css`
+          overflow-y: hidden;
+        `
+      : css`
+          overflow-y: scroll;
+        `}
   text-align: center;
   top: 25px;
   padding: 0 5px;
   margin: 0;
-  background: #cfcfcf;
+  background: #cfcfcf5b;
   border-radius: 5px;
 `;
 export const Li = styled.li`

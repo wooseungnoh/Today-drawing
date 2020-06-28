@@ -130,7 +130,7 @@ export const deletePost = async (req, res) => {
   const { id } = req.body;
   try {
     await Post.findByIdAndRemove({ _id: id });
-    const PostList = await Post.find({}).sort({ _id: -1 });
+    const PostList = await Post.find({}).populate('creator').sort({ _id: -1 });
     res.json(PostList);
   } catch (e) {
     console.log(e);

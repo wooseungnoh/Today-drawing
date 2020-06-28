@@ -24,7 +24,7 @@ const Home = () => {
         <a>
           <Container flexDirection="column">
             <Text fontSize="massive">{`"${word}"`}</Text>
-            <Text style={{ marginBottom: '80px' }} bold fontSize="big">
+            <Text bold fontSize="big">
               업로드
             </Text>
           </Container>
