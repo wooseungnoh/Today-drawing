@@ -4,7 +4,7 @@ export const ButtonAddword = styled.button`
   align-items: center;
   width: 55px;
   height: 55px;
-  background: #0000006b;
+  background: #cccccc6b;
   border-radius: 30px;
   box-shadow: 3px 3px 5px;
   position: fixed;
@@ -51,7 +51,7 @@ export const NavUl = styled.ul`
   align-items: center;
   margin: 0;
   padding: 25px 0;
-  border-radius:10px 10px 0 0;
+  border-radius: 10px 10px 0 0;
 `;
 export const NavLi = styled.li`
   display: flex;
@@ -84,7 +84,7 @@ export const Textarea = styled.textarea`
         `
       : css`
           min-height: 110px;
-        `}
+        `};
   border-radius: 5px;
   border: 1px solid #ccc;
   margin: 10px;

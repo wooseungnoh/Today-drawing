@@ -23,6 +23,9 @@ const Home = () => {
       <Link href="/upload">
         <a>
           <Container flexDirection="column">
+            <Text fontSize="small">
+              오늘의 단어
+            </Text>
             <Text fontSize="massive">{`"${word}"`}</Text>
             <Text bold fontSize="big">
               업로드

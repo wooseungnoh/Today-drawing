@@ -30,20 +30,27 @@ const Gallery = () => {
     };
   }, []);
 
+  const handleContainerClick = () => {
+    dispatch({
+      type: CLOSE_SUBJECT_MENU,
+    });
+  };
+
   return (
     <Container flexDirection="column" justifyContent="flex-start">
       <GalleryHeader />
       <Container
+        onClick={handleContainerClick}
         flexDirection="column"
         hsize="85%"
         wsize="70%"
-        justifyContent="flex-start"
+        justifyContent="center"
         style={{
           overflowX: 'hidden',
         }}
       >
         <GalleryContainer postLength={postList ? postList.length : 0}>
-          {postList ? (
+          {postList && postList.length > 0 ? (
             postList.map((item) => {
               const { id } = item;
               return (
@@ -55,7 +62,7 @@ const Gallery = () => {
               );
             })
           ) : (
-            <></>
+            <h3 style={{lineHeight:'300px'}}>작성된 포스트가 없습니다.</h3>
           )}
         </GalleryContainer>
       </Container>

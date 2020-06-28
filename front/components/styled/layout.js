@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import Container from './container';
 import Navigation from '../navigation';
 import Loading from './loading';

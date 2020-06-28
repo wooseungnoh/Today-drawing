@@ -37,6 +37,9 @@ const GalleryHeader = () => {
     dispatch({
       type: LOAD_GALLERY_REQUEST,
     });
+    dispatch({
+      type: CLOSE_SUBJECT_MENU,
+    });
   };
   const handleSubject = (e) => {
     setSubject(e.target.value);
@@ -99,4 +102,4 @@ const GalleryHeader = () => {
   );
 };
 
-export default GalleryHeader;
+export default React.memo(GalleryHeader);
