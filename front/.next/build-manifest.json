@@ -23,11 +23,23 @@
     "/_polyfills": [
       "static/runtime/polyfills.js"
     ],
+    "/drawing": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/gallery": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
     "/index": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/mypage": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/upload": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

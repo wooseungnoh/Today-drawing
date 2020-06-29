@@ -18,6 +18,9 @@ export const ButtonAddword = styled.button`
   &:hover {
     width: 160px;
   }
+  @media (max-width: 1024px) {
+    width: 160px;
+  }
 `;
 
 export const Button = styled.button`
@@ -39,6 +42,30 @@ export const Button = styled.button`
   }
 `;
 
+export const OpenMenu = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  display: none;
+  z-index: 100;
+  transition: 0.3s;
+  @media (max-width: 700px) {
+    display: block;
+    ${({ menuState }) =>
+      menuState
+        ? css`
+            background: url('../../static/close-solid.svg') no-repeat;
+            background-position-x: 5px;
+          `
+        : css`
+            background: url('../../static/menu-solid.svg') no-repeat;
+          `}
+  }
+`;
+
 export const NavUl = styled.ul`
   position: absolute;
   z-index: 99;
@@ -52,6 +79,25 @@ export const NavUl = styled.ul`
   margin: 0;
   padding: 25px 0;
   border-radius: 10px 10px 0 0;
+  @media (max-width: 700px) {
+    overflow: hidden;
+    background: #0000009b;
+    width: 0;
+    border-radius: 0;
+    right: 0;
+    height: 100%;
+    flex-direction: column;
+    transition: 0.3s;
+    font-size: 1.5rem;
+    ${({ menuState }) =>
+      menuState
+        ? css`
+            width: 250px;
+          `
+        : css`
+            width: 0;
+          `}
+  }
 `;
 export const NavLi = styled.li`
   display: flex;

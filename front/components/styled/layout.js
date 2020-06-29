@@ -1,13 +1,15 @@
-import React, { useEffect, memo } from 'react';
+import React, { useEffect, memo, useState } from 'react';
 import Container from './container';
 import Navigation from '../navigation';
 import Loading from './loading';
 import { useSelector, useDispatch } from 'react-redux';
 import { LOAD_USER_REQUEST } from '../../reducers/user';
+import { OpenMenu } from './uiComponent';
 
 const AppLayout = ({ children }) => {
   const { isUserLoadding, me } = useSelector((state) => state.user);
   const { isLoadding } = useSelector((state) => state.drawing);
+  const [menuState, setMenuState] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,6 +17,10 @@ const AppLayout = ({ children }) => {
       type: LOAD_USER_REQUEST,
     });
   }, []);
+
+  const handleSetMenu = () => {
+    setMenuState((menuState) => !menuState);
+  };
 
   return (
     <Container
@@ -30,7 +36,8 @@ const AppLayout = ({ children }) => {
       }}
       flexDirection="column"
     >
-      <Navigation />
+      <OpenMenu onClick={handleSetMenu} menuState={menuState}/>
+      <Navigation menuState={menuState} />
       <Container style={{ paddingTop: '60px' }}>{children}</Container>
       {isUserLoadding || isLoadding ? (
         <div

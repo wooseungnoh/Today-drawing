@@ -58,7 +58,7 @@ const Root = ({ Component, store }) => (
         }
         a {
           color: #eee;
-          font-size: 15px;
+          font-size: inherit;
         }
         label {
           color: #eee;

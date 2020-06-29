@@ -5,7 +5,7 @@ import Text from './styled/text';
 import { NavUl, NavLi } from './styled/uiComponent';
 import { LOG_OUT_REQUEST } from '../reducers/user';
 
-const Navigation = () => {
+const Navigation = ({ menuState }) => {
   const { isLoggedIn, me } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ const Navigation = () => {
   };
 
   return (
-    <NavUl>
+    <NavUl menuState={menuState}>
       <NavLi>
         <Link href="/">
           <a>홈</a>

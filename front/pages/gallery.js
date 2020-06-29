@@ -31,9 +31,11 @@ const Gallery = () => {
   }, []);
 
   const handleContainerClick = () => {
-    dispatch({
-      type: CLOSE_SUBJECT_MENU,
-    });
+    if (popSubjectMenu) {
+      dispatch({
+        type: CLOSE_SUBJECT_MENU,
+      });
+    }
   };
 
   return (
@@ -62,7 +64,7 @@ const Gallery = () => {
               );
             })
           ) : (
-            <h3 style={{lineHeight:'300px'}}>작성된 포스트가 없습니다.</h3>
+            <h3 style={{ lineHeight: '300px' }}>작성된 포스트가 없습니다.</h3>
           )}
         </GalleryContainer>
       </Container>
