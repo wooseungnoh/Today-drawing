@@ -13,7 +13,12 @@ export const initialState = {
   oldWordList: [],
   popSubjectMenu: false,
   pod: true,
+  globalMenu: false,
 };
+
+//글로벌 메뉴 온오프
+export const OPEN_GLOBAL_MENU = 'OPEN_GLOBAL_MENU';
+export const CLOSE_GLOBAL_MENU = 'CLOSE_GLOBAL_MENU';
 
 //중복클릭방지
 export const DONOT_DUPLICATION_ON = 'DONOT_DUPLICATION_ON';
@@ -92,6 +97,18 @@ export const ADD_WORD = 'ADD_WORD';
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case OPEN_GLOBAL_MENU: {
+      return {
+        ...state,
+        globalMenu: true,
+      };
+    }
+    case CLOSE_GLOBAL_MENU: {
+      return {
+        ...state,
+        globalMenu: false,
+      };
+    }
     case DONOT_DUPLICATION_ON: {
       return {
         ...state,

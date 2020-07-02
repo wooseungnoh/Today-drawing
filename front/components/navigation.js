@@ -4,9 +4,11 @@ import Link from 'next/link';
 import Text from './styled/text';
 import { NavUl, NavLi } from './styled/uiComponent';
 import { LOG_OUT_REQUEST } from '../reducers/user';
+import { CLOSE_GLOBAL_MENU } from '../reducers/drawing';
 
-const Navigation = ({ menuState }) => {
+const Navigation = () => {
   const { isLoggedIn, me } = useSelector((state) => state.user);
+  const { globalMenu } = useSelector((state) => state.drawing);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -15,22 +17,28 @@ const Navigation = ({ menuState }) => {
     });
   };
 
+  const handleCloseMenu = () => {
+    dispatch({
+      type: CLOSE_GLOBAL_MENU,
+    });
+  };
+
   return (
-    <NavUl menuState={menuState}>
+    <NavUl menuState={globalMenu}>
       <NavLi>
         <Link href="/">
-          <a>홈</a>
+          <a onClick={handleCloseMenu}>홈</a>
         </Link>
       </NavLi>
       <NavLi>
         <Link href="/drawing">
-          <a>그림그리기</a>
+          <a onClick={handleCloseMenu}>그림그리기</a>
         </Link>
       </NavLi>
       {isLoggedIn ? (
         <NavLi>
           <Link href="/upload">
-            <a>업로드</a>
+            <a onClick={handleCloseMenu}>업로드</a>
           </Link>
         </NavLi>
       ) : (
@@ -39,14 +47,14 @@ const Navigation = ({ menuState }) => {
 
       <NavLi>
         <Link href="/gallery">
-          <a>갤러리</a>
+          <a onClick={handleCloseMenu}>갤러리</a>
         </Link>
       </NavLi>
       <NavLi>
         {isLoggedIn ? (
           <>
             <Link href="/mypage">
-              <a>마이페이지</a>
+              <a onClick={handleCloseMenu}>마이페이지</a>
             </Link>
             <Text style={{ color: '#fff', padding: '0 5px' }}>/</Text>
             <button
@@ -66,12 +74,16 @@ const Navigation = ({ menuState }) => {
           </>
         ) : (
           <Link href="/login">
-            <a>로그인</a>
+            <a onClick={handleCloseMenu}>로그인</a>
           </Link>
         )}
+      </NavLi>
+      <NavLi>
         {isLoggedIn && me.role === 'admin' ? (
           <Link href="/admin/main">
-            <a style={{ padding: '0 5px' }}>관리자페이지</a>
+            <a onClick={handleCloseMenu} style={{ padding: '0 5px' }}>
+              관리자페이지
+            </a>
           </Link>
         ) : (
           <></>

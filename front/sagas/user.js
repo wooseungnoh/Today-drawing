@@ -25,6 +25,7 @@ import {
   LOAD_LIKELIST_REQUEST,
   LOAD_LIKELIST_SUCCESS,
   LOAD_LIKELIST_FAILURE,
+  LOAD_USER_FAILURE,
 } from '../reducers/user';
 
 function signUpAPI(signUpData) {
@@ -108,7 +109,6 @@ function* watchEditing() {
 
 //유저 로딩
 function loadUserAPI() {
-  console.log('유저 정보 API d');
   return axios.get('/load', {
     withCredentials: true,
   });
@@ -120,7 +120,11 @@ function* loadUser() {
       type: LOAD_USER_SUCCESS,
       data: result.data,
     });
-  } catch (e) {}
+  } catch (e) {
+    yield put({
+      type: LOAD_USER_FAILURE,
+    });
+  }
 }
 function* watchloadUser() {
   yield takeEvery(LOAD_USER_REQUEST, loadUser);

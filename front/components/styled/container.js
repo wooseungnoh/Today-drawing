@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 export const GalleryContainer = styled.div`
   margin-top: 30px;
   display: grid;
-  grid-template-rows: repeat(3, 200px);
   grid-template-columns: repeat(3, 300px);
   grid-gap: 10px;
   margin-bottom: 30px;
@@ -16,7 +15,6 @@ export const GalleryContainer = styled.div`
     } else if (postLength === 0) {
       return css`
         grid-template-columns: repeat(1, 400px);
-        grid-template-rows: repeat(1, 400px);
         overflow-y: hidden;
       `;
     } else {
@@ -37,13 +35,29 @@ export const GalleryContainer = styled.div`
         : css`
             overflow-y: hidden;
           `}
+    ${({ postLength }) => {
+      if (postLength > 6) {
+        return css`
+          overflow-y: scroll;
+        `;
+      } else if (postLength === 0) {
+        return css`
+          grid-template-columns: repeat(1, 400px);
+          overflow-y: hidden;
+        `;
+      } else {
+        return css`
+          overflow-y: hidden;
+        `;
+      }
+    }}
   }
 
   @media (max-width: 960px) {
     grid-template-columns: repeat(1, 300px);
     overflow-x: hidden;
     ${({ postLength }) =>
-      postLength > 2
+      postLength > 3
         ? css`
             overflow-y: scroll;
           `
@@ -55,24 +69,22 @@ export const GalleryContainer = styled.div`
     mypage &&
     css`
       height: 220px;
-      grid-template-rows: repeat(2, 200px);
       ${({ postLength }) => {
-    if (postLength > 2) {
-      return css`
-        overflow-y: scroll;
-      `;
-    } else if (postLength === 0) {
-      return css`
-        grid-template-columns: repeat(1, 400px);
-        grid-template-rows: repeat(1, 400px);
-        overflow-y: hidden;
-      `;
-    } else {
-      return css`
-        overflow-y: hidden;
-      `;
-    }
-  }}
+        if (postLength > 2) {
+          return css`
+            overflow-y: scroll;
+          `;
+        } else if (postLength === 0) {
+          return css`
+            grid-template-columns: repeat(1, 400px);
+            overflow-y: hidden;
+          `;
+        } else {
+          return css`
+            overflow-y: hidden;
+          `;
+        }
+      }}
       @media (max-width: 700px) {
         grid-template-columns: repeat(1, 300px);
         overflow-x: hidden;

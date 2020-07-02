@@ -17,7 +17,7 @@ export const ButtonAddword = styled.button`
   box-shadow: 3px 3px 5px;
   position: fixed;
   right: 20%;
-  bottom: 12%;
+  bottom: 20%;
   cursor: pointer;
   border: none;
   outline: none;
@@ -28,6 +28,8 @@ export const ButtonAddword = styled.button`
   }
   @media (max-width: 1024px) {
     width: 160px;
+    right:50%;
+    margin-right:-80px;
   }
 `;
 

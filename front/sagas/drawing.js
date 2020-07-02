@@ -246,7 +246,6 @@ function loadedWordApi() {
 }
 
 function* loadedWord() {
-  console.log('단어 불러오기 : saga')
   try {
     const result = yield call(loadedWordApi);
     yield put({

@@ -44,11 +44,10 @@ const Gallery = () => {
       <Container
         onClick={handleContainerClick}
         flexDirection="column"
-        hsize="85%"
         wsize="70%"
         justifyContent="center"
         style={{
-          overflowX: 'hidden',
+          overflowX: 'hidden'
         }}
       >
         <GalleryContainer postLength={postList ? postList.length : 0}>

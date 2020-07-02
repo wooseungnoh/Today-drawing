@@ -3,24 +3,32 @@ import Container from './container';
 import Navigation from '../navigation';
 import Loading from './loading';
 import { useSelector, useDispatch } from 'react-redux';
-import { LOAD_USER_REQUEST } from '../../reducers/user';
 import { OpenMenu } from './uiComponent';
+import { OPEN_GLOBAL_MENU, CLOSE_GLOBAL_MENU } from '../../reducers/drawing';
 
 const AppLayout = ({ children }) => {
   const { isUserLoadding } = useSelector((state) => state.user);
-  const { isLoadding } = useSelector((state) => state.drawing);
-  const [menuState, setMenuState] = useState(false);
+  const { isLoadding, globalMenu } = useSelector((state) => state.drawing);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   console.log('렌더링 레이아웃')
-  //   dispatch({
-  //     type: LOAD_USER_REQUEST,
-  //   });
-  // }, []);
-
   const handleSetMenu = () => {
-    setMenuState((menuState) => !menuState);
+    if (globalMenu) {
+      dispatch({
+        type: CLOSE_GLOBAL_MENU,
+      });
+    } else {
+      dispatch({
+        type: OPEN_GLOBAL_MENU,
+      });
+    }
+  };
+
+  const handleCloseMenu = () => {
+    if(globalMenu){
+      dispatch({
+        type: CLOSE_GLOBAL_MENU,
+      });
+    }
   };
 
   return (
@@ -37,9 +45,11 @@ const AppLayout = ({ children }) => {
       }}
       flexDirection="column"
     >
-      <OpenMenu onClick={handleSetMenu} menuState={menuState}/>
-      <Navigation menuState={menuState} />
-      <Container style={{ paddingTop: '60px' }}>{children}</Container>
+      <OpenMenu onClick={handleSetMenu} menuState={globalMenu} />
+      <Navigation />
+      <Container style={{ paddingTop: '60px' }} onClick={handleCloseMenu}>
+        {children}
+      </Container>
       {isUserLoadding || isLoadding ? (
         <div
           style={{

@@ -3,7 +3,9 @@
         "app.js",
         "router",
         "model",
-        "controller",
+        "controller/postController.js",
+        "controller/adminController.js",
+        "controller/userController.js",
         "init.js"
     ],
     "exec":"cross-env babel-node src/init.js",

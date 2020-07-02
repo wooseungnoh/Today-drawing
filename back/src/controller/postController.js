@@ -7,26 +7,33 @@ class DateConstructor {
   constructor(model) {
     this.model = model;
   }
+  previousMonthIndexNumber(){
+    const date = new Date();
+    const index = this.model.findIndex(
+      (i) => i.name === `${date.getMonth()}월`,
+    );
+    return index;
+  }
   thisMonthIndexnumber() {
     const date = new Date();
-    const thisMonthIndexnumber = this.model.findIndex(
+    const index = this.model.findIndex(
       (i) => i.name === `${date.getMonth() + 1}월`,
     );
-    return thisMonthIndexnumber;
+    return index;
   }
   yesterdayWord() {
     const date = new Date();
-    const thisMonthIndexnumber = this.model.findIndex(
+    const index = this.model.findIndex(
       (i) => i.name === `${date.getMonth() + 1}월`,
     );
-    return this.model[thisMonthIndexnumber].wordListArray[date.getDate() - 2];
+    return this.model[index].wordListArray[date.getDate() - 2];
   }
   todayWord() {
     const date = new Date();
-    const thisMonthIndexnumber = this.model.findIndex(
+    const index = this.model.findIndex(
       (i) => i.name === `${date.getMonth() + 1}월`,
     );
-    return this.model[thisMonthIndexnumber].wordListArray[date.getDate() - 1];
+    return this.model[index].wordListArray[date.getDate() - 1];
   }
 }
 
@@ -61,7 +68,9 @@ export const loadedPostList = async (req, res) => {
   try {
     const wordData = await Word.find({});
     const dateConstructor = new DateConstructor(wordData);
-    const post = await Post.find({ subject: dateConstructor.todayWord() }).sort({ _id: -1 });
+    const post = await Post.find({
+      subject: dateConstructor.todayWord(),
+    }).sort({ _id: -1 });
 
     res.json(post);
   } catch (e) {
@@ -73,7 +82,6 @@ export const loadedPostList = async (req, res) => {
 
 export const loadedSelectedPostList = async (req, res) => {
   const { word } = req.body;
-  console.log(word);
   try {
     const post = await Post.find({ subject: word });
     res.json(post);
@@ -213,6 +221,7 @@ export const loadWord = async (req, res) => {
   try {
     const wordData = await Word.find({});
     const dateConstructor = new DateConstructor(wordData);
+    const prevMonthOldWord = wordData[dateConstructor.previousMonthIndexNumber()].oldWordList;
 
     if (date.getDate() === 1 && dateConstructor.thisMonthIndexnumber() === -1) {
       //1일마다 새로운 배열생성
@@ -220,11 +229,10 @@ export const loadWord = async (req, res) => {
         const worditem = basicWordList[Math.floor(Math.random() * wordLength)];
         wordArray.push(worditem);
       }
-
       const wordData = await Word.create({
         name: String(`${date.getMonth() + 1}월`),
         wordListArray: wordArray,
-        oldWordList: [],
+        oldWordList: [...prevMonthOldWord],
       });
 
       res.json(wordData.wordListArray[date.getDate() - 1]);

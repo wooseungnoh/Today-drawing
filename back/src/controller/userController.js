@@ -26,11 +26,10 @@ export const login = (req, res, next) => {
 
 //유저 정보 불러오기
 export const loadUser = (req, res) => {
-  console.log('유저정보 로딩중')
-  if (!req.user) {
-    return res.send('유저 없음');
-  }else{
+  if (req.user) {
     return res.json(req.user);
+  } else {
+    return res.status(400);
   }
 };
 

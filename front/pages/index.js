@@ -11,7 +11,6 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('단어 로드')
     dispatch({
       type: WORD_LOAD_REQUEST,
     });

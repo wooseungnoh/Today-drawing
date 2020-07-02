@@ -13,10 +13,6 @@ import reducer from '../reducers';
 import AppLayout from '../components/styled/layout';
 
 const Root = ({ Component, store, pageProps }) => {
-  useEffect(() => {
-    console.log('렌더링');
-  }, []);
-
   return (
     <Provider store={store}>
       <Head>
@@ -102,7 +98,7 @@ Root.getInitialProps = async (context) => {
   if (cookie && ctx.isServer) {
     axios.defaults.headers.Cookie = cookie;
   }
-  if (state.user.me === null) {
+  if (!state.user.me) {
     ctx.store.dispatch({
       type: LOAD_USER_REQUEST,
     });
