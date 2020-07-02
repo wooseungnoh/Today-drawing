@@ -5,16 +5,15 @@ import { ButtonAddword } from '../components/styled/uiComponent';
 import axios from 'axios';
 
 const AddWordButton = () => {
+  axios.defaults.baseURL = 'http://18.181.73.53';
+
   const onPrompt = async () => {
     const result = prompt('주제를 입력해주세요', ['']);
     if (result !== '' && result !== null) {
       const object = {
         wordName: result,
       };
-      const addwordResult = await axios.post(
-        '/upload/addword',
-        object,
-      );
+      const addwordResult = await axios.post('/upload/addword', object);
       if (addwordResult.status === 200 && result) {
         alert('추가성공');
       }
@@ -39,7 +38,7 @@ const AddWordButton = () => {
       >
         <FontAwesomeIcon
           icon={faPen}
-          style={{ fontSize: '22px', margin: '12px 0', color:'#eee' }}
+          style={{ fontSize: '22px', margin: '12px 0', color: '#eee' }}
         />
       </div>
       <span
@@ -50,8 +49,8 @@ const AddWordButton = () => {
           display: 'inline-block',
           verticalAlign: 'middle',
           position: 'absolute',
-          left:'55px',
-          top:'21px'
+          left: '55px',
+          top: '21px',
         }}
       >
         주제 제출

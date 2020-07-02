@@ -5,7 +5,7 @@ import admin from './admin';
 import Axios from 'axios';
 
 Axios.defaults.baseURL = `${
-  process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000'
+  process.env.NODE_ENV === 'production' ? 'http://18.181.73.53' : 'http://localhost:5000'
 }`;
 
 export default function* rootSaga() {
