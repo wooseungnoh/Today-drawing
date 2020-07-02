@@ -51,10 +51,10 @@ const Root = ({ Component, store, pageProps }) => {
             align-items: center;
             background: url('static/background_img.jpg') no-repeat;
           }
-          @media(max-width:700px){
+          @media (max-width: 700px) {
             body {
               background: url('static/background_img.jpg') no-repeat;
-              background-position:-950px 0;
+              background-position: -950px 0;
             }
           }
           a,
@@ -98,7 +98,8 @@ Root.getInitialProps = async (context) => {
   let pageProps = {};
   const state = ctx.store.getState();
   const cookie = ctx.isServer ? ctx.req.headers.cookie : '';
-  if (ctx.isServer && cookie) {
+  console.log(cookie);
+  if (cookie && ctx.isServer) {
     axios.defaults.headers.Cookie = cookie;
   }
   if (!state.user.me) {

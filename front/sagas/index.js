@@ -2,10 +2,12 @@ import { all, call } from 'redux-saga/effects';
 import user from './user';
 import drawing from './drawing';
 import admin from './admin';
-import Axios from 'axios';
+import axios from 'axios';
 
-Axios.defaults.baseURL = `${
-  process.env.NODE_ENV === 'production' ? 'http://18.181.73.53' : 'http://localhost:5000'
+axios.defaults.baseURL = `${
+  process.env.NODE_ENV === 'production'
+    ? 'http://18.181.73.53'
+    : 'http://localhost:5000'
 }`;
 
 export default function* rootSaga() {
