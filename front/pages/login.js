@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
-import Router from 'next/Router';
+import Router from 'next/router';
 import Container from '../components/styled/container';
 import { Button, Input, Form } from '../components/styled/uiComponent';
 import { LOG_IN_REQUEST } from '../reducers/user';
@@ -18,7 +18,7 @@ const StyledA = styled.a`
   border-radius: 5px;
   transition: 0.3s;
   color: #555;
-  line-height:25px;
+  line-height: 25px;
   &:hover {
     background: #f0e1cc;
   }

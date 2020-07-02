@@ -1,5 +1,5 @@
 import React from 'react';
-import Router from 'next/Router';
+import Router from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import Container from './styled/container';
 import Text from './styled/text';

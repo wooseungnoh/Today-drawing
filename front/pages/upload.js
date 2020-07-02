@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Router from 'next/Router';
+import Router from 'next/router';
 import Container from '../components/styled/container';
 import { Input, Form, Textarea } from '../components/styled/uiComponent';
 import {
@@ -14,7 +14,7 @@ import { useInput } from './login';
 import Text, { Heading } from '../components/styled/text';
 
 const Upload = () => {
-  const file = useRef()
+  const file = useRef();
   const { imagePaths, isUploadingPost, word, addingPhoto, pod } = useSelector(
     (state) => state.drawing,
   );
@@ -32,7 +32,7 @@ const Upload = () => {
   const addPhoto = (e) => {
     e.preventDefault();
     if (isLoggedIn && addingPhoto) {
-      if(pod){
+      if (pod) {
         dispatch({
           type: UPPLOAD_POST_REQUEST,
           data: { title, description, imagePaths, word },
@@ -133,14 +133,14 @@ const Upload = () => {
       </div>
 
       <Form onSubmit={addPhoto} encType="multipart/form-data">
-        <label htmlFor="file" >파일 선택</label>
+        <label htmlFor="file">파일 선택</label>
         <Input
           type="file"
           name="photo"
           onChange={handlePhotoFile}
           accept="image/*"
           required
-          style={{color:"#eee", display:'flex', alignItems:'center'}}
+          style={{ color: '#eee', display: 'flex', alignItems: 'center' }}
           ref={file}
         />
         <label>그림 제목</label>

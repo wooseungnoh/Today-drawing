@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
-import Router from 'next/Router';
+import Router from 'next/router';
 import Container, { GalleryContainer } from '../components/styled/container';
 import Text from '../components/styled/text';
 import { Button } from '../components/styled/uiComponent';
@@ -64,7 +64,7 @@ const Mypage = () => {
               </Link>
             ))
           ) : (
-            <h3 style={{lineHeight:'200px'}}>좋아하는 그림이 없습니다.</h3>
+            <h3 style={{ lineHeight: '200px' }}>좋아하는 그림이 없습니다.</h3>
           )}
         </GalleryContainer>
       </Container>

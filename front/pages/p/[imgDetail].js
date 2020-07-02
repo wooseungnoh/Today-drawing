@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Router from 'next/Router';
+import Router from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { Img } from '../../components/styled/uiComponent';
 import Container from '../../components/styled/container';

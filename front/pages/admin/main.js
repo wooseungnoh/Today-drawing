@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Router from 'next/Router';
+import Router from 'next/router';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Table from '../../components/admin/table';

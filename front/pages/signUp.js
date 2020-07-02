@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Router from 'next/Router';
+import Router from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import Container from '../components/styled/container';
 import EditProfile from '../components/editProfile';
