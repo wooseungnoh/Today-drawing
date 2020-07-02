@@ -21,7 +21,7 @@ import {
 } from '../reducers/user';
 
 function signUpAPI(signUpData) {
-  return axios.post('http://localhost:5000/signup', signUpData, {
+  return axios.post('/signup', signUpData, {
     withCredentials: true,
   });
 }
@@ -46,7 +46,7 @@ function* watchSignUp() {
 }
 
 function loginAPI(loginData) {
-  return axios.post('http://localhost:5000/login', loginData, {
+  return axios.post('/login', loginData, {
     withCredentials: true,
   });
 }
@@ -73,7 +73,7 @@ function* watchLogin() {
 // 사용자 프로필 수정
 
 function editingAPI(userID) {
-  return axios.post('http://localhost:5000/editing', userID, {
+  return axios.post('/editing', userID, {
     withCredentials: true,
   });
 }
@@ -101,7 +101,7 @@ function* watchEditing() {
 
 //유저 로딩
 function loadUserAPI() {
-  return axios.get('http://localhost:5000/load', {
+  return axios.get('/load', {
     withCredentials: true,
   });
 }
@@ -121,7 +121,7 @@ function* watchloadUser() {
 // 로그아웃
 function logOutAPI() {
   return axios.post(
-    'http://localhost:5000/logout',
+    '/logout',
     {},
     {
       withCredentials: true,
@@ -147,7 +147,7 @@ function* watchLogOut() {
 
 // 좋아하는 리스트 불러오기
 function loadLikePostAPI() {
-  return axios.get('http://localhost:5000/loadlikelist', {
+  return axios.get('/loadlikelist', {
     withCredentials: true,
   });
 }

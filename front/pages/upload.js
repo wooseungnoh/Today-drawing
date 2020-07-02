@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Router from 'next/Router';
 import Container from '../components/styled/container';
@@ -14,6 +14,7 @@ import { useInput } from './login';
 import Text, { Heading } from '../components/styled/text';
 
 const Upload = () => {
+  const file = useRef()
   const { imagePaths, isUploadingPost, word, addingPhoto, pod } = useSelector(
     (state) => state.drawing,
   );
@@ -104,7 +105,7 @@ const Upload = () => {
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
             <img
               src={imagePaths[0]}
-              style={{ height: '100%' }}
+              style={{ height: '90%' }}
               alt={imagePaths[0]}
             />
             <button
@@ -121,7 +122,7 @@ const Upload = () => {
               justifyContent: 'center',
               alignItems: 'center',
               width: '100%',
-              height: '100%',
+              height: '90%',
               background: 'rgba(0,0,0,0.1)',
               borderRadius: '5px',
             }}
@@ -132,15 +133,16 @@ const Upload = () => {
       </div>
 
       <Form onSubmit={addPhoto} encType="multipart/form-data">
-        <label htmlFor="file">파일 선택</label>
+        <label htmlFor="file" >파일 선택</label>
         <Input
           type="file"
           name="photo"
           onChange={handlePhotoFile}
           accept="image/*"
           required
+          style={{color:"#eee", display:'flex', alignItems:'center'}}
+          ref={file}
         />
-
         <label>그림 제목</label>
         <Input value={title} onChange={setTitle} type="text" required />
 

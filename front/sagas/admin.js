@@ -17,7 +17,7 @@ import {
 
 //유저 데이터 불러오기
 function loadUserListAPI() {
-  return axios.get('http://localhost:5000/admin/loadlist', {
+  return axios.get('/admin/loadlist', {
     withCredentials: true,
   });
 }
@@ -41,7 +41,7 @@ function* watchloadUserList() {
 
 //유저 삭제하기
 function removeUserAPI(userData) {
-  return axios.post('http://localhost:5000/admin/secession', userData);
+  return axios.post('/admin/secession', userData);
 }
 function* removeUser(action) {
   try {
@@ -63,7 +63,7 @@ function* watchremoveUser() {
 
 //포스트 삭제하기
 function removePostAPI(postId) {
-  return axios.post('http://localhost:5000/admin/removepost', postId);
+  return axios.post('/admin/removepost', postId);
 }
 function* removePost(action) {
   try {
@@ -85,7 +85,7 @@ function* watchremovePost() {
 
 //권한 수정하기
 function editingRoleAPI(userData) {
-  return axios.post('http://localhost:5000/admin/editrole', userData);
+  return axios.post('/admin/editrole', userData);
 }
 function* editingRole(action) {
   try {

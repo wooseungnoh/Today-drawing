@@ -12,7 +12,7 @@ const AddWordButton = () => {
         wordName: result,
       };
       const addwordResult = await axios.post(
-        'http://localhost:5000/upload/addword',
+        '/upload/addword',
         object,
       );
       if (addwordResult.status === 200 && result) {

@@ -36,7 +36,7 @@ import {
 
 // 미리보기 사진 업로드
 function addPhotoApi(photoData) {
-  return axios.post('http://localhost:5000/upload/uploadphoto', photoData, {
+  return axios.post('/upload/uploadphoto', photoData, {
     withCredentials: true,
   });
 }
@@ -62,7 +62,7 @@ function* watchAddPhoto() {
 
 // post upload
 function addPostApi(postData) {
-  return axios.post('http://localhost:5000/upload/uploadpost', postData, {
+  return axios.post('/upload/uploadpost', postData, {
     withCredentials: true,
   });
 }
@@ -88,7 +88,7 @@ function* watchAddPost() {
 
 // loaded post list
 function loadedPostApi() {
-  return axios.get('http://localhost:5000/upload/loaded', {
+  return axios.get('/upload/loaded', {
     withCredentials: true,
   });
 }
@@ -114,7 +114,7 @@ function* watchloadedPost() {
 
 // 포스트 세부사항 로딩
 function loadedPostDetailApi(urldata) {
-  return axios.post('http://localhost:5000/upload/photodetail', urldata, {
+  return axios.post('/upload/photodetail', urldata, {
     withCredentials: true,
   });
 }
@@ -140,7 +140,7 @@ function* watchloadedPostDetail() {
 
 // 포스트 에딧
 function editPostDetailApi(urldata) {
-  return axios.post('http://localhost:5000/upload/editpost', urldata, {
+  return axios.post('/upload/editpost', urldata, {
     withCredentials: true,
   });
 }
@@ -165,7 +165,7 @@ function* watchEditPostDetail() {
 
 // 포스트 지우기
 function deletePostApi(targetPostData) {
-  return axios.post('http://localhost:5000/upload/deletepost', targetPostData, {
+  return axios.post('/upload/deletepost', targetPostData, {
     withCredentials: true,
   });
 }
@@ -190,7 +190,7 @@ function* watchDeletePost() {
 
 // 좋아요
 function likeApi(id) {
-  return axios.post('http://localhost:5000/upload/like', id, {
+  return axios.post('/upload/like', id, {
     withCredentials: true,
   });
 }
@@ -216,7 +216,7 @@ function* watchlike() {
 
 // 좋아요취소
 function unlikeApi(id) {
-  return axios.post('http://localhost:5000/upload/unlike', id, {
+  return axios.post('/upload/unlike', id, {
     withCredentials: true,
   });
 }
@@ -242,7 +242,7 @@ function* watchUnlike() {
 
 // loaded word
 function loadedWordApi() {
-  return axios.get('http://localhost:5000/upload/loadword');
+  return axios.get('/upload/loadword');
 }
 
 function* loadedWord() {
@@ -266,7 +266,7 @@ function* watchloadedWord() {
 
 // select post
 function selectpostApi(word) {
-  return axios.post('http://localhost:5000/upload/select', word);
+  return axios.post('/upload/select', word);
 }
 
 function* selectpost(action) {

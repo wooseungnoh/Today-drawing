@@ -2,14 +2,14 @@ import multer from 'multer';
 import multerS3 from 'multer-s3';
 import aws from 'aws-sdk';
 import dotenv from 'dotenv';
-import path from 'path';
 dotenv.config();
-
-const s3 = new aws.S3({
+aws.config.update({
   secretAccessKey: process.env.AWS_PRIVATE_KEY,
   accessKeyId: process.env.AWS_KEY,
   region: 'ap-northeast-1',
 });
+
+const s3 = new aws.S3();
 
 const multerPhoto = multer({
   storage: multerS3({

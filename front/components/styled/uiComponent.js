@@ -126,10 +126,10 @@ export const Textarea = styled.textarea`
   ${({ edit }) =>
     edit
       ? css`
-          height: 100px;
+          height: 70px;
         `
       : css`
-          min-height: 110px;
+          min-height: 70px;
         `};
   border-radius: 5px;
   border: 1px solid #ccc;
