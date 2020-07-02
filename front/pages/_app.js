@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import Head from 'next/head';
+import rootSaga from '../sagas';
 import withRedux from 'next-redux-wrapper';
-import withReduxSaga from 'next-redux-saga';
-import { applyMiddleware, compose, createStore } from 'redux';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
+import { LOAD_USER_REQUEST } from '../reducers/user';
+import Head from 'next/head';
+import { applyMiddleware, compose, createStore } from 'redux';
+import withReduxSaga from 'next-redux-saga';
 import createSagaMiddleware from 'redux-saga';
 import axios from 'axios';
+import reducer from '../reducers';
 
 import AppLayout from '../components/styled/layout';
-import reducer from '../reducers';
-import rootSaga from '../sagas';
-import { LOAD_USER_REQUEST } from '../reducers/user';
 
 const Root = ({ Component, store, pageProps }) => {
   useEffect(() => {
@@ -102,7 +102,7 @@ Root.getInitialProps = async (context) => {
   if (cookie && ctx.isServer) {
     axios.defaults.headers.Cookie = cookie;
   }
-  if (!state.user.me) {
+  if (state.user.me === null) {
     ctx.store.dispatch({
       type: LOAD_USER_REQUEST,
     });

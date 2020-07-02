@@ -12,12 +12,12 @@ const AppLayout = ({ children }) => {
   const [menuState, setMenuState] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log('렌더링 레이아웃')
-    dispatch({
-      type: LOAD_USER_REQUEST,
-    });
-  }, []);
+  // useEffect(() => {
+  //   console.log('렌더링 레이아웃')
+  //   dispatch({
+  //     type: LOAD_USER_REQUEST,
+  //   });
+  // }, []);
 
   const handleSetMenu = () => {
     setMenuState((menuState) => !menuState);

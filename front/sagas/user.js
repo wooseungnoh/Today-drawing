@@ -1,4 +1,11 @@
-import { all, fork, put, takeEvery, call, takeLatest } from 'redux-saga/effects';
+import {
+  all,
+  fork,
+  put,
+  takeEvery,
+  call,
+  takeLatest,
+} from 'redux-saga/effects';
 import axios from 'axios';
 import {
   LOG_IN_REQUEST,
@@ -101,6 +108,7 @@ function* watchEditing() {
 
 //유저 로딩
 function loadUserAPI() {
+  console.log('유저 정보 API d');
   return axios.get('/load', {
     withCredentials: true,
   });
