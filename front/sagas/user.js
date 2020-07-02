@@ -19,13 +19,13 @@ import {
   EDITING_PROFILE_FAILURE,
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
+  LOAD_USER_FAILURE,
   LOG_OUT_REQUEST,
   LOG_OUT_SUCCESS,
   LOG_OUT_FAILURE,
   LOAD_LIKELIST_REQUEST,
   LOAD_LIKELIST_SUCCESS,
   LOAD_LIKELIST_FAILURE,
-  LOAD_USER_FAILURE,
 } from '../reducers/user';
 
 function signUpAPI(signUpData) {
@@ -116,11 +116,13 @@ function loadUserAPI() {
 function* loadUser() {
   try {
     const result = yield call(loadUserAPI);
+    console.log('로그인 성공')
     yield put({
       type: LOAD_USER_SUCCESS,
       data: result.data,
     });
   } catch (e) {
+    console.log('로그인 실패')
     yield put({
       type: LOAD_USER_FAILURE,
     });

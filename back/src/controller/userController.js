@@ -29,7 +29,7 @@ export const loadUser = (req, res) => {
   if (req.user) {
     return res.json(req.user);
   } else {
-    return res.status(400);
+    return res.status(400).send('로그인실패');
   }
 };
 

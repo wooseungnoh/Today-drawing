@@ -94,11 +94,10 @@ Root.getInitialProps = async (context) => {
   let pageProps = {};
   const state = ctx.store.getState();
   const cookie = ctx.isServer ? ctx.req.headers.cookie : '';
-  console.log(cookie);
   if (cookie && ctx.isServer) {
     axios.defaults.headers.Cookie = cookie;
   }
-  if (!state.user.me) {
+  if (state.user.me === null) {
     ctx.store.dispatch({
       type: LOAD_USER_REQUEST,
     });
