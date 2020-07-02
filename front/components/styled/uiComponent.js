@@ -1,5 +1,13 @@
 import styled, { css } from 'styled-components';
 
+export const SubjectSelectButton = styled.button`
+width:110px;
+height:20px;
+border-radius:5px;
+border:none;
+background:#e0cfb6;
+`
+
 export const ButtonAddword = styled.button`
   align-items: center;
   width: 55px;
@@ -44,6 +52,7 @@ export const Button = styled.button`
 
 export const OpenMenu = styled.button`
   position: absolute;
+  outline:none;
   top: 20px;
   right: 20px;
   width: 30px;

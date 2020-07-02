@@ -34,7 +34,7 @@ const AddWordButton = () => {
           background: '#bf9d8c',
           margin: '4px',
           verticalAlign: 'middle',
-          top: '2px',
+          top: '1px',
         }}
       >
         <FontAwesomeIcon

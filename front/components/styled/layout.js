@@ -7,12 +7,13 @@ import { LOAD_USER_REQUEST } from '../../reducers/user';
 import { OpenMenu } from './uiComponent';
 
 const AppLayout = ({ children }) => {
-  const { isUserLoadding, me } = useSelector((state) => state.user);
+  const { isUserLoadding } = useSelector((state) => state.user);
   const { isLoadding } = useSelector((state) => state.drawing);
   const [menuState, setMenuState] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('렌더링 레이아웃')
     dispatch({
       type: LOAD_USER_REQUEST,
     });

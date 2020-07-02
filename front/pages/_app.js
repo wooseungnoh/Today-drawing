@@ -1,82 +1,116 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import withRedux from 'next-redux-wrapper';
+import withReduxSaga from 'next-redux-saga';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
+import axios from 'axios';
 
 import AppLayout from '../components/styled/layout';
 import reducer from '../reducers';
 import rootSaga from '../sagas';
+import { LOAD_USER_REQUEST } from '../reducers/user';
 
-const Root = ({ Component, store }) => (
-  <Provider store={store}>
-    <Head>
-      <title>하루 그림</title>
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, user-scalable=no"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap"
-        rel="stylesheet"
-      />
-      <script
-        src="https://kit.fontawesome.com/308bd8919c.js"
-        crossOrigin="anonymous"
-      />
-    </Head>
-    <style jsx global>
-      {`
-        * {
-          font-family: 'Nanum Myeongjo', serif;
-          box-sizing: border-box;
-        }
-        html,
-        body {
-          width: 100%;
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background: url('static/background_img.jpg') no-repeat;
-        }
-        a,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        span,
-        p {
-          text-decoration: none;
-          display: inline-block;
-          color: #eee;
-        }
-        a {
-          color: #eee;
-          font-size: inherit;
-        }
-        label {
-          color: #eee;
-        }
-        #__next {
-          width: 100%;
-          height: 100%;
-          display:flex;
-          justify-content:center;
-          align-items:center;
-        }
-      `}
-    </style>
-    <AppLayout>
-      <Component />
-    </AppLayout>
-  </Provider>
-);
+const Root = ({ Component, store, pageProps }) => {
+  useEffect(() => {
+    console.log('렌더링');
+  }, []);
+
+  return (
+    <Provider store={store}>
+      <Head>
+        <title>하루 그림</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap"
+          rel="stylesheet"
+        />
+        <script
+          src="https://kit.fontawesome.com/308bd8919c.js"
+          crossOrigin="anonymous"
+        />
+      </Head>
+      <style jsx global>
+        {`
+          * {
+            font-family: 'Nanum Myeongjo', serif;
+            box-sizing: border-box;
+          }
+          html,
+          body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('static/background_img.jpg') no-repeat;
+          }
+          @media(max-width:700px){
+            body {
+              background: url('static/background_img.jpg') no-repeat;
+              background-position:-950px 0;
+            }
+          }
+          a,
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          span,
+          p {
+            text-decoration: none;
+            display: inline-block;
+            color: #eee;
+          }
+          a {
+            color: #eee;
+            font-size: inherit;
+          }
+          label {
+            color: #eee;
+          }
+          #__next {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        `}
+      </style>
+      <AppLayout>
+        <Component {...pageProps} />
+      </AppLayout>
+    </Provider>
+  );
+};
+
+Root.getInitialProps = async (context) => {
+  const { ctx, Component } = context;
+  let pageProps = {};
+  const state = ctx.store.getState();
+  const cookie = ctx.isServer ? ctx.req.headers.cookie : '';
+  if (ctx.isServer && cookie) {
+    axios.defaults.headers.Cookie = cookie;
+  }
+  if (!state.user.me) {
+    ctx.store.dispatch({
+      type: LOAD_USER_REQUEST,
+    });
+  }
+  if (Component.getInitialProps) {
+    pageProps = (await Component.getInitialProps(ctx)) || {};
+  }
+  return { pageProps };
+};
 
 const configureStore = (initialState, options) => {
   const sagaMiddleware = createSagaMiddleware();
@@ -92,8 +126,8 @@ const configureStore = (initialState, options) => {
             : (f) => f,
         );
   const store = createStore(reducer, initialState, enhancer);
-  sagaMiddleware.run(rootSaga);
+  store.sagaTask = sagaMiddleware.run(rootSaga);
   return store;
 };
 
-export default withRedux(configureStore)(Root);
+export default withRedux(configureStore)(withReduxSaga(Root));

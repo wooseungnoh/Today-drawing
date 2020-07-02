@@ -61,7 +61,7 @@ export const loadedPostList = async (req, res) => {
   try {
     const wordData = await Word.find({});
     const dateConstructor = new DateConstructor(wordData);
-    const post = await Post.find({ subject: dateConstructor.todayWord() });
+    const post = await Post.find({ subject: dateConstructor.todayWord() }).sort({ _id: -1 });
 
     res.json(post);
   } catch (e) {

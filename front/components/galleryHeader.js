@@ -8,7 +8,7 @@ import {
   OPEN_SUBJECT_MENU,
   CLOSE_SUBJECT_MENU,
 } from '../reducers/drawing';
-import { GalleryButton, Ul, Li } from '../components/styled/uiComponent';
+import { GalleryButton, Ul, Li, SubjectSelectButton } from '../components/styled/uiComponent';
 
 const GalleryHeader = () => {
   const [subject, setSubject] = useState('');
@@ -78,9 +78,9 @@ const GalleryHeader = () => {
           flexDirection: 'column',
         }}
       >
-        <button type="button" onClick={handleSubjectMenuState}>
+        <SubjectSelectButton type="button" onClick={handleSubjectMenuState}>
           주제 선택
-        </button>
+        </SubjectSelectButton>
         <Ul toggleState={popSubjectMenu} subjectLength={oldWordList.length}>
           <Li>
             <input
