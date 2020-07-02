@@ -4,7 +4,10 @@
   "description": "back",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node init.js"
+    "dev": "nodemon",
+    "start": "cross-env NODE_ENV=production PORT=80 node build/init.js",
+    "build": "babel src --out-dir build",
+    "prestart": "npm run build"
   },
   "author": "wooseung",
   "license": "ISC",

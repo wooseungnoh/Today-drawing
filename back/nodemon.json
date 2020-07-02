@@ -1,0 +1,11 @@
+{
+    "watch":[
+        "app.js",
+        "router",
+        "model",
+        "controller",
+        "init.js"
+    ],
+    "exec":"cross-env babel-node src/init.js",
+    "ext":"js json"
+}
