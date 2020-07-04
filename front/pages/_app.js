@@ -72,6 +72,7 @@ const Root = ({ Component, store, pageProps }) => {
           }
           label {
             color: #eee;
+            font-size:14px;
           }
           #__next {
             width: 100%;

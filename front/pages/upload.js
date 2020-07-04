@@ -102,10 +102,10 @@ const Upload = () => {
         }}
       >
         {imagePaths[0] ? (
-          <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+          <div style={{ position: 'relative', width: '100%', height: '90%' }}>
             <img
               src={imagePaths[0]}
-              style={{ height: '90%' }}
+              style={{ height: '100%' }}
               alt={imagePaths[0]}
             />
             <button

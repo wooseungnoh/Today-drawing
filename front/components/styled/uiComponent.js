@@ -17,7 +17,7 @@ export const ButtonAddword = styled.button`
   box-shadow: 3px 3px 5px;
   position: fixed;
   right: 20%;
-  bottom: 20%;
+  bottom: 10%;
   cursor: pointer;
   border: none;
   outline: none;
@@ -137,10 +137,10 @@ export const Textarea = styled.textarea`
   ${({ edit }) =>
     edit
       ? css`
-          height: 70px;
+          height: 10vh;
         `
       : css`
-          min-height: 70px;
+          height: 10vh;
         `};
   border-radius: 5px;
   border: 1px solid #ccc;
