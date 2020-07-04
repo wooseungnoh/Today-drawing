@@ -6,7 +6,17 @@ export const Canvas = styled.canvas`
   border-radius: 15px;
   background: #ffffff;
   border:2px solid #eee;
+  @media(max-width:800px){
+    display:none;
+  }
 `;
+
+export const MobileText = styled.span`
+display:none;
+@media(max-width:800px){
+    display:block;
+  }
+`
 
 export const PainterSize = styled.div`
   position: absolute;
@@ -23,6 +33,9 @@ export const Ul = styled.ul`
   flex-direction: row;
   bottom: -40px;
   padding:0;
+  @media(max-width:800px){
+    display:none;
+  }
 `;
 export const Li = styled.li`
   width: 30px;

@@ -18,7 +18,7 @@ const COLOR = {
 export const Heading = styled.h2`
   margin: 0;
   @media(max-width:700px){
-    font-size:15px;
+    font-size:20px;
   }
 `;
 const Text = styled.span`

@@ -64,7 +64,7 @@ const Mypage = () => {
               </Link>
             ))
           ) : (
-            <h3 style={{ lineHeight: '200px' }}>좋아하는 그림이 없습니다.</h3>
+            <h3 style={{ lineHeight: '200px' }}>아직 좋아하는 그림이 없습니다.</h3>
           )}
         </GalleryContainer>
       </Container>

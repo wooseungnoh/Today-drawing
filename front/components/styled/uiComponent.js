@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 
 export const SubjectSelectButton = styled.button`
-width:110px;
-height:20px;
-border-radius:5px;
-border:none;
-background:#e0cfb6;
-`
+  width: 110px;
+  height: 20px;
+  border-radius: 5px;
+  border: none;
+  background: #e0cfb6;
+`;
 
 export const ButtonAddword = styled.button`
   align-items: center;
@@ -28,8 +28,30 @@ export const ButtonAddword = styled.button`
   }
   @media (max-width: 1024px) {
     width: 160px;
-    right:50%;
-    margin-right:-80px;
+    right: 50%;
+    margin-right: -80px;
+  }
+`;
+
+export const SaveButton = styled.button`
+  margin: 10px;
+  border: none;
+  outline: none;
+  width: 300px;
+  height: 25px;
+  background: #e0cfb6;
+  border-radius: 5px;
+  transition: 0.3s;
+  color: #555;
+  &:hover {
+    background: #f0e1cc;
+  }
+  &:active {
+    box-shadow: inset 2px 2px 3px;
+    background: #e3d3bc;
+  }
+  @media (max-width: 700px) {
+    display: none;
   }
 `;
 
@@ -50,11 +72,12 @@ export const Button = styled.button`
     box-shadow: inset 2px 2px 3px;
     background: #e3d3bc;
   }
+
 `;
 
 export const OpenMenu = styled.button`
   position: absolute;
-  outline:none;
+  outline: none;
   top: 20px;
   right: 20px;
   width: 30px;
@@ -130,6 +153,16 @@ export const Input = styled.input`
   border: 1px solid #ccc;
   margin: 10px;
   text-align: center;
+  ${({ file }) =>
+    file &&
+    css`
+      color: transparent;
+      display: flex;
+      align-items: center;
+      border: none;
+      width: 85px;
+      height: 25px;
+    `}
 `;
 
 export const Textarea = styled.textarea`
@@ -169,6 +202,9 @@ export const InputContainer = styled.div`
   transform: rotate(-90deg);
   position: absolute;
   right: 10px;
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const Img = styled.img``;

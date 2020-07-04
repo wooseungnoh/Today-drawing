@@ -9,6 +9,7 @@ import {
 } from '../../reducers/admin';
 
 const Main = styled.div`
+  width:80%;
   display: flex;
   flex-direction: column;
   flex: 5;

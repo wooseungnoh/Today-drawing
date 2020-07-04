@@ -4,15 +4,14 @@ import { CompactPicker } from 'react-color';
 import React, { useEffect, useRef, useState } from 'react';
 import AskUploadModal from '../components/askUploadModal';
 import Container from '../components/styled/container';
-import { Button, InputContainer } from '../components/styled/uiComponent';
-import { Canvas, PainterSize, Ul, Li } from '../components/styled/canvas';
+import { SaveButton, InputContainer } from '../components/styled/uiComponent';
+import { Canvas, PainterSize, Ul, Li, MobileText } from '../components/styled/canvas';
 import { MODAL_ON } from '../reducers/drawing';
 
 const Input = styled.input``;
 
 const Upload = () => {
   const [colorPicker, setColorPicker] = useState(false);
-  const [background, setBackground] = useState('#000');
   const { modalState } = useSelector((state) => state.drawing);
   const dispatch = useDispatch();
   const [lineSize, setLineSize] = useState(2.5);
@@ -135,6 +134,7 @@ const Upload = () => {
             onMouseUp={stopPainting}
             onMouseLeave={stopPainting}
           />
+          <MobileText>모바일 기기는 지원하지 않습니다.</MobileText>
           <InputContainer>
             <PainterSize size={lineSize} color={canvasState.strokeStyle} />
             <Input
@@ -203,9 +203,9 @@ const Upload = () => {
             </Li>
           </Ul>
         </Container>
-        <Button style={{ marginTop: '25px' }} onClick={handleSave}>
+        <SaveButton style={{ marginTop: '25px' }} onClick={handleSave}>
           SAVE
-        </Button>
+        </SaveButton>
       </Container>
     </>
   );

@@ -102,4 +102,14 @@ const Container = styled.div`
   flex-direction: ${({ flexDirection }) => flexDirection || 'row'};
 `;
 
+export const UploadingContainer = styled.div`
+display:flex;
+width:300px;
+border:1px solid #eee;
+border-radius:5px;
+align-items:center;
+justify-content:center;
+margin:10px 0 10px 0;
+`
+
 export default Container;

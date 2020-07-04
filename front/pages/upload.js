@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Router from 'next/router';
-import Container from '../components/styled/container';
+import Container, { UploadingContainer } from '../components/styled/container';
 import { Input, Form, Textarea } from '../components/styled/uiComponent';
 import {
   UPPLOAD_CANVAS_REQUEST,
@@ -87,62 +87,70 @@ const Upload = () => {
 
   return (
     <Container flexDirection="column">
-      <Heading>당신의 그림을 자랑해보세요</Heading>
-      <Text fontSize="tiny" style={{ paddingBottom: '10px' }}>
-        어떤 그림이든 좋아요
-      </Text>
-      <div
-        style={{
-          height: '200px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '300px',
-          paddingBottom: '10px',
-        }}
-      >
-        {imagePaths[0] ? (
-          <div style={{ position: 'relative', width: '100%', height: '90%' }}>
-            <img
-              src={imagePaths[0]}
-              style={{ height: '100%' }}
-              alt={imagePaths[0]}
-            />
-            <button
-              onClick={handleDeleteImage}
-              style={{ position: 'absolute', top: '5px', right: '5px' }}
-            >
-              X
-            </button>
-          </div>
-        ) : (
-          <div
+      <Container flexDirection="column" wsize="inhrit" hsize="100px">
+        <Heading>당신의 그림을 자랑해보세요</Heading>
+        <Text fontSize="tiny" style={{ paddingBottom: '10px' }}>
+          어떤 그림이든 좋아요
+        </Text>
+      </Container>
+      <Form onSubmit={addPhoto} encType="multipart/form-data">
+        <label htmlFor="file">그림 선택</label>
+        <UploadingContainer>
+          <Input
+            file
+            type="file"
+            name="photo"
+            onChange={handlePhotoFile}
+            accept="image/*"
+            required
+            ref={file}
+          />
+          <Container
+            hsize="100px"
+            wsize="120px"
             style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: '100%',
-              height: '90%',
-              background: 'rgba(0,0,0,0.1)',
-              borderRadius: '5px',
+              margin: '10px',
+              padding: '0',
             }}
           >
-            <span>미리보기 이미지</span>
-          </div>
-        )}
-      </div>
-
-      <Form onSubmit={addPhoto} encType="multipart/form-data">
-        <label htmlFor="file">파일 선택</label>
-        <Input
-          type="file"
-          name="photo"
-          onChange={handlePhotoFile}
-          accept="image/*"
-          required
-          style={{ color: '#eee', display: 'flex', alignItems: 'center' }}
-          ref={file}
-        />
+            {imagePaths[0] ? (
+              <div
+                style={{ position: 'relative', width: '100%', height: '90%' }}
+              >
+                <img
+                  src={imagePaths[0]}
+                  style={{ height: '100%' }}
+                  alt={imagePaths[0]}
+                />
+                <button
+                  onClick={handleDeleteImage}
+                  type="button"
+                  style={{
+                    width: '20px',
+                    height: '20px',
+                    position: 'absolute',
+                    top: '5px',
+                    right: '-20px',
+                    background:
+                      'url(../static/close-solid.svg) no-repeat center',
+                    border: 'none',
+                  }}
+                ></button>
+              </div>
+            ) : (
+              <Container
+                wsize="100%"
+                hsize="90%"
+                style={{
+                  background: 'rgba(0,0,0,0.2)',
+                  borderRadius: '5px',
+                }}
+              >
+                <span>미리보기 이미지</span>
+              </Container>
+            )}
+          </Container>
+        </UploadingContainer>
         <label>그림 제목</label>
         <Input value={title} onChange={setTitle} type="text" required />
 
