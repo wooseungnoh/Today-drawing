@@ -5,11 +5,11 @@ import { ButtonAddword } from '../components/styled/uiComponent';
 import axios from 'axios';
 
 const AddWordButton = () => {
-  axios.defaults.baseURL = `${
+  const backUrl =
     process.env.NODE_ENV === 'production'
-      ? 'http://18.181.73.53'
-      : 'http://localhost:5000'
-  }`;
+      ? 'http://api.todaydrawing.net'
+      : 'http://localhost:5000';
+  axios.defaults.baseURL = `${backUrl}`;
 
   const onPrompt = async () => {
     const result = prompt('주제를 입력해주세요', ['']);
