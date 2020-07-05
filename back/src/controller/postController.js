@@ -83,7 +83,7 @@ export const loadedPostList = async (req, res) => {
 export const loadedSelectedPostList = async (req, res) => {
   const { word } = req.body;
   try {
-    const post = await Post.find({ subject: word });
+    const post = await Post.find({ subject: word }).sort({ _id: -1 });
     res.json(post);
   } catch (e) {
     console.log(e);

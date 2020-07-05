@@ -48,7 +48,7 @@ const imgDetail = () => {
     <>
       {nowShowingPost ? (
         <Container flexDirection="column">
-          <Container>
+          <Container style={{ maxHeight: '285px' }}>
             <Img background={nowShowingPost.post.fileUrl} />
           </Container>
           <PostDetail />

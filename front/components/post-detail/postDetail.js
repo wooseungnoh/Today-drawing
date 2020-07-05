@@ -58,8 +58,8 @@ const PostDetail = () => {
         flexDirection: 'column',
         textAlign: 'left',
         margin: '10px 0 ',
-        width: '30%',
-        minWidth: '350px',
+        width: '90%',
+        maxWidth: '350px',
       }}
     >
       {editing ? (
