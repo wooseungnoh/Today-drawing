@@ -45,26 +45,18 @@ const imgDetail = () => {
   }, [deletePostSuccess]);
 
   return (
-    <Container flexDirection="column">
+    <>
       {nowShowingPost ? (
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Img
-            src={nowShowingPost.post.fileUrl}
-            width="30%"
-            style={{ minWidth: '350px', maxWidth:'400px' }}
-          />
+        <Container flexDirection="column">
+          <Container>
+            <Img background={nowShowingPost.post.fileUrl} />
+          </Container>
           <PostDetail />
-        </div>
+        </Container>
       ) : (
         <></>
       )}
-    </Container>
+    </>
   );
 };
 

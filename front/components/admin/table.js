@@ -16,6 +16,7 @@ const Main = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   background: #aaa;
+  overflow-y:scroll;
 `;
 
 const Table = ({ change }) => {

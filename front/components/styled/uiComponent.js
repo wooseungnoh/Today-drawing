@@ -72,7 +72,6 @@ export const Button = styled.button`
     box-shadow: inset 2px 2px 3px;
     background: #e3d3bc;
   }
-
 `;
 
 export const OpenMenu = styled.button`
@@ -207,7 +206,14 @@ export const InputContainer = styled.div`
   }
 `;
 
-export const Img = styled.img``;
+export const Img = styled.div`
+  height: 100%;
+  width:40vh;
+  max-height: 400px;
+  max-width: 300px;
+  background: url(${({ background }) => background && `${background}`}) no-repeat center;
+  background-size:contain;
+`;
 
 export const GalleryButton = styled.button`
   border: none;
