@@ -36,6 +36,11 @@ const AdminMain = () => {
       Router.push('/');
     }
   }, []);
+  useEffect(() => {
+    if (isLoggedIn === false) {
+      Router.push('/');
+    }
+  }, [isLoggedIn]);
 
   return (
     <Wrap style={{ display: 'flex' }}>
