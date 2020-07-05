@@ -57,7 +57,7 @@ export const GalleryContainer = styled.div`
     grid-template-columns: repeat(1, 300px);
     overflow-x: hidden;
     ${({ postLength }) =>
-      postLength > 3
+      postLength > 2
         ? css`
             overflow-y: scroll;
           `
