@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
-    "start": "cross-env NODE_ENV=production PORT=80 node build/init.js",
+    "start": "NODE_ENV=production PORT=80 node build/init.js",
     "prebuild": "rm -rf build",
     "build": "babel src --out-dir build",
     "prestart": "npm run build"
