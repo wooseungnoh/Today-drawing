@@ -57,7 +57,7 @@ const imgDetail = () => {
           <Img
             src={nowShowingPost.post.fileUrl}
             width="30%"
-            style={{ minWidth: '350px' }}
+            style={{ minWidth: '350px', maxWidth:'400px' }}
           />
           <PostDetail />
         </div>
