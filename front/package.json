@@ -7,7 +7,7 @@
     "dev": "nodemon",
     "build": "next build",
     "prestart": "npm run build",
-    "start": "NODE_ENV=production PORT=80 pm2 start server.js"
+    "start": "cross-env NODE_ENV=production PORT=80 pm2 start server.js"
   },
   "author": "wooseung",
   "license": "ISC",

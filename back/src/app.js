@@ -43,15 +43,27 @@ app.use('/', express.static('uploads'));
 app.use(cookieParser(process.env.SECRET_KEY));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  session({
-    secret: process.env.SECRET_KEY,
-    resave: true,
-    saveUninitialized: false,
-    store: new CokieStore({ mongooseConnection: mongoose.connection }),
-    cookie: { secure: false, httpOnly: true, domain:'.todaydrawing.net' },
-  }),
-);
+if(prod){
+  app.use(
+    session({
+      secret: process.env.SECRET_KEY,
+      resave: true,
+      saveUninitialized: false,
+      store: new CokieStore({ mongooseConnection: mongoose.connection }),
+      cookie: { secure: false, httpOnly: true, domain:'.todaydrawing.net' },
+    }),
+  );
+}else{
+  app.use(
+    session({
+      secret: process.env.SECRET_KEY,
+      resave: true,
+      saveUninitialized: false,
+      store: new CokieStore({ mongooseConnection: mongoose.connection }),
+    }),
+  );
+}
+
 app.use(passport.initialize());
 app.use(passport.session());
 

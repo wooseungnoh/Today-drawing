@@ -65,29 +65,71 @@ export const GalleryContainer = styled.div`
             overflow-y: hidden;
           `}
   }
+
   ${({ mypage }) =>
     mypage &&
     css`
-      height: 220px;
-      ${({ postLength }) => {
-        if (postLength > 2) {
-          return css`
-            overflow-y: scroll;
-          `;
-        } else if (postLength === 0) {
-          return css`
-            grid-template-columns: repeat(1, 400px);
-            overflow-y: hidden;
-          `;
-        } else {
-          return css`
-            overflow-y: hidden;
-          `;
-        }
-      }}
+      @media (max-width: 1400px) {
+        ${({ postLength }) => {
+          if (postLength > 2) {
+            console.log('dddd');
+            return css`
+              overflow-y: scroll;
+            `;
+          } else if (postLength === 0) {
+            return css`
+              grid-template-columns: repeat(1, 400px);
+              overflow-y: hidden;
+            `;
+          } else {
+            return css`
+              overflow-y: hidden;
+            `;
+          }
+        }}
+      }
+      @media (max-width: 960px) {
+        grid-template-columns: repeat(1, 300px);
+        overflow-x: hidden;
+        ${({ postLength }) => {
+          if (postLength > 2) {
+            console.log('dddd');
+            return css`
+              overflow-y: scroll;
+            `;
+          } else if (postLength === 0) {
+            return css`
+              grid-template-columns: repeat(1, 400px);
+              overflow-y: hidden;
+            `;
+          } else {
+            return css`
+              overflow-y: hidden;
+            `;
+          }
+        }}
+      }
+
       @media (max-width: 700px) {
         grid-template-columns: repeat(1, 300px);
         overflow-x: hidden;
+        height: 220px;
+        ${({ postLength }) => {
+          if (postLength > 1) {
+            return css`
+              overflow-y: scroll;
+            `;
+          } else if (postLength === 0) {
+            return css`
+              grid-template-columns: repeat(1, 400px);
+              overflow-y: hidden;
+            `;
+          } else {
+            return css`
+              overflow-y: hidden;
+            `;
+          }
+        }}
       }
     `}
 `;
@@ -103,13 +145,13 @@ const Container = styled.div`
 `;
 
 export const UploadingContainer = styled.div`
-display:flex;
-width:300px;
-border:1px solid #eee;
-border-radius:5px;
-align-items:center;
-justify-content:center;
-margin:10px 0 10px 0;
-`
+  display: flex;
+  width: 300px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0 10px 0;
+`;
 
 export default Container;
