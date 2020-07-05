@@ -35,6 +35,7 @@ app.use(
     secret: process.env.SECRET_KEY,
     resave: true,
     saveUninitialized: false,
+    cookie: { secure: true },
     store: new CokieStore({ mongooseConnection: mongoose.connection }),
   }),
 );
