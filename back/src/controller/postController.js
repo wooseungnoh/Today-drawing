@@ -7,7 +7,7 @@ class DateConstructor {
   constructor(model) {
     this.model = model;
   }
-  previousMonthIndexNumber(){
+  previousMonthIndexNumber() {
     const date = new Date();
     const index = this.model.findIndex(
       (i) => i.name === `${date.getMonth()}월`,
@@ -64,6 +64,7 @@ export const uploadPost = async (req, res) => {
   return;
 };
 
+//오늘의 포스트를 불러옴
 export const loadedPostList = async (req, res) => {
   try {
     const wordData = await Word.find({});
@@ -71,8 +72,11 @@ export const loadedPostList = async (req, res) => {
     const post = await Post.find({
       subject: dateConstructor.todayWord(),
     }).sort({ _id: -1 });
-
-    res.json(post);
+    const todayPostList = {
+      postList: post,
+      todayWord: dateConstructor.todayWord(),
+    };
+    res.json(todayPostList);
   } catch (e) {
     console.log(e);
     res.status(400);
@@ -80,11 +84,16 @@ export const loadedPostList = async (req, res) => {
   return;
 };
 
+//선택된 주제의 포스트를 불러옴
 export const loadedSelectedPostList = async (req, res) => {
   const { word } = req.body;
   try {
     const post = await Post.find({ subject: word }).sort({ _id: -1 });
-    res.json(post);
+    const postAndWodr = {
+      postList: post,
+      selectedWord: word,
+    };
+    res.json(postAndWodr);
   } catch (e) {
     console.log(e);
     res.status(400);
@@ -221,7 +230,8 @@ export const loadWord = async (req, res) => {
   try {
     const wordData = await Word.find({});
     const dateConstructor = new DateConstructor(wordData);
-    const prevMonthOldWord = wordData[dateConstructor.previousMonthIndexNumber()].oldWordList;
+    const prevMonthOldWord =
+      wordData[dateConstructor.previousMonthIndexNumber()].oldWordList;
 
     if (date.getDate() === 1 && dateConstructor.thisMonthIndexnumber() === -1) {
       //1일마다 새로운 배열생성

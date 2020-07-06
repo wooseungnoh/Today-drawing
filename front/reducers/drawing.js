@@ -14,6 +14,7 @@ export const initialState = {
   popSubjectMenu: false,
   pod: true,
   globalMenu: false,
+  selectedWord: '',
 };
 
 //글로벌 메뉴 온오프
@@ -143,8 +144,9 @@ export default (state = initialState, action) => {
     case LOAD_SELECT_POST_SUCCESS: {
       return {
         ...state,
-        postList: [...action.data],
+        postList: [...action.data.postList],
         isLoadding: false,
+        selectedWord: action.data.selectedWord,
       };
     }
     case LOAD_SELECT_POST_FAILURE: {
@@ -284,8 +286,9 @@ export default (state = initialState, action) => {
     case LOAD_GALLERY_SUCCESS: {
       return {
         ...state,
-        postList: action.data,
+        postList: action.data.postList,
         isLoadding: false,
+        selectedWord: action.data.todayWord,
       };
     }
     case LOAD_GALLERY_FAILURE: {

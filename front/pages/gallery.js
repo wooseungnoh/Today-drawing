@@ -12,7 +12,9 @@ import GalleryHeader from '../components/galleryHeader';
 
 const Gallery = () => {
   const dispatch = useDispatch();
-  const { postList, popSubjectMenu } = useSelector((state) => state.drawing);
+  const { postList, popSubjectMenu, selectedWord } = useSelector(
+    (state) => state.drawing,
+  );
   useEffect(() => {
     dispatch({
       type: LOAD_GALLERY_REQUEST,
@@ -47,7 +49,7 @@ const Gallery = () => {
         wsize="70%"
         justifyContent="center"
         style={{
-          overflowX: 'hidden'
+          overflowX: 'hidden',
         }}
       >
         <GalleryContainer postLength={postList ? postList.length : 0}>
@@ -63,7 +65,9 @@ const Gallery = () => {
               );
             })
           ) : (
-            <h3 style={{ lineHeight: '300px' }}>작성된 포스트가 없습니다.</h3>
+            <h3
+              style={{ lineHeight: '300px' }}
+            >{`${selectedWord}에 작성된 포스트가 없습니다.`}</h3>
           )}
         </GalleryContainer>
       </Container>

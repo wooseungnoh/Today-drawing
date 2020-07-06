@@ -31,27 +31,35 @@ const AdminMain = () => {
   const onPost = () => {
     setState(false);
   };
+
   useEffect(() => {
     if (isLoggedIn === false || me === null || me.role !== 'admin') {
       Router.push('/');
     }
   }, []);
+
   useEffect(() => {
-    if (isLoggedIn === false) {
+    if (isLoggedIn === false || me === null || me.role !== 'admin') {
       Router.push('/');
     }
   }, [isLoggedIn]);
 
   return (
-    <Wrap style={{ display: 'flex' }}>
-      <Category>
-        <ul>
-          <li onClick={onUser}>회원관리</li>
-          <li onClick={onPost}>게시물관리</li>
-        </ul>
-      </Category>
-      <Table change={state} />
-    </Wrap>
+    <>
+      {isLoggedIn === false || me === null || me.role !== 'admin' ? (
+        <span>관리자가 아닙니다.</span>
+      ) : (
+        <Wrap style={{ display: 'flex' }}>
+          <Category>
+            <ul>
+              <li onClick={onUser}>회원관리</li>
+              <li onClick={onPost}>게시물관리</li>
+            </ul>
+          </Category>
+          <Table change={state} />
+        </Wrap>
+      )}
+    </>
   );
 };
 
