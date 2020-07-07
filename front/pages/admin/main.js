@@ -39,27 +39,21 @@ const AdminMain = () => {
   }, []);
 
   useEffect(() => {
-    if (isLoggedIn === false || me === null || me.role !== 'admin') {
+    if (isLoggedIn === false) {
       Router.push('/');
     }
   }, [isLoggedIn]);
 
   return (
-    <>
-      {isLoggedIn === false || me === null || me.role !== 'admin' ? (
-        <span>관리자가 아닙니다.</span>
-      ) : (
-        <Wrap style={{ display: 'flex' }}>
-          <Category>
-            <ul>
-              <li onClick={onUser}>회원관리</li>
-              <li onClick={onPost}>게시물관리</li>
-            </ul>
-          </Category>
-          <Table change={state} />
-        </Wrap>
-      )}
-    </>
+    <Wrap style={{ display: 'flex' }}>
+      <Category>
+        <ul>
+          <li onClick={onUser}>회원관리</li>
+          <li onClick={onPost}>게시물관리</li>
+        </ul>
+      </Category>
+      <Table change={state} />
+    </Wrap>
   );
 };
 
