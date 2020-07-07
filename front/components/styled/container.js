@@ -12,7 +12,7 @@ export const GalleryContainer = styled.div`
       return css`
         overflow-y: scroll;
       `;
-    } else if (postLength === 0) {
+    } else if (postLength <= 1) {
       return css`
         grid-template-columns: repeat(1, 400px);
         overflow-y: hidden;
@@ -27,16 +27,12 @@ export const GalleryContainer = styled.div`
   @media (max-width: 1400px) {
     grid-template-columns: repeat(2, 300px);
     overflow-x: hidden;
-    ${({ postLength }) =>
-      postLength > 4
-        ? css`
-            overflow-y: scroll;
-          `
-        : css`
-            overflow-y: hidden;
-          `}
     ${({ postLength }) => {
       if (postLength > 6) {
+        return css`
+          overflow-y: scroll;
+        `;
+      } else if (postLength > 4) {
         return css`
           overflow-y: scroll;
         `;

@@ -9,6 +9,7 @@ import {
   CLOSE_SUBJECT_MENU,
 } from '../reducers/drawing';
 import GalleryHeader from '../components/galleryHeader';
+import Text from '../components/styled/text';
 
 const Gallery = () => {
   const dispatch = useDispatch();
@@ -65,9 +66,10 @@ const Gallery = () => {
               );
             })
           ) : (
-            <h3
-              style={{ lineHeight: '300px' }}
-            >{`${selectedWord}에 작성된 포스트가 없습니다.`}</h3>
+            <>
+              <Text>{`선택된 주제 - ${selectedWord}`}</Text>
+              <Text>작성된 포스트가 없습니다</Text>
+            </>
           )}
         </GalleryContainer>
       </Container>
