@@ -86,20 +86,26 @@ const EditProfile = ({ signUp }) => {
             defaultValue={me ? me.writer : ''}
             onChange={handleChangename}
             placeholder="작가명"
+            required
           />
           <Textarea
             ref={userInfomationValue}
             defaultValue={me ? me.userInfo : ''}
             onChange={handleChangeInfo}
             placeholder="작가소개"
+            required
           />
           <Container
             style={{ margin: '0', justifyContent: 'space-between' }}
             wsize="150px"
             hsize="50px"
           >
-            <Button>확인</Button>
-            {!signUp && <Button onClick={handleModalOff}>취소</Button>}
+            <Button type="submit">확인</Button>
+            {!signUp && (
+              <Button type="button" onClick={handleModalOff}>
+                취소
+              </Button>
+            )}
           </Container>
         </form>
       </Container>
