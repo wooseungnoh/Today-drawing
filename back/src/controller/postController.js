@@ -7,6 +7,7 @@ class DateConstructor {
   constructor(model) {
     this.model = model;
   }
+  //지난달의 인덱스 넘버를 반환함
   previousMonthIndexNumber() {
     const date = new Date();
     const index = this.model.findIndex(
@@ -14,6 +15,8 @@ class DateConstructor {
     );
     return index;
   }
+
+  //이번달의 인덱스 넘버를 반환함
   thisMonthIndexnumber() {
     const date = new Date();
     const index = this.model.findIndex(
@@ -21,6 +24,8 @@ class DateConstructor {
     );
     return index;
   }
+
+  //어제의 단어를 반환함
   yesterdayWord() {
     const date = new Date();
     const index = this.model.findIndex(
@@ -28,6 +33,8 @@ class DateConstructor {
     );
     return this.model[index].wordListArray[date.getDate() - 2];
   }
+
+  //오늘의 단어를 반환함
   todayWord() {
     const date = new Date();
     const index = this.model.findIndex(
@@ -37,10 +44,12 @@ class DateConstructor {
   }
 }
 
+//업로드 화면에서 이미지 추가시 미리보기 이미지의 URL을 반환함
 export const uploadPhoto = (req, res) => {
   res.json(req.file.location);
 };
 
+//포스트를 업로드함
 export const uploadPost = async (req, res) => {
   const {
     body: { title, description, imagePaths, word },
@@ -101,6 +110,7 @@ export const loadedSelectedPostList = async (req, res) => {
   return;
 };
 
+//포스트의 세부사항을 전달함
 export const loadedPostDetail = async (req, res) => {
   const {
     body: { postId },
@@ -128,6 +138,7 @@ export const loadedPostDetail = async (req, res) => {
   return;
 };
 
+//포스트 수정
 export const editPost = async (req, res) => {
   const { id, title, description } = req.body;
 
@@ -144,6 +155,7 @@ export const editPost = async (req, res) => {
   return;
 };
 
+//포스트 삭제
 export const deletePost = async (req, res) => {
   const { id } = req.body;
   try {
@@ -156,6 +168,7 @@ export const deletePost = async (req, res) => {
   return;
 };
 
+//좋아요
 export const like = async (req, res) => {
   const {
     body: { id },
@@ -189,6 +202,7 @@ export const like = async (req, res) => {
   return;
 };
 
+//좋아요 취소
 export const unlike = async (req, res) => {
   const {
     body: { id },
@@ -221,6 +235,7 @@ export const unlike = async (req, res) => {
   }
 };
 
+//단어 불러오기
 export const loadWord = async (req, res) => {
   const date = new Date();
   const lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
@@ -282,6 +297,7 @@ export const loadWord = async (req, res) => {
   // res.json(wordList[Number(day)]);
 };
 
+//단어 추가하기
 export const addWord = async (req, res) => {
   const { wordName } = req.body;
   const date = new Date();

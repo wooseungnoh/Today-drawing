@@ -116,13 +116,11 @@ function loadUserAPI() {
 function* loadUser() {
   try {
     const result = yield call(loadUserAPI);
-    console.log('로그인 성공')
     yield put({
       type: LOAD_USER_SUCCESS,
       data: result.data,
     });
   } catch (e) {
-    console.log('로그인 실패')
     yield put({
       type: LOAD_USER_FAILURE,
     });

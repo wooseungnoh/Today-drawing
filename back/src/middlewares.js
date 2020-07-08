@@ -21,14 +21,3 @@ const multerPhoto = multer({
 });
 
 export const uploadPhotoMulter = multerPhoto.single('photo');
-
-// multer.diskStorage({
-//   destination(req, file, done) {
-//     done(null, 'uploads');
-//   },
-//   filename(req, file, done) {
-//     const ext = path.extname(file.originalname);
-//     const basename = path.basename(file.originalname, ext);
-//     done(null, basename + new Date().valueOf() + ext);
-//   },
-// })

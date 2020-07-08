@@ -7,6 +7,7 @@ export const GalleryContainer = styled.div`
   grid-gap: 10px;
   margin-bottom: 30px;
   padding: 0 20px;
+  justify-items: center;
   ${({ postLength }) => {
     if (postLength > 6) {
       return css`

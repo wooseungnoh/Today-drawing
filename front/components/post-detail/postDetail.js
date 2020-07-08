@@ -111,7 +111,8 @@ const PostDetail = () => {
                   : '탈퇴한 회원입니다.'
               }`}
             </Text>
-            {nowShowingPost.post.creator !== null && nowShowingPost.post.creator._id === nowShowingPost.user._id &&
+            {nowShowingPost.post.creator !== null &&
+            nowShowingPost.post.creator._id === nowShowingPost.user._id &&
             isLoggedIn ? (
               <EditButton onEditingState={handleEditingState} />
             ) : (
@@ -121,11 +122,30 @@ const PostDetail = () => {
           <Text fontSize="medium" style={{ paddingBottom: '25px' }}>
             {`${nowShowingPost.post.createAt.split('T')[0]}`}
           </Text>
-          <Text bold fontSize="huge" style={{ paddingBottom: '15px' }}>
+          <Text
+            bold
+            fontSize="huge"
+            style={{
+              paddingBottom: '15px',
+              overflow: 'hidden',
+              maxWidth: '400px',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+            }}
+          >
             {nowShowingPost.post.title}
           </Text>
-          <div style={{ width: '100%' }}>
-            <Text>{nowShowingPost.post.description}</Text>
+          <div style={{ width: '100%', maxWidth: '400px', maxHeight: '200px' }}>
+            <Text
+              style={{
+                width: '100%',
+                overflow: 'hidden',
+                whiteSpace: 'break-space',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              {nowShowingPost.post.description}
+            </Text>
           </div>
         </>
       )}
