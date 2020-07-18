@@ -5,7 +5,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import AskUploadModal from '../components/askUploadModal';
 import Container from '../components/styled/container';
 import { SaveButton, InputContainer } from '../components/styled/uiComponent';
-import { Canvas, PainterSize, Ul, Li, MobileText } from '../components/styled/canvas';
+import {
+  Canvas,
+  PainterSize,
+  Ul,
+  Li,
+  MobileText,
+} from '../components/styled/canvas';
 import { MODAL_ON } from '../reducers/drawing';
 
 const Input = styled.input``;
@@ -120,10 +126,10 @@ const Upload = () => {
       <Container flexDirection="column">
         <h2 style={{ margin: 0 }}>그림 그리기</h2>
         <Container
+          wsize="580px"
+          hsize="530px"
           style={{
             padding: '15px 0 15px 0',
-            width: '580px',
-            height: '530px',
             position: 'relative',
           }}
         >
@@ -190,7 +196,11 @@ const Upload = () => {
               ></div>
               {colorPicker ? (
                 <div
-                  style={{ position: 'relative', left: '-230px', top: '-140px' }}
+                  style={{
+                    position: 'relative',
+                    left: '-230px',
+                    top: '-140px',
+                  }}
                 >
                   <CompactPicker
                     color={canvasState.strokeStyle}
@@ -198,8 +208,8 @@ const Upload = () => {
                   />
                 </div>
               ) : (
-                  <></>
-                )}
+                <></>
+              )}
             </Li>
           </Ul>
         </Container>

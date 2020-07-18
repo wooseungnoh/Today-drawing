@@ -21,10 +21,7 @@ const Root = ({ Component, store, pageProps }) => {
           name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet" />
         <script
           src="https://kit.fontawesome.com/308bd8919c.js"
           crossOrigin="anonymous"

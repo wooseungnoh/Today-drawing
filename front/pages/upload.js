@@ -15,7 +15,7 @@ import Text, { Heading } from '../components/styled/text';
 
 const Upload = () => {
   const file = useRef();
-  const { imagePaths, isUploadingPost, word, addingPhoto, pod } = useSelector(
+  const { imagePaths, isUploadingPost, word, addingPhoto, MultipleClickState } = useSelector(
     (state) => state.drawing,
   );
   const { isLoggedIn } = useSelector((state) => state.user);
@@ -32,7 +32,7 @@ const Upload = () => {
   const addPhoto = (e) => {
     e.preventDefault();
     if (isLoggedIn && addingPhoto) {
-      if (pod) {
+      if (MultipleClickState) {
         dispatch({
           type: UPPLOAD_POST_REQUEST,
           data: { title, description, imagePaths, word },

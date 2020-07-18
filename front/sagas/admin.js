@@ -63,7 +63,9 @@ function* watchremoveUser() {
 
 //포스트 삭제하기
 function removePostAPI(postId) {
-  return axios.post('/admin/removepost', postId);
+  return axios.delete('/admin/removepost', {
+    data: postId,
+  });
 }
 function* removePost(action) {
   try {

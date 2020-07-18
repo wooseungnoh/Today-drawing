@@ -1,5 +1,3 @@
-import { LOAD_ALLGALLERY_FAILURE } from './drawing';
-
 export const initialState = {
   user: [],
   post: [],

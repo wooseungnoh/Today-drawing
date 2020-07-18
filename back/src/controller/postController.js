@@ -52,18 +52,20 @@ export const uploadPhoto = (req, res) => {
 //포스트를 업로드함
 export const uploadPost = async (req, res) => {
   const {
-    body: { title, description, imagePaths, word },
+    body: { title, description, imagePaths },
   } = req;
 
-  const newPost = await Post.create({
-    fileUrl: imagePaths[0],
-    title,
-    description,
-    creator: req.user.id,
-    subject: word,
-  });
-
   try {
+    const wordData = await Word.find({});
+    const dateConstructor = new DateConstructor(wordData);
+    const newPost = await Post.create({
+      fileUrl: imagePaths[0],
+      title,
+      description,
+      creator: req.user.id,
+      subject: dateConstructor.todayWord(),
+    });
+
     const post = await Post.findById(newPost.id).populate('creator');
     res.send(post);
   } catch (e) {
